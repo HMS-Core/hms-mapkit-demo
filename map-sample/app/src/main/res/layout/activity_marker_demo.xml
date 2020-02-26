@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addMarker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="addMarker"
+                    android:text="AddMarker"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/deleteMarker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="deleteMarker"
+                    android:text="DeleteMarker"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/setTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setTitle"
+                    android:text="SetTitle"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/setSnippet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setSnippet"
+                    android:text="SetSnippet"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/defaultWindow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="defaultWindow"
+                    android:text="DefaultWindow"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/contentWindow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="contentWindow"
+                    android:text="ContentWindow"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/customWindow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="customWindow"
+                    android:text="CustomWindow"
+                    android:textAllCaps="false" />
+
+
+                <Button
+                    android:id="@+id/dragMarker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="dragMarker"
+                    android:text="DragMarker"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/setMarkerIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setMarkerIcon"
+                    android:text="SetMarkerIcon"
+                    android:textAllCaps="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/tagTest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setTag"
+                    android:text="SetTag"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/btn_set_marker_Anchor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setMarkerAnchor"
+                    android:text="SetMarkerAnchor"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="title"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edt_snippet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="snippet"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edt_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="tag"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btn_hide_window"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="hideInfoWindow"
+                    android:text="HideInfoWindow"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:id="@+id/btn_show_info_window"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="showInfoWindow"
+                    android:text="ShowInfoWindow"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/markerdemo_result_shown"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="The result is shown here"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="#D0AFAFAF"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/edt_camera_lat"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:hint="lat"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/edt_camera_lng"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:hint="lng"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/edt_camera_zoom"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:hint="zoom"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/edt_camera_tilt"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:hint="tilt"
+                        android:textSize="10dp" />
+
+                    <EditText
+                        android:id="@+id/edt_camera_bearing"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:hint="bearing"
+                        android:textSize="10dp" />
+
+                    <Button
+                        android:id="@+id/btn_set_camera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="setCamera"
+                        android:text="SetCamera"
+                        android:textAllCaps="false" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <fragment
+        android:id="@+id/mapfragment_markerdemo"
+        android:name="com.huawei.hms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

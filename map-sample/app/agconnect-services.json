@@ -1,0 +1,22 @@
+{
+  "agcgw": {
+    "backurl": "connect-drcn.dbankcloud.cn",
+    "url": "connect-drcn.hispace.hicloud.com"
+  },
+  "client": {
+    "cp_id": "890086000000003273",
+    "product_id": "98264260194363948",
+    "client_id": "163593762738582528",
+    "client_secret": "219DC9702F68864B0F9914578EA277C1305DBD0D13AC15D063BF4320C091846B",
+    "app_id": "101276141",
+    "package_name": "com.huawei.hms.maps.demo"
+  },
+  "service": {
+    "analytics": {
+      "collector_url": "datacollector-drcn.dt.hicloud.com,datacollector-drcn.dt.dbankcloud.cn",
+      "resource_id": "p1",
+      "channel_id": ""
+    }
+  },
+  "configuration_version": "1.0"
+}
