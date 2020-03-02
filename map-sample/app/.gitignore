@@ -1,0 +1,4 @@
+/build
+*.jks
+*.iml
+agconnect-services.json

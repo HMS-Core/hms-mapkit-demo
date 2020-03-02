@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_mapView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="createMapView"
+        android:text="createMapView"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_mapViewCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="createMapViewCode"
+        android:text="createMapViewCode"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_mapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="createMapFragment"
+        android:text="createMapFragment"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_mapFragmentCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="createMapFragmentCode"
+        android:text="createMapFragmentCode"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_supportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="createSupportMapFragment"
+        android:text="createSupportMapFragment"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_supportMapFragmentCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="createSupportMapFragmentCode"
+        android:text="createSupportMapFragmentCode"
+        android:textAllCaps="false" />
+</LinearLayout>

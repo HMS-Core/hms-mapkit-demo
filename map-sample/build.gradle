@@ -1,0 +1,33 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        maven { url 'http://developer.huawei.com/repo/' }
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.huawei.agconnect:agcp:1.0.0.300'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'http://developer.huawei.com/repo/' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+def upMavenFileName = "uploadToMaven_snapshot.gradle"
+
+subprojects {
+    if (project.name == "sdk") {
+        apply from: rootProject.getRootDir().path + "/" + upMavenFileName
+    }
+}

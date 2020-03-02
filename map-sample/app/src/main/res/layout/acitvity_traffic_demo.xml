@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/enableTraffic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="enableTraffic"
+                android:text="EnableTraffic"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/disableTraffic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="disableTraffic"
+                android:text="DisableTraffic"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/getIsTrafficEnabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:onClick="getIsTrafficEnabled"
+                android:text="GetIsTrafficEnabled"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/textIsTrafficed"
+                android:layout_width="216dp"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:text="answer" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/mapInTraffic"
+        android:name="com.huawei.hms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
