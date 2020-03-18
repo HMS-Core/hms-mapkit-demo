@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button eventsDemo = findViewById(R.id.EventsDemo);
         Button MapStyleDemo = findViewById(R.id.MapStyle);
         Button locationSourceDemo = findViewById(R.id.LocationSourceDemo);
+        Button RoutePlanningDemo = findViewById(R.id.RoutePlanningDemo);
 
         btn1.setOnClickListener(this);
         GestureDemo.setOnClickListener(this);
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         eventsDemo.setOnClickListener(this);
         MapStyleDemo.setOnClickListener(this);
         locationSourceDemo.setOnClickListener(this);
+        RoutePlanningDemo.setOnClickListener(this);
     }
 
     @Override
@@ -155,6 +157,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(i);
         } else if (R.id.MapStyle == v.getId()) {
             Intent i = new Intent(this, StyleMapDemoActivity.class);
+            startActivity(i);
+
+        } else if (R.id.RoutePlanningDemo == v.getId()) {
+            Intent i = new Intent(this, RoutePlanningDemoActivity.class);
             startActivity(i);
 
         } else {

@@ -134,6 +134,14 @@
                 android:text="LocationSourceDemo"
                 android:textAllCaps="false" />
 
+            <Button
+                android:id="@+id/RoutePlanningDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="RoutePlanningDemo"
+                android:textAllCaps="false" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
