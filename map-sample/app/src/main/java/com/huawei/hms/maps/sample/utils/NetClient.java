@@ -43,8 +43,9 @@ public class NetClient {
 
     private static OkHttpClient client;
 
-    private String mDefaultKey =
-        "CV6EOmMkSJ6REihJ5Mi2/j0/JGaUhLoBNKeJCaUOD/zL+AEI6IpFCg6s3qmPRW+5rFMkryUUpvJH9j0gZFfLeaV9AohC";
+    // Please place your API KEY here. If the API KEY contains special characters, you need to encode it using
+    // encodeURI.
+    private String mDefaultKey = "API KEY";
 
     private String mWalkingRoutePlanningURL = "https://mapapi.cloud.huawei.com/mapApi/v1/routeService/walking";
 
