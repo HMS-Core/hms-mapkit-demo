@@ -61,8 +61,13 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
         hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 10));
     }
 
-    public void setMapStyle(View view) {
-        MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.night);
+    public void setNightStyle(View view) {
+        MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_night);
+        hMap.setMapStyle(styleOptions);
+    }
+
+    public void setSimpleStyle(View view) {
+        MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_simple);
         hMap.setMapStyle(styleOptions);
     }
 }

@@ -13,10 +13,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("hmsmapdemo.keystore")
-            storePassword "123456"
-            keyAlias "androiddebugkey"
-            keyPassword "123456"
+            storeFile file("xxx.xxx")
+            storePassword "xxxxxx"
+            keyAlias "xxxxxx"
+            keyPassword "xxxxxx"
             v2SigningEnabled true
         }
     }

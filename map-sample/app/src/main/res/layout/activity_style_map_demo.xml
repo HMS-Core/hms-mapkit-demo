@@ -17,12 +17,28 @@
         map:uiCompass="true"
         map:uiZoomControls="false" />
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SetMapStyle"
-        android:textAllCaps="false"
-        android:onClick="setMapStyle" />
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NightStyle"
+            android:textAllCaps="false"
+            android:onClick="setNightStyle" />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SimpleStyle"
+            android:textAllCaps="false"
+            android:onClick="setSimpleStyle" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
 
