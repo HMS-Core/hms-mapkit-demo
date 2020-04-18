@@ -23,7 +23,7 @@ For more development details, please refer to the following link:
 
 Development Guide: https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-v4-abouttheservice
 
-API References: https://developer.huawei.com/consumer/en/doc/development/HMS-References/hms-map-v4-bitmapdescriptor
+API References: https://developer.huawei.com/consumer/en/doc/development/HMS-References/hms-map-bitmapdescriptor
 
 &nbsp; 
 
@@ -37,7 +37,7 @@ In Android Studio, use the "Open an existing Android Studio project", and select
 
 You can use the "gradlew build" command to build the project directly.
 
-You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project. You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-v4-configuringinagc) guide to configure app in AppGallery Connect.
+You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project. You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-configuringinagc) guide to configure app in AppGallery Connect.
 
 Support
 -------
