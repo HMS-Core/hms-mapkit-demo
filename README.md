@@ -52,11 +52,11 @@ If you have any questions or suggestions during use, welcome suggestions or comm
 
 ## Result
 
-  <img src="standard.jpg">
+  <img src="standard.jpg" width = 30% height = 30%>
 
-  <img src="simple.jpg">
+  <img src="simple.jpg" width = 30% height = 30%>
 
-  <img src="night.jpg">
+  <img src="night.jpg" width = 30% height = 30%>
 
 License
 -------
