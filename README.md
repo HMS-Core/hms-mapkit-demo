@@ -1,8 +1,15 @@
-HMS Map Kit for Android
+Map Kit for Android
 ===============================
 
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
 
+## Table of Contents
+
+ * [Introduction](#Introduction)
+ * [Getting Started](#Getting Started)
+ * [Support](#Support)
+ * [Result](#Result)
+ * [License](#License)
 
 Introduction
 ------------
@@ -19,15 +26,7 @@ HUAWEI Map Kit uses the WGS 84 GPS coordinate system, which meets most map devel
 Getting Started
 ---------------
 
-For more development details, please refer to the following link:
-
-Development Guide: https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-v4-abouttheservice
-
-API References: https://developer.huawei.com/consumer/en/doc/development/HMS-References/hms-map-bitmapdescriptor
-
-&nbsp; 
-
-We also provide an example to demonstrate the use of Map SDK for Android.
+We provide an example to demonstrate the use of Map SDK for Android.
 
 This sample uses the Gradle build system.
 
@@ -39,10 +38,25 @@ You can use the "gradlew build" command to build the project directly.
 
 You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project. You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-configuringinagc) guide to configure app in AppGallery Connect.
 
+
+
+For more development details, please refer to the following link:
+
+- [Development Guide](#https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-v4-abouttheservice)
+- [API References](#https://developer.huawei.com/consumer/en/doc/development/HMS-References/hms-map-bitmapdescriptor)
+
 Support
 -------
 
 If you have any questions or suggestions during use, welcome suggestions or communicate here: https://github.com/huaweimaps/mapkit/issues
+
+## Result
+
+  <img src="standard.jpg">
+
+  <img src="simple.jpg">
+
+  <img src="night.jpg">
 
 License
 -------
