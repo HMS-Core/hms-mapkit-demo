@@ -6,7 +6,7 @@ Map Kit for Android
 ## Table of Contents
 
  * [Introduction](#Introduction)
- * [Getting Started](#Getting Started)
+ * [Getting Started](#getting-started)
  * [Support](#Support)
  * [Result](#Result)
  * [License](#License)
@@ -42,8 +42,8 @@ You should create an app in AppGallery Connect, and obtain the file of agconnect
 
 For more development details, please refer to the following link:
 
-- [Development Guide](#https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-v4-abouttheservice)
-- [API References](#https://developer.huawei.com/consumer/en/doc/development/HMS-References/hms-map-bitmapdescriptor)
+- [Development Guide](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-v4-abouttheservice)
+- [API References](https://developer.huawei.com/consumer/en/doc/development/HMS-References/hms-map-cameraupdate)
 
 Support
 -------
