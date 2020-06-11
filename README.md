@@ -48,7 +48,7 @@ For more development details, please refer to the following link:
 Support
 -------
 
-If you have any questions or suggestions during use, welcome suggestions or communicate here: https://github.com/huaweimaps/mapkit/issues
+If you have any questions or suggestions during use, welcome suggestions or communicate here: https://github.com/HMS-Core/hms-mapkit-demo-java/issues
 
 ## Result
 
@@ -63,5 +63,5 @@ License
 
 Apache License version 2.0;
 
-You can get a licensed copy at: https://github.com/huaweimaps/mapkit/blob/master/LICENSE
+You can get a licensed copy at: https://github.com/HMS-Core/hms-mapkit-demo-java/blob/master/LICENSE
 
