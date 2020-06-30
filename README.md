@@ -1,15 +1,15 @@
-Map Kit for Android
+HMS Map Kit Demo for Android
 ===============================
 
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
 
 ## Table of Contents
 
- * [Introduction](#Introduction)
+ * [Introduction](#introduction)
  * [Getting Started](#getting-started)
- * [Support](#Support)
- * [Result](#Result)
- * [License](#License)
+ * [Support](#support)
+ * [Result](#result)
+ * [License](#license)
 
 Introduction
 ------------
@@ -61,7 +61,5 @@ If you have any questions or suggestions during use, welcome suggestions or comm
 License
 -------
 
-Apache License version 2.0;
-
-You can get a licensed copy at: https://github.com/HMS-Core/hms-mapkit-demo-java/blob/master/LICENSE
+HMS Mapkit Demo is licensed under [Apache License version 2.0](https://github.com/HMS-Core/hms-mapkit-demo-java/blob/master/LICENSE)
 
