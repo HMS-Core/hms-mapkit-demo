@@ -7,6 +7,7 @@ HMS Map Kit Demo for Android
 
  * [Introduction](#introduction)
  * [Getting Started](#getting-started)
+ * [Supported Environments](#supported-environments)
  * [Support](#support)
  * [Result](#result)
  * [License](#license)
@@ -36,14 +37,19 @@ In Android Studio, use the "Open an existing Android Studio project", and select
 
 You can use the "gradlew build" command to build the project directly.
 
-You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project. You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-configuringinagc) guide to configure app in AppGallery Connect.
+You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project. You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-config-agc-0000001050158641-V5) guide to configure app in AppGallery Connect.
 
 
 
 For more development details, please refer to the following link:
 
-- [Development Guide](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-v4-abouttheservice)
-- [API References](https://developer.huawei.com/consumer/en/doc/development/HMS-References/hms-map-cameraupdate)
+- [Development Guide](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-introduction-0000001050158633-V5)
+- [API References](https://developer.huawei.com/consumer/en/doc/development/HMSCore-References-V5/maps-overview-0000001050151498-V5)
+
+Supported Environments
+-------
+
+Android SDK Version >= 19 and JDK version >= 1.8 is recommended.
 
 Support
 -------
