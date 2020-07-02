@@ -1,4 +1,4 @@
-HMS Map Kit Demo for Android
+HMS MapKit Demo
 ===============================
 
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
