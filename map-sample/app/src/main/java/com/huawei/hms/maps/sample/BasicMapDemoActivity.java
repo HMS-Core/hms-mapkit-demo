@@ -34,25 +34,14 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * This shows how we create a basic activity with a map.
  */
-public class BasicMapDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class BasicMapDemoActivity extends AppCompatActivity {
     private static final String TAG = "BasicMapDemoActivity";
-
-    private HuaweiMap hmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_demo);
-
-    }
-
-    @Override
-    public void onMapReady(HuaweiMap map) {
-        Log.d(TAG, "onMapReady: ");
-        hmap = map;
-        CameraUpdate c = null;
-        c.getCameraUpdate();
     }
 
     /**
@@ -105,7 +94,7 @@ public class BasicMapDemoActivity extends AppCompatActivity implements OnMapRead
      */
     public void createSupportMapFragmentCode(View view) {
         Log.d(TAG, "createSupportMapFragmentCode: ");
-        Intent i = new Intent(this,   SupportMapCodeDemoActivity.class);
+        Intent i = new Intent(this, SupportMapCodeDemoActivity.class);
         startActivity(i);
     }
 }
