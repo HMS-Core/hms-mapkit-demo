@@ -3,7 +3,7 @@
 
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
 
-中文|[English](https://github.com/HMS-Core/hms-mapkit-demo-java/blob/master/README.md)
+中文 | [English](https://github.com/HMS-Core/hms-mapkit-demo-java/blob/master/README.md)
 
 ## 目录
 
