@@ -3,6 +3,8 @@ HMS MapKit Demo
 
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
 
+English|[中文](#https://github.com/HMS-Core/hms-mapkit-demo-java/blob/master/README_ZH.md)
+
 ## Table of Contents
 
  * [Introduction](#introduction)
