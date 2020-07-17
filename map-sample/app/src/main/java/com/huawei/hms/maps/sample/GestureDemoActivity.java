@@ -20,9 +20,15 @@
 
 package com.huawei.hms.maps.sample;
 
+import com.huawei.hms.maps.HuaweiMap;
+import com.huawei.hms.maps.OnMapReadyCallback;
+import com.huawei.hms.maps.SupportMapFragment;
+import com.huawei.hms.maps.UiSettings;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -30,12 +36,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
-import com.huawei.hms.maps.HuaweiMap;
-import com.huawei.hms.maps.OnMapReadyCallback;
-import com.huawei.hms.maps.SupportMapFragment;
-import com.huawei.hms.maps.UiSettings;
-import com.huawei.hms.maps.util.LogM;
 
 /**
  * about gesture
@@ -66,7 +66,7 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onMapReady(HuaweiMap paramHuaweiMap) {
-        LogM.i(TAG, "onMapReady: ");
+        Log.i(TAG, "onMapReady: ");
         hMap = paramHuaweiMap;
         hMap.setMyLocationEnabled(false);
         hMap.getUiSettings().setCompassEnabled(false);
@@ -76,7 +76,6 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
     }
 
     private boolean checkReady() {
-
         if (hMap == null) {
             Toast.makeText(this, "Map is not ready yet", Toast.LENGTH_SHORT).show();
             return false;
@@ -112,7 +111,7 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
             return;
         }
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             if (mMyLocationLayerCheckbox.isChecked()) {
                 mUiSettings.setMyLocationButtonEnabled(mMyLocationButtonCheckbox.isChecked());
             } else {
@@ -122,10 +121,9 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
 
         } else {
             Toast.makeText(this,
-                    "System positioning permission was not obtained, please turn on system positioning permission first",
-                    Toast.LENGTH_LONG).show();
+                "System positioning permission was not obtained, please turn on system positioning permission first",
+                Toast.LENGTH_LONG).show();
             mMyLocationButtonCheckbox.setChecked(false);
-
         }
     }
 
@@ -137,7 +135,7 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
             return;
         }
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             hMap.setMyLocationEnabled(mMyLocationLayerCheckbox.isChecked());
         } else {
             mMyLocationLayerCheckbox.setChecked(false);

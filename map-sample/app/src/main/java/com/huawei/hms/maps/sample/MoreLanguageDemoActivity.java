@@ -20,16 +20,16 @@
 
 package com.huawei.hms.maps.sample;
 
+import com.huawei.hms.maps.HuaweiMap;
+import com.huawei.hms.maps.OnMapReadyCallback;
+import com.huawei.hms.maps.SupportMapFragment;
+
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import com.huawei.hms.maps.HuaweiMap;
-import com.huawei.hms.maps.OnMapReadyCallback;
-import com.huawei.hms.maps.SupportMapFragment;
-import com.huawei.hms.maps.util.LogM;
 
 /**
  * Map support multi-language
@@ -54,7 +54,7 @@ public class MoreLanguageDemoActivity extends AppCompatActivity implements OnMap
 
     @Override
     public void onMapReady(HuaweiMap paramHuaweiMap) {
-        LogM.i(TAG, "onMapReady: ");
+        Log.i(TAG, "onMapReady: ");
         hMap = paramHuaweiMap;
         hMap.setMyLocationEnabled(true);
     }

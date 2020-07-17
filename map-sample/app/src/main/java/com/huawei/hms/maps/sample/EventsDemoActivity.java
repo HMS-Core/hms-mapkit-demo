@@ -20,11 +20,6 @@
 
 package com.huawei.hms.maps.sample;
 
-import android.graphics.Point;
-import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.huawei.hms.maps.HuaweiMap;
 import com.huawei.hms.maps.HuaweiMap.OnCameraIdleListener;
 import com.huawei.hms.maps.HuaweiMap.OnMapLongClickListener;
@@ -32,7 +27,12 @@ import com.huawei.hms.maps.OnMapReadyCallback;
 import com.huawei.hms.maps.SupportMapFragment;
 import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.VisibleRegion;
-import com.huawei.hms.maps.util.LogM;
+
+import android.graphics.Point;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,7 +40,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * This shows how to listen to some HuaweiMap events
  */
 public class EventsDemoActivity extends AppCompatActivity implements HuaweiMap.OnMapClickListener,
-        OnMapLongClickListener, OnCameraIdleListener, OnMapReadyCallback, HuaweiMap.OnMyLocationButtonClickListener {
+    OnMapLongClickListener, OnCameraIdleListener, OnMapReadyCallback, HuaweiMap.OnMyLocationButtonClickListener {
     private static final String TAG = "EventsDemoActivity";
 
     private TextView mTapView;
@@ -85,7 +85,7 @@ public class EventsDemoActivity extends AppCompatActivity implements HuaweiMap.O
         LatLng newLatlng = hMap.getProjection().fromScreenLocation(point);
         mToLatLngView.setText("to latlng, latlng=" + newLatlng);
         VisibleRegion visibleRegion = hMap.getProjection().getVisibleRegion();
-        LogM.i(TAG, visibleRegion.toString());
+        Log.i(TAG, visibleRegion.toString());
     }
 
     /**

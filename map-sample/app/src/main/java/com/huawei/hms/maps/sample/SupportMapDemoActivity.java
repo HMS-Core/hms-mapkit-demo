@@ -20,13 +20,6 @@
 
 package com.huawei.hms.maps.sample;
 
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import com.huawei.hms.maps.CameraUpdateFactory;
 import com.huawei.hms.maps.HuaweiMap;
 import com.huawei.hms.maps.OnMapReadyCallback;
@@ -36,23 +29,37 @@ import com.huawei.hms.maps.model.BitmapDescriptorFactory;
 import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.Marker;
 import com.huawei.hms.maps.model.MarkerOptions;
-import com.huawei.hms.maps.util.LogM;
 import com.huawei.hms.maps.util.ResourceBitmapDescriptor;
+
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 /**
  * Create a simple activity with a map and a marker on the map.
  */
 public class SupportMapDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
-
     private static final String TAG = "SupportMapDemoActivity";
 
+    private static final LatLng Beijing = new LatLng(48.893478, 2.334595);
+
+    private static final LatLng Shanghai = new LatLng(48.7, 2.12);
+
     private HuaweiMap hMap;
+
+    private Marker mBeijing;
+
+    private Marker mShanghai;
 
     private SupportMapFragment mSupportMapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LogM.d(TAG, "onCreate: ");
+        Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supportmapfragment_demo);
         mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.supportMap);
@@ -61,37 +68,25 @@ public class SupportMapDemoActivity extends AppCompatActivity implements OnMapRe
 
     @Override
     public void onMapReady(HuaweiMap map) {
-        LogM.d(TAG, "onMapReady: ");
+        Log.d(TAG, "onMapReady: ");
         hMap = map;
         hMap.getUiSettings().setCompassEnabled(true);
         hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 14));
         hMap.setOnMapLongClickListener(new HuaweiMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
-                LogM.d(TAG, "onMapLongClick: latLng " + " please input latLng");
+                Log.d(TAG, "onMapLongClick: latLng " + " please input latLng");
             }
         });
     }
 
-    Marker mBeijing;
-
-    Marker mShanghai;
-
-    Marker mNanjing;
-
-    private static final LatLng Beijing = new LatLng(48.893478, 2.334595);
-
-    private static final LatLng Nanjing = new LatLng(32.0603, 118.7969);
-
-    private static final LatLng Shanghai = new LatLng(48.7, 2.12);
-
     public void addMarker(View view) {
-        if (mBeijing == null && mShanghai == null && mNanjing == null) {
+        if (mBeijing == null && mShanghai == null) {
             // Uses a colored icon.
             mBeijing = hMap.addMarker(new MarkerOptions().position(Beijing).title("Beijing").clusterable(true));
             mShanghai = hMap.addMarker(new MarkerOptions().position(Shanghai)
-                    .alpha(0.8f)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.badge_ph)));
+                .alpha(0.8f)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.badge_ph)));
         }
         if (mBeijing != null) {
             mBeijing.setTitle("hello");
@@ -185,7 +180,7 @@ public class SupportMapDemoActivity extends AppCompatActivity implements OnMapRe
     public void setIcon(View view) {
         if (null != mBeijing) {
             Bitmap bitmap =
-                    ResourceBitmapDescriptor.drawableToBitmap(this, ContextCompat.getDrawable(this, R.drawable.badge_tr));
+                ResourceBitmapDescriptor.drawableToBitmap(this, ContextCompat.getDrawable(this, R.drawable.badge_tr));
             BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(bitmap);
             mBeijing.setIcon(bitmapDescriptor);
         }

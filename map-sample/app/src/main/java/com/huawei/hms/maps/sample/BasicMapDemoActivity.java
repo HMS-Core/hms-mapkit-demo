@@ -20,15 +20,10 @@
 
 package com.huawei.hms.maps.sample;
 
-import com.huawei.hms.maps.CameraUpdate;
-import com.huawei.hms.maps.HuaweiMap;
-import com.huawei.hms.maps.OnMapReadyCallback;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 /**

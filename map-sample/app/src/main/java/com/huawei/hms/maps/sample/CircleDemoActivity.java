@@ -20,16 +20,8 @@
 
 package com.huawei.hms.maps.sample;
 
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit;
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight;
 
 import com.huawei.hms.maps.CameraUpdateFactory;
 import com.huawei.hms.maps.HuaweiMap;
@@ -38,10 +30,18 @@ import com.huawei.hms.maps.SupportMapFragment;
 import com.huawei.hms.maps.model.Circle;
 import com.huawei.hms.maps.model.CircleOptions;
 import com.huawei.hms.maps.model.LatLng;
-import com.huawei.hms.maps.util.LogM;
 
-import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit;
-import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * circle related
@@ -85,7 +85,7 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     @Override
     public void onMapReady(HuaweiMap paramHuaweiMap) {
-        LogM.i(TAG, "onMapReady: ");
+        Log.i(TAG, "onMapReady: ");
         hMap = paramHuaweiMap;
         hMap.setMyLocationEnabled(true);
         hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 14));
@@ -111,10 +111,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
             mCircle.remove();
         }
         mCircle = hMap.addCircle(new CircleOptions().center(new LatLng(48.893478, 2.334595))
-                .radius(500)
-                .fillColor(0XFF00FFFF)
-                .strokeWidth(10)
-                .strokeColor(Color.RED));
+            .radius(500)
+            .fillColor(0XFF00FFFF)
+            .strokeWidth(10)
+            .strokeColor(Color.RED));
     }
 
     /**
@@ -131,7 +131,7 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
             try {
                 mCircle.setCenter(center);
             } catch (NullPointerException e) {
-                LogM.e(TAG, "NullPointerException " + e.toString());
+                Log.e(TAG, "NullPointerException " + e.toString());
                 Toast.makeText(this, "NullPointerException", Toast.LENGTH_SHORT).show();
             }
         }
@@ -142,7 +142,6 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
      */
     public void getCenter(View v) {
         if (null != mCircle) {
-
             circleShown.setText("Circle center is " + mCircle.getCenter().toString());
         }
     }
@@ -232,10 +231,9 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
                     try {
                         mCircle.setStrokeWidth(Float.valueOf(width));
                     } catch (IllegalArgumentException e) {
-                        LogM.e(TAG, "IllegalArgumentException " + e.toString());
+                        Log.e(TAG, "IllegalArgumentException " + e.toString());
                         Toast.makeText(this, "IllegalArgumentException", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
         }

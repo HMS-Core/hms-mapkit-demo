@@ -20,15 +20,15 @@
 
 package com.huawei.hms.maps.sample;
 
-import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.huawei.hms.maps.HuaweiMap;
 import com.huawei.hms.maps.OnMapReadyCallback;
 import com.huawei.hms.maps.SupportMapFragment;
-import com.huawei.hms.maps.util.LogM;
+
+import android.os.Bundle;
+import android.util.Log;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Map control related
@@ -50,7 +50,7 @@ public class ControlsDemoActivity extends AppCompatActivity implements OnMapRead
 
     @Override
     public void onMapReady(HuaweiMap paramHuaweiMap) {
-        LogM.i(TAG, "onMapReady: ");
+        Log.i(TAG, "onMapReady: ");
         hMap = paramHuaweiMap;
         hMap.setMyLocationEnabled(true);
     }

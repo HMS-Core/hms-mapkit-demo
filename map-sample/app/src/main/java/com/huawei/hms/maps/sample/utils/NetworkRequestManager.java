@@ -23,7 +23,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.huawei.hms.maps.model.LatLng;
-import com.huawei.hms.maps.util.LogM;
+
+import android.util.Log;
 
 import okhttp3.Response;
 
@@ -55,9 +56,8 @@ public class NetworkRequestManager {
      */
     private static void getWalkingRoutePlanningResult(final LatLng latLng1, final LatLng latLng2,
         final OnNetworkListener listener, int count, final boolean needEncode) {
-
         final int curCount = ++count;
-        LogM.e(TAG, "current count: " + curCount);
+        Log.e(TAG, "current count: " + curCount);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -79,7 +79,7 @@ public class NetworkRequestManager {
                 } catch (IOException e) {
                     returnDesc = "Request Fail!";
                 } catch (JSONException e) {
-
+                    Log.e(TAG, e.getMessage());
                 }
 
                 if (returnCode.equals("0")) {
@@ -123,9 +123,8 @@ public class NetworkRequestManager {
      */
     private static void getBicyclingRoutePlanningResult(final LatLng latLng1, final LatLng latLng2,
         final OnNetworkListener listener, int count, final boolean needEncode) {
-
         final int curCount = ++count;
-        LogM.e(TAG, "current count: " + curCount);
+        Log.e(TAG, "current count: " + curCount);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -139,7 +138,7 @@ public class NetworkRequestManager {
                         }
                         return;
                     } catch (IOException e) {
-
+                        Log.e(TAG, e.getMessage());
                     }
                 }
 
@@ -157,9 +156,8 @@ public class NetworkRequestManager {
                 } catch (IOException e) {
                     returnDesc = "Request Fail!";
                 } catch (JSONException e) {
-
+                    Log.e(TAG, e.getMessage());
                 }
-
                 if (curCount >= MAX_TIMES) {
                     if (null != listener) {
                         listener.requestFail(returnDesc);
@@ -194,9 +192,8 @@ public class NetworkRequestManager {
      */
     private static void getDrivingRoutePlanningResult(final LatLng latLng1, final LatLng latLng2,
         final OnNetworkListener listener, int count, final boolean needEncode) {
-
         final int curCount = ++count;
-        LogM.e(TAG, "current count: " + curCount);
+        Log.e(TAG, "current count: " + curCount);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -210,7 +207,7 @@ public class NetworkRequestManager {
                         }
                         return;
                     } catch (IOException e) {
-
+                        Log.e(TAG, e.getMessage());
                     }
                 }
 
@@ -228,7 +225,7 @@ public class NetworkRequestManager {
                 } catch (IOException e) {
                     returnDesc = "Request Fail!";
                 } catch (JSONException e) {
-
+                    Log.e(TAG, e.getMessage());
                 }
 
                 if (curCount >= MAX_TIMES) {
@@ -247,10 +244,8 @@ public class NetworkRequestManager {
     }
 
     public interface OnNetworkListener {
-
         void requestSuccess(String result);
 
         void requestFail(String errorMsg);
-
     }
 }

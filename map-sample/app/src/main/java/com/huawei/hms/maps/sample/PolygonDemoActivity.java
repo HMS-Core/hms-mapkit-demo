@@ -20,8 +20,21 @@
 
 package com.huawei.hms.maps.sample;
 
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit;
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight;
+
+import com.huawei.hms.maps.CameraUpdateFactory;
+import com.huawei.hms.maps.HuaweiMap;
+import com.huawei.hms.maps.OnMapReadyCallback;
+import com.huawei.hms.maps.SupportMapFragment;
+import com.huawei.hms.maps.model.LatLng;
+import com.huawei.hms.maps.model.Polygon;
+import com.huawei.hms.maps.model.PolygonOptions;
+import com.huawei.hms.maps.sample.utils.MapUtils;
+
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,19 +43,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import com.huawei.hms.maps.CameraUpdateFactory;
-import com.huawei.hms.maps.HuaweiMap;
-import com.huawei.hms.maps.OnMapReadyCallback;
-import com.huawei.hms.maps.SupportMapFragment;
-import com.huawei.hms.maps.sample.utils.MapUtils;
-import com.huawei.hms.maps.model.LatLng;
-import com.huawei.hms.maps.model.Polygon;
-import com.huawei.hms.maps.model.PolygonOptions;
-import com.huawei.hms.maps.util.LogM;
-
-import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit;
-import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight;
 
 /**
  * about polygon
@@ -81,7 +81,7 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onMapReady(HuaweiMap paramHuaweiMap) {
-        LogM.i(TAG, "onMapReady: ");
+        Log.i(TAG, "onMapReady: ");
         hMap = paramHuaweiMap;
         hMap.setMyLocationEnabled(true);
         hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 10));
@@ -97,14 +97,14 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
         if (null != mPolygon) {
             mPolygon.remove();
         }
-        mPolygon =
-                hMap.addPolygon(new PolygonOptions().addAll(MapUtils.createRectangle(new LatLng(48.893478, 2.334595), 0.1, 0.1))
-                        .fillColor(Color.GREEN)
-                        .strokeColor(Color.BLACK));
+        mPolygon = hMap
+            .addPolygon(new PolygonOptions().addAll(MapUtils.createRectangle(new LatLng(48.893478, 2.334595), 0.1, 0.1))
+                .fillColor(Color.GREEN)
+                .strokeColor(Color.BLACK));
         hMap.setOnPolygonClickListener(new HuaweiMap.OnPolygonClickListener() {
             @Override
             public void onPolygonClick(Polygon polygon) {
-                LogM.i(TAG, "addPolygon and onPolygonClick start ");
+                Log.i(TAG, "addPolygon and onPolygonClick start ");
             }
         });
     }
@@ -130,10 +130,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
             } else {
                 if (!checkIsRight(latitude) || !checkIsRight(longtitude)) {
                     Toast.makeText(this, "Please make sure the latitude & longtitude is right", Toast.LENGTH_SHORT)
-                            .show();
+                        .show();
                 } else {
                     mPolygon.setPoints(MapUtils
-                            .createRectangle(new LatLng(Double.valueOf(latitude), Double.valueOf(longtitude)), 0.5, 0.5));
+                        .createRectangle(new LatLng(Double.valueOf(latitude), Double.valueOf(longtitude)), 0.5, 0.5));
                 }
             }
         }

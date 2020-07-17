@@ -20,11 +20,33 @@
 
 package com.huawei.hms.maps.sample;
 
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit;
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import com.huawei.hms.maps.CameraUpdate;
+import com.huawei.hms.maps.CameraUpdateFactory;
+import com.huawei.hms.maps.HuaweiMap;
+import com.huawei.hms.maps.OnMapReadyCallback;
+import com.huawei.hms.maps.SupportMapFragment;
+import com.huawei.hms.maps.model.BitmapDescriptorFactory;
+import com.huawei.hms.maps.model.CameraPosition;
+import com.huawei.hms.maps.model.GroundOverlay;
+import com.huawei.hms.maps.model.GroundOverlayOptions;
+import com.huawei.hms.maps.model.LatLng;
+import com.huawei.hms.maps.model.LatLngBounds;
+import com.huawei.hms.maps.sample.utils.MapUtils;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,28 +55,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
-
-import com.huawei.hms.maps.CameraUpdate;
-import com.huawei.hms.maps.CameraUpdateFactory;
-import com.huawei.hms.maps.HuaweiMap;
-import com.huawei.hms.maps.OnMapReadyCallback;
-import com.huawei.hms.maps.SupportMapFragment;
-import com.huawei.hms.maps.sample.utils.MapUtils;
-import com.huawei.hms.maps.model.BitmapDescriptorFactory;
-import com.huawei.hms.maps.model.CameraPosition;
-import com.huawei.hms.maps.model.GroundOverlay;
-import com.huawei.hms.maps.model.GroundOverlayOptions;
-import com.huawei.hms.maps.model.LatLng;
-import com.huawei.hms.maps.model.LatLngBounds;
-import com.huawei.hms.maps.util.LogM;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit;
-import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight;
 
 /**
  * about groundOverlay
@@ -93,7 +93,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groudoverlay_demo);
         mSupportMapFragment =
-                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapInGroundOverlay);
+            (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapInGroundOverlay);
         mSupportMapFragment.getMapAsync(this);
 
         toprightLatitude = findViewById(R.id.toprightLatitude);
@@ -110,7 +110,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     @Override
     public void onMapReady(HuaweiMap paramHuaweiMap) {
-        LogM.i(TAG, "onMapReady: ");
+        Log.i(TAG, "onMapReady: ");
         hMap = paramHuaweiMap;
         hMap.setMyLocationEnabled(true);
         hMap.getUiSettings().setZoomControlsEnabled(false);
@@ -127,12 +127,12 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         if (null != overlay) {
             overlay.remove();
         }
-        LogM.d(TAG, "addFromAsset: ");
+        Log.d(TAG, "addFromAsset: ");
         GroundOverlayOptions options = new GroundOverlayOptions().position(MapUtils.FRANCE2, 50, 50)
-                .image(BitmapDescriptorFactory.fromAsset("images/niuyouguo.jpg"));
+            .image(BitmapDescriptorFactory.fromAsset("images/niuyouguo.jpg"));
         overlay = hMap.addGroundOverlay(options);
         CameraPosition cameraPosition =
-                CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
+            CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         hMap.moveCamera(cameraUpdate);
     }
@@ -147,12 +147,12 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         if (null != overlay) {
             overlay.remove();
         }
-        LogM.d(TAG, "addFromResource: ");
+        Log.d(TAG, "addFromResource: ");
         GroundOverlayOptions options = new GroundOverlayOptions().position(MapUtils.FRANCE2, 50, 50)
-                .image(BitmapDescriptorFactory.fromResource(R.drawable.niuyouguo));
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.niuyouguo));
         overlay = hMap.addGroundOverlay(options);
         CameraPosition cameraPosition =
-                CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
+            CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         hMap.moveCamera(cameraUpdate);
     }
@@ -167,18 +167,18 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         if (null != overlay) {
             overlay.remove();
         }
-        LogM.d(TAG, "addFromBitmap: ");
+        Log.d(TAG, "addFromBitmap: ");
         Drawable vectorDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.niuyouguo, null);
         Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(),
-                Bitmap.Config.ARGB_8888);
+            Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         vectorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         vectorDrawable.draw(canvas);
         GroundOverlayOptions options = new GroundOverlayOptions().position(MapUtils.FRANCE2, 50, 50)
-                .image(BitmapDescriptorFactory.fromBitmap(bitmap));
+            .image(BitmapDescriptorFactory.fromBitmap(bitmap));
         overlay = hMap.addGroundOverlay(options);
         CameraPosition cameraPosition =
-                CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
+            CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         hMap.moveCamera(cameraUpdate);
     }
@@ -193,7 +193,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         if (null != overlay) {
             overlay.remove();
         }
-        LogM.d(TAG, "addFromFile: ");
+        Log.d(TAG, "addFromFile: ");
         FileOutputStream out = null;
         String fileName = "maomao.jpg";
         String localFile = getFilesDir() + File.separator + fileName;
@@ -202,9 +202,9 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
             out = new FileOutputStream(new File(localFile));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         } catch (FileNotFoundException e) {
-            LogM.d(TAG, "addFromFile FileNotFoundException: " + e.toString());
+            Log.d(TAG, "addFromFile FileNotFoundException: " + e.toString());
         } catch (IOException e) {
-            LogM.d(TAG, "addFromFile IOException: " + e.toString());
+            Log.d(TAG, "addFromFile IOException: " + e.toString());
         } finally {
             try {
                 if (null != out) {
@@ -212,14 +212,14 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
                     out.close();
                 }
             } catch (IOException e) {
-                LogM.d(TAG, "addFromFile close fileOutputStream IOException: " + e.toString());
+                Log.d(TAG, "addFromFile close fileOutputStream IOException: " + e.toString());
             }
         }
         GroundOverlayOptions options = new GroundOverlayOptions().position(MapUtils.FRANCE2, 30, 60)
-                .image(BitmapDescriptorFactory.fromFile(fileName));
+            .image(BitmapDescriptorFactory.fromFile(fileName));
         overlay = hMap.addGroundOverlay(options);
         CameraPosition cameraPosition =
-                CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
+            CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         hMap.moveCamera(cameraUpdate);
     }
@@ -231,7 +231,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         if (hMap == null) {
             return;
         }
-        LogM.d(TAG, "addFromPath");
+        Log.d(TAG, "addFromPath");
         if (null != overlay) {
             overlay.remove();
         }
@@ -242,9 +242,9 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
             out = new FileOutputStream(new File(path));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         } catch (FileNotFoundException e) {
-            LogM.d(TAG, "addFromFile FileNotFoundException: " + e.toString());
+            Log.d(TAG, "addFromFile FileNotFoundException: " + e.toString());
         } catch (IOException e) {
-            LogM.d(TAG, "addFromFile IOException: " + e.toString());
+            Log.d(TAG, "addFromFile IOException: " + e.toString());
         } finally {
             try {
                 if (null != out) {
@@ -252,19 +252,19 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
                     out.close();
                 }
             } catch (IOException e) {
-                LogM.d(TAG, "addFromFile close fileOutputStream IOException: " + e.toString());
+                Log.d(TAG, "addFromFile close fileOutputStream IOException: " + e.toString());
             }
         }
 
-        GroundOverlayOptions options = new GroundOverlayOptions().position(MapUtils.FRANCE2, 30, 60)
-                .image(BitmapDescriptorFactory.fromPath(path));
+        GroundOverlayOptions options =
+            new GroundOverlayOptions().position(MapUtils.FRANCE2, 30, 60).image(BitmapDescriptorFactory.fromPath(path));
         GroundOverlay hmapOverlay = hMap.addGroundOverlay(options);
         if (hmapOverlay == null) {
             return;
         }
         overlay = hmapOverlay;
         CameraPosition cameraPosition =
-                CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
+            CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         hMap.moveCamera(cameraUpdate);
     }
@@ -273,7 +273,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
      * Remove the Groudoverlay
      */
     public void removeGroundOverlay(View view) {
-        LogM.d(TAG, "removeGroudoverlay: ");
+        Log.d(TAG, "removeGroudoverlay: ");
         if (null != overlay) {
             overlay.remove();
         }
@@ -298,13 +298,12 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
             }
 
             Toast
-                    .makeText(this,
-                            "position:" + position + "width:" + overlay.getWidth() + "height:" + overlay.getHeight()
-                                    + "bounds:" + bounds,
-                            Toast.LENGTH_LONG)
-                    .show();
+                .makeText(this,
+                    "position:" + position + "width:" + overlay.getWidth() + "height:" + overlay.getHeight() + "bounds:"
+                        + bounds,
+                    Toast.LENGTH_LONG)
+                .show();
         }
-
     }
 
     /**
@@ -317,19 +316,23 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
             String southwestLatitude = bottomleftLatitude.getText().toString().trim();
             String southwestLontitude = bottomleftLongtitude.getText().toString().trim();
             if (checkIsEdit(northeastLatitude) || checkIsEdit(northeastLongtitude) || checkIsEdit(southwestLatitude)
-                    || checkIsEdit(southwestLontitude)) {
+                || checkIsEdit(southwestLontitude)) {
                 Toast.makeText(this, "Please make sure these latlng are Edited", Toast.LENGTH_SHORT).show();
             } else {
                 if (!checkIsRight(northeastLatitude) || !checkIsRight(northeastLongtitude)
-                        || !checkIsRight(southwestLatitude) || !checkIsRight(southwestLontitude)) {
+                    || !checkIsRight(southwestLatitude) || !checkIsRight(southwestLontitude)) {
                     Toast.makeText(this, "Please make sure these latlng are right", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
                         overlay.setPositionFromBounds(new LatLngBounds(
-                                new LatLng(Double.valueOf(southwestLatitude), Double.valueOf(southwestLontitude)),
-                                new LatLng(Double.valueOf(northeastLatitude), Double.valueOf(northeastLongtitude))));
-                        CameraPosition cameraPosition =
-                                CameraPosition.builder().target(overlay.getPosition()).zoom(18).bearing(0f).tilt(0f).build();
+                            new LatLng(Double.valueOf(southwestLatitude), Double.valueOf(southwestLontitude)),
+                            new LatLng(Double.valueOf(northeastLatitude), Double.valueOf(northeastLongtitude))));
+                        CameraPosition cameraPosition = CameraPosition.builder()
+                            .target(overlay.getPosition())
+                            .zoom(18)
+                            .bearing(0f)
+                            .tilt(0f)
+                            .build();
                         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
                         hMap.moveCamera(cameraUpdate);
                     } catch (IllegalArgumentException e) {
@@ -364,24 +367,23 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
             String longtitude = positionLongtitude.getText().toString().trim();
             if (checkIsEdit(width) || checkIsEdit(height) || checkIsEdit(latitude) || checkIsEdit(longtitude)) {
                 Toast.makeText(this, "Please make sure the width & height & position is Edited", Toast.LENGTH_SHORT)
-                        .show();
+                    .show();
             } else {
                 if (!checkIsRight(width) || !checkIsRight(height) || !checkIsRight(latitude)
-                        || !checkIsRight(longtitude)) {
+                    || !checkIsRight(longtitude)) {
                     Toast.makeText(this, "Please make sure the width & height & position is right", Toast.LENGTH_SHORT)
-                            .show();
+                        .show();
                 } else {
                     LatLng position = new LatLng(Double.valueOf(latitude), Double.valueOf(longtitude));
                     overlay.setPosition(position);
                     overlay.setDimensions(Float.valueOf(width), Float.valueOf(height));
                     CameraPosition cameraPosition =
-                            CameraPosition.builder().target(position).zoom(18).bearing(0f).tilt(0f).build();
+                        CameraPosition.builder().target(position).zoom(18).bearing(0f).tilt(0f).build();
                     CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
                     hMap.moveCamera(cameraUpdate);
                 }
             }
         }
-
     }
 
     /**
@@ -393,11 +395,11 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
                 Toast.makeText(this, "the groundoverlay is added by the other function", Toast.LENGTH_SHORT).show();
             } else {
                 Toast
-                        .makeText(this,
-                                "Position :" + overlay.getPosition().toString() + "With :" + overlay.getWidth()
-                                        + "Height :" + overlay.getHeight(),
-                                Toast.LENGTH_SHORT)
-                        .show();
+                    .makeText(this,
+                        "Position :" + overlay.getPosition().toString() + "With :" + overlay.getWidth() + "Height :"
+                            + overlay.getHeight(),
+                        Toast.LENGTH_SHORT)
+                    .show();
             }
         }
     }

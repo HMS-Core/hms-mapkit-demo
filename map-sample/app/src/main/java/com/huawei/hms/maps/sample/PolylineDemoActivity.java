@@ -20,8 +20,24 @@
 
 package com.huawei.hms.maps.sample;
 
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit;
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.huawei.hms.maps.CameraUpdateFactory;
+import com.huawei.hms.maps.HuaweiMap;
+import com.huawei.hms.maps.OnMapReadyCallback;
+import com.huawei.hms.maps.SupportMapFragment;
+import com.huawei.hms.maps.model.LatLng;
+import com.huawei.hms.maps.model.Polyline;
+import com.huawei.hms.maps.model.PolylineOptions;
+import com.huawei.hms.maps.sample.utils.MapUtils;
+
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,22 +45,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.huawei.hms.maps.CameraUpdateFactory;
-import com.huawei.hms.maps.HuaweiMap;
-import com.huawei.hms.maps.OnMapReadyCallback;
-import com.huawei.hms.maps.SupportMapFragment;
-import com.huawei.hms.maps.sample.utils.MapUtils;
-import com.huawei.hms.maps.model.LatLng;
-import com.huawei.hms.maps.model.Polyline;
-import com.huawei.hms.maps.model.PolylineOptions;
-import com.huawei.hms.maps.util.LogM;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit;
-import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight;
 
 /**
  * about polyline
@@ -90,7 +90,7 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     @Override
     public void onMapReady(HuaweiMap paramHuaweiMap) {
-        LogM.i(TAG, "onMapReady: ");
+        Log.i(TAG, "onMapReady: ");
         hMap = paramHuaweiMap;
         hMap.setMyLocationEnabled(true);
         hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 10));
@@ -107,14 +107,13 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
             mPolyline.remove();
         }
         mPolyline = hMap.addPolyline(
-                new PolylineOptions().add(MapUtils.FRANCE, MapUtils.FRANCE1, MapUtils.FRANCE2, MapUtils.FRANCE3)
-                        .color(Color.BLUE)
-                        .width(3));
+            new PolylineOptions().add(MapUtils.FRANCE, MapUtils.FRANCE1, MapUtils.FRANCE2, MapUtils.FRANCE3)
+                .color(Color.BLUE)
+                .width(3));
         hMap.setOnPolylineClickListener(new HuaweiMap.OnPolylineClickListener() {
-
             @Override
             public void onPolylineClick(Polyline polyline) {
-                LogM.i(TAG, "onMapReady:onPolylineClick ");
+                Log.i(TAG, "onMapReady:onPolylineClick ");
             }
         });
     }
@@ -144,7 +143,7 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
             } else {
                 if (!checkIsRight(latitude) || !checkIsRight(longtitude)) {
                     Toast.makeText(this, "Please make sure the latitude & longtitude is right", Toast.LENGTH_SHORT)
-                            .show();
+                        .show();
                 } else {
                     points.add(new LatLng(Double.valueOf(latitude), Double.valueOf(longtitude)));
                     mPolyline.setPoints(points);
@@ -230,8 +229,7 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
      */
     public void getTag(View v) {
         if (null != mPolyline) {
-            polylineShown
-                    .setText(String.valueOf(mPolyline.getTag() == null ? "Tag is null" : mPolyline.getTag()));
+            polylineShown.setText(String.valueOf(mPolyline.getTag() == null ? "Tag is null" : mPolyline.getTag()));
         }
     }
 

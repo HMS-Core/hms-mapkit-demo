@@ -20,7 +20,15 @@
 
 package com.huawei.hms.maps.sample;
 
+import com.huawei.hms.maps.CameraUpdate;
+import com.huawei.hms.maps.CameraUpdateFactory;
+import com.huawei.hms.maps.HuaweiMap;
+import com.huawei.hms.maps.OnMapReadyCallback;
+import com.huawei.hms.maps.SupportMapFragment;
+import com.huawei.hms.maps.sample.utils.MapUtils;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,14 +36,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.huawei.hms.maps.CameraUpdate;
-import com.huawei.hms.maps.CameraUpdateFactory;
-import com.huawei.hms.maps.HuaweiMap;
-import com.huawei.hms.maps.OnMapReadyCallback;
-import com.huawei.hms.maps.SupportMapFragment;
-import com.huawei.hms.maps.sample.utils.MapUtils;
-import com.huawei.hms.maps.util.LogM;
 
 /**
  * Basical functions
@@ -79,7 +79,7 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     @Override
     public void onMapReady(HuaweiMap paramHuaweiMap) {
-        LogM.i(TAG, "onMapReady: ");
+        Log.i(TAG, "onMapReady: ");
         hMap = paramHuaweiMap;
         hMap.setMyLocationEnabled(true);
         hMap.resetMinMaxZoomPreference();
@@ -92,7 +92,6 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         if (null != hMap) {
             text.setText(String.valueOf(hMap.getMaxZoomLevel()));
         }
-
     }
 
     /**
@@ -102,7 +101,6 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         if (null != hMap) {
             text.setText(String.valueOf(hMap.getMinZoomLevel()));
         }
-
     }
 
     /**
@@ -112,7 +110,6 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         if (null != hMap) {
             text.setText((hMap.getMapType() == MapUtils.MAP_TYPE_NONE) ? "MAP_TYPE_NONE" : "MAP_TYPE_NORMAL");
         }
-
     }
 
     /**
@@ -127,9 +124,7 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
                     hMap.setMapType(HuaweiMap.MAP_TYPE_NORMAL);
                 }
             }
-
         }
-
     }
 
     /**
@@ -152,7 +147,6 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
                 hMap.setBuildingsEnabled(true);
             }
         }
-
     }
 
     /**
@@ -164,11 +158,11 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
             Toast.makeText(this, "Please make sure the maxZoom is Edited", Toast.LENGTH_SHORT).show();
         } else {
             if (Float.valueOf(text.trim()) > MapUtils.MAX_ZOOM_LEVEL
-                    || Float.valueOf(text.trim()) < MapUtils.MIN_ZOOM_LEVEL || !isNumber(text.trim())) {
+                || Float.valueOf(text.trim()) < MapUtils.MIN_ZOOM_LEVEL || !isNumber(text.trim())) {
                 Toast.makeText(this, "Please make sure the maxZoom is right", Toast.LENGTH_SHORT).show();
             } else {
                 Float maxZoom = Float.valueOf(maxZoomlevel.getText().toString());
-                LogM.i(TAG, "setMaxZoomPreference: " + maxZoom);
+                Log.i(TAG, "setMaxZoomPreference: " + maxZoom);
                 if (null != hMap) {
                     hMap.setMaxZoomPreference(maxZoom);
                 }
@@ -184,7 +178,6 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         if (null != hMap) {
             hMap.moveCamera(cameraUpdate);
         }
-
     }
 
     /**
@@ -196,13 +189,12 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
             Toast.makeText(this, "Please make sure the minZoom is Edited", Toast.LENGTH_SHORT).show();
         } else {
             if (Float.valueOf(text.trim()) > MapUtils.MAX_ZOOM_LEVEL
-                    || Float.valueOf(text.trim()) < MapUtils.MIN_ZOOM_LEVEL || !isNumber(text.trim())) {
+                || Float.valueOf(text.trim()) < MapUtils.MIN_ZOOM_LEVEL || !isNumber(text.trim())) {
                 Toast.makeText(this, "Please make sure the minZoom is right", Toast.LENGTH_SHORT).show();
             } else {
                 if (null != hMap) {
                     hMap.setMinZoomPreference(Float.valueOf(minZoomlevel.getText().toString()));
                 }
-
             }
         }
     }
@@ -214,7 +206,6 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         if (null != hMap) {
             hMap.resetMinMaxZoomPreference();
         }
-
     }
 
     /**
@@ -227,22 +218,21 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         String bottomString = bottom.getText().toString();
 
         if ((leftString.trim().length() == 0) || (leftString.trim().isEmpty()) || (leftString == null)
-                || ("".equals(leftString)) || (topString.trim().length() == 0) || (topString.trim().isEmpty())
-                || (topString == null) || ("".equals(topString)) || (rightString.trim().length() == 0)
-                || (rightString.trim().isEmpty()) || (rightString == null) || ("".equals(rightString))
-                || (bottomString.trim().length() == 0) || (bottomString.trim().isEmpty()) || (bottomString == null)
-                || ("".equals(bottomString))) {
+            || ("".equals(leftString)) || (topString.trim().length() == 0) || (topString.trim().isEmpty())
+            || (topString == null) || ("".equals(topString)) || (rightString.trim().length() == 0)
+            || (rightString.trim().isEmpty()) || (rightString == null) || ("".equals(rightString))
+            || (bottomString.trim().length() == 0) || (bottomString.trim().isEmpty()) || (bottomString == null)
+            || ("".equals(bottomString))) {
         } else {
             if (!isNumber(leftString.trim()) || !isNumber(topString.trim()) || !isNumber(rightString.trim())
-                    || !isNumber(bottomString.trim())) {
+                || !isNumber(bottomString.trim())) {
                 Toast.makeText(this, "Please make sure the padding value is right", Toast.LENGTH_SHORT).show();
             } else {
                 if (null != hMap) {
                     hMap.setPadding(Integer.valueOf(left.getText().toString()),
-                            Integer.valueOf(top.getText().toString()), Integer.valueOf(right.getText().toString()),
-                            Integer.valueOf(bottom.getText().toString()));
+                        Integer.valueOf(top.getText().toString()), Integer.valueOf(right.getText().toString()),
+                        Integer.valueOf(bottom.getText().toString()));
                 }
-
             }
         }
     }

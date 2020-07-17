@@ -26,7 +26,6 @@ import com.huawei.hms.maps.MapView;
 import com.huawei.hms.maps.MapsInitializer;
 import com.huawei.hms.maps.OnMapReadyCallback;
 import com.huawei.hms.maps.model.LatLng;
-import com.huawei.hms.maps.util.LogM;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -34,18 +33,17 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MapViewDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
-
     private static final String TAG = "MapViewDemoActivity";
+
+    private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
 
     private HuaweiMap hMap;
 
     private MapView mMapView;
 
-    private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LogM.d(TAG, "onCreate:");
+        Log.d(TAG, "onCreate:");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapview_demo);
         mMapView = findViewById(R.id.mapView);

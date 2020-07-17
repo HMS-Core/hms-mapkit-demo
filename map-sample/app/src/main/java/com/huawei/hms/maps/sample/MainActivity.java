@@ -26,13 +26,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
-import com.huawei.hms.maps.util.LogM;
 
 /**
  * Home page only provides function module entry for map
@@ -41,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity";
 
     private static final String[] RUNTIME_PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET};
+        Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET};
 
     private static final int REQUEST_CODE = 100;
 
@@ -93,66 +92,66 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (R.id.Camera == v.getId()) {
-            LogM.i(TAG, "onClick: cameraDemo");
+            Log.i(TAG, "onClick: cameraDemo");
             Intent i = new Intent(this, CameraDemoActivity.class);
             startActivity(i);
         } else if (R.id.GestureDemo == v.getId()) {
-            LogM.i(TAG, "onClick: GestureDemoActivity");
+            Log.i(TAG, "onClick: GestureDemoActivity");
             Intent intent = new Intent(this, GestureDemoActivity.class);
             startActivity(intent);
 
         } else if (R.id.ControlsDemo == v.getId()) {
-            LogM.i(TAG, "onClick: ControlsDemoActivity");
+            Log.i(TAG, "onClick: ControlsDemoActivity");
             Intent intent = new Intent(this, ControlsDemoActivity.class);
             startActivity(intent);
         } else if (R.id.CircleDemo == v.getId()) {
-            LogM.i(TAG, "onClick: CircleDemoActivity");
+            Log.i(TAG, "onClick: CircleDemoActivity");
             Intent intent = new Intent(this, CircleDemoActivity.class);
             startActivity(intent);
 
         } else if (R.id.PolygonDemo == v.getId()) {
-            LogM.i(TAG, "onClick: PolygonDemoActivity");
+            Log.i(TAG, "onClick: PolygonDemoActivity");
             Intent intent = new Intent(this, PolygonDemoActivity.class);
             startActivity(intent);
 
         } else if (R.id.PolylineDemo == v.getId()) {
-            LogM.i(TAG, "onClick: GestureDemoActivity");
+            Log.i(TAG, "onClick: GestureDemoActivity");
             Intent intent = new Intent(this, PolylineDemoActivity.class);
             startActivity(intent);
 
         } else if (R.id.GroudOverlayDemo == v.getId()) {
-            LogM.i(TAG, "onClick: GroundOverlayDemoActivity");
+            Log.i(TAG, "onClick: GroundOverlayDemoActivity");
             Intent intent = new Intent(this, GroundOverlayDemoActivity.class);
             startActivity(intent);
 
         } else if (R.id.LiteModeDemo == v.getId()) {
-            LogM.i(TAG, "onClick: LiteModeDemoActivity");
+            Log.i(TAG, "onClick: LiteModeDemoActivity");
             Intent intent = new Intent(this, LiteModeDemoActivity.class);
             startActivity(intent);
 
         } else if (R.id.MoreLanguageDemo == v.getId()) {
-            LogM.i(TAG, "onClick: MoreLanguageDemoActivity");
+            Log.i(TAG, "onClick: MoreLanguageDemoActivity");
             Intent intent = new Intent(this, MoreLanguageDemoActivity.class);
             startActivity(intent);
 
         } else if (R.id.MapFunctions == v.getId()) {
-            LogM.i(TAG, "onClick: MapFunctionsDemoActivity");
+            Log.i(TAG, "onClick: MapFunctionsDemoActivity");
             Intent intent = new Intent(this, MapFunctionsDemoActivity.class);
             startActivity(intent);
         } else if (R.id.BasicMap == v.getId()) {
-            LogM.i(TAG, "onClick: BasicMap");
+            Log.i(TAG, "onClick: BasicMap");
             Intent i = new Intent(this, BasicMapDemoActivity.class);
             startActivity(i);
         } else if (R.id.AddMarkerDemo == v.getId()) {
-            LogM.i(TAG, "onClick: AddMarkerDemo");
+            Log.i(TAG, "onClick: AddMarkerDemo");
             Intent i = new Intent(this, MarkerDemoActivity.class);
             startActivity(i);
         } else if (R.id.EventsDemo == v.getId()) {
-            LogM.i(TAG, "onClick: EventsDemo");
+            Log.i(TAG, "onClick: EventsDemo");
             Intent i = new Intent(this, EventsDemoActivity.class);
             startActivity(i);
         } else if (R.id.LocationSourceDemo == v.getId()) {
-            LogM.i(TAG, "onClick: LocationSourceDemo");
+            Log.i(TAG, "onClick: LocationSourceDemo");
             Intent i = new Intent(this, LocationSourceDemoActivity.class);
             startActivity(i);
         } else if (R.id.MapStyle == v.getId()) {
@@ -164,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(i);
 
         } else {
-            LogM.i(TAG, "onClick:  " + v.getId());
+            Log.i(TAG, "onClick:  " + v.getId());
         }
     }
 

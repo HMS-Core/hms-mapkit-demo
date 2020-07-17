@@ -20,23 +20,6 @@
 
 package com.huawei.hms.maps.sample;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-
 import com.huawei.hms.maps.CameraUpdate;
 import com.huawei.hms.maps.CameraUpdateFactory;
 import com.huawei.hms.maps.HuaweiMap;
@@ -48,31 +31,48 @@ import com.huawei.hms.maps.SupportMapFragment;
 import com.huawei.hms.maps.model.CameraPosition;
 import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.LatLngBounds;
-import com.huawei.hms.maps.util.LogM;
+
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
 
 /**
  * Show how to move a map camera
  */
 public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener,
-        OnCameraMoveStartedListener, OnCameraMoveListener, OnCameraIdleListener {
+    OnCameraMoveStartedListener, OnCameraMoveListener, OnCameraIdleListener {
     private static final String TAG = "CameraDemoActivity";
+
+    public static final int REQUEST_CODE = 0X01;
+
+    private static final String[] PERMISION =
+        {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+
+    private static final float ZOOM_DELTA = 2.0f;
 
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;
-
-    public static final String[] PERMISION =
-            {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
-
-    public static final int REQUEST_CODE = 0X01;
 
     private TextView cameraChange;
 
     private float mMaxZoom = 22.0f;
 
     private float mMinZoom = 0.0f;
-
-    private static final float ZOOM_DELTA = 2.0f;
 
     private EditText cameraLat;
 
@@ -119,7 +119,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+        @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE) {
             for (int i = 0; i < permissions.length; i++) {
@@ -161,7 +161,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     @Override
     public void onMapReady(HuaweiMap huaweiMap) {
-        LogM.i(TAG, "onMapReady: ");
+        Log.i(TAG, "onMapReady: ");
         hMap = huaweiMap;
         if (isGPSOpen(this)) {
             hMap.setMyLocationEnabled(true);
@@ -176,7 +176,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
         hMap.setOnMapLoadedCallback(new HuaweiMap.OnMapLoadedCallback() {
             @Override
             public void onMapLoaded() {
-                LogM.i(TAG, "onMapLoaded:successful");
+                Log.i(TAG, "onMapLoaded:successful");
             }
         });
     }
@@ -184,7 +184,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
     @Override
     public void onClick(View v) {
         if (null == hMap) {
-            LogM.w(TAG, "map is null");
+            Log.w(TAG, "map is null");
             return;
         }
         if (v.getId() == R.id.animateCamera) {
@@ -197,8 +197,8 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
             Toast.makeText(getApplicationContext(), position.toString(), Toast.LENGTH_LONG).show();
 
             // Displays the maximum zoom level and minimum scaling level of the current camera.
-            LogM.i(TAG, position.toString());
-            LogM.i(TAG, "MaxZoomLevel:" + hMap.getMaxZoomLevel() + " MinZoomLevel:" + hMap.getMinZoomLevel());
+            Log.i(TAG, position.toString());
+            Log.i(TAG, "MaxZoomLevel:" + hMap.getMaxZoomLevel() + " MinZoomLevel:" + hMap.getMinZoomLevel());
         }
         if (R.id.moveCamera == v.getId()) {
             CameraPosition build = new CameraPosition.Builder().target(new LatLng(60, 60)).build();
@@ -216,17 +216,17 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
             LatLng northeast = new LatLng(60, 120);
             LatLngBounds latLngBounds = new LatLngBounds(southwest, northeast);
             Toast
-                    .makeText(this,
-                            "southwest =" + southwest.toString() + " northeast=" + northeast.toString() + " padding=2",
-                            Toast.LENGTH_LONG)
-                    .show();
+                .makeText(this,
+                    "southwest =" + southwest.toString() + " northeast=" + northeast.toString() + " padding=2",
+                    Toast.LENGTH_LONG)
+                .show();
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, 2);
             hMap.moveCamera(cameraUpdate);
         }
         if (R.id.setCameraPosition == v.getId()) {
             LatLng southwest = new LatLng(30, 60);
             CameraPosition cameraPosition =
-                    CameraPosition.builder().target(southwest).zoom(10).bearing(2.0f).tilt(2.5f).build();
+                CameraPosition.builder().target(southwest).zoom(10).bearing(2.0f).tilt(2.5f).build();
             Toast.makeText(this, cameraPosition.toString(), Toast.LENGTH_LONG).show();
             CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
             hMap.moveCamera(cameraUpdate);
@@ -238,9 +238,9 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
      */
     @Override
     public void onCameraMoveStarted(int reason) {
-        LogM.i(TAG, "onCameraMoveStarted: susccessful");
+        Log.i(TAG, "onCameraMoveStarted: susccessful");
         if (reason == REASON_DEVELOPER_ANIMATION) {
-            LogM.i(TAG, "onCameraMove");
+            Log.i(TAG, "onCameraMove");
         }
     }
 
@@ -250,7 +250,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
     @Override
     public void onCameraIdle() {
         cameraChange.setText(hMap.getCameraPosition().toString());
-        LogM.i(TAG, "onCameraIdle: sucessful");
+        Log.i(TAG, "onCameraIdle: sucessful");
     }
 
     /**
@@ -258,7 +258,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
      */
     @Override
     public void onCameraMove() {
-        LogM.i(TAG, "onCameraMove: successful");
+        Log.i(TAG, "onCameraMove: successful");
     }
 
     /**
@@ -292,7 +292,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
             float tilt = 2.0f;
             if (!TextUtils.isEmpty(cameraLng.getText()) && !TextUtils.isEmpty(cameraLat.getText())) {
                 latLng = new LatLng(Float.valueOf(cameraLat.getText().toString().trim()),
-                        Float.valueOf(cameraLng.getText().toString().trim()));
+                    Float.valueOf(cameraLng.getText().toString().trim()));
             }
             if (!TextUtils.isEmpty(cameraZoom.getText())) {
                 zoom = Float.valueOf(cameraZoom.getText().toString().trim());
@@ -304,14 +304,14 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
                 tilt = Float.valueOf(cameraTilt.getText().toString().trim());
             }
             CameraPosition cameraPosition =
-                    CameraPosition.builder().target(latLng).zoom(zoom).bearing(bearing).tilt(tilt).build();
+                CameraPosition.builder().target(latLng).zoom(zoom).bearing(bearing).tilt(tilt).build();
             CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
             hMap.moveCamera(cameraUpdate);
         } catch (IllegalArgumentException e) {
-            LogM.e(TAG, "IllegalArgumentException " + e.toString());
+            Log.e(TAG, "IllegalArgumentException " + e.toString());
             Toast.makeText(this, "IllegalArgumentException", Toast.LENGTH_SHORT).show();
         } catch (NullPointerException e) {
-            LogM.e(TAG, "NullPointerException " + e.toString());
+            Log.e(TAG, "NullPointerException " + e.toString());
             Toast.makeText(this, "NullPointerException", Toast.LENGTH_SHORT).show();
         }
     }
