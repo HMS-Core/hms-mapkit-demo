@@ -29,15 +29,14 @@ import com.huawei.hms.maps.model.BitmapDescriptorFactory;
 import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.Marker;
 import com.huawei.hms.maps.model.MarkerOptions;
-import com.huawei.hms.maps.util.ResourceBitmapDescriptor;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 /**
  * Create a simple activity with a map and a marker on the map.
@@ -179,8 +178,7 @@ public class SupportMapDemoActivity extends AppCompatActivity implements OnMapRe
 
     public void setIcon(View view) {
         if (null != mBeijing) {
-            Bitmap bitmap =
-                ResourceBitmapDescriptor.drawableToBitmap(this, ContextCompat.getDrawable(this, R.drawable.badge_tr));
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.badge_tr);
             BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(bitmap);
             mBeijing.setIcon(bitmapDescriptor);
         }

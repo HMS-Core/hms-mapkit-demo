@@ -20,19 +20,8 @@
 
 package com.huawei.hms.maps.sample;
 
-import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.huawei.hms.maps.CameraUpdate;
 import com.huawei.hms.maps.CameraUpdateFactory;
@@ -45,13 +34,23 @@ import com.huawei.hms.maps.model.CameraPosition;
 import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.Marker;
 import com.huawei.hms.maps.model.MarkerOptions;
-import com.huawei.hms.maps.util.ResourceBitmapDescriptor;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -230,18 +229,18 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
 
         if (mParis == null && mOrsay == null && mSerris == null) {
             // Uses a colored icon.
-            mParis = hMap
-                    .addMarker(new MarkerOptions().position(PARIS).title("paris").snippet("hello").clusterable(true));
+            mParis =
+                hMap.addMarker(new MarkerOptions().position(PARIS).title("paris").snippet("hello").clusterable(true));
             mOrsay = hMap.addMarker(new MarkerOptions().position(ORSAY)
-                    .alpha(0.5f)
-                    .title("Orsay")
-                    .snippet("hello")
-                    .clusterable(true)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.badge_ph)));
+                .alpha(0.5f)
+                .title("Orsay")
+                .snippet("hello")
+                .clusterable(true)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.badge_ph)));
             mSerris = hMap.addMarker(new MarkerOptions().position(SERRIS)
-                    .title("Serris")
-                    .snippet("Can be dragged after DragMarker.")
-                    .clusterable(true));
+                .title("Serris")
+                .snippet("Can be dragged after DragMarker.")
+                .clusterable(true));
             hMap.setOnMarkerClickListener(new HuaweiMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
@@ -292,7 +291,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
             public void onInfoWindowClick(Marker marker) {
                 if (marker.equals(mSerris)) {
                     Toast.makeText(getApplicationContext(), "mMelbourne infowindow is clicked", Toast.LENGTH_SHORT)
-                            .show();
+                        .show();
                 }
 
                 if (marker.equals(mOrsay)) {
@@ -301,7 +300,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
 
                 if (marker.equals(mParis)) {
                     Toast.makeText(getApplicationContext(), "mBrisbane infowindow is clicked", Toast.LENGTH_SHORT)
-                            .show();
+                        .show();
                 }
             }
         });
@@ -406,8 +405,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
      */
     public void setMarkerIcon(View view) {
         if (null != mOrsay) {
-            Bitmap bitmap =
-                    ResourceBitmapDescriptor.drawableToBitmap(this, ContextCompat.getDrawable(this, R.drawable.badge_tr));
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.badge_tr);
             BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(bitmap);
 
             mOrsay.setIcon(bitmapDescriptor);
@@ -474,7 +472,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
             float tilt = 0f;
             if (!TextUtils.isEmpty(edtCameraLng.getText()) && !TextUtils.isEmpty(edtCameraLat.getText())) {
                 latLng = new LatLng(Float.valueOf(edtCameraLat.getText().toString().trim()),
-                        Float.valueOf(edtCameraLng.getText().toString().trim()));
+                    Float.valueOf(edtCameraLng.getText().toString().trim()));
             }
             if (!TextUtils.isEmpty(edtCameraZoom.getText())) {
                 zoom = Float.valueOf(edtCameraZoom.getText().toString().trim());
@@ -486,7 +484,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
                 tilt = Float.valueOf(edtCameraTilt.getText().toString().trim());
             }
             CameraPosition cameraPosition =
-                    CameraPosition.builder().target(latLng).zoom(zoom).bearing(bearing).tilt(tilt).build();
+                CameraPosition.builder().target(latLng).zoom(zoom).bearing(bearing).tilt(tilt).build();
             CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
             hMap.moveCamera(cameraUpdate);
         } catch (IllegalArgumentException e) {
