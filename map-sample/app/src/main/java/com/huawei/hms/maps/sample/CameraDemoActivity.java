@@ -99,7 +99,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
         cameraLat = findViewById(R.id.cameraLat);
         cameraLng = findViewById(R.id.cameraLng);
         cameraZoom = findViewById(R.id.cameraZoom);
-        cameraTilt = findViewById(R.id.cameraLat);
+        cameraTilt = findViewById(R.id.cameraTilt);
         cameraBearing = findViewById(R.id.cameraBearing);
         Button btn1 = findViewById(R.id.animateCamera);
         btn1.setOnClickListener(this);
