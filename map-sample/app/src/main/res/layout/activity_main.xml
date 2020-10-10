@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/Camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="CameraDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/BasicMap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="BasicMapDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/MapFunctions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="MapFunctionsDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/ControlsDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="GestureControlsDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/GestureDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="GestureDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/LiteModeDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="LiteModeDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/MoreLanguageDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="MoreLanguageDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/CircleDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="CircleDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/PolylineDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="PolylineDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/PolygonDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="PolygonDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/GroudOverlayDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="GroudOverlayDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/AddMarkerDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="MarkerDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/EventsDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="EventsDemo"
+                android:textAllCaps="false" />
+
+
+            <Button
+                android:id="@+id/MapStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="MapStyleDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/LocationSourceDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="LocationSourceDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/RoutePlanningDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="RoutePlanningDemo"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

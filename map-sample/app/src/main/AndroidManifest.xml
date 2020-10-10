@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huawei.hms.maps.sample">
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="22" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="22" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".CircleDemoActivity"
+            android:label="CircleDemo" />
+        <activity
+            android:name=".ControlsDemoActivity"
+            android:label="ControlsDemo" />
+        <activity
+            android:name=".GestureDemoActivity"
+            android:label="GestureDemo" />
+        <activity
+            android:name=".GroundOverlayDemoActivity"
+            android:label="GroundOverlayDemo" />
+        <activity
+            android:name=".LiteModeDemoActivity"
+            android:label="LiteModeDemo" />
+        <activity
+            android:name=".MapFunctionsDemoActivity"
+            android:label="MapFunctions" />
+        <activity
+            android:name=".MoreLanguageDemoActivity"
+            android:label="MoreLanguageDemo" />
+        <activity
+            android:name=".PolygonDemoActivity"
+            android:label="PolygonDemo" />
+        <activity
+            android:name=".PolylineDemoActivity"
+            android:label="PolylineDemo" />
+        <activity
+            android:name=".LocationSourceDemoActivity"
+            android:label="LocationSourceDemo" />
+        <activity
+            android:name=".MarkerDemoActivity"
+            android:label="MarkerDemo" />
+        <activity
+            android:name=".CameraDemoActivity"
+            android:label="CameraDemo" />
+        <activity
+            android:name=".BasicMapDemoActivity"
+            android:label="BasicMapDemo" />
+        <activity
+            android:name=".MapFragmentDemoActivity"
+            android:label="MapFragmentDemo" />
+        <activity
+            android:name=".MapViewDemoActivity"
+            android:label="MapViewDemo" />
+        <activity
+            android:name=".SupportMapDemoActivity"
+            android:label="SupportMapDemo" />
+        <activity
+            android:name=".SupportMapCodeDemoActivity"
+            android:label="SupportMapCodeDemo" />
+        <activity
+            android:name=".MapViewCodeDemoActivity"
+            android:label="MapViewCodeDemo" />
+        <activity
+            android:name=".MapFragmentCodeDemoActivity"
+            android:label="MapFragmentCodeDemo" />
+        <activity
+            android:name=".StyleMapDemoActivity"
+            android:label="StyleMapDemo" />
+        <activity
+            android:name=".EventsDemoActivity"
+            android:label="EventsDemo" />
+        <activity
+            android:name=".RoutePlanningDemoActivity"
+            android:label="RoutePlanningDemo" />
+
+    </application>
+
+</manifest>

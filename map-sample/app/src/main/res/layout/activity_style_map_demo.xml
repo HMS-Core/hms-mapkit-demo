@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mapFragment_mapstyle"
+        class="com.huawei.hms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        map:cameraTargetLat="48"
+        map:cameraTargetLng="118"
+        map:cameraZoom="2"
+        map:mapType="normal"
+        map:uiCompass="true"
+        map:uiZoomControls="false" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NightStyle"
+            android:textAllCaps="false"
+            android:onClick="setNightStyle" />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SimpleStyle"
+            android:textAllCaps="false"
+            android:onClick="setSimpleStyle" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
