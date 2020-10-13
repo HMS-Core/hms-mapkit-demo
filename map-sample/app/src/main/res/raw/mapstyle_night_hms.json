@@ -24,42 +24,72 @@
     "mapFeature": "administrative",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#7C7770"
+      "color": "#E0D5C7"
     }
   },
   {
     "mapFeature": "administrative.country",
     "options": "geometry",
     "paint": {
-      "color": "#9D9D9D"
-    }
-  },
-  {
-    "mapFeature": "administrative.country",
-    "options": "labels.text.fill",
-    "paint": {
-      "color": "#F9EBDA"
+      "color": "#787272"
     }
   },
   {
     "mapFeature": "administrative.province",
     "options": "geometry",
     "paint": {
-      "color": "#7D7D7D"
+      "color": "#666262"
     }
   },
   {
-    "mapFeature": "administrative.capital",
+    "mapFeature": "administrative.province",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#F9EBDA"
+      "color": "#928C82"
     }
   },
   {
-    "mapFeature": "landcover.parkland",
+    "mapFeature": "administrative.district",
+    "options": "labels.text.fill",
+    "paint": {
+      "color": "#AAA59E"
+    }
+  },
+  {
+    "mapFeature": "administrative.locality",
+    "options": "labels.text.fill",
+    "paint": {
+      "color": "#928C82"
+    }
+  },
+  {
+    "mapFeature": "landcover.parkland.natural",
+    "visibility": false,
+    "options": "geometry",
+    "paint": {
+      "color": "#25292B"
+    }
+  },
+  {
+    "mapFeature": "landcover.parkland.public-garden",
     "options": "geometry",
     "paint": {
       "color": "#283631"
+    }
+  },
+  {
+    "mapFeature": "landcover.parkland.human-made",
+    "visibility": false,
+    "options": "geometry",
+    "paint": {
+      "color": "#25292B"
+    }
+  },
+  {
+    "mapFeature": "landcover.parkland.public-garden",
+    "options": "labels.text.fill",
+    "paint": {
+      "color": "#8BAA7F"
     }
   },
   {
@@ -73,21 +103,14 @@
     "mapFeature": "landcover",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#7C7770"
-    }
-  },
-  {
-    "mapFeature": "landcover.parkland",
-    "options": "labels.text.fill",
-    "paint": {
-      "color": "#8BAA7F"
+      "color": "#928C82"
     }
   },
   {
     "mapFeature": "poi.shopping",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#907935"
+      "color": "#9C8C5F"
     }
   },
   {
@@ -102,84 +125,91 @@
     "mapFeature": "poi.tourism",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#9E7E56"
+      "color": "#578C8C"
     }
   },
   {
     "mapFeature": "poi.beauty",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#A37C90"
+      "color": "#9E7885"
     }
   },
   {
     "mapFeature": "poi.leisure",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#986D8D"
+      "color": "#916A91"
     }
   },
   {
     "mapFeature": "poi.eating&drinking",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#AB7346"
+      "color": "#996E50"
     }
   },
   {
     "mapFeature": "poi.lodging",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#8667A2"
+      "color": "#A3678F"
     }
   },
   {
     "mapFeature": "poi.health-care",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#B6777C"
+      "color": "#B07373"
     }
   },
   {
     "mapFeature": "poi.public-service",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#737C8F"
+      "color": "#5F7299"
     }
   },
   {
     "mapFeature": "poi.business",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#6B729D"
+      "color": "#6B6B9D"
     }
   },
   {
     "mapFeature": "poi.automotive",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#6B729D"
+      "color": "#6B6B9D"
     }
   },
   {
     "mapFeature": "poi.sports.outdoor",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#649464"
+      "color": "#597A52"
     }
   },
   {
     "mapFeature": "poi.sports.other",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#478D90"
+      "color": "#3E90AB"
     }
   },
   {
     "mapFeature": "poi.natural",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#649464"
+      "color": "#597A52"
+    }
+  },
+  {
+    "mapFeature": "poi.miscellaneous",
+    "options": "labels.text.fill",
+    "paint": {
+      "color": "#A7ADB0"
     }
   },
   {
@@ -193,7 +223,7 @@
     "mapFeature": "road.national",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#C6B293"
+      "color": "#A7ADB0"
     }
   },
   {
@@ -228,56 +258,56 @@
     "mapFeature": "road.highway.country",
     "options": "geometry.fill",
     "paint": {
-      "color": "#927C5B"
+      "color": "#8C7248"
     }
   },
   {
     "mapFeature": "road.highway.city",
     "options": "geometry.fill",
     "paint": {
-      "color": "#8A7A60"
+      "color": "#706148"
     }
   },
   {
     "mapFeature": "road.national",
     "options": "geometry.fill",
     "paint": {
-      "color": "#5D5240"
+      "color": "#444A4D"
     }
   },
   {
     "mapFeature": "road.province",
     "options": "geometry.fill",
     "paint": {
-      "color": "#3B4042"
+      "color": "#444A4D"
     }
   },
   {
     "mapFeature": "road.city-arterial",
     "options": "geometry.fill",
     "paint": {
-      "color": "#343A3D"
+      "color": "#434B4F"
     }
   },
   {
     "mapFeature": "road.minor-road",
     "options": "geometry.fill",
     "paint": {
-      "color": "#343A3D"
+      "color": "#434B4F"
     }
   },
   {
     "mapFeature": "road.sidewalk",
     "options": "geometry.fill",
     "paint": {
-      "color": "#343A3D"
+      "color": "#434B4F"
     }
   },
   {
     "mapFeature": "transit",
     "options": "labels.text.fill",
     "paint": {
-      "color": "#6286AD"
+      "color": "#4F81B3"
     }
   },
   {
@@ -313,6 +343,34 @@
     "options": "labels.text.fill",
     "paint": {
       "color": "#4C6481"
+    }
+  },
+  {
+    "mapFeature": "trafficInfo.smooth",
+    "options": "geometry",
+    "paint": {
+      "color": "#348734"
+    }
+  },
+  {
+    "mapFeature": "trafficInfo.amble",
+    "options": "geometry",
+    "paint": {
+      "color": "#947000"
+    }
+  },
+  {
+    "mapFeature": "trafficInfo.congestion",
+    "options": "geometry",
+    "paint": {
+      "color": "#A4281E"
+    }
+  },
+  {
+    "mapFeature": "trafficInfo.extremelycongestion",
+    "options": "geometry",
+    "paint": {
+      "color": "#7A120B"
     }
   }
 ]
