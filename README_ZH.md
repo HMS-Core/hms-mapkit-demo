@@ -39,12 +39,12 @@
 
 你可以使用gradlew build命令来直接编译项目。
 
-你应该在AppGallery Connect中创建一个应用，获取agconnect-services.json文件并将其加入到你的项目中。你还应生成一个签名证书指纹，将证书文件添加到你的项目中，并在build.gradle文件中添加配置。参见“[配置AppGallery Connect](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides-V5/android-sdk-config-agc-0000001050158641-V5)”在AppGallery Connect配置应用信息。
+你应该在AppGallery Connect中创建一个应用，获取agconnect-services.json文件并将其加入到你的项目中。你还应生成一个签名证书指纹，将证书文件添加到你的项目中，并在build.gradle文件中添加配置。参见“[配置AppGallery Connect](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides-V5/android-sdk-config-agc-0000001050158641-V5?ha_source=hms1)”在AppGallery Connect配置应用信息。
 
 更多开发详情，请参见如下链接：
 
-- [开发指南](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides-V5/android-sdk-introduction-0000001050158633-V5)
-- [接口参考](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-References-V5/maps-overview-0000001050151498-V5)
+- [开发指南](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides-V5/android-sdk-introduction-0000001050158633-V5?ha_source=hms1)
+- [接口参考](https://developer.huawei.com/consumer/cn/doc/development/HMSCore-References-V5/maps-overview-0000001050151498-V5?ha_source=hms1)
 
 环境要求
 -------
@@ -69,7 +69,7 @@
 
 如果您对使用HMS示例代码有疑问，请尝试：
 - 开发过程遇到问题上[Stack Overflow](https://stackoverflow.com/questions/tagged/huawei-mobile-services)，在**huawei-mobile-services**标签下提问，有华为研发专家在线一对一解决您的问题。
-- 到[华为开发者论坛](https://developer.huawei.com/consumer/cn/forum/blockdisplay?fid=18) HMS Core板块与其他开发者进行交流。
+- 到[华为开发者论坛](https://developer.huawei.com/consumer/cn/forum/blockdisplay?fid=18?ha_source=hms1) HMS Core板块与其他开发者进行交流。
 
 如果您在尝试示例代码中遇到问题，请向仓库提交[issue](https://github.com/HMS-Core/hms-nearby-demo/issues)，也欢迎您提交[Pull Request](https://github.com/HMS-Core/hms-nearby-demo/pulls)。
 
