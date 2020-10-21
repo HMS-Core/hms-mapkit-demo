@@ -38,14 +38,13 @@ In Android Studio, use the "Open an existing Android Studio project", and select
 
 You can use the "gradlew build" command to build the project directly.
 
-You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project. You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-config-agc-0000001050158641-V5) guide to configure app in AppGallery Connect.
-
+You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project. You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-config-agc-0000001050158641-V5?ha_source=hms1) guide to configure app in AppGallery Connect.
 
 
 For more development details, please refer to the following link:
 
-- [Development Guide](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-introduction-0000001050158633-V5)
-- [API References](https://developer.huawei.com/consumer/en/doc/development/HMSCore-References-V5/maps-overview-0000001050151498-V5)
+- [Development Guide](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-introduction-0000001050158633-V5?ha_source=hms1)
+- [API References](https://developer.huawei.com/consumer/en/doc/development/HMSCore-References-V5/maps-overview-0000001050151498-V5?ha_source=hms1)
 
 Supported Environments
 -------
@@ -68,7 +67,7 @@ If you want to evaluate more about HMS Core,
 If you have questions about how to use HMS samples, try the following options:
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/huawei-mobile-services) is the best place for any programming questions. Be sure to tag your question with 
 **huawei-mobile-services**.
-- [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001) HMS Core Module is great for general questions, or seeking recommendations and opinions.
+- [Huawei Developer Forum](https://forums.developer.huawei.com/forumPortal/en/home?fid=0101187876626530001?ha_source=hms1) HMS Core Module is great for general questions, or seeking recommendations and opinions.
 
 If you run into a bug in our samples, please submit an [issue](https://github.com/HMS-Core/hms-mapkit-demo-java/issues) to the Repository. Even better you can submit a [Pull Request](https://github.com/HMS-Core/hms-mapkit-demo-java/pulls) with a fix.
 
