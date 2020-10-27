@@ -33,9 +33,17 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SimpleStyle"
+            android:text="GrayscaleStyle"
             android:textAllCaps="false"
-            android:onClick="setSimpleStyle" />
+            android:onClick="setGrayscaleStyle" />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RetroStyle"
+            android:textAllCaps="false"
+            android:onClick="setRetroStyle" />
 
     </LinearLayout>
 

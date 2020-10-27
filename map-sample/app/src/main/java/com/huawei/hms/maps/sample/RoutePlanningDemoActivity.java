@@ -276,26 +276,44 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
     }
 
     public void setOrigin(View view) {
-        if (!TextUtils.isEmpty(edtOriginLat.getText()) && !TextUtils.isEmpty(edtOriginLng.getText())) {
-            latLng1 = new LatLng(Double.valueOf(edtOriginLat.getText().toString().trim()),
-                Double.valueOf(edtOriginLng.getText().toString().trim()));
+        String mOriginLat = edtOriginLat.getText().toString().trim();
+        String mOriginLng = edtOriginLng.getText().toString().trim();
+        if (!TextUtils.isEmpty(mOriginLat) && !TextUtils.isEmpty(mOriginLng)) {
+            try {
+                latLng1 = new LatLng(Double.valueOf(mOriginLat), Double.valueOf(mOriginLng));
 
-            removePolylines();
-            addOriginMarker(latLng1);
-            hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng1, 13));
-            mMarkerOrigin.showInfoWindow();
+                removePolylines();
+                addOriginMarker(latLng1);
+                hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng1, 13));
+                mMarkerOrigin.showInfoWindow();
+            } catch (IllegalArgumentException e) {
+                Log.e(TAG, "IllegalArgumentException " + e);
+                Toast.makeText(this, "IllegalArgumentException", Toast.LENGTH_SHORT).show();
+            } catch (NullPointerException e) {
+                Log.e(TAG, "NullPointerException " + e);
+                Toast.makeText(this, "NullPointerException", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     public void setDestination(View view) {
-        if (!TextUtils.isEmpty(edtDestinationLat.getText()) && !TextUtils.isEmpty(edtDestinationLng.getText())) {
-            latLng2 = new LatLng(Double.valueOf(edtDestinationLat.getText().toString().trim()),
-                Double.valueOf(edtDestinationLng.getText().toString().trim()));
+        String mDestinationLat = edtDestinationLat.getText().toString().trim();
+        String mDestinationLng = edtDestinationLng.getText().toString().trim();
+        if (!TextUtils.isEmpty(mDestinationLat) && !TextUtils.isEmpty(mDestinationLng)) {
+            try {
+                latLng2 = new LatLng(Double.valueOf(mDestinationLat), Double.valueOf(mDestinationLng));
 
-            removePolylines();
-            addDestinationMarker(latLng2);
-            hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng2, 13));
-            mMarkerDestination.showInfoWindow();
+                removePolylines();
+                addDestinationMarker(latLng2);
+                hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng2, 13));
+                mMarkerDestination.showInfoWindow();
+            } catch (IllegalArgumentException e) {
+                Log.e(TAG, "IllegalArgumentException " + e);
+                Toast.makeText(this, "IllegalArgumentException", Toast.LENGTH_SHORT).show();
+            } catch (NullPointerException e) {
+                Log.e(TAG, "NullPointerException " + e);
+                Toast.makeText(this, "NullPointerException", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

@@ -62,12 +62,17 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
     }
 
     public void setNightStyle(View view) {
-        MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_night);
+        MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_night_hms);
         hMap.setMapStyle(styleOptions);
     }
 
-    public void setSimpleStyle(View view) {
-        MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_simple);
+    public void setGrayscaleStyle(View view) {
+        MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_grayscale_hms);
+        hMap.setMapStyle(styleOptions);
+    }
+
+    public void setRetroStyle(View view) {
+        MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_retro_hms);
         hMap.setMapStyle(styleOptions);
     }
 }
