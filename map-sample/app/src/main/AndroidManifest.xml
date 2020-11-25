@@ -98,7 +98,9 @@
         <activity
             android:name=".RoutePlanningDemoActivity"
             android:label="RoutePlanningDemo" />
-
+		<meta-data
+            android:name="com.huawei.hms.client.channel.androidMarket"
+            android:value="false" />
     </application>
 
 </manifest>
