@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/mapInGroundOverlay"
+        android:name="com.huawei.hms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="500dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="addFromAsset"
+                    android:text="FromAsset"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="addFromResource"
+                    android:text="FromResource"
+                    android:textAllCaps="false" />
+
+                <TextView
+                    android:id="@+id/groundOverlayShown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="get shown is here"
+                    android:paddingLeft="10dp"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="addFromBitmap"
+                    android:text="FromBitmap"
+                    android:textAllCaps="false" />
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="addFromFile"
+                    android:text="FromFile"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="addFromPath"
+                    android:text="FromPath"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="removeGroundOverlay"
+                    android:text="Remove"
+                    android:textAllCaps="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/toprightLatitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="toprightLatitude"
+                    android:singleLine="true"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/toprightLongtitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="toprightLongtitude"
+                    android:singleLine="true"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/bottomleftLatitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="bottomleftLatitude"
+                    android:singleLine="true"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/bottomleftLongtitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="bottomleftLongtitude"
+                    android:singleLine="true"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setPointsBy2Points"
+                    android:text="SetPointsBy2Points"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="getPointsBy2Points"
+                    android:text="GetPointsBy2Points"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/positionLatitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="positionLatitude"
+                    android:singleLine="true"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/positionLongtitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="positionLongtitude"
+                    android:singleLine="true"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/imageWidth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="imageWidth"
+                    android:singleLine="true"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/imageHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="imageHeight"
+                    android:singleLine="true"
+                    android:textSize="10sp" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setPointsBy1PointsWidthHeight"
+                android:text="SetPointsBy1PointsWidthHeight"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="getPointsBy1PointsWidthHeight"
+                android:text="GetPointsBy1PointsWidthHeight"
+                android:textAllCaps="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="getAttributes"
+                    android:text="GetAttributes"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setImage"
+                    android:text="SetImage"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setTag"
+                    android:text="SetTag"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="getTag"
+                    android:text="GetTag"
+                    android:textAllCaps="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/groundOverlayTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="groundOverlayTag"
+                    android:singleLine="true"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setVisibleTrue"
+                    android:text="SetVisibleTrue"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setVisibleFalse"
+                    android:text="SetVisibleFalse"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

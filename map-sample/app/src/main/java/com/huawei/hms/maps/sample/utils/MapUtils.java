@@ -52,4 +52,5 @@ public class MapUtils {
 
     public static final float MIN_ZOOM_LEVEL = 3;
 
+    public static final String API_KEY = "YOUR API KEY";
 }

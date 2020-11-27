@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    map:mapType="normal"
+    map:uiCompass="true"
+    map:uiZoomControls="false"
+    map:cameraTargetLat="48"
+    map:cameraTargetLng="118"
+    map:cameraZoom="2"
+    class="com.huawei.hms.maps.MapFragment" />

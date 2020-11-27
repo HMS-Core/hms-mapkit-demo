@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/mapInGestures"
+        android:name="com.huawei.hms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#D0FFFFFF"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/isShowZoomButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:onClick="setZoomButtonsEnabled"
+                android:text="isShowZoomButton" />
+
+            <CheckBox
+                android:id="@+id/isShowCompass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:onClick="setCompassEnabled"
+                android:text="isShowCompass" />
+
+            <CheckBox
+                android:id="@+id/isShowMylocationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:onClick="setMyLocationButtonEnabled"
+                android:text="isShowMylocationButton" />
+
+            <CheckBox
+                android:id="@+id/isMyLocationLayerEnabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:onClick="setMyLocationLayerEnabled"
+                android:text="isMyLocationLayerEnabled" />
+
+            <CheckBox
+                android:id="@+id/isScrollGesturesEnabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:onClick="setScrollGesturesEnabled"
+                android:text="isScrollGesturesEnabled" />
+
+            <CheckBox
+                android:id="@+id/isZoomGesturesEnabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:onClick="setZoomGesturesEnabled"
+                android:text="isZoomGesturesEnabled" />
+
+            <CheckBox
+                android:id="@+id/isTiltGesturesEnabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:onClick="setTiltGesturesEnabled"
+                android:text="isTiltGesturesEnabled" />
+
+            <CheckBox
+                android:id="@+id/isRotateGesturesEnabled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:onClick="setRotateGesturesEnabled"
+                android:text="isRotateGesturesEnabled" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
+

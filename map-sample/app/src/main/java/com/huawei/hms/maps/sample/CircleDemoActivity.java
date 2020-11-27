@@ -195,7 +195,7 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
         }
     }
 
-    boolean flag = true;
+    boolean flag = false;
 
     public void setStokeColor(View v) {
         if (null != mCircle) {

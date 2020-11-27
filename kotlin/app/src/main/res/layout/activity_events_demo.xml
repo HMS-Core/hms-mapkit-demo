@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.huawei.hms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tap_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_instructions" />
+
+        <TextView
+            android:id="@+id/toLatlng"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_instructions" />
+
+        <TextView
+            android:id="@+id/toPoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/toPoint" />
+
+    </LinearLayout>
+</FrameLayout>

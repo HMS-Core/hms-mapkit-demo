@@ -30,12 +30,22 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    android.applicationVariants.all {
+        variant ->
+            def versionName = project.findProperty('app_versionName')
+            def fileName = "MapKitSampleCode-" + versionName + ".apk"
+            variant.outputs.all {
+                outputFileName = fileName
+            }
+
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.huawei.hms:maps:5.0.3.302'
+    implementation 'com.huawei.hms:maps:5.0.5.301'
     implementation 'com.squareup.okhttp3:okhttp:3.5.0'
 
 }

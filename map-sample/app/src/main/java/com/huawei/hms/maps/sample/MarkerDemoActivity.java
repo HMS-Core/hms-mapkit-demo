@@ -245,8 +245,9 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
                 @Override
                 public boolean onMarkerClick(Marker marker) {
                     boolean clusterable = marker.isClusterable();
-                    Toast.makeText(getApplicationContext(), String.valueOf(clusterable), Toast.LENGTH_SHORT).show();
-                    return true;
+                    Toast.makeText(getApplicationContext(), "marker clusterable: " + clusterable, Toast.LENGTH_SHORT)
+                            .show();
+                    return false;
                 }
             });
         }
@@ -356,8 +357,9 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
      */
     public void setTag(View view) {
         String tagStr = edtTag.getText().toString();
-        if (mParis != null && tagStr != null && !"".equals(tagStr)) {
+        if (mParis != null) {
             mParis.setTag(tagStr);
+            Toast.makeText(this, "Paris tag is " + mParis.getTag(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -368,10 +370,10 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
      */
     public void setSnippet(View view) {
         String snippetStr = edtSnippet.getText().toString();
-        if (mOrsay != null && snippetStr != null && !"".equals(snippetStr)) {
-            mOrsay.setSnippet(snippetStr);
+        if (mParis != null) {
+            mParis.setSnippet(snippetStr);
+            Toast.makeText(this, "Paris snippet is " + mParis.getSnippet(), Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void defaultWindow(View view) {
@@ -503,9 +505,9 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
      */
     public void setTitle(View view) {
         String titleStr = edtTitle.getText().toString();
-        if (mParis != null && titleStr != null && !"".equals(titleStr)) {
+        if (mParis != null) {
             mParis.setTitle(titleStr);
-            Toast.makeText(this, "BJ title is " + mParis.getTitle(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Paris title is " + mParis.getTitle(), Toast.LENGTH_SHORT).show();
         }
     }
 }

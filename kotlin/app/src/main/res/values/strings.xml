@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Map Kit Sample</string>
+    <string name="title_activity_main">Huawei Map Demo</string>
+    <string name="styled_map">StyledMap</string>
+    <string name="tap_instructions">Tap or long press on the map</string>
+    <string name="toLatlng">screen Point to latLng</string>
+    <string name="toPoint">latLngscreen to Point</string>
+    <string name="move_the_camera">Move the camera</string>
+</resources>

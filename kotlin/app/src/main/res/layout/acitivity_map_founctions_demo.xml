@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/getMaxZoomLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="getMaxZoomLevel"
+                android:text="MaxZoomLevel"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/getMinZoomLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="getMinZoomLevel"
+                android:text="MinZoomLevel"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/getMapType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="getMapType"
+                android:text="getMapType"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/setMapType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setMapType"
+                android:text="SetMapType"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/is3DMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="is3DMode"
+                android:text="Is3DMode"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/Set3DMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="Set3DMode"
+                android:text="Set3DMode"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/setMaxZoomPreference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setMaxZoomPreference"
+                android:text="SetMaxZoomPreference"
+                android:textAllCaps="false" />
+
+
+            <Button
+                android:id="@+id/setMinZoomPreference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setMinZoomPreference"
+                android:text="SetMinZoomPreference"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/resetMinMaxZoomPreference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="resetMinMaxZoomPreference"
+                android:text="ResetMinMaxZoomPreference"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/setPadding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setPadding"
+                android:text="SetPadding"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/paddingleft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="left"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/paddingright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="right"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/paddingtop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="top"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/paddingbottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="bottom"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/maxZoomlevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="maxZoom"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/minZoomlevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="minZoom"
+                android:textSize="14sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="testMaxZoom"
+                android:text="Test"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/founctionsshow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="show is here"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/mapInFunctions"
+        android:name="com.huawei.hms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

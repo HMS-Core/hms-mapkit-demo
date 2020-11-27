@@ -30,6 +30,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.huawei.hms.maps.MapsInitializer;
+import com.huawei.hms.maps.sample.utils.MapUtils;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (!hasPermissions(this, RUNTIME_PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, RUNTIME_PERMISSIONS, REQUEST_CODE);
         }
+        MapsInitializer.setApiKey(MapUtils.API_KEY);
 
         Button btn1 = findViewById(R.id.Camera);
         Button btn2 = findViewById(R.id.BasicMap);

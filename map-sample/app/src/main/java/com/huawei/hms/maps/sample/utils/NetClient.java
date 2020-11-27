@@ -45,7 +45,7 @@ public class NetClient {
 
     // Please place your API KEY here. If the API KEY contains special characters, you need to encode it using
     // encodeURI.
-    private String mDefaultKey = "API KEY";
+    private String mDefaultKey = MapUtils.API_KEY;
 
     private String mWalkingRoutePlanningURL = "https://mapapi.cloud.huawei.com/mapApi/v1/routeService/walking";
 
