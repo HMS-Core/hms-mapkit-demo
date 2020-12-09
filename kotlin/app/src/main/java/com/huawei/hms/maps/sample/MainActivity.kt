@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (!hasPermissions(this, *RUNTIME_PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, RUNTIME_PERMISSIONS, REQUEST_CODE)
         }
+
+        // please replace "Your API key" with api_key field value in
+        // agconnect-services.json if the field is null.
         MapsInitializer.setApiKey(MapUtils.API_KEY)
         findViewById<Button>(R.id.Camera).setOnClickListener(this)
         findViewById<Button>(R.id.BasicMap).setOnClickListener(this)

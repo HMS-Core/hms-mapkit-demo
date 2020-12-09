@@ -43,9 +43,6 @@ class MapViewDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY)
         }
-        // please replace "Your API key" with api_key field value in
-        // agconnect-services.json if the field is null.
-        MapsInitializer.setApiKey("Your API key")
         mMapView.onCreate(mapViewBundle)
         mMapView.getMapAsync(this)
     }
