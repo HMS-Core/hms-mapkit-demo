@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (!hasPermissions(this, RUNTIME_PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, RUNTIME_PERMISSIONS, REQUEST_CODE);
         }
+
+        // please replace "Your API key" with api_key field value in
+        // agconnect-services.json if the field is null.
         MapsInitializer.setApiKey(MapUtils.API_KEY);
 
         Button btn1 = findViewById(R.id.Camera);

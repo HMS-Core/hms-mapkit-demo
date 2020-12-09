@@ -24,7 +24,6 @@ import com.huawei.hms.maps.CameraUpdateFactory;
 import com.huawei.hms.maps.HuaweiMap;
 import com.huawei.hms.maps.HuaweiMapOptions;
 import com.huawei.hms.maps.MapView;
-import com.huawei.hms.maps.MapsInitializer;
 import com.huawei.hms.maps.OnMapReadyCallback;
 import com.huawei.hms.maps.model.LatLng;
 
@@ -56,9 +55,6 @@ public class MapViewCodeDemoActivity extends AppCompatActivity implements OnMapR
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
         }
-        // please replace "Your API key" with api_key field value in
-        // agconnect-services.json if the field is null.
-        MapsInitializer.setApiKey("Your API key");
         mMapView.onCreate(mapViewBundle);
         mMapView.getMapAsync(this);
         setContentView(mMapView);
