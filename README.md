@@ -53,12 +53,17 @@ Android SDK Version >= 19 and JDK version >= 1.8 is recommended.
 
 
 ## Result
+Standard
 
-  <img src="standard.jpg" width = 30% height = 30%>
+<img src="https://github.com/HMS-Core/hms-mapkit-demo/blob/master/standard.jpg" width = 30% height = 30%>
+  
+Simple
 
-  <img src="simple.jpg" width = 30% height = 30%>
+<img src="https://github.com/HMS-Core/hms-mapkit-demo/blob/master/simple.jpg" width = 30% height = 30%>
+  
+Night
 
-  <img src="night.jpg" width = 30% height = 30%>
+<img src="https://github.com/HMS-Core/hms-mapkit-demo/blob/master/night.jpg" width = 30% height = 30%>
 
 ## Question or issues
 If you want to evaluate more about HMS Core,
@@ -75,4 +80,3 @@ License
 -------
 
 HMS Mapkit Demo is licensed under [Apache License version 2.0](https://github.com/HMS-Core/hms-mapkit-demo-java/blob/master/LICENSE)
-
