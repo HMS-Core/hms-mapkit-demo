@@ -47,7 +47,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.huawei.hms:maps:5.0.5.301'
+    implementation 'com.huawei.hms:maps:5.1.0.300'
     implementation 'com.squareup.okhttp3:okhttp:3.5.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
