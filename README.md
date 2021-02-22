@@ -38,12 +38,12 @@ In Android Studio, use the "Open an existing Android Studio project", and select
 
 You can use the "gradlew build" command to build the project directly.
 
-You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project(Note: The ApiKey needs to be configured for the com/huawei/hms/maps/sample/utils/NetClient.java file separately). You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-config-agc-0000001050158641-V5?ha_source=hms1) guide to configure app in AppGallery Connect.
+You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project(Note: The ApiKey needs to be configured for the com/huawei/hms/maps/sample/utils/NetClient.java file separately). You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-config-agc-0000001061560289-V5?ha_source=hms1) guide to configure app in AppGallery Connect.
 
 
 For more development details, please refer to the following link:
 
-- [Development Guide](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-introduction-0000001050158633-V5?ha_source=hms1)
+- [Development Guide](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/android-sdk-brief-introduction-0000001061991343-V5?ha_source=hms1)
 - [API References](https://developer.huawei.com/consumer/en/doc/development/HMSCore-References-V5/maps-overview-0000001050151498-V5?ha_source=hms1)
 
 Supported Environments
