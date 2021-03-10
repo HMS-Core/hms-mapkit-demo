@@ -110,6 +110,14 @@
                 android:textAllCaps="false" />
 
             <Button
+                android:id="@+id/MarkerClusteringDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="MarkerClusteringDemo"
+                android:textAllCaps="false" />
+
+            <Button
                 android:id="@+id/EventsDemo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

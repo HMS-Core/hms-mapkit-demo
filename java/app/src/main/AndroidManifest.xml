@@ -66,6 +66,9 @@
             android:name=".MarkerDemoActivity"
             android:label="MarkerDemo" />
         <activity
+            android:name=".MarkerClusteringDemoActivity"
+            android:label="MarkerClusteringDemo" />
+        <activity
             android:name=".CameraDemoActivity"
             android:label="CameraDemo" />
         <activity

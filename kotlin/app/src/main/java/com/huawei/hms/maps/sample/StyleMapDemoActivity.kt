@@ -22,11 +22,10 @@ package com.huawei.hms.maps.sample
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.huawei.hms.maps.CameraUpdateFactory
-import com.huawei.hms.maps.HuaweiMap
-import com.huawei.hms.maps.MapFragment
-import com.huawei.hms.maps.OnMapReadyCallback
+import com.huawei.hms.maps.*
 import com.huawei.hms.maps.model.LatLng
 import com.huawei.hms.maps.model.MapStyleOptions
 
@@ -39,14 +38,29 @@ class StyleMapDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private var hMap: HuaweiMap? = null
-    private var mMapFragment: MapFragment? = null
+    private var mSupportMapFragment: SupportMapFragment? = null
+    private lateinit var edtStyleId: EditText
+    private lateinit var edtPreviewId: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate: ")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_style_map_demo)
-        mMapFragment = fragmentManager.findFragmentById(R.id.mapFragment_mapstyle) as MapFragment
-        mMapFragment?.getMapAsync(this)
+        edtStyleId = findViewById(R.id.edt_style_id)
+        edtPreviewId = findViewById(R.id.edt_preview_id)
+
+        val huaweiMapOptions = HuaweiMapOptions()
+        // please replace "styleId" with style ID field value in
+        huaweiMapOptions.styleId("styleId")
+        // please replace "previewId" with preview ID field value in
+        huaweiMapOptions.previewId("previewId")
+        mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions)
+        mSupportMapFragment?.getMapAsync(this)
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.map_container_layout, mSupportMapFragment!!)
+        fragmentTransaction.commit()
+        mSupportMapFragment?.onAttach(this)
     }
 
     override fun onMapReady(map: HuaweiMap) {
@@ -56,13 +70,51 @@ class StyleMapDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         hMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(48.893478, 2.334595), 10f))
     }
 
+    /**
+     * set map style:night
+     */
     fun setNightStyle(view: View?) {
-        val styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_night)
+        val styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_night_hms)
         hMap?.setMapStyle(styleOptions)
     }
 
-    fun setSimpleStyle(view: View?) {
-        val styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_simple)
+    /**
+     * set map style:grayscale
+     */
+    fun setGrayscaleStyle(view: View?) {
+        val styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_grayscale_hms)
         hMap?.setMapStyle(styleOptions)
+    }
+
+    /**
+     * set map style:retro
+     */
+    fun setRetroStyle(view: View?) {
+        val styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_retro_hms)
+        hMap?.setMapStyle(styleOptions)
+    }
+
+    /**
+     * set style ID
+     */
+    fun setStyleId(view: View?) {
+        val styleIdStr = edtStyleId.text.toString()
+        if (styleIdStr.isEmpty()) {
+            Toast.makeText(this, "Please make sure the style ID is edited", Toast.LENGTH_SHORT).show()
+            return
+        }
+        hMap?.setStyleId(styleIdStr)
+    }
+
+    /**
+     * set preview ID
+     */
+    fun setPreviewId(view: View?) {
+        val previewIdStr = edtPreviewId.text.toString()
+        if (previewIdStr.isEmpty()) {
+            Toast.makeText(this, "Please make sure the preview ID is edited", Toast.LENGTH_SHORT).show()
+            return
+        }
+        hMap?.previewId(previewIdStr)
     }
 }

@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button MoreLanguageDemo = findViewById(R.id.MoreLanguageDemo);
         Button MapFounctions = findViewById(R.id.MapFunctions);
         Button addMarkerDemo = findViewById(R.id.AddMarkerDemo);
+        Button markerClusteringDemo = findViewById(R.id.MarkerClusteringDemo);
         Button eventsDemo = findViewById(R.id.EventsDemo);
         Button MapStyleDemo = findViewById(R.id.MapStyle);
         Button locationSourceDemo = findViewById(R.id.LocationSourceDemo);
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MoreLanguageDemo.setOnClickListener(this);
         MapFounctions.setOnClickListener(this);
         addMarkerDemo.setOnClickListener(this);
+        markerClusteringDemo.setOnClickListener(this);
         eventsDemo.setOnClickListener(this);
         MapStyleDemo.setOnClickListener(this);
         locationSourceDemo.setOnClickListener(this);
@@ -152,6 +154,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (R.id.AddMarkerDemo == v.getId()) {
             Log.i(TAG, "onClick: AddMarkerDemo");
             Intent i = new Intent(this, MarkerDemoActivity.class);
+            startActivity(i);
+        }  else if (R.id.MarkerClusteringDemo == v.getId()) {
+            Log.i(TAG, "onClick: MarkerClusteringDemo");
+            Intent i = new Intent(this, MarkerClusteringDemoActivity.class);
             startActivity(i);
         } else if (R.id.EventsDemo == v.getId()) {
             Log.i(TAG, "onClick: EventsDemo");

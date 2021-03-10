@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.MoreLanguageDemo).setOnClickListener(this)
         findViewById<Button>(R.id.MapFunctions).setOnClickListener(this)
         findViewById<Button>(R.id.AddMarkerDemo).setOnClickListener(this)
+        findViewById<Button>(R.id.MarkerClusteringDemo).setOnClickListener(this)
         findViewById<Button>(R.id.EventsDemo).setOnClickListener(this)
         findViewById<Button>(R.id.MapStyle).setOnClickListener(this)
         findViewById<Button>(R.id.LocationSourceDemo).setOnClickListener(this)
@@ -122,6 +123,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.AddMarkerDemo -> {
                 Log.i(TAG, "onClick: AddMarkerDemo")
                 startActivity(Intent(this, MarkerDemoActivity::class.java))
+            }
+            R.id.MarkerClusteringDemo -> {
+                Log.i(TAG, "onClick: MarkerClusteringDemo")
+                startActivity(Intent(this, MarkerClusteringDemoActivity::class.java))
             }
             R.id.EventsDemo -> {
                 Log.i(TAG, "onClick: EventsDemo")

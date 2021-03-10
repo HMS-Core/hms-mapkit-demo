@@ -4,18 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/mapFragment_mapstyle"
-        class="com.huawei.hms.maps.MapFragment"
+    <FrameLayout
+        android:id="@+id/map_container_layout"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        map:cameraTargetLat="48"
-        map:cameraTargetLng="118"
-        map:cameraZoom="2"
-        map:mapType="normal"
-        map:uiCompass="true"
-        map:uiZoomControls="false" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,28 +19,63 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="setNightStyle"
             android:text="NightStyle"
-            android:textAllCaps="false"
-            android:onClick="setNightStyle" />
+            android:textAllCaps="false" />
 
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="setGrayscaleStyle"
             android:text="GrayscaleStyle"
-            android:textAllCaps="false"
-            android:onClick="setGrayscaleStyle" />
+            android:textAllCaps="false" />
 
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="setRetroStyle"
             android:text="RetroStyle"
-            android:textAllCaps="false"
-            android:onClick="setRetroStyle" />
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edt_style_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="styleId"
+            android:text=""
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setStyleId"
+            android:text="setStyleId"
+            android:textAllCaps="false" />
+
+        <EditText
+            android:id="@+id/edt_preview_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="previewId"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setPreviewId"
+            android:text="setPreviewId"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
 
 </LinearLayout>
 

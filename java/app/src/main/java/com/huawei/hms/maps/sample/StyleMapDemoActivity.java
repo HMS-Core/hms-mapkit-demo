@@ -20,37 +20,59 @@
 
 package com.huawei.hms.maps.sample;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.huawei.hms.maps.CameraUpdateFactory;
 import com.huawei.hms.maps.HuaweiMap;
-import com.huawei.hms.maps.MapFragment;
+import com.huawei.hms.maps.HuaweiMapOptions;
 import com.huawei.hms.maps.OnMapReadyCallback;
+import com.huawei.hms.maps.SupportMapFragment;
 import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.MapStyleOptions;
+
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * StyleMap related
  */
 public class StyleMapDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
-
     private static final String TAG = "StyleMapDemoActivity";
 
     private HuaweiMap hMap;
 
-    private MapFragment mMapFragment;
+    private SupportMapFragment mSupportMapFragment;
+
+    private EditText edtStyleId;
+
+    private EditText edtPreviewId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_style_map_demo);
-        mMapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.mapFragment_mapstyle);
-        mMapFragment.getMapAsync(this);
+        edtStyleId = findViewById(R.id.edt_style_id);
+        edtPreviewId = findViewById(R.id.edt_preview_id);
+
+        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
+        // please replace "styleId" with style ID field value in
+        huaweiMapOptions.styleId("styleId");
+        // please replace "previewId" with preview ID field value in
+        huaweiMapOptions.previewId("previewId");
+        mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions);
+        mSupportMapFragment.getMapAsync(this);
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.map_container_layout, mSupportMapFragment);
+        fragmentTransaction.commit();
+
+        mSupportMapFragment.onAttach(this);
     }
 
     @Override
@@ -61,18 +83,55 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
         hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 10));
     }
 
+    /**
+     * set map style:night
+     */
     public void setNightStyle(View view) {
         MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_night_hms);
         hMap.setMapStyle(styleOptions);
     }
 
+    /**
+     * set map style:grayscale
+     */
     public void setGrayscaleStyle(View view) {
         MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_grayscale_hms);
         hMap.setMapStyle(styleOptions);
     }
 
+    /**
+     * set map style:retro
+     */
     public void setRetroStyle(View view) {
         MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_retro_hms);
         hMap.setMapStyle(styleOptions);
+    }
+
+    /**
+     * set style ID
+     */
+    public void setStyleId(View view) {
+        String styleIdStr = edtStyleId.getText().toString();
+        if (TextUtils.isEmpty(styleIdStr)) {
+            Toast.makeText(this, "Please make sure the style ID is edited", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (null != hMap) {
+            hMap.setStyleId(styleIdStr);
+        }
+    }
+
+    /**
+     * set preview ID
+     */
+    public void setPreviewId(View view) {
+        String previewIdStr = edtPreviewId.getText().toString();
+        if (TextUtils.isEmpty(previewIdStr)) {
+            Toast.makeText(this, "Please make sure the preview ID is edited", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (null != hMap) {
+            hMap.previewId(previewIdStr);
+        }
     }
 }
