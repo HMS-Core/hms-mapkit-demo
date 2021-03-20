@@ -41,15 +41,21 @@ class SupportMapCodeDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         Log.d(TAG, "onCreate: ")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_supportmapcode_demo)
-        val southwest = LatLng(30.0, 118.0)
-        val cameraPosition = CameraPosition.builder().target(southwest).zoom(2f).bearing(2.0f).tilt(2.5f).build()
-        val huaweiMapOptions = HuaweiMapOptions().camera(cameraPosition)
-        mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions)
-        mSupportMapFragment?.getMapAsync(this)
+
         val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.frame_supportmapcode, mSupportMapFragment!!)
-        fragmentTransaction.commit()
+        mSupportMapFragment = fragmentManager.findFragmentByTag("support_map_fragment") as SupportMapFragment?
+
+        if (mSupportMapFragment == null) {
+            val cameraPosition = CameraPosition.builder().target(LatLng(43.0, 2.0)).zoom(2f).bearing(2.0f).tilt(2.5f).build()
+            val huaweiMapOptions = HuaweiMapOptions().camera(cameraPosition)
+            mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions)
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.add(R.id.frame_supportmapcode, mSupportMapFragment!!, "support_map_fragment")
+            fragmentTransaction.commit()
+        }
+
+        mSupportMapFragment?.getMapAsync(this)
+        mSupportMapFragment?.onAttach(this)
     }
 
     override fun onMapReady(map: HuaweiMap) {

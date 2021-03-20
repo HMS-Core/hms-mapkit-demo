@@ -39,7 +39,6 @@ import com.huawei.hms.maps.model.LatLng;
  * Create a simple activity with a map and a marker on the map.
  */
 public class SupportMapCodeDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
-
     private static final String TAG = "SupportMapCodeActivity";
 
     private HuaweiMap hMap;
@@ -51,16 +50,22 @@ public class SupportMapCodeDemoActivity extends AppCompatActivity implements OnM
         Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supportmapcode_demo);
-        LatLng southwest = new LatLng(30, 118);
-        CameraPosition cameraPosition =
-                CameraPosition.builder().target(southwest).zoom(2).bearing(2.0f).tilt(2.5f).build();
-        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions().camera(cameraPosition);
-        mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions);
-        mSupportMapFragment.getMapAsync(this);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frame_supportmapcode, mSupportMapFragment);
-        fragmentTransaction.commit();
+        mSupportMapFragment = (SupportMapFragment) fragmentManager.findFragmentByTag("support_map_fragment");
+
+        if (mSupportMapFragment == null) {
+            CameraPosition cameraPosition =
+                CameraPosition.builder().target(new LatLng(43, 2)).zoom(2).bearing(2.0f).tilt(2.5f).build();
+            HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions().camera(cameraPosition);
+            mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions);
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.frame_supportmapcode, mSupportMapFragment, "support_map_fragment");
+            fragmentTransaction.commit();
+        }
+
+        mSupportMapFragment.getMapAsync(this);
+        mSupportMapFragment.onAttach(this);
     }
 
     @Override

@@ -49,17 +49,22 @@ class StyleMapDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         edtStyleId = findViewById(R.id.edt_style_id)
         edtPreviewId = findViewById(R.id.edt_preview_id)
 
-        val huaweiMapOptions = HuaweiMapOptions()
-        // please replace "styleId" with style ID field value in
-        huaweiMapOptions.styleId("styleId")
-        // please replace "previewId" with preview ID field value in
-        huaweiMapOptions.previewId("previewId")
-        mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions)
-        mSupportMapFragment?.getMapAsync(this)
+        val fragmentManager = supportFragmentManager
+        mSupportMapFragment = fragmentManager.findFragmentByTag("support_map_fragment") as SupportMapFragment?
 
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.map_container_layout, mSupportMapFragment!!)
-        fragmentTransaction.commit()
+        if (mSupportMapFragment == null) {
+            val huaweiMapOptions = HuaweiMapOptions()
+            // please replace "styleId" with style ID field value in
+            huaweiMapOptions.styleId("styleId")
+            // please replace "previewId" with preview ID field value in
+            huaweiMapOptions.previewId("previewId")
+            mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions)
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.add(R.id.map_container_layout, mSupportMapFragment!!, "support_map_fragment")
+            fragmentTransaction.commit()
+        }
+
+        mSupportMapFragment?.getMapAsync(this)
         mSupportMapFragment?.onAttach(this)
     }
 

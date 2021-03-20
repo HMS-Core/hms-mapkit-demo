@@ -25,6 +25,7 @@ import com.huawei.hms.maps.HuaweiMap;
 import com.huawei.hms.maps.HuaweiMapOptions;
 import com.huawei.hms.maps.OnMapReadyCallback;
 import com.huawei.hms.maps.SupportMapFragment;
+import com.huawei.hms.maps.model.CameraPosition;
 import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.MapStyleOptions;
 
@@ -36,6 +37,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 /**
@@ -60,18 +62,22 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
         edtStyleId = findViewById(R.id.edt_style_id);
         edtPreviewId = findViewById(R.id.edt_preview_id);
 
-        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
-        // please replace "styleId" with style ID field value in
-        huaweiMapOptions.styleId("styleId");
-        // please replace "previewId" with preview ID field value in
-        huaweiMapOptions.previewId("previewId");
-        mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        mSupportMapFragment = (SupportMapFragment) fragmentManager.findFragmentByTag("support_map_fragment");
+
+        if (mSupportMapFragment == null) {
+            HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
+            // please replace "styleId" with style ID field value in
+            huaweiMapOptions.styleId("styleId");
+            // please replace "previewId" with preview ID field value in
+            huaweiMapOptions.previewId("previewId");
+            mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions);
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.map_container_layout, mSupportMapFragment, "support_map_fragment");
+            fragmentTransaction.commit();
+        }
+
         mSupportMapFragment.getMapAsync(this);
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.map_container_layout, mSupportMapFragment);
-        fragmentTransaction.commit();
-
         mSupportMapFragment.onAttach(this);
     }
 

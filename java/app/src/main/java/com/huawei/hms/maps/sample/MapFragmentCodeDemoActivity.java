@@ -20,7 +20,6 @@
 
 package com.huawei.hms.maps.sample;
 
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,15 +45,19 @@ public class MapFragmentCodeDemoActivity extends AppCompatActivity implements On
         Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapfragmentcode_demo);
-        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
-        huaweiMapOptions.compassEnabled(true);
-        huaweiMapOptions.zoomGesturesEnabled(true);
-        mMapFragment = MapFragment.newInstance(huaweiMapOptions);
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frame_mapfragmentcode, mMapFragment);
-        fragmentTransaction.commit();
 
+        mMapFragment = (MapFragment) getFragmentManager().findFragmentByTag("map_fragment");
+
+        if (mMapFragment == null) {
+            HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
+            huaweiMapOptions.compassEnabled(true);
+            huaweiMapOptions.zoomGesturesEnabled(true);
+            mMapFragment = MapFragment.newInstance(huaweiMapOptions);
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.add(R.id.frame_mapfragmentcode, mMapFragment, "map_fragment");
+            fragmentTransaction.commit();
+        }
+        mMapFragment.onAttach(this);
         mMapFragment.getMapAsync(this);
     }
 

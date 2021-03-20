@@ -37,14 +37,19 @@ class MapFragmentCodeDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         Log.d(TAG, "onCreate: ")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mapfragmentcode_demo)
-        val huaweiMapOptions = HuaweiMapOptions()
-        huaweiMapOptions.compassEnabled(true)
-        huaweiMapOptions.zoomGesturesEnabled(true)
-        mMapFragment = MapFragment.newInstance(huaweiMapOptions)
-        val fragmentManager = fragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.frame_mapfragmentcode, mMapFragment)
-        fragmentTransaction.commit()
+
+        mMapFragment = fragmentManager.findFragmentByTag("map_fragment") as MapFragment?
+
+        if (mMapFragment == null) {
+            val huaweiMapOptions = HuaweiMapOptions()
+            huaweiMapOptions.compassEnabled(true)
+            huaweiMapOptions.zoomGesturesEnabled(true)
+            mMapFragment = MapFragment.newInstance(huaweiMapOptions)
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.add(R.id.frame_mapfragmentcode, mMapFragment!!, "map_fragment")
+            fragmentTransaction.commit()
+        }
+        mMapFragment?.onAttach(this)
         mMapFragment?.getMapAsync(this)
     }
 
