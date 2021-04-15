@@ -41,41 +41,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/edt_style_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="styleId"
-            android:text=""
-            android:textSize="14sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="setStyleId"
-            android:text="setStyleId"
-            android:textAllCaps="false" />
-
-        <EditText
-            android:id="@+id/edt_preview_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="previewId"
-            android:textSize="14sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="setPreviewId"
-            android:text="setPreviewId"
-            android:textAllCaps="false" />
-
-    </LinearLayout>
-
 </LinearLayout>
 
