@@ -24,6 +24,7 @@ HUAWEI Map Kit uses the WGS 84 GPS coordinate system, which meets most map devel
 - Map interaction: Controls the interaction gestures and buttons on the map.
 - Map drawing: Adds location markers, overlays, and various shapes.
 
+You also can use HMS Toolkit to quickly integrate the kit and run the demo project, as well as debug the app using a remote device for free. For details, please visit https://developer.huawei.com/consumer/en/doc/development/Tools-Guides/getting-started-0000001077381096
 
 Getting Started
 ---------------
