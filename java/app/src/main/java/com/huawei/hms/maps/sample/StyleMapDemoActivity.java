@@ -50,17 +50,27 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
 
     private SupportMapFragment mSupportMapFragment;
 
+    private EditText edtStyleId;
+
+    private EditText edtPreviewId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_style_map_demo);
+        edtStyleId = findViewById(R.id.edt_style_id);
+        edtPreviewId = findViewById(R.id.edt_preview_id);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         mSupportMapFragment = (SupportMapFragment) fragmentManager.findFragmentByTag("support_map_fragment");
 
         if (mSupportMapFragment == null) {
             HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
+            // please replace "styleId" with style ID field value in
+            huaweiMapOptions.styleId("styleId");
+            // please replace "previewId" with preview ID field value in
+            huaweiMapOptions.previewId("previewId");
             mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.map_container_layout, mSupportMapFragment, "support_map_fragment");
@@ -103,4 +113,31 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
         hMap.setMapStyle(styleOptions);
     }
 
+    /**
+     * set style ID
+     */
+    public void setStyleId(View view) {
+        String styleIdStr = edtStyleId.getText().toString();
+        if (TextUtils.isEmpty(styleIdStr)) {
+            Toast.makeText(this, "Please make sure the style ID is edited", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (null != hMap) {
+            hMap.setStyleId(styleIdStr);
+        }
+    }
+
+    /**
+     * set preview ID
+     */
+    public void setPreviewId(View view) {
+        String previewIdStr = edtPreviewId.getText().toString();
+        if (TextUtils.isEmpty(previewIdStr)) {
+            Toast.makeText(this, "Please make sure the preview ID is edited", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (null != hMap) {
+            hMap.previewId(previewIdStr);
+        }
+    }
 }

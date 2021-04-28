@@ -20,6 +20,10 @@
 
 package com.huawei.hms.maps.sample;
 
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit;
+import static com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight;
+import static com.huawei.hms.maps.sample.utils.CheckUtils.isInteger;
+
 import com.huawei.hms.maps.CameraUpdate;
 import com.huawei.hms.maps.CameraUpdateFactory;
 import com.huawei.hms.maps.HuaweiMap;
@@ -29,6 +33,7 @@ import com.huawei.hms.maps.sample.utils.MapUtils;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -61,6 +66,14 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     private EditText maxZoomlevel;
 
+    private EditText logoPaddingStart;
+
+    private EditText logoPaddingTop;
+
+    private EditText logoPaddingEnd;
+
+    private EditText logoPaddingBottom;
+
     private TextView text;
 
     @Override
@@ -77,6 +90,10 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         text = findViewById(R.id.founctionsshow);
         minZoomlevel = findViewById(R.id.minZoomlevel);
         maxZoomlevel = findViewById(R.id.maxZoomlevel);
+        logoPaddingStart = findViewById(R.id.logo_padding_start);
+        logoPaddingTop = findViewById(R.id.logo_padding_top);
+        logoPaddingEnd = findViewById(R.id.logo_padding_end);
+        logoPaddingBottom = findViewById(R.id.logo_padding_bottom);
     }
 
     @Override
@@ -159,7 +176,7 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         if ((text.trim().length() == 0) || (text.trim().isEmpty()) || (text == null) || ("".equals(text))) {
             Toast.makeText(this, "Please make sure the maxZoom is Edited", Toast.LENGTH_SHORT).show();
         } else {
-            if (!isNumber(text.trim())) {
+            if (!checkIsRight(text.trim())) {
                 Toast.makeText(this, "Please make sure the maxZoom is right", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -197,16 +214,16 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         if ((text.trim().length() == 0) || (text.trim().isEmpty()) || (text == null) || ("".equals(text))) {
             Toast.makeText(this, "Please make sure the minZoom is Edited", Toast.LENGTH_SHORT).show();
         } else {
-            if (!isNumber(text.trim())) {
+            if (!checkIsRight(text.trim())) {
                 Toast.makeText(this, "Please make sure the minZoom is right", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (Float.valueOf(text.trim()) > MapUtils.MAX_ZOOM_LEVEL
                 || Float.valueOf(text.trim()) < MapUtils.MIN_ZOOM_LEVEL) {
                 Toast
-                        .makeText(this, String.format(Locale.ENGLISH, "The zoom level ranges from %s to %s.",
-                                MapUtils.MIN_ZOOM_LEVEL, MapUtils.MAX_ZOOM_LEVEL), Toast.LENGTH_SHORT)
-                        .show();
+                    .makeText(this, String.format(Locale.ENGLISH, "The zoom level ranges from %s to %s.",
+                        MapUtils.MIN_ZOOM_LEVEL, MapUtils.MAX_ZOOM_LEVEL), Toast.LENGTH_SHORT)
+                    .show();
             } else {
                 if (null != hMap) {
                     hMap.setMinZoomPreference(Float.valueOf(minZoomlevel.getText().toString()));
@@ -240,8 +257,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
             || (bottomString.trim().length() == 0) || (bottomString.trim().isEmpty()) || (bottomString == null)
             || ("".equals(bottomString))) {
         } else {
-            if (!isNumber(leftString.trim()) || !isNumber(topString.trim()) || !isNumber(rightString.trim())
-                || !isNumber(bottomString.trim())) {
+            if (!isInteger(leftString.trim()) || !isInteger(topString.trim()) || !isInteger(rightString.trim())
+                || !isInteger(bottomString.trim())) {
                 Toast.makeText(this, "Please make sure the padding value is right", Toast.LENGTH_SHORT).show();
             } else {
                 if (null != hMap) {
@@ -253,34 +270,69 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         }
     }
 
-    public static boolean isNumber(String value) {
-        return isInteger(value) || isDouble(value);
-    }
-
     /**
-     * Determine if the string is an integer
+     * Setting the logo position: Gravity.BOTTOM | Gravity.START
      */
-    public static boolean isInteger(String value) {
-        try {
-            Integer.parseInt(value);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
+    public void setLogoBottomStart(View view) {
+        if (null != hMap) {
+            hMap.getUiSettings().setLogoPosition(Gravity.BOTTOM | Gravity.START);
         }
     }
 
     /**
-     * Determine if the string is a float
+     * Setting the logo position: Gravity.BOTTOM | Gravity.END
      */
-    public static boolean isDouble(String value) {
-        try {
-            Double.parseDouble(value);
-            if (value.contains(".")) {
-                return true;
+    public void setLogoBottomEnd(View view) {
+        if (null != hMap) {
+            hMap.getUiSettings().setLogoPosition(Gravity.BOTTOM | Gravity.END);
+        }
+    }
+
+    /**
+     * Setting the logo position: Gravity.TOP | Gravity.START
+     */
+    public void setLogoTopStart(View view) {
+        if (null != hMap) {
+            hMap.getUiSettings().setLogoPosition(Gravity.TOP | Gravity.START);
+        }
+    }
+
+    /**
+     * Setting the logo position: Gravity.TOP | Gravity.END
+     */
+    public void setLogoTopEnd(View view) {
+        if (null != hMap) {
+            hMap.getUiSettings().setLogoPosition(Gravity.TOP | Gravity.END);
+        }
+    }
+
+    /**
+     * Setting the logo padding
+     */
+    public void setLogoPadding(View view) {
+        if (null != hMap) {
+            String paddingStartString = logoPaddingStart.getText().toString().trim();
+            String paddingTopString = logoPaddingTop.getText().toString().trim();
+            String paddingEndString = logoPaddingEnd.getText().toString().trim();
+            String paddingBottomString = logoPaddingBottom.getText().toString().trim();
+            if (checkIsEdit(paddingStartString) || checkIsEdit(paddingTopString) || checkIsEdit(paddingEndString)
+                || checkIsEdit(paddingBottomString)) {
+                Toast.makeText(this, "Please make sure these padding are Edited", Toast.LENGTH_SHORT).show();
+                return;
             }
-            return false;
-        } catch (NumberFormatException e) {
-            return false;
+
+            if (!isInteger(paddingStartString) || !isInteger(paddingTopString) || !isInteger(paddingEndString)
+                || !isInteger(paddingBottomString)) {
+                Toast.makeText(this, "Please make sure these padding are right", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int paddingStart = Integer.parseInt(paddingStartString);
+            int paddingTop = Integer.parseInt(paddingTopString);
+            int paddingEnd = Integer.parseInt(paddingEndString);
+            int paddingBottom = Integer.parseInt(paddingBottomString);
+
+            hMap.getUiSettings().setLogoPadding(paddingStart, paddingTop, paddingEnd, paddingBottom);
         }
     }
 }

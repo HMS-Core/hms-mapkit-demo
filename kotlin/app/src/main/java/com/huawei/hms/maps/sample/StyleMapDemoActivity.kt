@@ -39,17 +39,25 @@ class StyleMapDemoActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private var hMap: HuaweiMap? = null
     private var mSupportMapFragment: SupportMapFragment? = null
+    private lateinit var edtStyleId: EditText
+    private lateinit var edtPreviewId: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate: ")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_style_map_demo)
+        edtStyleId = findViewById(R.id.edt_style_id)
+        edtPreviewId = findViewById(R.id.edt_preview_id)
 
         val fragmentManager = supportFragmentManager
         mSupportMapFragment = fragmentManager.findFragmentByTag("support_map_fragment") as SupportMapFragment?
 
         if (mSupportMapFragment == null) {
             val huaweiMapOptions = HuaweiMapOptions()
+            // please replace "styleId" with style ID field value in
+            huaweiMapOptions.styleId("styleId")
+            // please replace "previewId" with preview ID field value in
+            huaweiMapOptions.previewId("previewId")
             mSupportMapFragment = SupportMapFragment.newInstance(huaweiMapOptions)
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.add(R.id.map_container_layout, mSupportMapFragment!!, "support_map_fragment")
@@ -91,4 +99,27 @@ class StyleMapDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         hMap?.setMapStyle(styleOptions)
     }
 
+    /**
+     * set style ID
+     */
+    fun setStyleId(view: View?) {
+        val styleIdStr = edtStyleId.text.toString()
+        if (styleIdStr.isEmpty()) {
+            Toast.makeText(this, "Please make sure the style ID is edited", Toast.LENGTH_SHORT).show()
+            return
+        }
+        hMap?.setStyleId(styleIdStr)
+    }
+
+    /**
+     * set preview ID
+     */
+    fun setPreviewId(view: View?) {
+        val previewIdStr = edtPreviewId.text.toString()
+        if (previewIdStr.isEmpty()) {
+            Toast.makeText(this, "Please make sure the preview ID is edited", Toast.LENGTH_SHORT).show()
+            return
+        }
+        hMap?.previewId(previewIdStr)
+    }
 }

@@ -16,6 +16,8 @@
 
 package com.huawei.hms.maps.sample.utils;
 
+import android.text.TextUtils;
+
 public class CheckUtils {
     public static boolean isNumber(String value) {
         return isInteger(value) || isDouble(value);
@@ -49,7 +51,7 @@ public class CheckUtils {
     }
 
     public static boolean checkIsEdit(String string) {
-        return ((string.length() == 0) || (string.isEmpty()) || (string == null) || ("".equals(string)));
+        return TextUtils.isEmpty(string);
     }
 
     public static boolean checkIsRight(String string) {

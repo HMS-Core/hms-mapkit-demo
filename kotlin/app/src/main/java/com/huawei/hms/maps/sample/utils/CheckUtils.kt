@@ -23,7 +23,7 @@ object CheckUtils {
     /**
      * Check whether the character string is an integer.
      */
-    private fun isInteger(value: String): Boolean {
+    fun isInteger(value: String): Boolean {
         return try {
             value.toInt()
             true

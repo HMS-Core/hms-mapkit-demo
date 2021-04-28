@@ -22,6 +22,7 @@ package com.huawei.hms.maps.sample
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -32,6 +33,8 @@ import com.huawei.hms.maps.HuaweiMap
 import com.huawei.hms.maps.OnMapReadyCallback
 import com.huawei.hms.maps.SupportMapFragment
 import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight
+import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit
+import com.huawei.hms.maps.sample.utils.CheckUtils.isInteger
 import com.huawei.hms.maps.sample.utils.MapUtils
 
 /**
@@ -53,6 +56,10 @@ class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var minZoomlevel: EditText
     private lateinit var maxZoomlevel: EditText
     private lateinit var text: TextView
+    private lateinit var logoPaddingStart: EditText
+    private lateinit var logoPaddingTop: EditText
+    private lateinit var logoPaddingEnd: EditText
+    private lateinit var logoPaddingBottom: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +73,10 @@ class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         text = findViewById(R.id.founctionsshow)
         minZoomlevel = findViewById(R.id.minZoomlevel)
         maxZoomlevel = findViewById(R.id.maxZoomlevel)
+        logoPaddingStart = findViewById(R.id.logo_padding_start)
+        logoPaddingTop = findViewById(R.id.logo_padding_top)
+        logoPaddingEnd = findViewById(R.id.logo_padding_end)
+        logoPaddingBottom = findViewById(R.id.logo_padding_bottom)
     }
 
     override fun onMapReady(paramHuaweiMap: HuaweiMap) {
@@ -200,7 +211,7 @@ class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         val bottomString = bottom.text.toString().trim()
         if (leftString.isEmpty() || topString.isEmpty() || rightString.isEmpty() || bottomString.isEmpty()) {
         } else {
-            if (!checkIsRight(leftString) || !checkIsRight(topString) || !checkIsRight(rightString) || !checkIsRight(bottomString)) {
+            if (!isInteger(leftString) || !isInteger(topString) || !isInteger(rightString) || !isInteger(bottomString)) {
                 Toast.makeText(this, "Please make sure the padding value is right", Toast.LENGTH_SHORT).show()
             } else {
                 hMap?.setPadding(Integer.valueOf(left.text.toString()),
@@ -208,5 +219,58 @@ class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                         Integer.valueOf(bottom.text.toString()))
             }
         }
+    }
+
+    /**
+     * Setting the logo position: Gravity.BOTTOM | Gravity.START
+     */
+    fun setLogoBottomStart(view: View?) {
+        hMap?.uiSettings?.setLogoPosition(Gravity.BOTTOM or Gravity.START)
+    }
+
+    /**
+     * Setting the logo position: Gravity.BOTTOM | Gravity.END
+     */
+    fun setLogoBottomEnd(view: View?) {
+        hMap?.uiSettings?.setLogoPosition(Gravity.BOTTOM or Gravity.END)
+    }
+
+    /**
+     * Setting the logo position: Gravity.TOP | Gravity.START
+     */
+    fun setLogoTopStart(view: View?) {
+        hMap?.uiSettings?.setLogoPosition(Gravity.TOP or Gravity.START)
+    }
+
+    /**
+     * Setting the logo position: Gravity.TOP | Gravity.END
+     */
+    fun setLogoTopEnd(view: View?) {
+        hMap?.uiSettings?.setLogoPosition(Gravity.TOP or Gravity.END)
+    }
+
+    /**
+     * Setting the logo padding
+     */
+    fun setLogoPadding(view: View?) {
+        val paddingStartString = logoPaddingStart.text.toString().trim()
+        val paddingTopString = logoPaddingTop.text.toString().trim()
+        val paddingEndString = logoPaddingEnd.text.toString().trim()
+        val paddingBottomString = logoPaddingBottom.text.toString().trim()
+        if (checkIsEdit(paddingStartString) || checkIsEdit(paddingTopString) || checkIsEdit(paddingEndString)
+                || checkIsEdit(paddingBottomString)) {
+            Toast.makeText(this, "Please make sure these padding are Edited", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (!isInteger(paddingStartString) || !isInteger(paddingTopString) || !isInteger(paddingEndString)
+                || !isInteger(paddingBottomString)) {
+            Toast.makeText(this, "Please make sure these padding are right", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val paddingStart = paddingStartString.toInt()
+        val paddingTop = paddingTopString.toInt()
+        val paddingEnd = paddingEndString.toInt()
+        val paddingBottom = paddingBottomString.toInt()
+        hMap?.uiSettings?.setLogoPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
     }
 }

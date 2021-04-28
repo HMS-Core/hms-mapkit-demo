@@ -45,7 +45,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.huawei.hms:maps:5.2.0.302'
+    implementation 'com.huawei.hms:maps:5.3.0.300'
     implementation 'com.squareup.okhttp3:okhttp:3.5.0'
 
 }
