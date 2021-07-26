@@ -39,7 +39,7 @@ In Android Studio, use the "Open an existing Android Studio project", and select
 
 You can use the "gradlew build" command to build the project directly.
 
-You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project(Note: The ApiKey needs to be configured for the com/huawei/hms/maps/sample/utils/NetClient.java file separately). You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/android-sdk-config-agc-0000001061560289) guide to configure app in AppGallery Connect.
+You should create an app in AppGallery Connect, and obtain the file of agconnect-services.json and add to the project. You should also generate a signing certificate fingerprint  and add the certificate file to the project, and add configuration to build.gradle. See the [Configuring App Information in AppGallery Connect](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/android-sdk-config-agc-0000001061560289) guide to configure app in AppGallery Connect.
 
 
 For more development details, please refer to the following link:
