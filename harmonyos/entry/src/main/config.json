@@ -1,0 +1,72 @@
+{
+  "app": {
+    "bundleName": "com.huawei.harmony.hms.maps.demo",
+    "vendor": "huawei",
+    "version": {
+      "code": 1000000,
+      "name": "1.0"
+    },
+    "apiVersion": {
+      "compatible": 3,
+      "target": 3
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.huawei.harmony.hms.maps.demo",
+    "name": ".MyApplication",
+    "deviceType": [
+      "phone",
+      "wearable"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "name": "com.huawei.harmony.hms.maps.demo.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:app_name",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ],
+    "allowClassMap": true,
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "access internet",
+        "usedScene": {
+          "ability": [
+            "com.huawei.harmony.hms.maps.demo.MainAbility"
+          ],
+          "when": "always"
+        }
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "reason": "GET_NETWORK_INFO",
+        "usedScene": {
+          "ability": [
+            "com.huawei.harmony.hms.maps.demo.MainAbility"
+          ],
+          "when": "always"
+        }
+      }
+    ]
+  }
+}

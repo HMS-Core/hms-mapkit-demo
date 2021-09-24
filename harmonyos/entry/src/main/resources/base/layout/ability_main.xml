@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:width="match_parent"
+    ohos:height="match_parent">
+
+    <ScrollView
+        ohos:id="$+id:scrollview"
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:background_element="#FFDEAD"
+        ohos:bottom_padding="16vp"
+        ohos:layout_alignment="horizontal_center">
+
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent">
+
+            <Button
+                ohos:id="$+id:button_toMapViewCameraDemo"
+                ohos:width="match_parent"
+                ohos:height="match_parent"
+                ohos:layout_alignment="center"
+                ohos:text="MapViewCamera"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
+                ohos:id="$+id:button_toLiteModeDemo"
+                ohos:width="match_parent"
+                ohos:height="match_content"
+                ohos:layout_alignment="center"
+                ohos:text="LiteModeDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
+                ohos:id="$+id:button_toMapTypeDemo"
+                ohos:width="match_parent"
+                ohos:height="match_content"
+                ohos:layout_alignment="center"
+                ohos:text="MapTypeDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
+                ohos:id="$+id:button_toCircleDemo"
+                ohos:width="match_parent"
+                ohos:height="match_content"
+                ohos:layout_alignment="center"
+                ohos:text="CircleDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
+                ohos:id="$+id:button_toPolylineDemo"
+                ohos:width="match_parent"
+                ohos:height="match_content"
+                ohos:layout_alignment="center"
+                ohos:text="PolylineDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
+                ohos:id="$+id:button_toPolygonDemo"
+                ohos:width="match_parent"
+                ohos:height="match_content"
+                ohos:layout_alignment="center"
+                ohos:text="PolygonDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
+                ohos:id="$+id:button_toMarkerDemo"
+                ohos:width="match_parent"
+                ohos:height="match_content"
+                ohos:layout_alignment="center"
+                ohos:text="MarkerDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+        </DirectionalLayout>
+
+    </ScrollView>
+
+</DirectionalLayout>
