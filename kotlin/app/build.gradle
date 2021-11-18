@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.huawei.agconnect'
+
 android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.0"
+    compileSdkVersion 30
+    buildToolsVersion = "30.0.3"
+	
     defaultConfig {
         applicationId "com.huawei.hms.maps.sample"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -42,16 +44,18 @@ android {
             }
 
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.huawei.hms:maps:6.0.0.301'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.huawei.hms:maps:6.2.0.301'
     implementation 'com.squareup.okhttp3:okhttp:3.5.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-}
-repositories {
-    mavenCentral()
 }

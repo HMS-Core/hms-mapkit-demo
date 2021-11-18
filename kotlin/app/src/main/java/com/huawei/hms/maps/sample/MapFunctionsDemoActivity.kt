@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
  *                  Huawei Technologies Co., Ltd.
  *
  */
+
 package com.huawei.hms.maps.sample
 
 import android.annotation.SuppressLint
@@ -132,7 +133,7 @@ class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Turn on the 3D switch
      */
-    fun Set3DMode(view: View?) {
+    fun set3DMode(view: View?) {
         hMap?.isBuildingsEnabled = !hMap?.isBuildingsEnabled!!
     }
 

@@ -1,17 +1,20 @@
 /*
- * Copyright 2019 Square, Inc.
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
-
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ *  2020.1.3-Changed modify the import classes type and add some camera events.
+ *                  Huawei Technologies Co., Ltd.
  *
  */
 
@@ -38,8 +41,10 @@ public class NetworkRequestManager {
     private static final int MAX_TIMES = 10;
 
     /**
-     * @param latLng1 origin latitude and longitude
-     * @param latLng2 destination latitude and longitude
+     * Obtaining the Results of Walking Path Planning
+     *
+     * @param latLng1  origin latitude and longitude
+     * @param latLng2  destination latitude and longitude
      * @param listener network listener
      */
     public static void getWalkingRoutePlanningResult(final LatLng latLng1, final LatLng latLng2,
@@ -48,10 +53,12 @@ public class NetworkRequestManager {
     }
 
     /**
-     * @param latLng1 origin latitude and longitude
-     * @param latLng2 destination latitude and longitude
-     * @param listener network listener
-     * @param count last number of retries
+     * Obtaining the Results of Walking Path Planning
+     *
+     * @param latLng1    origin latitude and longitude
+     * @param latLng2    destination latitude and longitude
+     * @param listener   network listener
+     * @param count      last number of retries
      * @param needEncode dose the api key need to be encoded
      */
     private static void getWalkingRoutePlanningResult(final LatLng latLng1, final LatLng latLng2,
@@ -105,8 +112,10 @@ public class NetworkRequestManager {
     }
 
     /**
-     * @param latLng1 origin latitude and longitude
-     * @param latLng2 destination latitude and longitude
+     * Obtaining the Results of Bicycling Path Planning
+     *
+     * @param latLng1  origin latitude and longitude
+     * @param latLng2  destination latitude and longitude
      * @param listener network listener
      */
     public static void getBicyclingRoutePlanningResult(final LatLng latLng1, final LatLng latLng2,
@@ -115,10 +124,12 @@ public class NetworkRequestManager {
     }
 
     /**
-     * @param latLng1 origin latitude and longitude
-     * @param latLng2 destination latitude and longitude
-     * @param listener network listener
-     * @param count last number of retries
+     * Obtaining the Results of Bicycling Path Planning
+     *
+     * @param latLng1    origin latitude and longitude
+     * @param latLng2    destination latitude and longitude
+     * @param listener   network listener
+     * @param count      last number of retries
      * @param needEncode dose the api key need to be encoded
      */
     private static void getBicyclingRoutePlanningResult(final LatLng latLng1, final LatLng latLng2,
@@ -174,8 +185,10 @@ public class NetworkRequestManager {
     }
 
     /**
-     * @param latLng1 origin latitude and longitude
-     * @param latLng2 destination latitude and longitude
+     * Obtaining the Results of Driving Path Planning
+     *
+     * @param latLng1  origin latitude and longitude
+     * @param latLng2  destination latitude and longitude
      * @param listener network listener
      */
     public static void getDrivingRoutePlanningResult(final LatLng latLng1, final LatLng latLng2,
@@ -184,10 +197,12 @@ public class NetworkRequestManager {
     }
 
     /**
-     * @param latLng1 origin latitude and longitude
-     * @param latLng2 destination latitude and longitude
-     * @param listener network listener
-     * @param count last number of retries
+     * Obtaining the Results of Driving Path Planning
+     *
+     * @param latLng1    origin latitude and longitude
+     * @param latLng2    destination latitude and longitude
+     * @param listener   network listener
+     * @param count      last number of retries
      * @param needEncode dose the api key need to be encoded
      */
     private static void getDrivingRoutePlanningResult(final LatLng latLng1, final LatLng latLng2,

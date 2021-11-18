@@ -102,6 +102,9 @@
         <activity
             android:name=".RoutePlanningDemoActivity"
             android:label="RoutePlanningDemo" />
+        <activity
+            android:name=".HeatMapDemoActivity"
+            android:label="HeatMapDemo" />
 
         <meta-data
             android:name="com.huawei.hms.client.channel.androidMarket"

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,28 +85,34 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Set map zoom button available
+     *
+     * @param view view
      */
-    public void setZoomButtonsEnabled(View v) {
+    public void setZoomButtonsEnabled(View view) {
         if (!checkReady()) {
             return;
         }
-        mUiSettings.setZoomControlsEnabled(((CheckBox) v).isChecked());
+        mUiSettings.setZoomControlsEnabled(((CheckBox) view).isChecked());
     }
 
     /**
      * Set compass available
+     *
+     * @param view view
      */
-    public void setCompassEnabled(View v) {
+    public void setCompassEnabled(View view) {
         if (!checkReady()) {
             return;
         }
-        mUiSettings.setCompassEnabled(((CheckBox) v).isChecked());
+        mUiSettings.setCompassEnabled(((CheckBox) view).isChecked());
     }
 
     /**
      * Set my location button is available
+     *
+     * @param view view
      */
-    public void setMyLocationButtonEnabled(View v) {
+    public void setMyLocationButtonEnabled(View view) {
         if (!checkReady()) {
             return;
         }
@@ -129,8 +135,10 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Set my location layer available
+     *
+     * @param view view
      */
-    public void setMyLocationLayerEnabled(View v) {
+    public void setMyLocationLayerEnabled(View view) {
         if (!checkReady()) {
             return;
         }
@@ -144,41 +152,49 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Set scroll gestures available
+     *
+     * @param view view
      */
-    public void setScrollGesturesEnabled(View v) {
+    public void setScrollGesturesEnabled(View view) {
         if (!checkReady()) {
             return;
         }
-        mUiSettings.setScrollGesturesEnabled(((CheckBox) v).isChecked());
+        mUiSettings.setScrollGesturesEnabled(((CheckBox) view).isChecked());
     }
 
     /**
      * Set zoom gestures available
+     *
+     * @param view view
      */
-    public void setZoomGesturesEnabled(View v) {
+    public void setZoomGesturesEnabled(View view) {
         if (!checkReady()) {
             return;
         }
-        mUiSettings.setZoomGesturesEnabled(((CheckBox) v).isChecked());
+        mUiSettings.setZoomGesturesEnabled(((CheckBox) view).isChecked());
     }
 
     /**
      * Set tilt gestures available
+     *
+     * @param view view
      */
-    public void setTiltGesturesEnabled(View v) {
+    public void setTiltGesturesEnabled(View view) {
         if (!checkReady()) {
             return;
         }
-        mUiSettings.setTiltGesturesEnabled(((CheckBox) v).isChecked());
+        mUiSettings.setTiltGesturesEnabled(((CheckBox) view).isChecked());
     }
 
     /**
      * Set the rotation gesture available
+     *
+     * @param view view
      */
-    public void setRotateGesturesEnabled(View v) {
+    public void setRotateGesturesEnabled(View view) {
         if (!checkReady()) {
             return;
         }
-        mUiSettings.setRotateGesturesEnabled(((CheckBox) v).isChecked());
+        mUiSettings.setRotateGesturesEnabled(((CheckBox) view).isChecked());
     }
 }

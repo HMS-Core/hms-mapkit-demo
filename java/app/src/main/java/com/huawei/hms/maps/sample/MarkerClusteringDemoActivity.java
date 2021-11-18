@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,6 +78,8 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
 
     /**
      * Add marker to the map
+     *
+     * @param view view
      */
     public void addMarkers(View view) {
         if (null == hMap) {
@@ -94,7 +96,9 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
         } catch (JSONException e) {
             Log.e(TAG, "JSONException.");
         }
-
+        if (markerOptionsList == null) {
+            return;
+        }
         for (MarkerOptions item : markerOptionsList) {
             hMap.addMarker(item);
         }
@@ -103,6 +107,8 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
 
     /**
      * enable clustering
+     *
+     * @param view view
      */
     public void enableMarkerClustering(View view) {
         if (null != hMap) {
@@ -112,6 +118,8 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
 
     /**
      * enable clustering
+     *
+     * @param view view
      */
     public void disableMarkerClustering(View view) {
         if (null != hMap) {
@@ -121,6 +129,8 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
 
     /**
      * clear map
+     *
+     * @param view view
      */
     public void clearMap(View view) {
         if (null != hMap) {
@@ -131,6 +141,8 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
 
     /**
      * set default
+     *
+     * @param view view
      */
     public void resetMarkerCluster(View view) {
         if (null != hMap) {
@@ -140,6 +152,8 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
 
     /**
      * set marker cluster icon
+     *
+     * @param view view
      */
     public void setMarkerClusterIcon(View view) {
         if (null != hMap) {
@@ -149,6 +163,8 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
 
     /**
      * set marker cluster text color
+     *
+     * @param view view
      */
     public void setMarkerClusterTextColor(View view) {
         if (null != hMap) {
@@ -158,6 +174,8 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
 
     /**
      * set marker cluster color
+     *
+     * @param view view
      */
     public void setMarkerClusterColor(View view) {
         if (null != hMap) {

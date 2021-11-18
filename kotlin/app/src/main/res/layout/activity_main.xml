@@ -143,6 +143,14 @@
                 android:textAllCaps="false" />
 
             <Button
+                android:id="@+id/HeatMapDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="HeatMapDemo"
+                android:textAllCaps="false" />
+
+            <Button
                 android:id="@+id/RoutePlanningDemo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -69,8 +69,8 @@
                     android:id="@+id/Set3DMode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="Set3DMode"
-                    android:text="Set3DMode"
+                    android:onClick="set3DMode"
+                    android:text="set3DMode"
                     android:textAllCaps="false" />
             </LinearLayout>
 

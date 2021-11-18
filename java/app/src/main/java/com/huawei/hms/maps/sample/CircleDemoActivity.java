@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -93,6 +93,8 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * remove the circle
+     *
+     * @param view view
      */
     public void removeCircle(View view) {
         if (null != mCircle) {
@@ -102,6 +104,8 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * add a circle on the map
+     *
+     * @param view view
      */
     public void addCircle(View view) {
         if (null == hMap) {
@@ -119,8 +123,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Set the center of the circle
+     *
+     * @param view view
      */
-    public void setCenter(View v) {
+    public void setCenter(View view) {
         if (null != mCircle) {
             LatLng center = null;
             if (!TextUtils.isEmpty(centerLatitude.getText()) && !TextUtils.isEmpty(centerLongtitude.getText())) {
@@ -139,8 +145,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Get the center coordinates
+     *
+     * @param view view
      */
-    public void getCenter(View v) {
+    public void getCenter(View view) {
         if (null != mCircle) {
             circleShown.setText("Circle center is " + mCircle.getCenter().toString());
         }
@@ -148,8 +156,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Set the radius of the circle
+     *
+     * @param view view
      */
-    public void setRadius(View v) {
+    public void setRadius(View view) {
         if (null != mCircle) {
             String radius = circleRadius.getText().toString().trim();
             if (checkIsEdit(radius)) {
@@ -170,8 +180,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Get the radius of the circle
+     *
+     * @param view view
      */
-    public void getRadius(View v) {
+    public void getRadius(View view) {
         if (null != mCircle) {
             circleShown.setText("Circle radius is " + mCircle.getRadius());
         }
@@ -179,8 +191,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Get the fill color of the circle
+     *
+     * @param view view
      */
-    public void setFillColor(View v) {
+    public void setFillColor(View view) {
         if (null != mCircle) {
             mCircle.setFillColor(Color.RED);
         }
@@ -188,8 +202,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Set the fill color of the circle
+     *
+     * @param view view
      */
-    public void getFillColor(View v) {
+    public void getFillColor(View view) {
         if (null != mCircle) {
             circleShown.setText("Circle fill color is " + Integer.toHexString(mCircle.getFillColor()));
         }
@@ -197,7 +213,7 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     boolean flag = false;
 
-    public void setStokeColor(View v) {
+    public void setStokeColor(View view) {
         if (null != mCircle) {
             if (flag) {
                 mCircle.setStrokeColor(Color.RED);
@@ -211,8 +227,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Get the outline color of the circle
+     *
+     * @param view view
      */
-    public void getStokeColor(View v) {
+    public void getStokeColor(View view) {
         if (null != mCircle) {
             circleShown.setText("Circle stroke color is " + Integer.toHexString(mCircle.getStrokeColor()));
         }
@@ -220,8 +238,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Set the outline width of the circle
+     *
+     * @param view view
      */
-    public void setWidth(View v) {
+    public void setWidth(View view) {
         if (null != mCircle) {
             String width = circleStokeWidth.getText().toString().trim();
             if (checkIsEdit(width)) {
@@ -243,8 +263,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Get the outline width of the circle
+     *
+     * @param view view
      */
-    public void getWidth(View v) {
+    public void getWidth(View view) {
         if (null != mCircle) {
             circleShown.setText("Circle stroke width is " + mCircle.getStrokeWidth());
         }
@@ -252,8 +274,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Set the tag of the circle
+     *
+     * @param view view
      */
-    public void setTag(View v) {
+    public void setTag(View view) {
         if (null != mCircle) {
             String tag = circleTag.getText().toString().trim();
             if (checkIsEdit(tag)) {
@@ -266,8 +290,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Get the tag of the circle
+     *
+     * @param view view
      */
-    public void getTag(View v) {
+    public void getTag(View view) {
         if (null != mCircle) {
             circleShown.setText(String.valueOf(mCircle.getTag()));
         }
@@ -275,8 +301,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Set click event for circle
+     *
+     * @param view view
      */
-    public void addClickEvent(View v) {
+    public void addClickEvent(View view) {
         if (null != mCircle) {
             hMap.setOnCircleClickListener(new HuaweiMap.OnCircleClickListener() {
                 @Override
@@ -291,8 +319,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Set the circle clickable to true
+     *
+     * @param view view
      */
-    public void setClickableTrue(View v) {
+    public void setClickableTrue(View view) {
         if (null != mCircle) {
             mCircle.setClickable(true);
         }
@@ -300,8 +330,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     /**
      * Set the circle clickable to false
+     *
+     * @param view view
      */
-    public void setClickableFalse(View v) {
+    public void setClickableFalse(View view) {
         if (null != mCircle) {
             mCircle.setClickable(false);
         }

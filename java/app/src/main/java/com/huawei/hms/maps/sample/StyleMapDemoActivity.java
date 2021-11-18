@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,6 +91,8 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * set map style:night
+     *
+     * @param view view
      */
     public void setNightStyle(View view) {
         MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_night_hms);
@@ -99,6 +101,8 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * set map style:grayscale
+     *
+     * @param view view
      */
     public void setGrayscaleStyle(View view) {
         MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_grayscale_hms);
@@ -107,6 +111,8 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * set map style:retro
+     *
+     * @param view view
      */
     public void setRetroStyle(View view) {
         MapStyleOptions styleOptions = MapStyleOptions.loadRawResourceStyle(this, R.raw.mapstyle_retro_hms);
@@ -115,6 +121,8 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * set style ID
+     *
+     * @param view view
      */
     public void setStyleId(View view) {
         String styleIdStr = edtStyleId.getText().toString();
@@ -129,6 +137,8 @@ public class StyleMapDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * set preview ID
+     *
+     * @param view view
      */
     public void setPreviewId(View view) {
         String previewIdStr = edtPreviewId.getText().toString();

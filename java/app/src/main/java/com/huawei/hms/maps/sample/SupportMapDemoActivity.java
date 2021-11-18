@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SupportMapDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "SupportMapDemoActivity";
 
-    private static final LatLng Beijing = new LatLng(48.893478, 2.334595);
+    private static final LatLng BEIJING = new LatLng(48.893478, 2.334595);
 
-    private static final LatLng Shanghai = new LatLng(48.7, 2.12);
+    private static final LatLng SHANGHAI = new LatLng(48.7, 2.12);
 
     private HuaweiMap hMap;
 
@@ -73,19 +73,14 @@ public class SupportMapDemoActivity extends AppCompatActivity implements OnMapRe
         hMap = map;
         hMap.getUiSettings().setCompassEnabled(true);
         hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 14));
-        hMap.setOnMapLongClickListener(new HuaweiMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                Log.d(TAG, "onMapLongClick: latLng " + " please input latLng");
-            }
-        });
+        hMap.setOnMapLongClickListener(latLng -> Log.d(TAG, "onMapLongClick: latLng " + " please input latLng"));
     }
 
     public void addMarker(View view) {
         if (mBeijing == null && mShanghai == null) {
             // Uses a colored icon.
-            mBeijing = hMap.addMarker(new MarkerOptions().position(Beijing).title("Beijing").clusterable(true));
-            mShanghai = hMap.addMarker(new MarkerOptions().position(Shanghai)
+            mBeijing = hMap.addMarker(new MarkerOptions().position(BEIJING).title("Beijing").clusterable(true));
+            mShanghai = hMap.addMarker(new MarkerOptions().position(SHANGHAI)
                 .alpha(0.8f)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.badge_ph)));
         }

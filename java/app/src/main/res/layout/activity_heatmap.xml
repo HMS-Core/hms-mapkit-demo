@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/mapfragment_heatmapdemo"
+        android:name="com.huawei.hms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/layoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addHeatMap"
+            android:text="addHeatMap"
+            android:textSize="12sp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:onClick="removeHeatMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="remove"
+            android:textSize="12sp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:onClick="changeColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="changeColor"
+            android:textSize="12sp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:onClick="changeData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="changeData"
+            android:textSize="12sp"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/layoutButton"
+        android:id="@+id/layoutSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="透明度"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/OpacitySeekBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="opacity" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="半径"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/RadiusSeekBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="radius" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="强度"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/IntensitySeekBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="intensity" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/layoutSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setHeatMapVisible"
+            android:text="setHeatMapVisible"
+            android:textSize="12sp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="setHeatMapRadiusUnit"
+            android:text="setHeatMapRadiusUnit"
+            android:textSize="12sp"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</RelativeLayout>

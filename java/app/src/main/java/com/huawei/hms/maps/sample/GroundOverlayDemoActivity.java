@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,7 @@ import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.LatLngBounds;
 import com.huawei.hms.maps.sample.utils.MapUtils;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -59,6 +60,7 @@ import androidx.core.content.res.ResourcesCompat;
 /**
  * about groundOverlay
  */
+@SuppressLint("LongLogTag")
 public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "GroundOverlayDemoActivity";
 
@@ -119,6 +121,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Create a GroundOverlay using the images in the assets directory
+     *
+     * @param view view
      */
     public void addFromAsset(View view) {
         if (hMap == null) {
@@ -139,6 +143,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Create a GroundOverlay using the resources of the bitmap image
+     *
+     * @param view view
      */
     public void addFromResource(View view) {
         if (hMap == null) {
@@ -159,6 +165,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Create GroundOverlay
+     *
+     * @param view view
      */
     public void addFromBitmap(View view) {
         if (hMap == null) {
@@ -185,6 +193,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Create GroundOverlay
+     *
+     * @param view view
      */
     public void addFromFile(View view) {
         if (hMap == null) {
@@ -226,6 +236,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Create GroundOverlay
+     *
+     * @param view view
      */
     public void addFromPath(View view) {
         if (hMap == null) {
@@ -235,7 +247,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         if (null != overlay) {
             overlay.remove();
         }
-        String path = "/data/data/com.huawei.hms.maps.demo/niuyouguo.jpg";
+        String path = getString(R.string.file_path);
         FileOutputStream out = null;
         try {
             Bitmap bitmap = BitmapFactory.decodeStream(getAssets().open("images/niuyouguo.jpg"));
@@ -271,6 +283,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Remove the Groudoverlay
+     *
+     * @param view view
      */
     public void removeGroundOverlay(View view) {
         Log.d(TAG, "removeGroudoverlay: ");
@@ -281,6 +295,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Get the properties of the GroundOverlay
+     *
+     * @param view view
      */
     public void getAttributes(View view) {
         if (null != overlay) {
@@ -308,6 +324,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Set the scope of GroundOverlay
+     *
+     * @param view view
      */
     public void setPointsBy2Points(View view) {
         if (null != overlay) {
@@ -345,6 +363,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Get the scope of GroundOverlay
+     *
+     * @param view view
      */
     public void getPointsBy2Points(View view) {
         if (null != overlay) {
@@ -358,6 +378,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Set the height and width of the GroundOverlay
+     *
+     * @param view view
      */
     public void setPointsBy1PointsWidthHeight(View view) {
         if (null != overlay) {
@@ -400,6 +422,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Set the height, width, and position of the GroundOverlay
+     *
+     * @param view view
      */
     public void getPointsBy1PointsWidthHeight(View view) {
         if (null != overlay) {
@@ -418,6 +442,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Change the image of GroundOverlay
+     *
+     * @param view view
      */
     public void setImage(View view) {
         if (null != overlay) {
@@ -427,8 +453,10 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Get the tag of GroundOverlay
+     *
+     * @param view view
      */
-    public void getTag(View v) {
+    public void getTag(View view) {
         if (null != overlay) {
             groundOverlayShown.setText("Overlay tag is " + overlay.getTag());
         }
@@ -436,8 +464,10 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Set the tag of GroundOverlay
+     *
+     * @param view view
      */
-    public void setTag(View v) {
+    public void setTag(View view) {
         if (null != overlay) {
             String tag = groundOverlayTag.getText().toString().trim();
             if (checkIsEdit(tag)) {
@@ -450,6 +480,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Set GroundOverlay visible
+     *
+     * @param view view
      */
     public void setVisibleTrue(View view) {
         if (null != overlay) {
@@ -459,6 +491,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     /**
      * Setting GroundOverlay is not visible
+     *
+     * @param view view
      */
     public void setVisibleFalse(View view) {
         if (null != overlay) {

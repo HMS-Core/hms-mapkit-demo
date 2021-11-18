@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,9 @@ import com.huawei.hms.maps.OnMapReadyCallback;
 import com.huawei.hms.maps.SupportMapFragment;
 import com.huawei.hms.maps.sample.utils.MapUtils;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -47,6 +49,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * Basical functions
  */
+@SuppressLint("LongLogTag")
 public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "MapFunctionsDemoActivity";
 
@@ -74,7 +77,7 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     private EditText logoPaddingBottom;
 
-    private TextView text;
+    private TextView textView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,7 +90,7 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         right = findViewById(R.id.paddingright);
         top = findViewById(R.id.paddingtop);
         bottom = findViewById(R.id.paddingbottom);
-        text = findViewById(R.id.founctionsshow);
+        textView = findViewById(R.id.founctionsshow);
         minZoomlevel = findViewById(R.id.minZoomlevel);
         maxZoomlevel = findViewById(R.id.maxZoomlevel);
         logoPaddingStart = findViewById(R.id.logo_padding_start);
@@ -106,33 +109,41 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Get the maximum zoom level parameter
+     *
+     * @param view view
      */
     public void getMaxZoomLevel(View view) {
         if (null != hMap) {
-            text.setText(String.valueOf(hMap.getMaxZoomLevel()));
+            textView.setText(String.valueOf(hMap.getMaxZoomLevel()));
         }
     }
 
     /**
      * Get the minimum zoom level parameter
+     *
+     * @param view view
      */
     public void getMinZoomLevel(View view) {
         if (null != hMap) {
-            text.setText(String.valueOf(hMap.getMinZoomLevel()));
+            textView.setText(String.valueOf(hMap.getMinZoomLevel()));
         }
     }
 
     /**
      * Get map type
+     *
+     * @param view view
      */
     public void getMapType(View view) {
         if (null != hMap) {
-            text.setText((hMap.getMapType() == MapUtils.MAP_TYPE_NONE) ? "MAP_TYPE_NONE" : "MAP_TYPE_NORMAL");
+            textView.setText((hMap.getMapType() == MapUtils.MAP_TYPE_NONE) ? "MAP_TYPE_NONE" : "MAP_TYPE_NORMAL");
         }
     }
 
     /**
      * Set map type
+     *
+     * @param view view
      */
     public void setMapType(View view) {
         if (null != hMap) {
@@ -148,17 +159,21 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Get 3D mode settings
+     *
+     * @param view view
      */
     public void is3DMode(View view) {
         if (null != hMap) {
-            text.setText(String.valueOf(hMap.isBuildingsEnabled()));
+            textView.setText(String.valueOf(hMap.isBuildingsEnabled()));
         }
     }
 
     /**
      * Turn on the 3D switch
+     *
+     * @param view view
      */
-    public void Set3DMode(View view) {
+    public void set3DMode(View view) {
         if (null != hMap) {
             if (hMap.isBuildingsEnabled()) {
                 hMap.setBuildingsEnabled(false);
@@ -170,24 +185,26 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Set the maximum value of the desired camera zoom level
+     *
+     * @param view view
      */
     public void setMaxZoomPreference(View view) {
         String text = maxZoomlevel.getText().toString();
-        if ((text.trim().length() == 0) || (text.trim().isEmpty()) || (text == null) || ("".equals(text))) {
+        if (TextUtils.isEmpty(text)) {
             Toast.makeText(this, "Please make sure the maxZoom is Edited", Toast.LENGTH_SHORT).show();
         } else {
             if (!checkIsRight(text.trim())) {
                 Toast.makeText(this, "Please make sure the maxZoom is right", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (Float.valueOf(text.trim()) > MapUtils.MAX_ZOOM_LEVEL
-                || Float.valueOf(text.trim()) < MapUtils.MIN_ZOOM_LEVEL) {
+            if (Float.parseFloat(text.trim()) > MapUtils.MAX_ZOOM_LEVEL
+                || Float.parseFloat(text.trim()) < MapUtils.MIN_ZOOM_LEVEL) {
                 Toast
                     .makeText(this, String.format(Locale.ENGLISH, "The zoom level ranges from %s to %s.",
                         MapUtils.MIN_ZOOM_LEVEL, MapUtils.MAX_ZOOM_LEVEL), Toast.LENGTH_SHORT)
                     .show();
             } else {
-                Float maxZoom = Float.valueOf(maxZoomlevel.getText().toString());
+                float maxZoom = Float.parseFloat(maxZoomlevel.getText().toString());
                 Log.i(TAG, "setMaxZoomPreference: " + maxZoom);
                 if (null != hMap) {
                     hMap.setMaxZoomPreference(maxZoom);
@@ -198,6 +215,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Test the maximum zoom parameter
+     *
+     * @param view view
      */
     public void testMaxZoom(View view) {
         CameraUpdate cameraUpdate = CameraUpdateFactory.zoomBy(1.0f);
@@ -208,25 +227,27 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Set the minimum value of the desired camera zoom level
+     *
+     * @param view view
      */
     public void setMinZoomPreference(View view) {
         String text = minZoomlevel.getText().toString();
-        if ((text.trim().length() == 0) || (text.trim().isEmpty()) || (text == null) || ("".equals(text))) {
+        if (TextUtils.isEmpty(text)) {
             Toast.makeText(this, "Please make sure the minZoom is Edited", Toast.LENGTH_SHORT).show();
         } else {
             if (!checkIsRight(text.trim())) {
                 Toast.makeText(this, "Please make sure the minZoom is right", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (Float.valueOf(text.trim()) > MapUtils.MAX_ZOOM_LEVEL
-                || Float.valueOf(text.trim()) < MapUtils.MIN_ZOOM_LEVEL) {
+            if (Float.parseFloat(text.trim()) > MapUtils.MAX_ZOOM_LEVEL
+                || Float.parseFloat(text.trim()) < MapUtils.MIN_ZOOM_LEVEL) {
                 Toast
                     .makeText(this, String.format(Locale.ENGLISH, "The zoom level ranges from %s to %s.",
                         MapUtils.MIN_ZOOM_LEVEL, MapUtils.MAX_ZOOM_LEVEL), Toast.LENGTH_SHORT)
                     .show();
             } else {
                 if (null != hMap) {
-                    hMap.setMinZoomPreference(Float.valueOf(minZoomlevel.getText().toString()));
+                    hMap.setMinZoomPreference(Float.parseFloat(minZoomlevel.getText().toString()));
                 }
             }
         }
@@ -234,6 +255,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Remove the previously set zoom level upper and lower boundary values
+     *
+     * @param view view
      */
     public void resetMinMaxZoomPreference(View view) {
         if (null != hMap) {
@@ -243,6 +266,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Set the map border fill width for the map
+     *
+     * @param view view
      */
     public void setPadding(View view) {
         String leftString = left.getText().toString();
@@ -250,21 +275,17 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         String rightString = right.getText().toString();
         String bottomString = bottom.getText().toString();
 
-        if ((leftString.trim().length() == 0) || (leftString.trim().isEmpty()) || (leftString == null)
-            || ("".equals(leftString)) || (topString.trim().length() == 0) || (topString.trim().isEmpty())
-            || (topString == null) || ("".equals(topString)) || (rightString.trim().length() == 0)
-            || (rightString.trim().isEmpty()) || (rightString == null) || ("".equals(rightString))
-            || (bottomString.trim().length() == 0) || (bottomString.trim().isEmpty()) || (bottomString == null)
-            || ("".equals(bottomString))) {
+        if (TextUtils.isEmpty(leftString) || TextUtils.isEmpty(topString) || TextUtils.isEmpty(rightString) || TextUtils.isEmpty(bottomString)) {
+            Toast.makeText(this, "Please make sure the padding value is Edited", Toast.LENGTH_SHORT).show();
         } else {
             if (!isInteger(leftString.trim()) || !isInteger(topString.trim()) || !isInteger(rightString.trim())
                 || !isInteger(bottomString.trim())) {
                 Toast.makeText(this, "Please make sure the padding value is right", Toast.LENGTH_SHORT).show();
             } else {
                 if (null != hMap) {
-                    hMap.setPadding(Integer.valueOf(left.getText().toString()),
-                        Integer.valueOf(top.getText().toString()), Integer.valueOf(right.getText().toString()),
-                        Integer.valueOf(bottom.getText().toString()));
+                    hMap.setPadding(Integer.parseInt(left.getText().toString()),
+                        Integer.parseInt(top.getText().toString()), Integer.parseInt(right.getText().toString()),
+                        Integer.parseInt(bottom.getText().toString()));
                 }
             }
         }
@@ -272,6 +293,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Setting the logo position: Gravity.BOTTOM | Gravity.START
+     *
+     * @param view view
      */
     public void setLogoBottomStart(View view) {
         if (null != hMap) {
@@ -281,6 +304,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Setting the logo position: Gravity.BOTTOM | Gravity.END
+     *
+     * @param view view
      */
     public void setLogoBottomEnd(View view) {
         if (null != hMap) {
@@ -290,6 +315,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Setting the logo position: Gravity.TOP | Gravity.START
+     *
+     * @param view view
      */
     public void setLogoTopStart(View view) {
         if (null != hMap) {
@@ -299,6 +326,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Setting the logo position: Gravity.TOP | Gravity.END
+     *
+     * @param view view
      */
     public void setLogoTopEnd(View view) {
         if (null != hMap) {
@@ -308,6 +337,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
 
     /**
      * Setting the logo padding
+     *
+     * @param view view
      */
     public void setLogoPadding(View view) {
         if (null != hMap) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
  *                  Huawei Technologies Co., Ltd.
  *
  */
+
 package com.huawei.hms.maps.sample
 
 import android.Manifest
@@ -71,6 +72,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.EventsDemo).setOnClickListener(this)
         findViewById<Button>(R.id.MapStyle).setOnClickListener(this)
         findViewById<Button>(R.id.LocationSourceDemo).setOnClickListener(this)
+        findViewById<Button>(R.id.HeatMapDemo).setOnClickListener(this)
         findViewById<Button>(R.id.RoutePlanningDemo).setOnClickListener(this)
     }
 
@@ -139,6 +141,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.MapStyle -> {
                 Log.i(TAG, "onClick: StyleMapDemo")
                 startActivity(Intent(this, StyleMapDemoActivity::class.java))
+            }
+            R.id.HeatMapDemo -> {
+                Log.i(TAG, "onClick: HeatMapDemo")
+                startActivity(Intent(this, HeatMapDemoActivity::class.java))
             }
             R.id.RoutePlanningDemo -> {
                 Log.i(TAG, "onClick: RoutePlanningDemo")

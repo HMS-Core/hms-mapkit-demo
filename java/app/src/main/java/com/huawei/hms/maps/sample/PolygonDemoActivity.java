@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,6 +89,8 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Add polygons to the map
+     *
+     * @param view view
      */
     public void addPolygon(View view) {
         if (null == hMap) {
@@ -111,6 +113,8 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Remove the polygon
+     *
+     * @param view view
      */
     public void removePolygon(View view) {
         if (null != mPolygon) {
@@ -120,8 +124,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Set the point position information of the polygon
+     *
+     * @param view view
      */
-    public void setPoints(View v) {
+    public void setPoints(View view) {
         if (null != mPolygon) {
             String latitude = oneLatitude.getText().toString().trim();
             String longtitude = oneLongtitude.getText().toString().trim();
@@ -141,8 +147,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Get the point position information of the polygon
+     *
+     * @param view view
      */
-    public void getPoints(View v) {
+    public void getPoints(View view) {
         if (null != mPolygon) {
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < mPolygon.getPoints().toArray().length; i++) {
@@ -154,8 +162,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Set the outline color of the polygon
+     *
+     * @param view view
      */
-    public void setStokeColor(View v) {
+    public void setStokeColor(View view) {
         if (null != mPolygon) {
             mPolygon.setStrokeColor(Color.YELLOW);
         }
@@ -163,8 +173,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Get the outline color of the polygon
+     *
+     * @param view view
      */
-    public void getStokeColor(View v) {
+    public void getStokeColor(View view) {
         if (null != mPolygon) {
             polygonShown.setText("Polygon color is " + Integer.toHexString(mPolygon.getStrokeColor()));
         }
@@ -172,8 +184,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Set the fill color of the polygon
+     *
+     * @param view view
      */
-    public void setFillColor(View v) {
+    public void setFillColor(View view) {
         if (null != mPolygon) {
             mPolygon.setFillColor(Color.CYAN);
         }
@@ -181,8 +195,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Get the fill color of the polygon
+     *
+     * @param view view
      */
-    public void getFillColor(View v) {
+    public void getFillColor(View view) {
         if (null != mPolygon) {
             polygonShown.setText("Polygon color is " + Integer.toHexString(mPolygon.getFillColor()));
         }
@@ -190,8 +206,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Set the tag of the polygon
+     *
+     * @param view view
      */
-    public void setTag(View v) {
+    public void setTag(View view) {
         if (null != mPolygon) {
             String tag = polygonTag.getText().toString().trim();
             if (checkIsEdit(tag)) {
@@ -204,8 +222,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Get the tag of the polygon
+     *
+     * @param view view
      */
-    public void getTag(View v) {
+    public void getTag(View view) {
         if (null != mPolygon) {
             polygonShown.setText(String.valueOf(mPolygon.getTag() == null ? "Tag is null" : mPolygon.getTag()));
         }
@@ -213,8 +233,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Add polygon click event
+     *
+     * @param view view
      */
-    public void addClickEvent(View v) {
+    public void addClickEvent(View view) {
         if (null != mPolygon) {
             hMap.setOnPolygonClickListener(new HuaweiMap.OnPolygonClickListener() {
                 @Override
@@ -227,8 +249,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Set polygons clickable
+     *
+     * @param view view
      */
-    public void setClickableTrue(View v) {
+    public void setClickableTrue(View view) {
         if (null != mPolygon) {
             mPolygon.setClickable(true);
         }
@@ -236,8 +260,10 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     /**
      * Set polygons are not clickable
+     *
+     * @param view view
      */
-    public void setClickableFalse(View v) {
+    public void setClickableFalse(View view) {
         if (null != mPolygon) {
             mPolygon.setClickable(false);
         }

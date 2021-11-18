@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,8 @@ public class BasicMapDemoActivity extends AppCompatActivity {
 
     /**
      * Start the createMapView activity
+     *
+     * @param view view
      */
     public void createMapView(View view) {
         Log.d(TAG, "createMapView: ");
@@ -50,6 +52,8 @@ public class BasicMapDemoActivity extends AppCompatActivity {
 
     /**
      * Start the createMapViewCode activity
+     *
+     * @param view view
      */
     public void createMapViewCode(View view) {
         Log.d(TAG, "createMapViewCode: ");
@@ -59,6 +63,8 @@ public class BasicMapDemoActivity extends AppCompatActivity {
 
     /**
      * Start the createMapFragment activity
+     *
+     * @param view view
      */
     public void createMapFragment(View view) {
         Log.d(TAG, "createMapFragment: ");
@@ -68,6 +74,8 @@ public class BasicMapDemoActivity extends AppCompatActivity {
 
     /**
      * Start the createMapFragmentCode activity
+     *
+     * @param view view
      */
     public void createMapFragmentCode(View view) {
         Log.d(TAG, "createMapFragmentCode: ");
@@ -77,6 +85,8 @@ public class BasicMapDemoActivity extends AppCompatActivity {
 
     /**
      * Start the createSupportMapFragment activity
+     *
+     * @param view view
      */
     public void createSupportMapFragment(View view) {
         Log.d(TAG, "createSupportMapFragment: ");
@@ -86,6 +96,8 @@ public class BasicMapDemoActivity extends AppCompatActivity {
 
     /**
      * Start the createSupportMapFragmentCode activity
+     *
+     * @param view view
      */
     public void createSupportMapFragmentCode(View view) {
         Log.d(TAG, "createSupportMapFragmentCode: ");

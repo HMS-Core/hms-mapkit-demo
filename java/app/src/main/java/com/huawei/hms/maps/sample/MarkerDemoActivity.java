@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -192,6 +192,9 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
             if (object instanceof TextView) {
                 titleView = (TextView) object;
             }
+            if (titleView == null) {
+                return;
+            }
             if (markerTitle == null) {
                 titleView.setText("");
             } else {
@@ -220,7 +223,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Add a marker to the map
      *
-     * @param view
+     * @param view view
      */
     public void addMarker(View view) {
         if (null == hMap) {
@@ -322,7 +325,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Remove the marker from the map
      *
-     * @param view
+     * @param view view
      */
     public void deleteMarker(View view) {
         if (null != mSerris) {
@@ -353,7 +356,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Set the tag attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     public void setTag(View view) {
         String tagStr = edtTag.getText().toString();
@@ -366,7 +369,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Set the snippet attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     public void setSnippet(View view) {
         String snippetStr = edtSnippet.getText().toString();
@@ -391,7 +394,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Set the marker to drag
      *
-     * @param view
+     * @param view view
      */
     public void dragMarker(View view) {
         if (null == mSerris) {
@@ -403,7 +406,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Set the icon attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     public void setMarkerIcon(View view) {
         if (null != mOrsay) {
@@ -417,7 +420,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Set the anchor attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     public void setMarkerAnchor(View view) {
         if (mParis != null) {
@@ -428,7 +431,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Get the latitude and longitude of the marker
      *
-     * @param view
+     * @param view view
      */
     public void getPosition(View view) {
         if (mParis != null) {
@@ -442,7 +445,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Hide the information window of the marker
      *
-     * @param view
+     * @param view view
      */
     public void hideInfoWindow(View view) {
         if (null != mParis) {
@@ -453,7 +456,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Show the information window of the marker
      *
-     * @param view
+     * @param view view
      */
     public void showInfoWindow(View view) {
         if (null != mParis) {
@@ -464,7 +467,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Repositions the camera according to the instructions defined in the update
      *
-     * @param view
+     * @param view view
      */
     public void setCamera(View view) {
         try {
@@ -501,7 +504,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     /**
      * Set the title attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     public void setTitle(View view) {
         String titleStr = edtTitle.getText().toString();

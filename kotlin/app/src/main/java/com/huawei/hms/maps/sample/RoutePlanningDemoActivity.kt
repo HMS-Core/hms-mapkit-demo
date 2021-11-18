@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
  *                  Huawei Technologies Co., Ltd.
  *
  */
+
 package com.huawei.hms.maps.sample
 
 import android.annotation.SuppressLint
@@ -131,7 +132,7 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                         val msg = Message.obtain()
                         val bundle = Bundle()
                         bundle.putString("errorMsg", errorMsg)
-                        Log.d(TAG, errorMsg)
+                        Log.d(TAG, errorMsg!!)
                         msg.what = 1
                         msg.data = bundle
                         mHandler.sendMessage(msg)

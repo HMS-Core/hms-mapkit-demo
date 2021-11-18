@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -244,8 +244,8 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
     /**
      * Render the route planning result
      *
-     * @param paths
-     * @param latLngBounds
+     * @param paths paths
+     * @param latLngBounds latLngBounds
      */
     private void renderRoute(List<List<LatLng>> paths, LatLngBounds latLngBounds) {
         if (null == paths || paths.size() <= 0 || paths.get(0).size() <= 0) {

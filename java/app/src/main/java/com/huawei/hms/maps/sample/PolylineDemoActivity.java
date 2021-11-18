@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,6 +98,8 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Add polyline to the map
+     *
+     * @param view view
      */
     public void addPolyline(View view) {
         if (null == hMap) {
@@ -120,6 +122,8 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Remove the polyline
+     *
+     * @param view view
      */
     public void removePolyline(View view) {
         if (null != mPolyline) {
@@ -133,8 +137,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Set the point position information of the polyline
+     *
+     * @param view view
      */
-    public void setOnePoint(View v) {
+    public void setOnePoint(View view) {
         if (null != mPolyline) {
             String latitude = oneLatitude.getText().toString().trim();
             String longtitude = oneLongtitude.getText().toString().trim();
@@ -154,8 +160,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Get the point position information of the polyline
+     *
+     * @param view view
      */
-    public void getPoints(View v) {
+    public void getPoints(View view) {
         if (null != mPolyline) {
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < mPolyline.getPoints().toArray().length; i++) {
@@ -167,8 +175,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Set the outline color of the polyline
+     *
+     * @param view view
      */
-    public void setStokeColor(View v) {
+    public void setStokeColor(View view) {
         if (null != mPolyline) {
             mPolyline.setColor(Color.YELLOW);
         }
@@ -176,8 +186,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Get the outline color of the polyline
+     *
+     * @param view view
      */
-    public void getStokeColor(View v) {
+    public void getStokeColor(View view) {
         if (null != mPolyline) {
             polylineShown.setText("Polyline color is " + Integer.toHexString(mPolyline.getColor()));
         }
@@ -185,8 +197,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Set the width of the polyline
+     *
+     * @param view view
      */
-    public void setWidth(View v) {
+    public void setWidth(View view) {
         if (null != mPolyline) {
             String width = polylineStokeWidth.getText().toString().trim();
             if (checkIsEdit(width)) {
@@ -211,8 +225,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Get the width of the polyline
+     *
+     * @param view view
      */
-    public void getWidth(View v) {
+    public void getWidth(View view) {
         if (null != mPolyline) {
             polylineShown.setText("Polyline width is " + mPolyline.getWidth());
         }
@@ -220,8 +236,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Set the tag of the polyline
+     *
+     * @param view view
      */
-    public void setTag(View v) {
+    public void setTag(View view) {
         if (null != mPolyline) {
             String tag = polylineTag.getText().toString().trim();
             if (checkIsEdit(tag)) {
@@ -234,8 +252,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Get the tag of the polyline
+     *
+     * @param view view
      */
-    public void getTag(View v) {
+    public void getTag(View view) {
         if (null != mPolyline) {
             polylineShown.setText(String.valueOf(mPolyline.getTag() == null ? "Tag is null" : mPolyline.getTag()));
         }
@@ -243,8 +263,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Add polyline click event
+     *
+     * @param view view
      */
-    public void addClickEvent(View v) {
+    public void addClickEvent(View view) {
         if (null != mPolyline) {
             hMap.setOnPolylineClickListener(new HuaweiMap.OnPolylineClickListener() {
                 @Override
@@ -257,8 +279,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Set polyline clickable
+     *
+     * @param view view
      */
-    public void setClickableTrue(View v) {
+    public void setClickableTrue(View view) {
         if (null != mPolyline) {
             mPolyline.setClickable(true);
         }
@@ -266,8 +290,10 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     /**
      * Set polyline are not clickable
+     *
+     * @param view view
      */
-    public void setClickableFalse(View v) {
+    public void setClickableFalse(View view) {
         if (null != mPolyline) {
             mPolyline.setClickable(false);
         }

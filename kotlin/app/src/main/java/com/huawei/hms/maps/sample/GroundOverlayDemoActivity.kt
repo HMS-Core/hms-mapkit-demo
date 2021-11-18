@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
  *                  Huawei Technologies Co., Ltd.
  *
  */
+
 package com.huawei.hms.maps.sample
 
 import android.annotation.SuppressLint
@@ -191,7 +192,7 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         if (null != overlay) {
             overlay?.remove()
         }
-        val path = "/data/data/com.huawei.hms.maps.demo/niuyouguo.jpg"
+        val path = getString(R.string.file_path)
         var out: FileOutputStream? = null
         try {
             val bitmap = BitmapFactory.decodeStream(assets.open("images/niuyouguo.jpg"))

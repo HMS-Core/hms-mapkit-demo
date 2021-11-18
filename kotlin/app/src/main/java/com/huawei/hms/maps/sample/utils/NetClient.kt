@@ -14,6 +14,7 @@
  * limitations under the License.
  *
  */
+
 package com.huawei.hms.maps.sample.utils
 
 import com.huawei.hms.maps.model.LatLng

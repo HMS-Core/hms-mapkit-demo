@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (c) Huawei Technologies Co., Ltd. 2008-2021. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,6 +76,8 @@ public class EventsDemoActivity extends AppCompatActivity implements HuaweiMap.O
 
     /**
      * Map click event
+     *
+     * @param latLng latLng
      */
     @Override
     public void onMapClick(LatLng latLng) {
@@ -90,6 +92,8 @@ public class EventsDemoActivity extends AppCompatActivity implements HuaweiMap.O
 
     /**
      * Map long click event
+     *
+     * @param point latLng
      */
     @Override
     public void onMapLongClick(LatLng point) {
@@ -106,6 +110,9 @@ public class EventsDemoActivity extends AppCompatActivity implements HuaweiMap.O
 
     /**
      * Map click event
+     *
+     * @return true if the listener does not perform the default operation;
+     * false otherwise. The default operation is to move the camera to center on the user's location.
      */
     @Override
     public boolean onMyLocationButtonClick() {

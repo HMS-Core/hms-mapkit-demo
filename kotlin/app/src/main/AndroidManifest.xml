@@ -97,6 +97,9 @@
             android:name=".StyleMapDemoActivity"
             android:label="StyleMapDemo" />
         <activity
+            android:name=".HeatMapDemoActivity"
+            android:label="HeatMapDemo" />
+        <activity
             android:name=".EventsDemoActivity"
             android:label="EventsDemo" />
         <activity

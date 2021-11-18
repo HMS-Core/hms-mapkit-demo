@@ -14,6 +14,7 @@
  * limitations under the License.
  *
  */
+
 package com.huawei.hms.maps.sample.utils
 
 import android.util.Log
@@ -70,7 +71,7 @@ object NetworkRequestManager {
             } catch (e: IOException) {
                 returnDesc = "Request Fail!"
             } catch (e: JSONException) {
-                Log.e(TAG, e.message)
+                Log.e(TAG, e.message!!)
             }
             if (returnCode == "0") {
                 listener?.requestSuccess(result)
@@ -117,7 +118,7 @@ object NetworkRequestManager {
                     listener?.requestSuccess(result)
                     return@Runnable
                 } catch (e: IOException) {
-                    Log.e(TAG, e.message)
+                    Log.e(TAG, e.message!!)
                 }
             }
             var returnCode = ""
@@ -133,7 +134,7 @@ object NetworkRequestManager {
             } catch (e: IOException) {
                 returnDesc = "Request Fail!"
             } catch (e: JSONException) {
-                Log.e(TAG, e.message)
+                Log.e(TAG, e.message!!)
             }
             if (curCount >= MAX_TIMES) {
                 listener?.requestFail(returnDesc)
@@ -176,7 +177,7 @@ object NetworkRequestManager {
                     listener?.requestSuccess(result)
                     return@Runnable
                 } catch (e: IOException) {
-                    Log.e(TAG, e.message)
+                    Log.e(TAG, e.message!!)
                 }
             }
             var returnCode = ""
@@ -192,7 +193,7 @@ object NetworkRequestManager {
             } catch (e: IOException) {
                 returnDesc = "Request Fail!"
             } catch (e: JSONException) {
-                Log.e(TAG, e.message)
+                Log.e(TAG, e.message!!)
             }
             if (curCount >= MAX_TIMES) {
                 listener?.requestFail(returnDesc)
