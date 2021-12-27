@@ -17,11 +17,27 @@
             ohos:width="match_parent">
 
             <Button
+                ohos:id="$+id:button_toMapViewDemo"
+                ohos:width="match_parent"
+                ohos:height="match_parent"
+                ohos:layout_alignment="center"
+                ohos:text="MapViewDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
                 ohos:id="$+id:button_toMapViewCameraDemo"
                 ohos:width="match_parent"
                 ohos:height="match_parent"
                 ohos:layout_alignment="center"
-                ohos:text="MapViewCamera"
+                ohos:text="MapViewCameraDemo"
                 ohos:text_size="19fp"
                 ohos:text_color="#FFFFFF"
                 ohos:top_padding="6vp"
@@ -118,6 +134,54 @@
                 ohos:height="match_content"
                 ohos:layout_alignment="center"
                 ohos:text="MarkerDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
+                ohos:id="$+id:button_toGestureDemo"
+                ohos:width="match_parent"
+                ohos:height="match_content"
+                ohos:layout_alignment="center"
+                ohos:text="GestureDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
+                ohos:id="$+id:button_toHuaweiMapOptionsDemo"
+                ohos:width="match_parent"
+                ohos:height="match_content"
+                ohos:layout_alignment="center"
+                ohos:text="HuaweiMapOptionsDemo"
+                ohos:text_size="19fp"
+                ohos:text_color="#FFFFFF"
+                ohos:top_padding="6vp"
+                ohos:bottom_padding="6vp"
+                ohos:right_padding="10vp"
+                ohos:left_padding="10vp"
+                ohos:center_in_parent="true"
+                ohos:margin="10vp"
+                ohos:background_element="$graphic:background_button"/>
+
+            <Button
+                ohos:id="$+id:button_toMapEventsDemo"
+                ohos:width="match_parent"
+                ohos:height="match_content"
+                ohos:layout_alignment="center"
+                ohos:text="MapEventsDemo"
                 ohos:text_size="19fp"
                 ohos:text_color="#FFFFFF"
                 ohos:top_padding="6vp"

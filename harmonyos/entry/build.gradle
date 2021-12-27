@@ -20,7 +20,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
     testImplementation 'junit:junit:4.13'
     ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
-    implementation 'com.huawei.hms:maps-harmony:6.0.1.304'
+    implementation 'com.huawei.hms:maps-harmony:6.1.1.302'
 }
 decc {
     supportType = ['html', 'xml']

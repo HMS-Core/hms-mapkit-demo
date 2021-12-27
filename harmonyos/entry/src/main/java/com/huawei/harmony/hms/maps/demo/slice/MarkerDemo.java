@@ -4,9 +4,10 @@
 
 package com.huawei.harmony.hms.maps.demo.slice;
 
+import com.huawei.harmony.hms.maps.demo.ResourceTable;
 import com.huawei.hms.maps.harmony.HuaweiMap;
-import com.huawei.hms.maps.harmony.HuaweiMapOptions;
 import com.huawei.hms.maps.harmony.MapView;
+import com.huawei.hms.maps.harmony.HuaweiMapOptions;
 import com.huawei.hms.maps.harmony.OnMapReadyCallback;
 import com.huawei.hms.maps.harmony.OnMapClickListener;
 import com.huawei.hms.maps.harmony.OnInfoWindowClickListener;
@@ -22,18 +23,29 @@ import ohos.agp.colors.RgbColor;
 import ohos.agp.components.ComponentContainer;
 import ohos.agp.components.PositionLayout;
 import ohos.agp.components.element.ShapeElement;
-import ohos.agp.utils.Color;
 import ohos.agp.window.dialog.ToastDialog;
+import ohos.global.resource.NotExistException;
+import ohos.global.resource.Resource;
+
+import java.io.IOException;
 
 public class MarkerDemo extends AbilitySlice {
+    private HuaweiMap mHuaweiMap;
+
+    /**
+     * Declare a MapView object.
+     */
+    private MapView mMapView;
+
+    /**
+     * Declare a Polyline object.
+     */
+    private Marker mMarker;
 
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
         CommonContext.setContext(this);
-
-        // Declaring MapView Objects
-        MapView mMapView;
 
         // Declaring and Initializing the HuaweiMapOptions Object
         HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
@@ -64,7 +76,7 @@ public class MarkerDemo extends AbilitySlice {
                 // Set Preference Maximum Zoom Level
                 .maxZoomPreference(13);
 
-        // Initializing MapView Objects
+        // Initialize MapView Object.
         mMapView = new MapView(this, huaweiMapOptions);
         mMapView.onCreate();
 
@@ -72,7 +84,13 @@ public class MarkerDemo extends AbilitySlice {
         mMapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(HuaweiMap huaweiMap) {
-                HuaweiMap mHuaweiMap = huaweiMap;
+                mHuaweiMap = huaweiMap;
+
+                // If mHuaweiMap is null, the program stops running.
+                if (null == mHuaweiMap) {
+                    return;
+                }
+
                 mHuaweiMap.setOnMapClickListener(new  OnMapClickListener() {
                     @Override
                     public void onMapClick(LatLng latLng) {
@@ -80,41 +98,36 @@ public class MarkerDemo extends AbilitySlice {
                     }
                 });
 
-                // Creating a Marker Object
-                Marker mMarker = null;
-
-                // If the value of mHuaweiMap is null, the program stops.
-                if (null == mHuaweiMap) {
-                    return;
-                }
-
-                // If mMarker is not null, remove it from the map and set it to null.
+                // If mMarker is not null, remove it from the map and then set it to null.
                 if (null != mMarker) {
                     mMarker.remove();
                     mMarker = null;
                 }
 
-                // Add a Marker to the Map
+                // Add a marker to the map.
                 MarkerOptions options = new MarkerOptions()
                         .position(new LatLng(48.893478, 2.334595))
                         .title("Hello Huawei Map")
                         .snippet("This is a snippet!");
                 mMarker = mHuaweiMap.addMarker(options);
 
-                // Set the title of the marker
+                // Set the marker title.
                 if (mMarker != null) {
                     mMarker.setTitle("Marker title");
                 }
 
-                // Set the marker to drag.
+                // Set whether the marker can be dragged.
                 if (mMarker != null) {
                     mMarker.setDraggable(true);
                 }
 
-                // Set Marker Anchors
+                // Set the marker anchor point.
                 if (mMarker != null) {
                     mMarker.setMarkerAnchor(0.9F, 0.9F);
                 }
+
+                // Customizing the Marker Icon
+                addCustomMarker();
 
                 mHuaweiMap.setOnMarkerClickListener(new OnMarkerClickListener() {
                     @Override
@@ -130,12 +143,10 @@ public class MarkerDemo extends AbilitySlice {
                         new ToastDialog(CommonContext.getContext()).setText("onInfoWindowClick：").show();
                     }
                 });
-
-                new ToastDialog(CommonContext.getContext()).setText("color green: " + Color.GREEN.getValue()).show();
             }
         });
 
-        // Creating a Layout
+        // Create a layout.
         ComponentContainer.LayoutConfig config = new ComponentContainer.LayoutConfig(ComponentContainer.LayoutConfig.MATCH_PARENT, ComponentContainer.LayoutConfig.MATCH_PARENT);
         PositionLayout myLayout = new PositionLayout(this);
         myLayout.setLayoutConfig(config);
@@ -143,8 +154,68 @@ public class MarkerDemo extends AbilitySlice {
         element.setShape(ShapeElement.RECTANGLE);
         element.setRgbColor(new RgbColor(255, 255, 255));
 
-        // Load MapView
+        // Load the MapView object.
         myLayout.addComponent(mMapView);
         super.setUIContent(myLayout);
+    }
+
+    /**
+     * addCustomMarker
+     */
+    private void addCustomMarker() {
+        Resource resource = null;
+        try {
+            resource = getResourceManager().getResource(ResourceTable.Media_icon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NotExistException e) {
+            e.printStackTrace();
+        }
+
+        if (resource != null) {
+            mHuaweiMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(47.8333, 2.8333))
+                    .icon(resource));
+        }
+    }
+
+    @Override
+    protected void onActive() {
+        super.onActive();
+        if (mMapView != null) {
+            mMapView.onResume();
+        }
+    }
+
+    @Override
+    protected void onInactive() {
+        super.onInactive();
+        if (mMapView != null) {
+            mMapView.onPause();
+        }
+    }
+
+    @Override
+    protected void onBackground() {
+        super.onBackground();
+        if (mMapView != null) {
+            mMapView.onStop();
+        }
+    }
+
+    @Override
+    protected void onForeground(Intent intent) {
+        super.onForeground(intent);
+        if (mMapView != null) {
+            mMapView.onStart();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null) {
+            mMapView.onDestroy();
+        }
     }
 }

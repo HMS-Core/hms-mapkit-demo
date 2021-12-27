@@ -5,8 +5,8 @@
 package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
-import com.huawei.hms.maps.harmony.HuaweiMapOptions;
 import com.huawei.hms.maps.harmony.MapView;
+import com.huawei.hms.maps.harmony.HuaweiMapOptions;
 import com.huawei.hms.maps.harmony.OnMapReadyCallback;
 import com.huawei.hms.maps.harmony.OnMapClickListener;
 import com.huawei.hms.maps.harmony.OnMapLongClickListener;
@@ -21,17 +21,19 @@ import ohos.agp.components.element.ShapeElement;
 import ohos.agp.window.dialog.ToastDialog;
 
 public class MapTypeDemo extends AbilitySlice {
-    int longClickCounter = 0;
+    private int longClickCounter = 0;
 
-    HuaweiMap mHuaweiMap;
+    private HuaweiMap mHuaweiMap;
+
+    /**
+     * Declare a MapView object.
+     */
+    private MapView mMapView;
 
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
         CommonContext.setContext(this);
-
-        // Declaring MapView Objects
-        MapView mMapView;
 
         // Declaring and Initializing the HuaweiMapOptions Object
         HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
@@ -39,7 +41,7 @@ public class MapTypeDemo extends AbilitySlice {
         // Enable the lite mode map.
         huaweiMapOptions.liteMode(true);
 
-        // Initializing MapView Objects
+        // Initialize MapView Object.
         mMapView = new MapView(this, huaweiMapOptions);
         mMapView.onCreate();
 
@@ -48,6 +50,12 @@ public class MapTypeDemo extends AbilitySlice {
             @Override
             public void onMapReady(HuaweiMap huaweiMap) {
                 mHuaweiMap = huaweiMap;
+
+                // If mHuaweiMap is null, the program stops running.
+                if (null == mHuaweiMap) {
+                    return;
+                }
+
                 mHuaweiMap.setOnMapClickListener(new  OnMapClickListener() {
                     @Override
                     public void onMapClick(LatLng latLng) {
@@ -72,7 +80,7 @@ public class MapTypeDemo extends AbilitySlice {
             }
         });
 
-        // Creating a Layout
+        // Create a layout.
         ComponentContainer.LayoutConfig config = new ComponentContainer.LayoutConfig(ComponentContainer.LayoutConfig.MATCH_PARENT, ComponentContainer.LayoutConfig.MATCH_PARENT);
         PositionLayout myLayout = new PositionLayout(this);
         myLayout.setLayoutConfig(config);
@@ -80,9 +88,48 @@ public class MapTypeDemo extends AbilitySlice {
         element.setShape(ShapeElement.RECTANGLE);
         element.setRgbColor(new RgbColor(255, 255, 255));
 
-        // Load MapView
+        // Load the MapView object.
         myLayout.addComponent(mMapView);
-
         super.setUIContent(myLayout);
+    }
+
+    @Override
+    protected void onActive() {
+        super.onActive();
+        if (mMapView != null) {
+            mMapView.onResume();
+        }
+    }
+
+    @Override
+    protected void onInactive() {
+        super.onInactive();
+        if (mMapView != null) {
+            mMapView.onPause();
+        }
+    }
+
+    @Override
+    protected void onBackground() {
+        super.onBackground();
+        if (mMapView != null) {
+            mMapView.onStop();
+        }
+    }
+
+    @Override
+    protected void onForeground(Intent intent) {
+        super.onForeground(intent);
+        if (mMapView != null) {
+            mMapView.onStart();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null) {
+            mMapView.onDestroy();
+        }
     }
 }

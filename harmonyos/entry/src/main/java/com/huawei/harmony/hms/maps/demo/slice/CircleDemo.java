@@ -5,84 +5,87 @@
 package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
-import com.huawei.hms.maps.harmony.HuaweiMapOptions;
-import com.huawei.hms.maps.harmony.MapView;
 import com.huawei.hms.maps.harmony.OnMapReadyCallback;
-import com.huawei.hms.maps.harmony.OnMapClickListener;
-import com.huawei.hms.maps.harmony.model.CameraPosition;
+import com.huawei.hms.maps.harmony.CameraUpdateFactory;
+import com.huawei.hms.maps.harmony.MapView;
+import com.huawei.hms.maps.harmony.CommonContext;
 import com.huawei.hms.maps.harmony.model.LatLng;
+import com.huawei.harmony.hms.maps.demo.ResourceTable;
+import com.huawei.harmony.hms.maps.demo.utils.ScreenUtil;
 import com.huawei.hms.maps.harmony.model.Circle;
 import com.huawei.hms.maps.harmony.model.CircleOptions;
-import com.huawei.hms.maps.harmony.CommonContext;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.colors.RgbColor;
+import ohos.agp.components.Button;
+import ohos.agp.components.Component;
 import ohos.agp.components.ComponentContainer;
 import ohos.agp.components.PositionLayout;
+import ohos.agp.components.LayoutScatter;
 import ohos.agp.components.element.ShapeElement;
 import ohos.agp.utils.Color;
-import ohos.agp.window.dialog.ToastDialog;
 
-public class CircleDemo extends AbilitySlice {
+public class CircleDemo extends AbilitySlice{
+    private HuaweiMap mHuaweiMap;
+
+    /**
+     * Declare a MapView object.
+     */
+    private MapView mMapView;
+
+    /**
+     * Declare a Circle object.
+     */
+    private Circle mCircle;
+
+    private boolean fillColorStatus = true;
+
+    private boolean strokeColorStatus = true;
+
+    /**
+     * the layout
+     */
+    private PositionLayout rootLayout;
 
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
+        initPositionLayout();
+        initMapView();
+        addButtons();
+        super.setUIContent(this.rootLayout);
+    }
+
+    private void initPositionLayout() {
+        rootLayout = new PositionLayout(this);
+        this.rootLayout.setContentPosition(0, 0);
+        this.rootLayout.setWidth(ComponentContainer.LayoutConfig.MATCH_PARENT);
+        this.rootLayout.setHeight(ComponentContainer.LayoutConfig.MATCH_PARENT);
+
+        ShapeElement element = new ShapeElement();
+        element.setShape(ShapeElement.RECTANGLE);
+        element.setRgbColor(new RgbColor(255, 255, 255));
+        this.rootLayout.setBackground(element);
+    }
+
+    private void initMapView() {
         CommonContext.setContext(this);
 
-        // Declaring MapView Objects
-        MapView mMapView;
-
-        // Declaring and Initializing the HuaweiMapOptions Object
-        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
-
-        // Initialize Camera Properties
-        CameraPosition cameraPosition =
-                new CameraPosition(new LatLng(48.893478, 2.334595), 12, 0, 0);
-
-        huaweiMapOptions
-                // Set Camera Properties
-                .camera(cameraPosition)
-                // Enables or disables the zoom function. By default, the zoom function is enabled.
-                .zoomControlsEnabled(false)
-                // Sets whether the compass is available. The compass is available by default.
-                .compassEnabled(true)
-                // Specifies whether the zoom gesture is available. By default, the zoom gesture is available.
-                .zoomGesturesEnabled(true)
-                // Specifies whether to enable the scrolling gesture. By default, the scrolling gesture is enabled.
-                .scrollGesturesEnabled(true)
-                // Specifies whether the rotation gesture is available. By default, the rotation gesture is available.
-                .rotateGesturesEnabled(false)
-                // Specifies whether the tilt gesture is available. By default, the tilt gesture is available.
-                .tiltGesturesEnabled(true)
-                // Sets whether the map is in lite mode. The default value is No.
-                .liteMode(false)
-                // Set Preference Minimum Zoom Level
-                .minZoomPreference(3)
-                // Set Preference Maximum Zoom Level
-                .maxZoomPreference(13);
-
-        // Initializing MapView Objects
-        mMapView = new MapView(this, huaweiMapOptions);
+        // Initialize MapView Object.
+        mMapView = new MapView(this);
         mMapView.onCreate();
 
-        // Obtains the HuaweiMap object.
+        // Obtain a HuaweiMap object.
         mMapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(HuaweiMap huaweiMap) {
-                HuaweiMap mHuaweiMap = huaweiMap;
-                mHuaweiMap.setOnMapClickListener(new  OnMapClickListener() {
-                    @Override
-                    public void onMapClick(LatLng latLng) {
-                        new ToastDialog(CommonContext.getContext()).setText("onMapClick ").show();
-                    }
-                });
+                mHuaweiMap = huaweiMap;
 
-                // Initialize the Circle object.
-                Circle mCircle = new Circle(this);
+                // If mHuaweiMap is null, the program stops running.
                 if (null == mHuaweiMap) {
                     return;
                 }
+
                 if (null != mCircle) {
                     mCircle.remove();
                     mCircle = null;
@@ -92,7 +95,6 @@ public class CircleDemo extends AbilitySlice {
                         .center(new LatLng(48.893478, 2.334595))
                         .radius(500)
                         .fillColor(Color.GREEN.getValue()));
-                new ToastDialog(CommonContext.getContext()).setText("color green: " + Color.GREEN.getValue()).show();
 
                 int strokeColor = Color.RED.getValue();
                 float strokeWidth = 15.0f;
@@ -102,19 +104,131 @@ public class CircleDemo extends AbilitySlice {
 
                 // Sets the edge width of a circle
                 mCircle.setStrokeWidth(strokeWidth);
+
+                // move camera
+                mHuaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 12));
             }
         });
 
-        // Creating a Layout
-        ComponentContainer.LayoutConfig config = new ComponentContainer.LayoutConfig(ComponentContainer.LayoutConfig.MATCH_PARENT, ComponentContainer.LayoutConfig.MATCH_PARENT);
-        PositionLayout myLayout = new PositionLayout(this);
-        myLayout.setLayoutConfig(config);
-        ShapeElement element = new ShapeElement();
-        element.setShape(ShapeElement.RECTANGLE);
-        element.setRgbColor(new RgbColor(255, 255, 255));
+        this.rootLayout.addComponent(mMapView);
+    }
 
-        // Load MapView
-        myLayout.addComponent(mMapView);
-        super.setUIContent(myLayout);
+    private void addButtons() {
+        int height = ScreenUtil.getScreenHeight(this);
+
+        Button buttonHollowCircle = createButton();
+        buttonHollowCircle.setText("HollowCircle");
+        buttonHollowCircle.setContentPosition(50, (float) height / 2 - 100);
+        this.rootLayout.addComponent(buttonHollowCircle);
+
+        Button buttonStrokeColor = createButton();
+        buttonStrokeColor.setText("StrokeColor");
+        buttonStrokeColor.setContentPosition(50, (float) height / 2);
+        this.rootLayout.addComponent(buttonStrokeColor);
+
+        Button buttonFillColor = createButton();
+        buttonFillColor.setText("FillColor");
+        buttonFillColor.setContentPosition(50, (float) height / 2 + 100);
+        this.rootLayout.addComponent(buttonFillColor);
+
+        buttonHollowCircle.setClickedListener(new Component.ClickedListener() {
+            @Override
+            public void onClick(Component component) {
+                // Set a hollow circle.
+                if (null != mCircle) {
+                    // Set the fill color of the circle to transparent.
+                    mCircle.setFillColor(Color.TRANSPARENT.getValue());
+                    // Set the stroke color of the circle.
+                    mCircle.setStrokeColor(Color.RED.getValue());
+                    // Set the stroke width of the circle.
+                    mCircle.setStrokeWidth(15.0f);
+                }
+            }
+        });
+
+        buttonStrokeColor.setClickedListener(new Component.ClickedListener() {
+            @Override
+            public void onClick(Component component) {
+                if (null == mCircle) {
+                    return;
+                }
+                if (strokeColorStatus) {
+                    // Set the stroke color of the circle (mCircle) to red.
+                    mCircle.setStrokeColor(Color.RED.getValue());
+                } else {
+                    // Set the stroke color of the circle (mCircle) to green.
+                    mCircle.setStrokeColor(Color.GREEN.getValue());
+                }
+                strokeColorStatus = !strokeColorStatus;
+            }
+        });
+
+        buttonFillColor.setClickedListener(new Component.ClickedListener() {
+            @Override
+            public void onClick(Component component) {
+                if (null == mCircle) {
+                    return;
+                }
+                if (fillColorStatus) {
+                    // Set the fill color of the circle (mCircle) to red.
+                    mCircle.setFillColor(Color.RED.getValue());
+                } else {
+                    // Set the fill color of the circle (mCircle) to green.
+                    mCircle.setFillColor(Color.GREEN.getValue());
+                }
+                fillColorStatus = !fillColorStatus;
+            }
+        });
+    }
+
+    /**
+     * Create button
+     *
+     * @return Button
+     */
+    private Button createButton() {
+        Component component = LayoutScatter.getInstance(getContext())
+                .parse(ResourceTable.Layout_button_layout, null, false);
+        return (Button) component;
+    }
+
+    @Override
+    protected void onActive() {
+        super.onActive();
+        if (mMapView != null) {
+            mMapView.onResume();
+        }
+    }
+
+    @Override
+    protected void onInactive() {
+        super.onInactive();
+        if (mMapView != null) {
+            mMapView.onPause();
+        }
+    }
+
+    @Override
+    protected void onBackground() {
+        super.onBackground();
+        if (mMapView != null) {
+            mMapView.onStop();
+        }
+    }
+
+    @Override
+    protected void onForeground(Intent intent) {
+        super.onForeground(intent);
+        if (mMapView != null) {
+            mMapView.onStart();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null) {
+            mMapView.onDestroy();
+        }
     }
 }

@@ -4,12 +4,11 @@
 
 package com.huawei.harmony.hms.maps.demo.slice;
 
-import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.MapView;
-import com.huawei.hms.maps.harmony.HuaweiMapOptions;
+import com.huawei.hms.maps.harmony.model.LatLng;
+import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.OnMapReadyCallback;
 import com.huawei.hms.maps.harmony.OnMapClickListener;
-import com.huawei.hms.maps.harmony.model.LatLng;
 import com.huawei.hms.maps.harmony.CommonContext;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
@@ -19,7 +18,7 @@ import ohos.agp.components.PositionLayout;
 import ohos.agp.components.element.ShapeElement;
 import ohos.agp.window.dialog.ToastDialog;
 
-public class LiteModeDemo extends AbilitySlice {
+public class GestureDemo extends AbilitySlice {
     private HuaweiMap mHuaweiMap;
 
     /**
@@ -32,14 +31,8 @@ public class LiteModeDemo extends AbilitySlice {
         super.onStart(intent);
         CommonContext.setContext(this);
 
-        // Declaring and Initializing the HuaweiMapOptions Object
-        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
-
-        // Enable the lite mode map.
-        huaweiMapOptions.liteMode(true);
-
         // Initialize MapView Object.
-        mMapView = new MapView(this, huaweiMapOptions);
+        mMapView = new MapView(this);
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
@@ -59,6 +52,24 @@ public class LiteModeDemo extends AbilitySlice {
                         new ToastDialog(CommonContext.getContext()).setText("onMapClick ").show();
                     }
                 });
+
+                // Set whether to enable the compass.
+                mHuaweiMap.getUiSettings().setCompassEnabled(true);
+
+                // Set whether to enable the zoom controls.
+                mHuaweiMap.getUiSettings().setZoomControlsEnabled(true);
+
+                // Set whether to enable the zoom gestures.
+                mHuaweiMap.getUiSettings().setZoomGesturesEnabled(true);
+
+                // Set whether to enable the scroll gestures.
+                mHuaweiMap.getUiSettings().setScrollGesturesEnabled(true);
+
+                // Set whether to enable the tilt gestures.
+                mHuaweiMap.getUiSettings().setTiltGesturesEnabled(true);
+
+                // Set whether to enable the rotation gestures.
+                mHuaweiMap.getUiSettings().setRotateGesturesEnabled(true);
             }
         });
 

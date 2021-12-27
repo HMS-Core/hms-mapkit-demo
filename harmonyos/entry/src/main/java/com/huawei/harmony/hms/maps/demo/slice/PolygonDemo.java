@@ -5,94 +5,88 @@
 package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
-import com.huawei.hms.maps.harmony.HuaweiMapOptions;
 import com.huawei.hms.maps.harmony.MapView;
 import com.huawei.hms.maps.harmony.OnMapReadyCallback;
-import com.huawei.hms.maps.harmony.OnMapClickListener;
-import com.huawei.hms.maps.harmony.model.CameraPosition;
-import com.huawei.hms.maps.harmony.model.LatLng;
-import com.huawei.hms.maps.harmony.model.PolygonOptions;
-import com.huawei.hms.maps.harmony.model.Polygon;
+import com.huawei.hms.maps.harmony.CameraUpdateFactory;
 import com.huawei.hms.maps.harmony.CommonContext;
+import com.huawei.hms.maps.harmony.model.LatLng;
+import com.huawei.harmony.hms.maps.demo.ResourceTable;
+import com.huawei.harmony.hms.maps.demo.utils.ScreenUtil;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.colors.RgbColor;
+import ohos.agp.components.Button;
+import ohos.agp.components.Component;
 import ohos.agp.components.ComponentContainer;
 import ohos.agp.components.PositionLayout;
+import ohos.agp.components.LayoutScatter;
 import ohos.agp.components.element.ShapeElement;
+import com.huawei.hms.maps.harmony.model.Polygon;
+import com.huawei.hms.maps.harmony.model.PolygonOptions;
 import ohos.agp.utils.Color;
-import ohos.agp.window.dialog.ToastDialog;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class PolygonDemo extends AbilitySlice {
+    private HuaweiMap mHuaweiMap;
+
+    /**
+     * Declare a MapView object.
+     */
+    private MapView mMapView;
+
+    /**
+     * Declare a Polygon object.
+     */
+    private Polygon mPolygon;
+
+    private boolean fillColorStatus = true;
+
+    private boolean strokeColorStatus = true;
+
+    /**
+     * the layout
+     */
+    private PositionLayout rootLayout;
 
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
+        initPositionLayout();
+        initMapView();
+        addButtons();
+        super.setUIContent(this.rootLayout);
+    }
+
+    private void initPositionLayout() {
+        rootLayout = new PositionLayout(this);
+        this.rootLayout.setContentPosition(0, 0);
+        this.rootLayout.setWidth(ComponentContainer.LayoutConfig.MATCH_PARENT);
+        this.rootLayout.setHeight(ComponentContainer.LayoutConfig.MATCH_PARENT);
+
+        ShapeElement element = new ShapeElement();
+        element.setShape(ShapeElement.RECTANGLE);
+        element.setRgbColor(new RgbColor(255, 255, 255));
+        this.rootLayout.setBackground(element);
+    }
+
+    private void initMapView() {
         CommonContext.setContext(this);
 
-        // Declaring MapView Objects
-        MapView mMapView;
-
-        // Declaring and Initializing the HuaweiMapOptions Object
-        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
-
-        // Initialize Camera Properties
-        CameraPosition cameraPosition =
-                new CameraPosition(new LatLng(48.893478, 2.334595), 8, 0, 0);
-
-        huaweiMapOptions
-                // Set Camera Properties
-                .camera(cameraPosition)
-                // Enables or disables the zoom function. By default, the zoom function is enabled.
-                .zoomControlsEnabled(false)
-                // Sets whether the compass is available. The compass is available by default.
-                .compassEnabled(true)
-                // Specifies whether the zoom gesture is available. By default, the zoom gesture is available.
-                .zoomGesturesEnabled(true)
-                // Specifies whether to enable the scrolling gesture. By default, the scrolling gesture is enabled.
-                .scrollGesturesEnabled(true)
-                // Specifies whether the rotation gesture is available. By default, the rotation gesture is available.
-                .rotateGesturesEnabled(false)
-                // Specifies whether the tilt gesture is available. By default, the tilt gesture is available.
-                .tiltGesturesEnabled(true)
-                // Sets whether the map is in lite mode. The default value is No.
-                .liteMode(false)
-                // Set Preference Minimum Zoom Level
-                .minZoomPreference(3)
-                // Set Preference Maximum Zoom Level
-                .maxZoomPreference(13);
-
-        // Initializing MapView Objects
-        mMapView = new MapView(this, huaweiMapOptions);
+        // Initialize MapView Object.
+        mMapView = new MapView(this);
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
         mMapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(HuaweiMap huaweiMap) {
-                HuaweiMap mHuaweiMap = huaweiMap;
-                mHuaweiMap.setOnMapClickListener(new  OnMapClickListener() {
-                    @Override
-                    public void onMapClick(LatLng latLng) {
-                        new ToastDialog(CommonContext.getContext()).setText("onMapClick ").show();
-                    }
-                });
+                mHuaweiMap = huaweiMap;
 
-                List<LatLng> latLngList = createRectangle(new LatLng(48.893478, 2.334595), 0.1, 0.1);
-                new ToastDialog(CommonContext.getContext()).setText("latLngList: " + latLngList).show();
-
-                // Initializing a Polygon Object
-                Polygon mPolygon = new Polygon(this);
-
-                // If the value of mHuaweiMap is null, the program stops.
+                // If mHuaweiMap is null, the program stops running.
                 if (null == mHuaweiMap) {
                     return;
                 }
 
-                // If mPolygon is not null, remove it from the map and set it to null.
+                // If mPolygon is not null, remove it from the map and then set it to null.
                 if (null != mPolygon) {
                     mPolygon.remove();
                     mPolygon = null;
@@ -110,27 +104,112 @@ public class PolygonDemo extends AbilitySlice {
                                 new LatLng(center.mLatitude + halfHeight, center.mLongitude - halfWidth))
                                 .fillColor(Color.GREEN.getValue())
                                 .strokeColor(Color.BLACK.getValue()));
-                new ToastDialog(CommonContext.getContext()).setText("color green: " + Color.GREEN.getValue()).show();
+
+                // move camera
+                mHuaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 8));
             }
         });
 
-        // Creating a Layout
-        ComponentContainer.LayoutConfig config = new ComponentContainer.LayoutConfig(ComponentContainer.LayoutConfig.MATCH_PARENT, ComponentContainer.LayoutConfig.MATCH_PARENT);
-        PositionLayout myLayout = new PositionLayout(this);
-        myLayout.setLayoutConfig(config);
-        ShapeElement element = new ShapeElement();
-        element.setShape(ShapeElement.RECTANGLE);
-        element.setRgbColor(new RgbColor(255, 255, 255));
-
-        // Load MapView
-        myLayout.addComponent(mMapView);
-        super.setUIContent(myLayout);
+        this.rootLayout.addComponent(mMapView);
     }
 
-    private List<LatLng> createRectangle(LatLng center, double halfWidth, double halfHeight) {
-        return Arrays.asList(new LatLng(center.mLatitude - halfHeight, center.mLongitude - halfWidth),
-                new LatLng(center.mLatitude - halfHeight, center.mLongitude + halfWidth),
-                new LatLng(center.mLatitude + halfHeight, center.mLongitude + halfWidth),
-                new LatLng(center.mLatitude + halfHeight, center.mLongitude - halfWidth));
+    private void addButtons() {
+        int height = ScreenUtil.getScreenHeight(this);
+
+        Button buttonStrokeColor = createButton();
+        buttonStrokeColor.setText("StrokeColor");
+        buttonStrokeColor.setContentPosition(50, (float) height / 2 - 100);
+        this.rootLayout.addComponent(buttonStrokeColor);
+
+        Button buttonFillColor = createButton();
+        buttonFillColor.setText("FillColor");
+        buttonFillColor.setContentPosition(50, (float) height / 2);
+        this.rootLayout.addComponent(buttonFillColor);
+
+
+        buttonStrokeColor.setClickedListener(new Component.ClickedListener() {
+            @Override
+            public void onClick(Component component) {
+                if (null == mPolygon) {
+                    return;
+                }
+                if (strokeColorStatus) {
+                    // Set the stroke color of the polygon (mPolygon) to red.
+                    mPolygon.setStrokeColor(Color.RED.getValue());
+                } else {
+                    // Set the stroke color of the polygon (mPolygon) to green.
+                    mPolygon.setStrokeColor(Color.GREEN.getValue());
+                }
+                strokeColorStatus = !strokeColorStatus;
+            }
+        });
+
+        buttonFillColor.setClickedListener(new Component.ClickedListener() {
+            @Override
+            public void onClick(Component component) {
+                if (null == mPolygon) {
+                    return;
+                }
+                if (fillColorStatus) {
+                    // Set the fill color of the polygon (mCircle) to red.
+                    mPolygon.setFillColor(Color.RED.getValue());
+                } else {
+                    // Set the fill color of the polygon (mPolygon) to green.
+                    mPolygon.setFillColor(Color.GREEN.getValue());
+                }
+                fillColorStatus = !fillColorStatus;
+            }
+        });
+    }
+
+    /**
+     * Create button
+     *
+     * @return Button
+     */
+    private Button createButton() {
+        Component component = LayoutScatter.getInstance(getContext())
+                .parse(ResourceTable.Layout_button_layout, null, false);
+        return (Button) component;
+    }
+
+    @Override
+    protected void onActive() {
+        super.onActive();
+        if (mMapView != null) {
+            mMapView.onResume();
+        }
+    }
+
+    @Override
+    protected void onInactive() {
+        super.onInactive();
+        if (mMapView != null) {
+            mMapView.onPause();
+        }
+    }
+
+    @Override
+    protected void onBackground() {
+        super.onBackground();
+        if (mMapView != null) {
+            mMapView.onStop();
+        }
+    }
+
+    @Override
+    protected void onForeground(Intent intent) {
+        super.onForeground(intent);
+        if (mMapView != null) {
+            mMapView.onStart();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null) {
+            mMapView.onDestroy();
+        }
     }
 }

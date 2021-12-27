@@ -6,7 +6,6 @@ package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.MapView;
-import com.huawei.hms.maps.harmony.HuaweiMapOptions;
 import com.huawei.hms.maps.harmony.OnMapReadyCallback;
 import com.huawei.hms.maps.harmony.OnMapClickListener;
 import com.huawei.hms.maps.harmony.model.LatLng;
@@ -19,9 +18,7 @@ import ohos.agp.components.PositionLayout;
 import ohos.agp.components.element.ShapeElement;
 import ohos.agp.window.dialog.ToastDialog;
 
-public class LiteModeDemo extends AbilitySlice {
-    private HuaweiMap mHuaweiMap;
-
+public class MapViewDemo extends AbilitySlice {
     /**
      * Declare a MapView object.
      */
@@ -32,27 +29,17 @@ public class LiteModeDemo extends AbilitySlice {
         super.onStart(intent);
         CommonContext.setContext(this);
 
-        // Declaring and Initializing the HuaweiMapOptions Object
-        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
-
-        // Enable the lite mode map.
-        huaweiMapOptions.liteMode(true);
-
         // Initialize MapView Object.
-        mMapView = new MapView(this, huaweiMapOptions);
+        mMapView = new MapView(this);
+
+        // Creating a MapView
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
         mMapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(HuaweiMap huaweiMap) {
-                mHuaweiMap = huaweiMap;
-
-                // If mHuaweiMap is null, the program stops running.
-                if (null == mHuaweiMap) {
-                    return;
-                }
-
+                HuaweiMap mHuaweiMap = huaweiMap;
                 mHuaweiMap.setOnMapClickListener(new  OnMapClickListener() {
                     @Override
                     public void onMapClick(LatLng latLng) {

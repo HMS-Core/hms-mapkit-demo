@@ -5,94 +5,92 @@
 package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
-import com.huawei.hms.maps.harmony.HuaweiMapOptions;
 import com.huawei.hms.maps.harmony.MapView;
 import com.huawei.hms.maps.harmony.OnMapReadyCallback;
-import com.huawei.hms.maps.harmony.OnMapClickListener;
-import com.huawei.hms.maps.harmony.model.CameraPosition;
-import com.huawei.hms.maps.harmony.model.LatLng;
-import com.huawei.hms.maps.harmony.model.Polyline;
-import com.huawei.hms.maps.harmony.model.PolylineOptions;
+import com.huawei.hms.maps.harmony.CameraUpdateFactory;
 import com.huawei.hms.maps.harmony.CommonContext;
+import com.huawei.hms.maps.harmony.model.LatLng;
+import com.huawei.harmony.hms.maps.demo.ResourceTable;
+import com.huawei.harmony.hms.maps.demo.utils.ScreenUtil;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.colors.RgbColor;
+import ohos.agp.components.Button;
+import ohos.agp.components.Component;
 import ohos.agp.components.ComponentContainer;
 import ohos.agp.components.PositionLayout;
+import ohos.agp.components.LayoutScatter;
 import ohos.agp.components.element.ShapeElement;
+import com.huawei.hms.maps.harmony.model.Polyline;
+import com.huawei.hms.maps.harmony.model.PolylineOptions;
 import ohos.agp.utils.Color;
-import ohos.agp.window.dialog.ToastDialog;
 
 public class PolylineDemo extends AbilitySlice {
+    private HuaweiMap mHuaweiMap;
+
+    /**
+     * Declare a MapView object.
+     */
+    private MapView mMapView;
+
+    /**
+     * Declare a Polyline object.
+     */
+    private Polyline mPolyline;
+
+    private boolean strokeColorStatus = true;
+
+    /**
+     * the layout
+     */
+    private PositionLayout rootLayout;
 
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
+        initPositionLayout();
+        initMapView();
+        addButtons();
+        super.setUIContent(this.rootLayout);
+    }
+
+    private void initPositionLayout() {
+        rootLayout = new PositionLayout(this);
+        this.rootLayout.setContentPosition(0, 0);
+        this.rootLayout.setWidth(ComponentContainer.LayoutConfig.MATCH_PARENT);
+        this.rootLayout.setHeight(ComponentContainer.LayoutConfig.MATCH_PARENT);
+
+        ShapeElement element = new ShapeElement();
+        element.setShape(ShapeElement.RECTANGLE);
+        element.setRgbColor(new RgbColor(255, 255, 255));
+        this.rootLayout.setBackground(element);
+    }
+
+    private void initMapView() {
         CommonContext.setContext(this);
 
-        // Declaring MapView Objects
-        MapView mMapView;
-
-        // Declaring and Initializing the HuaweiMapOptions Object
-        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
-
-        // Initialize Camera Properties
-        CameraPosition cameraPosition =
-                new CameraPosition(new LatLng(48.893478, 2.334595), 6, 0, 0);
-
-        huaweiMapOptions
-                // Set Camera Properties
-                .camera(cameraPosition)
-                // Enables or disables the zoom function. By default, the zoom function is enabled.
-                .zoomControlsEnabled(false)
-                // Sets whether the compass is available. The compass is available by default.
-                .compassEnabled(true)
-                // Specifies whether the zoom gesture is available. By default, the zoom gesture is available.
-                .zoomGesturesEnabled(true)
-                // Specifies whether to enable the scrolling gesture. By default, the scrolling gesture is enabled.
-                .scrollGesturesEnabled(true)
-                // Specifies whether the rotation gesture is available. By default, the rotation gesture is available.
-                .rotateGesturesEnabled(false)
-                // Specifies whether the tilt gesture is available. By default, the tilt gesture is available.
-                .tiltGesturesEnabled(true)
-                // Sets whether the map is in lite mode. The default value is No.
-                .liteMode(false)
-                // Set Preference Minimum Zoom Level
-                .minZoomPreference(3)
-                // Set Preference Maximum Zoom Level
-                .maxZoomPreference(13);
-
-        // Initializing MapView Objects
-        mMapView = new MapView(this, huaweiMapOptions);
+        // Initialize MapView Object.
+        mMapView = new MapView(this);
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
         mMapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(HuaweiMap huaweiMap) {
-                HuaweiMap mHuaweiMap = huaweiMap;
-                mHuaweiMap.setOnMapClickListener(new  OnMapClickListener() {
-                    @Override
-                    public void onMapClick(LatLng latLng) {
-                        new ToastDialog(CommonContext.getContext()).setText("onMapClick ").show();
-                    }
-                });
+                mHuaweiMap = huaweiMap;
 
-                // Initialize the Polyline object.
-                Polyline mPolyline = new Polyline(this);
-
-                // If the value of mHuaweiMap is null, the program stops.
+                // If mHuaweiMap is null, the program stops running.
                 if (null == mHuaweiMap) {
                     return;
                 }
 
-                // If mPolyline is not null, remove it from the map and set it to null.
+                // If mPolyline is not null, remove it from the map and then set it to null.
                 if (null != mPolyline) {
                     mPolyline.remove();
                     mPolyline = null;
                 }
 
-                // Add a polyline to the map
+                // Add a polyline to a map.
                 mPolyline = mHuaweiMap.addPolyline(new PolylineOptions()
                         // polyline coordinate
                         .add(new LatLng(47.893478, 2.334595), new LatLng(48.993478, 3.434595),
@@ -102,20 +100,90 @@ public class PolylineDemo extends AbilitySlice {
                         // Polyline Width
                         .width(3));
 
-                new ToastDialog(CommonContext.getContext()).setText("color green: " + Color.GREEN.getValue()).show();
+                // move camera
+                mHuaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 6));
             }
         });
 
-        // Creating a Layout
-        ComponentContainer.LayoutConfig config = new ComponentContainer.LayoutConfig(ComponentContainer.LayoutConfig.MATCH_PARENT, ComponentContainer.LayoutConfig.MATCH_PARENT);
-        PositionLayout myLayout = new PositionLayout(this);
-        myLayout.setLayoutConfig(config);
-        ShapeElement element = new ShapeElement();
-        element.setShape(ShapeElement.RECTANGLE);
-        element.setRgbColor(new RgbColor(255, 255, 255));
+        this.rootLayout.addComponent(mMapView);
+    }
 
-        // Load MapView
-        myLayout.addComponent(mMapView);
-        super.setUIContent(myLayout);
+    private void addButtons() {
+        int height = ScreenUtil.getScreenHeight(this);
+
+        Button buttonStrokeColor = createButton();
+        buttonStrokeColor.setText("StrokeColor");
+        buttonStrokeColor.setContentPosition(50, (float) height / 2);
+        this.rootLayout.addComponent(buttonStrokeColor);
+
+        buttonStrokeColor.setClickedListener(new Component.ClickedListener() {
+            @Override
+            public void onClick(Component component) {
+                if (null == mPolyline) {
+                    return;
+                }
+                if (strokeColorStatus) {
+                    // Set the color of the polyline (mPolyline) to red.
+                    mPolyline.setColor(Color.RED.getValue());
+                } else {
+                    // Set the color of the polyline (mPolyline) to green.
+                    mPolyline.setColor(Color.GREEN.getValue());
+                }
+                // Set the width of the polyline (mPolyline) to 10 pixels.
+                mPolyline.setWidth(10);
+                strokeColorStatus = !strokeColorStatus;
+            }
+        });
+    }
+
+    /**
+     * Create button
+     *
+     * @return Button
+     */
+    private Button createButton() {
+        Component component = LayoutScatter.getInstance(getContext())
+                .parse(ResourceTable.Layout_button_layout, null, false);
+        return (Button) component;
+    }
+
+    @Override
+    protected void onActive() {
+        super.onActive();
+        if (mMapView != null) {
+            mMapView.onResume();
+        }
+    }
+
+    @Override
+    protected void onInactive() {
+        super.onInactive();
+        if (mMapView != null) {
+            mMapView.onPause();
+        }
+    }
+
+    @Override
+    protected void onBackground() {
+        super.onBackground();
+        if (mMapView != null) {
+            mMapView.onStop();
+        }
+    }
+
+    @Override
+    protected void onForeground(Intent intent) {
+        super.onForeground(intent);
+        if (mMapView != null) {
+            mMapView.onStart();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null) {
+            mMapView.onDestroy();
+        }
     }
 }

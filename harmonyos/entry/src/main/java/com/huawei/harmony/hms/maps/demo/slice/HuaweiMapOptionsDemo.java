@@ -6,11 +6,13 @@ package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.MapView;
-import com.huawei.hms.maps.harmony.HuaweiMapOptions;
 import com.huawei.hms.maps.harmony.OnMapReadyCallback;
 import com.huawei.hms.maps.harmony.OnMapClickListener;
-import com.huawei.hms.maps.harmony.model.LatLng;
 import com.huawei.hms.maps.harmony.CommonContext;
+import com.huawei.hms.maps.harmony.HuaweiMapOptions;
+import com.huawei.hms.maps.harmony.model.LatLngBounds;
+import com.huawei.hms.maps.harmony.model.CameraPosition;
+import com.huawei.hms.maps.harmony.model.LatLng;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.colors.RgbColor;
@@ -19,7 +21,7 @@ import ohos.agp.components.PositionLayout;
 import ohos.agp.components.element.ShapeElement;
 import ohos.agp.window.dialog.ToastDialog;
 
-public class LiteModeDemo extends AbilitySlice {
+public class HuaweiMapOptionsDemo extends AbilitySlice {
     private HuaweiMap mHuaweiMap;
 
     /**
@@ -32,14 +34,43 @@ public class LiteModeDemo extends AbilitySlice {
         super.onStart(intent);
         CommonContext.setContext(this);
 
-        // Declaring and Initializing the HuaweiMapOptions Object
-        HuaweiMapOptions huaweiMapOptions = new HuaweiMapOptions();
+        // Set initial camera attributes.
+        CameraPosition cameraPosition = new CameraPosition(new LatLng(48.893478, 2.334595), 3, 45, 20);
 
-        // Enable the lite mode map.
-        huaweiMapOptions.liteMode(true);
+        // Construct the target area of the camera.
+        LatLng southwest = new LatLng(47.893478, 3.334595);
+        LatLng northeast = new LatLng(49.893478, 1.334595);
+
+        LatLngBounds latLngBounds = new LatLngBounds(southwest, northeast);
+        HuaweiMapOptions options = new HuaweiMapOptions();
+        options
+                // Set camera attributes.
+                .camera(cameraPosition)
+                // Set whether to enable the zoom function. It is enabled by default.
+                .zoomControlsEnabled(false)
+                // Set whether to enable the compass. It is enabled by default.
+                .compassEnabled(true)
+                // Set whether to enable zoom gestures. They are enabled by default.
+                .zoomGesturesEnabled(true)
+                // Set whether to enable scroll gestures. They are enabled by default.
+                .scrollGesturesEnabled(true)
+                // Set whether to enable rotation gestures. They are enabled by default.
+                .rotateGesturesEnabled(false)
+                // Set whether to enable tilt gestures. They are enabled by default.
+                .tiltGesturesEnabled(true)
+                // Set whether to place the map view on the top of the map window. The default value is false.
+                .zOrderOnTop(true)
+                // Set whether to enable the lite mode for the map. It is disabled by default.
+                .liteMode(false)
+                // Set the preferred minimum zoom level.
+                .minZoomPreference(3)
+                // Set the preferred maximum zoom level.
+                .maxZoomPreference(13)
+                // Set an area to constrain the camera target so that the camera target does not move outside the bounds when a user scrolls the map camera.
+                .latLngBoundsForCameraTarget(latLngBounds);
 
         // Initialize MapView Object.
-        mMapView = new MapView(this, huaweiMapOptions);
+        mMapView = new MapView(this, options);
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
