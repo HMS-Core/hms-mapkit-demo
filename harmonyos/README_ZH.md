@@ -3,7 +3,7 @@
 
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
 
-中文 | [English](README.md)
+中文 | [English](README.MD)
 
 ## 目录
 
