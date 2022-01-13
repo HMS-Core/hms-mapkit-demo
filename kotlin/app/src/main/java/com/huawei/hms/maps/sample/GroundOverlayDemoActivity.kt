@@ -101,7 +101,7 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         Log.d(TAG, "addFromAsset: ")
         val options = GroundOverlayOptions().position(MapUtils.FRANCE2, 50f, 50f)
-                .image(BitmapDescriptorFactory.fromAsset("images/niuyouguo.jpg"))
+                .image(BitmapDescriptorFactory.fromAsset("images/avocado.jpg"))
         overlay = hMap?.addGroundOverlay(options)
         val cameraPosition = CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18f).bearing(0f).tilt(0f).build()
         val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
@@ -117,7 +117,7 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         Log.d(TAG, "addFromResource: ")
         val options = GroundOverlayOptions().position(MapUtils.FRANCE2, 50f, 50f)
-                .image(BitmapDescriptorFactory.fromResource(R.drawable.niuyouguo))
+                .image(BitmapDescriptorFactory.fromResource(R.drawable.avocado))
         overlay = hMap?.addGroundOverlay(options)
         val cameraPosition = CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18f).bearing(0f).tilt(0f).build()
         val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
@@ -132,7 +132,7 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
             overlay?.remove()
         }
         Log.d(TAG, "addFromBitmap: ")
-        val vectorDrawable = ResourcesCompat.getDrawable(resources, R.drawable.niuyouguo, null)
+        val vectorDrawable = ResourcesCompat.getDrawable(resources, R.drawable.avocado, null)
         vectorDrawable ?: return
         val bitmap = Bitmap.createBitmap(vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight,
                 Bitmap.Config.ARGB_8888)
@@ -159,7 +159,7 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         val fileName = "maomao.jpg"
         val localFile = filesDir.toString() + File.separator + fileName
         try {
-            val bitmap = BitmapFactory.decodeStream(assets.open("images/niuyouguo.jpg"))
+            val bitmap = BitmapFactory.decodeStream(assets.open("images/avocado.jpg"))
             out = FileOutputStream(File(localFile))
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
         } catch (e: FileNotFoundException) {
@@ -195,7 +195,7 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         val path = getString(R.string.file_path)
         var out: FileOutputStream? = null
         try {
-            val bitmap = BitmapFactory.decodeStream(assets.open("images/niuyouguo.jpg"))
+            val bitmap = BitmapFactory.decodeStream(assets.open("images/avocado.jpg"))
             out = FileOutputStream(File(path))
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
         } catch (e: FileNotFoundException) {

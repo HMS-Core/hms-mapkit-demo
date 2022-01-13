@@ -6,5 +6,5 @@
     <string name="toLatlng">screen Point to latLng</string>
     <string name="toPoint">latLngscreen to Point</string>
     <string name="move_the_camera">Move the camera</string>
-    <string name="file_path">/data/data/com.huawei.hms.maps.sample/niuyouguo.jpg</string>
+    <string name="file_path">/data/data/com.huawei.hms.maps.sample/avocado.jpg</string>
 </resources>

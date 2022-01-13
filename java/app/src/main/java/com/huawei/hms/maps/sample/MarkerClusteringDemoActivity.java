@@ -157,7 +157,7 @@ public class MarkerClusteringDemoActivity extends AppCompatActivity implements O
      */
     public void setMarkerClusterIcon(View view) {
         if (null != hMap) {
-            hMap.getUiSettings().setMarkerClusterIcon(BitmapDescriptorFactory.fromResource(R.drawable.niuyouguo));
+            hMap.getUiSettings().setMarkerClusterIcon(BitmapDescriptorFactory.fromResource(R.drawable.avocado));
         }
     }
 

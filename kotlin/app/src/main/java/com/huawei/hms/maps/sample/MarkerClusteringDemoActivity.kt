@@ -126,7 +126,7 @@ class MarkerClusteringDemoActivity : AppCompatActivity(), OnMapReadyCallback {
      * set marker cluster icon
      */
     fun setMarkerClusterIcon(view: View?) {
-        hMap?.uiSettings?.setMarkerClusterIcon(BitmapDescriptorFactory.fromResource(R.drawable.niuyouguo))
+        hMap?.uiSettings?.setMarkerClusterIcon(BitmapDescriptorFactory.fromResource(R.drawable.avocado))
     }
 
     /**

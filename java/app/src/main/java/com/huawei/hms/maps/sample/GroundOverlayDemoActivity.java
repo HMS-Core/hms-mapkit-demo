@@ -133,7 +133,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         }
         Log.d(TAG, "addFromAsset: ");
         GroundOverlayOptions options = new GroundOverlayOptions().position(MapUtils.FRANCE2, 50, 50)
-            .image(BitmapDescriptorFactory.fromAsset("images/niuyouguo.jpg"));
+            .image(BitmapDescriptorFactory.fromAsset("images/avocado.jpg"));
         overlay = hMap.addGroundOverlay(options);
         CameraPosition cameraPosition =
             CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
@@ -155,7 +155,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         }
         Log.d(TAG, "addFromResource: ");
         GroundOverlayOptions options = new GroundOverlayOptions().position(MapUtils.FRANCE2, 50, 50)
-            .image(BitmapDescriptorFactory.fromResource(R.drawable.niuyouguo));
+            .image(BitmapDescriptorFactory.fromResource(R.drawable.avocado));
         overlay = hMap.addGroundOverlay(options);
         CameraPosition cameraPosition =
             CameraPosition.builder().target(MapUtils.FRANCE2).zoom(18).bearing(0f).tilt(0f).build();
@@ -176,7 +176,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
             overlay.remove();
         }
         Log.d(TAG, "addFromBitmap: ");
-        Drawable vectorDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.niuyouguo, null);
+        Drawable vectorDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.avocado, null);
         Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(),
             Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -208,7 +208,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         String fileName = "maomao.jpg";
         String localFile = getFilesDir() + File.separator + fileName;
         try {
-            Bitmap bitmap = BitmapFactory.decodeStream(getAssets().open("images/niuyouguo.jpg"));
+            Bitmap bitmap = BitmapFactory.decodeStream(getAssets().open("images/avocado.jpg"));
             out = new FileOutputStream(new File(localFile));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         } catch (FileNotFoundException e) {
@@ -250,7 +250,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         String path = getString(R.string.file_path);
         FileOutputStream out = null;
         try {
-            Bitmap bitmap = BitmapFactory.decodeStream(getAssets().open("images/niuyouguo.jpg"));
+            Bitmap bitmap = BitmapFactory.decodeStream(getAssets().open("images/avocado.jpg"));
             out = new FileOutputStream(new File(path));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         } catch (FileNotFoundException e) {
