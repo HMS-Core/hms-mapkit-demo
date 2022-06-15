@@ -53,9 +53,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             ActivityCompat.requestPermissions(this, RUNTIME_PERMISSIONS, REQUEST_CODE)
         }
 
+		// this line is needed before using huawei map kit, since version 'com.huawei.hms:maps:6.5.0.301'
+        MapsInitializer.initialize(this)
+		
         // please replace "Your API key" with api_key field value in
         // agconnect-services.json if the field is null.
         MapsInitializer.setApiKey(MapUtils.API_KEY)
+		
         findViewById<Button>(R.id.Camera).setOnClickListener(this)
         findViewById<Button>(R.id.BasicMap).setOnClickListener(this)
         findViewById<Button>(R.id.GestureDemo).setOnClickListener(this)
