@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 53;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4527A7BD279C09D500ADAC44 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4527A7BC279C09CA00ADAC44 /* libz.tbd */; };
+		4527A7C027A3C9ED00ADAC44 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527A7BF27A3C9ED00ADAC44 /* MapViewController.m */; };
+		4527A7C327A3CCD600ADAC44 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527A7C227A3CCD600ADAC44 /* BaseViewController.m */; };
+		4527A7C627A3CD4E00ADAC44 /* ControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527A7C527A3CD4E00ADAC44 /* ControlViewController.m */; };
+		4527A7C927A3CD6600ADAC44 /* AnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527A7C827A3CD6600ADAC44 /* AnnotationViewController.m */; };
+		4527A7CC27A3CD9300ADAC44 /* PolylineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527A7CB27A3CD9300ADAC44 /* PolylineViewController.m */; };
+		4527A7CF27A3CDB900ADAC44 /* PolygonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527A7CE27A3CDB900ADAC44 /* PolygonViewController.m */; };
+		4527A7DB27A427F000ADAC44 /* MapStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527A7DA27A427F000ADAC44 /* MapStyleViewController.m */; };
+		454EEF9427649366002F9D16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 454EEF9327649366002F9D16 /* AppDelegate.m */; };
+		454EEF9A27649366002F9D16 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454EEF9927649366002F9D16 /* ViewController.m */; };
+		454EEF9F27649368002F9D16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454EEF9E27649368002F9D16 /* Assets.xcassets */; };
+		454EEFA227649368002F9D16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454EEFA027649368002F9D16 /* LaunchScreen.storyboard */; };
+		454EEFA527649368002F9D16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 454EEFA427649368002F9D16 /* main.m */; };
+		454EEFAF27649549002F9D16 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454EEFAE27649549002F9D16 /* GLKit.framework */; };
+		454EEFB127649561002F9D16 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 454EEFB027649556002F9D16 /* libbz2.tbd */; };
+		454EEFBA276496C8002F9D16 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 454EEFB9276496BD002F9D16 /* libc++.tbd */; };
+		45807249280D515B0050DB62 /* mapstyle_night.json in Resources */ = {isa = PBXBuildFile; fileRef = 45807247280D515B0050DB62 /* mapstyle_night.json */; };
+		4580725C280D62570050DB62 /* mapstyle_simple.json in Resources */ = {isa = PBXBuildFile; fileRef = 4580725B280D62570050DB62 /* mapstyle_simple.json */; };
+		45B26F6227B29BDA0098266E /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B26F6127B29BDA0098266E /* MoreViewController.m */; };
+		45B26F6527B36D550098266E /* GroundOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B26F6427B36D550098266E /* GroundOverlayViewController.m */; };
+		45B26F6827B3AF7E0098266E /* TileOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B26F6727B3AF7E0098266E /* TileOverlayViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4527A7BC279C09CA00ADAC44 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		4527A7BE27A3C9ED00ADAC44 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		4527A7BF27A3C9ED00ADAC44 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		4527A7C127A3CCD600ADAC44 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		4527A7C227A3CCD600ADAC44 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		4527A7C427A3CD4E00ADAC44 /* ControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlViewController.h; sourceTree = "<group>"; };
+		4527A7C527A3CD4E00ADAC44 /* ControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlViewController.m; sourceTree = "<group>"; };
+		4527A7C727A3CD6600ADAC44 /* AnnotationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnnotationViewController.h; sourceTree = "<group>"; };
+		4527A7C827A3CD6600ADAC44 /* AnnotationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnnotationViewController.m; sourceTree = "<group>"; };
+		4527A7CA27A3CD9300ADAC44 /* PolylineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolylineViewController.h; sourceTree = "<group>"; };
+		4527A7CB27A3CD9300ADAC44 /* PolylineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PolylineViewController.m; sourceTree = "<group>"; };
+		4527A7CD27A3CDB900ADAC44 /* PolygonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolygonViewController.h; sourceTree = "<group>"; };
+		4527A7CE27A3CDB900ADAC44 /* PolygonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PolygonViewController.m; sourceTree = "<group>"; };
+		4527A7D927A427F000ADAC44 /* MapStyleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapStyleViewController.h; sourceTree = "<group>"; };
+		4527A7DA27A427F000ADAC44 /* MapStyleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapStyleViewController.m; sourceTree = "<group>"; };
+		454EEF8F27649366002F9D16 /* iosgithubdemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosgithubdemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		454EEF9227649366002F9D16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		454EEF9327649366002F9D16 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		454EEF9827649366002F9D16 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		454EEF9927649366002F9D16 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		454EEF9E27649368002F9D16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		454EEFA127649368002F9D16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		454EEFA327649368002F9D16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		454EEFA427649368002F9D16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		454EEFAE27649549002F9D16 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		454EEFB027649556002F9D16 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		454EEFB727649695002F9D16 /* libz.1.2.11.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.11.tbd; path = usr/lib/libz.1.2.11.tbd; sourceTree = SDKROOT; };
+		454EEFB9276496BD002F9D16 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		45807247280D515B0050DB62 /* mapstyle_night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mapstyle_night.json; sourceTree = "<group>"; };
+		4580725B280D62570050DB62 /* mapstyle_simple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mapstyle_simple.json; sourceTree = "<group>"; };
+		45B26F6027B29BDA0098266E /* MoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		45B26F6127B29BDA0098266E /* MoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		45B26F6327B36D550098266E /* GroundOverlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroundOverlayViewController.h; sourceTree = "<group>"; };
+		45B26F6427B36D550098266E /* GroundOverlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroundOverlayViewController.m; sourceTree = "<group>"; };
+		45B26F6627B3AF7E0098266E /* TileOverlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TileOverlayViewController.h; sourceTree = "<group>"; };
+		45B26F6727B3AF7E0098266E /* TileOverlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TileOverlayViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		454EEF8C27649366002F9D16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				454EEFAF27649549002F9D16 /* GLKit.framework in Frameworks */,
+				454EEFB127649561002F9D16 /* libbz2.tbd in Frameworks */,
+				454EEFBA276496C8002F9D16 /* libc++.tbd in Frameworks */,
+				4527A7BD279C09D500ADAC44 /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		454EEF8627649366002F9D16 = {
+			isa = PBXGroup;
+			children = (
+				454EEF9127649366002F9D16 /* iosgithubdemo */,
+				454EEF9027649366002F9D16 /* Products */,
+				454EEFAD27649549002F9D16 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		454EEF9027649366002F9D16 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				454EEF8F27649366002F9D16 /* iosgithubdemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		454EEF9127649366002F9D16 /* iosgithubdemo */ = {
+			isa = PBXGroup;
+			children = (
+				4580725B280D62570050DB62 /* mapstyle_simple.json */,
+				45807247280D515B0050DB62 /* mapstyle_night.json */,
+				454EEF9227649366002F9D16 /* AppDelegate.h */,
+				454EEF9327649366002F9D16 /* AppDelegate.m */,
+				454EEF9827649366002F9D16 /* ViewController.h */,
+				454EEF9927649366002F9D16 /* ViewController.m */,
+				45B26F6627B3AF7E0098266E /* TileOverlayViewController.h */,
+				45B26F6727B3AF7E0098266E /* TileOverlayViewController.m */,
+				45B26F6327B36D550098266E /* GroundOverlayViewController.h */,
+				45B26F6427B36D550098266E /* GroundOverlayViewController.m */,
+				4527A7D927A427F000ADAC44 /* MapStyleViewController.h */,
+				4527A7DA27A427F000ADAC44 /* MapStyleViewController.m */,
+				4527A7BE27A3C9ED00ADAC44 /* MapViewController.h */,
+				4527A7BF27A3C9ED00ADAC44 /* MapViewController.m */,
+				4527A7C427A3CD4E00ADAC44 /* ControlViewController.h */,
+				4527A7C527A3CD4E00ADAC44 /* ControlViewController.m */,
+				4527A7C727A3CD6600ADAC44 /* AnnotationViewController.h */,
+				4527A7C827A3CD6600ADAC44 /* AnnotationViewController.m */,
+				4527A7CA27A3CD9300ADAC44 /* PolylineViewController.h */,
+				4527A7CB27A3CD9300ADAC44 /* PolylineViewController.m */,
+				4527A7CD27A3CDB900ADAC44 /* PolygonViewController.h */,
+				4527A7CE27A3CDB900ADAC44 /* PolygonViewController.m */,
+				4527A7C127A3CCD600ADAC44 /* BaseViewController.h */,
+				4527A7C227A3CCD600ADAC44 /* BaseViewController.m */,
+				454EEF9E27649368002F9D16 /* Assets.xcassets */,
+				454EEFA027649368002F9D16 /* LaunchScreen.storyboard */,
+				454EEFA327649368002F9D16 /* Info.plist */,
+				454EEFA427649368002F9D16 /* main.m */,
+				45B26F6027B29BDA0098266E /* MoreViewController.h */,
+				45B26F6127B29BDA0098266E /* MoreViewController.m */,
+			);
+			path = iosgithubdemo;
+			sourceTree = "<group>";
+		};
+		454EEFAD27649549002F9D16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4527A7BC279C09CA00ADAC44 /* libz.tbd */,
+				454EEFB9276496BD002F9D16 /* libc++.tbd */,
+				454EEFB727649695002F9D16 /* libz.1.2.11.tbd */,
+				454EEFB027649556002F9D16 /* libbz2.tbd */,
+				454EEFAE27649549002F9D16 /* GLKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		454EEF8E27649366002F9D16 /* iosgithubdemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 454EEFA827649368002F9D16 /* Build configuration list for PBXNativeTarget "iosgithubdemo" */;
+			buildPhases = (
+				454EEF8B27649366002F9D16 /* Sources */,
+				454EEF8C27649366002F9D16 /* Frameworks */,
+				454EEF8D27649366002F9D16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iosgithubdemo;
+			productName = iosgithubdemo;
+			productReference = 454EEF8F27649366002F9D16 /* iosgithubdemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		454EEF8727649366002F9D16 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					454EEF8E27649366002F9D16 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 454EEF8A27649366002F9D16 /* Build configuration list for PBXProject "iosgithubdemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 454EEF8627649366002F9D16;
+			productRefGroup = 454EEF9027649366002F9D16 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				454EEF8E27649366002F9D16 /* iosgithubdemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		454EEF8D27649366002F9D16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				454EEFA227649368002F9D16 /* LaunchScreen.storyboard in Resources */,
+				4580725C280D62570050DB62 /* mapstyle_simple.json in Resources */,
+				454EEF9F27649368002F9D16 /* Assets.xcassets in Resources */,
+				45807249280D515B0050DB62 /* mapstyle_night.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		454EEF8B27649366002F9D16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45B26F6527B36D550098266E /* GroundOverlayViewController.m in Sources */,
+				45B26F6827B3AF7E0098266E /* TileOverlayViewController.m in Sources */,
+				454EEF9A27649366002F9D16 /* ViewController.m in Sources */,
+				4527A7C327A3CCD600ADAC44 /* BaseViewController.m in Sources */,
+				4527A7C627A3CD4E00ADAC44 /* ControlViewController.m in Sources */,
+				4527A7CF27A3CDB900ADAC44 /* PolygonViewController.m in Sources */,
+				454EEF9427649366002F9D16 /* AppDelegate.m in Sources */,
+				4527A7C927A3CD6600ADAC44 /* AnnotationViewController.m in Sources */,
+				454EEFA527649368002F9D16 /* main.m in Sources */,
+				4527A7DB27A427F000ADAC44 /* MapStyleViewController.m in Sources */,
+				4527A7CC27A3CD9300ADAC44 /* PolylineViewController.m in Sources */,
+				45B26F6227B29BDA0098266E /* MoreViewController.m in Sources */,
+				4527A7C027A3C9ED00ADAC44 /* MapViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		454EEFA027649368002F9D16 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				454EEFA127649368002F9D16 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		454EEFA627649368002F9D16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		454EEFA727649368002F9D16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		454EEFA927649368002F9D16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8W84536BBU;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iosgithubdemo",
+					"$(PROJECT_DIR)/iosgithubdemo/Lib",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iosgithubdemo/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = NSLocationAlwaysAndWhenInUseUsageDescription;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = NSLocationWhenInUseUsageDescription;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-fprofile-instr-generate",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = MapCarHailingSDKforiOSProfile;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		454EEFAA27649368002F9D16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8W84536BBU;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iosgithubdemo",
+					"$(PROJECT_DIR)/iosgithubdemo/Lib",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iosgithubdemo/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = NSLocationAlwaysAndWhenInUseUsageDescription;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = NSLocationWhenInUseUsageDescription;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-fprofile-instr-generate",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = MapCarHailingSDKforiOSProfile;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		454EEF8A27649366002F9D16 /* Build configuration list for PBXProject "iosgithubdemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				454EEFA627649368002F9D16 /* Debug */,
+				454EEFA727649368002F9D16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		454EEFA827649368002F9D16 /* Build configuration list for PBXNativeTarget "iosgithubdemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				454EEFA927649368002F9D16 /* Debug */,
+				454EEFAA27649368002F9D16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 454EEF8727649366002F9D16 /* Project object */;
+}
