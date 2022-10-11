@@ -61,40 +61,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="透明度"
+            android:text="opacity"
             android:textStyle="bold" />
 
         <SeekBar
             android:id="@+id/OpacitySeekBar"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="opacity" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="半径"
+            android:text="radius"
             android:textStyle="bold" />
 
         <SeekBar
             android:id="@+id/RadiusSeekBar"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="radius" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="强度"
+            android:text="intensity"
             android:textStyle="bold" />
 
         <SeekBar
             android:id="@+id/IntensitySeekBar"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="intensity" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
