@@ -7,10 +7,15 @@ ohos {
         compatibleSdkVersion 4
     }
     buildTypes {
-        release {
+        debug {
             proguardOpt {
                 proguardEnabled false
+            }
+        }
+        release {
+            proguardOpt {
                 rulesFiles 'proguard-rules.pro'
+                proguardEnabled true
             }
         }
     }
@@ -19,8 +24,8 @@ ohos {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
     implementation 'com.huawei.hms:maps-harmony:6.4.0.300'
-    testImplementation 'junit:junit:4.13'
-    ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
+    testImplementation 'junit:junit:4.13.1'
+    ohosTestImplementation 'com.huawei.ohos.testkit:runner:2.0.0.200'
 }
 
 decc {

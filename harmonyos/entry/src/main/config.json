@@ -5,10 +5,6 @@
     "version": {
       "code": 1000000,
       "name": "1.0"
-    },
-    "apiVersion": {
-      "compatible": 3,
-      "target": 3
     }
   },
   "deviceConfig": {},
@@ -21,6 +17,7 @@
     ],
     "distro": {
       "deliveryWithInstall": true,
+      "installationFree":true,
       "moduleName": "entry",
       "moduleType": "entry"
     },
