@@ -62,8 +62,8 @@ object NetworkRequestManager {
             var returnDesc = ""
             var need = needEncode
             try {
-                result = response?.body()?.string() ?: ""
-                val jsonObject = JSONObject(result)
+                val body = response?.body?.string()
+                val jsonObject = JSONObject(body.toString())
                 returnCode = jsonObject.optString("returnCode")
                 returnDesc = jsonObject.optString("returnDesc")
             } catch (e: NullPointerException) {
@@ -105,16 +105,21 @@ object NetworkRequestManager {
      * @param count last number of retries
      * @param needEncode dose the api key need to be encoded
      */
-    private fun getBicyclingRoutePlanningResult(latLng1: LatLng, latLng2: LatLng,
-                                                listener: OnNetworkListener?, count: Int, needEncode: Boolean) {
+    private fun getBicyclingRoutePlanningResult(
+        latLng1: LatLng,
+        latLng2: LatLng,
+        listener: OnNetworkListener?,
+        count: Int,
+        needEncode: Boolean
+    ) {
         var count = count
         val curCount = ++count
         Log.e(TAG, "current count: $curCount")
         Thread(Runnable {
             val response = netClient?.getBicyclingRoutePlanningResult(latLng1, latLng2, needEncode)
-            if (response?.body() != null && response.isSuccessful) {
+            if (response?.body?.string() != null && response.isSuccessful) {
                 try {
-                    val result = response.body().string()
+                    val result = response.body?.string().toString()
                     listener?.requestSuccess(result)
                     return@Runnable
                 } catch (e: IOException) {
@@ -125,8 +130,7 @@ object NetworkRequestManager {
             var returnDesc = ""
             var need = needEncode
             try {
-                val result = response?.body()?.string() ?: ""
-                val jsonObject = JSONObject(result)
+                val jsonObject = JSONObject(response?.body?.string().toString())
                 returnCode = jsonObject.optString("returnCode")
                 returnDesc = jsonObject.optString("returnDesc")
             } catch (e: NullPointerException) {
@@ -171,10 +175,9 @@ object NetworkRequestManager {
         Log.e(TAG, "current count: $curCount")
         Thread(Runnable {
             val response = netClient?.getDrivingRoutePlanningResult(latLng1, latLng2, needEncode)
-            if (response?.body() != null && response.isSuccessful) {
+            if (response?.body?.string() != null && response.isSuccessful) {
                 try {
-                    val result = response.body().string()
-                    listener?.requestSuccess(result)
+                    listener?.requestSuccess(response.body?.string().toString())
                     return@Runnable
                 } catch (e: IOException) {
                     Log.e(TAG, e.message!!)
@@ -184,8 +187,7 @@ object NetworkRequestManager {
             var returnDesc = ""
             var need = needEncode
             try {
-                val result = response?.body()?.string() ?: ""
-                val jsonObject = JSONObject(result)
+                val jsonObject = JSONObject(response?.body?.string().toString())
                 returnCode = jsonObject.optString("returnCode")
                 returnDesc = jsonObject.optString("returnDesc")
             } catch (e: NullPointerException) {

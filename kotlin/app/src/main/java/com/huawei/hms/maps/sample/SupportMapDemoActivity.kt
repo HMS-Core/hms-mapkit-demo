@@ -37,6 +37,7 @@ import com.huawei.hms.maps.model.MarkerOptions
 /**
  * Create a simple activity with a map and a marker on the map.
  */
+@Suppress("UNUSED_PARAMETER")
 class SupportMapDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val TAG = "SupportMapDemoActivity"

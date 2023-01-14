@@ -41,6 +41,7 @@ import com.huawei.hms.maps.sample.utils.CheckUtils
 /**
  * circle related
  */
+@Suppress("UNUSED_PARAMETER")
 class CircleDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val TAG = "CircleDemoActivity"

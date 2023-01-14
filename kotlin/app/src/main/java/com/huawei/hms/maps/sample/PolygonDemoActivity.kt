@@ -43,6 +43,7 @@ import com.huawei.hms.maps.sample.utils.MapUtils
 /**
  * about polygon
  */
+@Suppress("UNUSED_PARAMETER")
 class PolygonDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val TAG = "PolygonDemoActivity"

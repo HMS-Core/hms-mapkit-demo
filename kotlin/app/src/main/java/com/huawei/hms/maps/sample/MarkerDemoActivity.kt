@@ -45,6 +45,7 @@ import java.util.*
 /**
  * Marker related
  */
+@Suppress("UNUSED_PARAMETER")
 class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val TAG = "MarkerDemoActivity"
@@ -271,7 +272,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         // remove the markers added by long click.
-        if (null != markerList && markerList.size > 0) {
+        if (markerList.size > 0) {
             for (iMarker in markerList) {
                 iMarker.remove()
             }

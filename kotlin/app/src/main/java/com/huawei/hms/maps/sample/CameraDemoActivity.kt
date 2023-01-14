@@ -46,6 +46,7 @@ import com.huawei.hms.maps.sample.utils.MapUtils
 /**
  * Show how to move a map camera
  */
+@Suppress("UNUSED_PARAMETER")
 class CameraDemoActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListener, OnCameraMoveStartedListener, OnCameraMoveListener, OnCameraIdleListener {
     companion object {
         private const val TAG = "CameraDemoActivity"

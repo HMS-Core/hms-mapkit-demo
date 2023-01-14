@@ -47,6 +47,7 @@ import java.io.IOException
 /**
  * about groundOverlay
  */
+@Suppress("UNUSED_PARAMETER")
 @SuppressLint("LongLogTag")
 class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
@@ -235,24 +236,21 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     fun getAttributes(view: View?) {
         if (null != overlay) {
-            var bounds: String? = null
-            var position: String? = null
-            bounds = if (overlay?.bounds == null) {
+            val bounds: String? = if (overlay?.bounds == null) {
                 "null"
             } else {
                 overlay?.bounds.toString()
             }
-            position = if (overlay?.position == null) {
+            val position: String? = if (overlay?.position == null) {
                 "null"
             } else {
                 overlay?.position.toString()
             }
+            val message = "position:" + position + "width:" + overlay?.width +
+                    "height:" + overlay?.height + "bounds:" + bounds
             Toast
-                    .makeText(this,
-                            "position:" + position + "width:" + overlay?.width + "height:" + overlay?.height + "bounds:"
-                                    + bounds,
-                            Toast.LENGTH_LONG)
-                    .show()
+                .makeText(this, message, Toast.LENGTH_LONG)
+                .show()
         }
     }
 

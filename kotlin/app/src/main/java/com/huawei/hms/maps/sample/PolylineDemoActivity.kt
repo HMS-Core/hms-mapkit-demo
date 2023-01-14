@@ -44,6 +44,7 @@ import java.util.*
 /**
  * about polyline
  */
+@Suppress("UNUSED_PARAMETER")
 class PolylineDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val TAG = "PolylineDemoActivity"

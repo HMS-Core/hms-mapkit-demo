@@ -45,6 +45,7 @@ import java.util.*
  * Route Planning
  */
 @SuppressLint("LongLogTag")
+@Suppress("UNUSED_PARAMETER")
 class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val TAG = "RoutePlanningDemoActivity"
@@ -161,11 +162,9 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun generateRoute(json: String?) {
         try {
-            val jsonObject = JSONObject(json)
+            val jsonObject = JSONObject(json.toString())
             val routes = jsonObject.optJSONArray("routes")
-            if (null == routes || routes.length() == 0) {
-                return
-            }
+            if (null == routes || routes.length() == 0) {return}
             val route = routes.getJSONObject(0)
 
             // get route bounds
@@ -173,32 +172,38 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
             if (null != bounds && bounds.has("southwest") && bounds.has("northeast")) {
                 val southwest = bounds.optJSONObject("southwest")
                 val northeast = bounds.optJSONObject("northeast")
-                val sw = LatLng(southwest.optDouble("lat"), southwest.optDouble("lng"))
-                val ne = LatLng(northeast.optDouble("lat"), northeast.optDouble("lng"))
+                val sw = LatLng(southwest!!.optDouble("lat"), southwest.optDouble("lng"))
+                val ne = LatLng(northeast!!.optDouble("lat"), northeast.optDouble("lng"))
                 mLatLngBounds = LatLngBounds(sw, ne)
             }
 
             // get paths
             val paths = route.optJSONArray("paths")
-            for (i in 0 until paths.length()) {
-                val path = paths.optJSONObject(i)
-                val mPath: MutableList<LatLng> = ArrayList()
-                val steps = path.optJSONArray("steps")
-                for (j in 0 until steps.length()) {
-                    val step = steps.optJSONObject(j)
-                    val polyline = step.optJSONArray("polyline")
-                    for (k in 0 until polyline.length()) {
-                        if (j > 0 && k == 0) {
-                            continue
+            if (paths != null) {
+                for (i in 0 until paths.length()) {
+                    val path = paths.optJSONObject(i)
+                    val mPath: MutableList<LatLng> = ArrayList()
+                    val steps = path.optJSONArray("steps")
+                    if (steps != null) {
+                        for (j in 0 until steps.length()) {
+                            val step = steps.optJSONObject(j)
+                            val polyline = step.optJSONArray("polyline")
+                            if (polyline != null) {
+                                for (k in 0 until polyline.length()) {
+                                    if (j > 0 && k == 0) {
+                                        continue
+                                    }
+                                    val line = polyline.getJSONObject(k)
+                                    val lat = line.optDouble("lat")
+                                    val lng = line.optDouble("lng")
+                                    val latLng = LatLng(lat, lng)
+                                    mPath.add(latLng)
+                                }
+                            }
                         }
-                        val line = polyline.getJSONObject(k)
-                        val lat = line.optDouble("lat")
-                        val lng = line.optDouble("lng")
-                        val latLng = LatLng(lat, lng)
-                        mPath.add(latLng)
                     }
+                    mPaths.add(i, mPath)
                 }
-                mPaths.add(i, mPath)
             }
             mHandler.sendEmptyMessage(0)
         } catch (e: JSONException) {

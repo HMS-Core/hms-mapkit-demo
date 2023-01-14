@@ -38,6 +38,7 @@ import java.util.*
 /**
  * about HeatMap
  */
+@Suppress("UNUSED_PARAMETER")
 class HeatMapDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val TAG = "HeatMapDemoActivity"

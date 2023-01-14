@@ -42,6 +42,7 @@ import com.huawei.hms.maps.sample.utils.MapUtils
  * Basical functions
  */
 
+@Suppress("UNUSED_PARAMETER")
 @SuppressLint("LongLogTag")
 class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {

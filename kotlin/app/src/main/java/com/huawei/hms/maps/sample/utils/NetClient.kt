@@ -19,6 +19,8 @@ package com.huawei.hms.maps.sample.utils
 
 import com.huawei.hms.maps.model.LatLng
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
@@ -43,7 +45,7 @@ class NetClient private constructor() {
             }
             private set
         private var client: OkHttpClient? = null
-        private val JSON = MediaType.parse("application/json; charset=utf-8")
+        private val JSON = "application/json; charset=utf-8".toMediaTypeOrNull()
     }
 
     init {
@@ -94,7 +96,7 @@ class NetClient private constructor() {
             destination.put("lng", latLng2.longitude)
             json.put("origin", origin)
             json.put("destination", destination)
-            val requestBody = RequestBody.create(JSON, json.toString())
+            val requestBody = json.toString().toRequestBody(JSON)
             val request = Request.Builder().url(url).post(requestBody).build()
             response = netClient?.initOkHttpClient()?.newCall(request)?.execute()
         } catch (e: JSONException) {
@@ -132,7 +134,7 @@ class NetClient private constructor() {
             destination.put("lng", latLng2.longitude)
             json.put("origin", origin)
             json.put("destination", destination)
-            val requestBody = RequestBody.create(JSON, json.toString())
+            val requestBody = json.toString().toRequestBody(JSON)
             val request = Request.Builder().url(url).post(requestBody).build()
             response = netClient?.initOkHttpClient()?.newCall(request)?.execute()
         } catch (e: JSONException) {
@@ -170,7 +172,7 @@ class NetClient private constructor() {
             destination.put("lng", latLng2.longitude)
             json.put("origin", origin)
             json.put("destination", destination)
-            val requestBody = RequestBody.create(JSON, json.toString())
+            val requestBody = json.toString().toRequestBody(JSON)
             val request = Request.Builder().url(url).post(requestBody).build()
             response = netClient?.initOkHttpClient()?.newCall(request)?.execute()
         } catch (e: JSONException) {

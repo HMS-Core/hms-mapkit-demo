@@ -40,6 +40,7 @@ import org.json.JSONException
 /**
  * MarkerClustering related
  */
+@Suppress("UNUSED_PARAMETER")
 @SuppressLint("LongLogTag")
 class MarkerClusteringDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {

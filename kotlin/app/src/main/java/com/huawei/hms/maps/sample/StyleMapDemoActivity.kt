@@ -33,6 +33,7 @@ import com.huawei.hms.maps.model.MapStyleOptions
 /**
  * StyleMap related
  */
+@Suppress("UNUSED_PARAMETER")
 class StyleMapDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val TAG = "StyleMapDemoActivity"

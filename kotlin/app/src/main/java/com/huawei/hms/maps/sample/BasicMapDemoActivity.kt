@@ -29,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity
 /**
  * This shows how we create a basic activity with a map.
  */
+@Suppress("UNUSED_PARAMETER")
 class BasicMapDemoActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "BasicMapDemoActivity"

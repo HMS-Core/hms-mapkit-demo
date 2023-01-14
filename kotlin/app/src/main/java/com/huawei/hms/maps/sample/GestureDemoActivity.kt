@@ -37,6 +37,7 @@ import com.huawei.hms.maps.UiSettings
 /**
  * about gesture
  */
+@Suppress("UNUSED_PARAMETER")
 class GestureDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         private const val TAG = "GestureDemoActivity"
@@ -84,7 +85,7 @@ class GestureDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Set my location button is available
      */
-    fun setMyLocationButtonEnabled(v: View?) {
+    fun setMyLocationButtonEnabled(view: View?) {
         if (ContextCompat.checkSelfPermission(this,
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             if (mMyLocationLayerCheckbox.isChecked) {
@@ -104,7 +105,7 @@ class GestureDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Set my location layer available
      */
-    fun setMyLocationLayerEnabled(v: View?) {
+    fun setMyLocationLayerEnabled(view: View?) {
         if (ContextCompat.checkSelfPermission(this,
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             hMap?.isMyLocationEnabled = mMyLocationLayerCheckbox.isChecked
