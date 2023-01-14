@@ -32,6 +32,7 @@ import android.view.View;
 import com.huawei.hms.maps.MapsInitializer;
 import com.huawei.hms.maps.sample.utils.MapUtils;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -63,110 +65,100 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // agconnect-services.json if the field is null.
         MapsInitializer.setApiKey(MapUtils.API_KEY);
 
-        findViewById(R.id.Camera).setOnClickListener(this);
-        findViewById(R.id.BasicMap).setOnClickListener(this);
-        findViewById(R.id.GestureDemo).setOnClickListener(this);
-        findViewById(R.id.ControlsDemo).setOnClickListener(this);
-        findViewById(R.id.CircleDemo).setOnClickListener(this);
-        findViewById(R.id.PolygonDemo).setOnClickListener(this);
-        findViewById(R.id.PolylineDemo).setOnClickListener(this);
-        findViewById(R.id.GroudOverlayDemo).setOnClickListener(this);
-        findViewById(R.id.LiteModeDemo).setOnClickListener(this);
-        findViewById(R.id.MoreLanguageDemo).setOnClickListener(this);
-        findViewById(R.id.MapFunctions).setOnClickListener(this);
-        findViewById(R.id.AddMarkerDemo).setOnClickListener(this);
-        findViewById(R.id.MarkerClusteringDemo).setOnClickListener(this);
-        findViewById(R.id.EventsDemo).setOnClickListener(this);
-        findViewById(R.id.MapStyle).setOnClickListener(this);
-        findViewById(R.id.LocationSourceDemo).setOnClickListener(this);
-        findViewById(R.id.HeatMapDemo).setOnClickListener(this);
-        findViewById(R.id.RoutePlanningDemo).setOnClickListener(this);
+        findViewById(R.id.button_camera).setOnClickListener(this);
+        findViewById(R.id.button_basic_map).setOnClickListener(this);
+        findViewById(R.id.button_gesture).setOnClickListener(this);
+        findViewById(R.id.button_gesture_controls).setOnClickListener(this);
+        findViewById(R.id.button_circle).setOnClickListener(this);
+        findViewById(R.id.button_polygon).setOnClickListener(this);
+        findViewById(R.id.button_polyline).setOnClickListener(this);
+        findViewById(R.id.button_ground_overlay).setOnClickListener(this);
+        findViewById(R.id.button_lite_mode).setOnClickListener(this);
+        findViewById(R.id.button_more_language).setOnClickListener(this);
+        findViewById(R.id.button_map_functions).setOnClickListener(this);
+        findViewById(R.id.button_marker).setOnClickListener(this);
+        findViewById(R.id.button_marker_clustering).setOnClickListener(this);
+        findViewById(R.id.button_events).setOnClickListener(this);
+        findViewById(R.id.button_map_style).setOnClickListener(this);
+        findViewById(R.id.button_location_source).setOnClickListener(this);
+        findViewById(R.id.button_heat_map).setOnClickListener(this);
+        findViewById(R.id.button_route_planning).setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View view) {
-        if (R.id.Camera == view.getId()) {
+    public void onClick(@NonNull View view) {
+        if (R.id.button_camera == view.getId()) {
             Log.i(TAG, "onClick: cameraDemo");
             Intent i = new Intent(this, CameraDemoActivity.class);
             startActivity(i);
-        } else if (R.id.GestureDemo == view.getId()) {
+        } else if (R.id.button_gesture == view.getId()) {
             Log.i(TAG, "onClick: GestureDemoActivity");
             Intent intent = new Intent(this, GestureDemoActivity.class);
             startActivity(intent);
-
-        } else if (R.id.ControlsDemo == view.getId()) {
+        } else if (R.id.button_gesture_controls == view.getId()) {
             Log.i(TAG, "onClick: ControlsDemoActivity");
             Intent intent = new Intent(this, ControlsDemoActivity.class);
             startActivity(intent);
-        } else if (R.id.CircleDemo == view.getId()) {
+        } else if (R.id.button_circle == view.getId()) {
             Log.i(TAG, "onClick: CircleDemoActivity");
             Intent intent = new Intent(this, CircleDemoActivity.class);
             startActivity(intent);
-
-        } else if (R.id.PolygonDemo == view.getId()) {
+        } else if (R.id.button_polygon == view.getId()) {
             Log.i(TAG, "onClick: PolygonDemoActivity");
             Intent intent = new Intent(this, PolygonDemoActivity.class);
             startActivity(intent);
-
-        } else if (R.id.PolylineDemo == view.getId()) {
+        } else if (R.id.button_polyline == view.getId()) {
             Log.i(TAG, "onClick: GestureDemoActivity");
             Intent intent = new Intent(this, PolylineDemoActivity.class);
             startActivity(intent);
-
-        } else if (R.id.GroudOverlayDemo == view.getId()) {
+        } else if (R.id.button_ground_overlay == view.getId()) {
             Log.i(TAG, "onClick: GroundOverlayDemoActivity");
             Intent intent = new Intent(this, GroundOverlayDemoActivity.class);
             startActivity(intent);
-
-        } else if (R.id.LiteModeDemo == view.getId()) {
+        } else if (R.id.button_lite_mode == view.getId()) {
             Log.i(TAG, "onClick: LiteModeDemoActivity");
             Intent intent = new Intent(this, LiteModeDemoActivity.class);
             startActivity(intent);
-
-        } else if (R.id.MoreLanguageDemo == view.getId()) {
+        } else if (R.id.button_more_language == view.getId()) {
             Log.i(TAG, "onClick: MoreLanguageDemoActivity");
             Intent intent = new Intent(this, MoreLanguageDemoActivity.class);
             startActivity(intent);
-
-        } else if (R.id.MapFunctions == view.getId()) {
+        } else if (R.id.button_map_functions == view.getId()) {
             Log.i(TAG, "onClick: MapFunctionsDemoActivity");
             Intent intent = new Intent(this, MapFunctionsDemoActivity.class);
             startActivity(intent);
-        } else if (R.id.BasicMap == view.getId()) {
+        } else if (R.id.button_basic_map == view.getId()) {
             Log.i(TAG, "onClick: BasicMap");
             Intent i = new Intent(this, BasicMapDemoActivity.class);
             startActivity(i);
-        } else if (R.id.AddMarkerDemo == view.getId()) {
+        } else if (R.id.button_marker == view.getId()) {
             Log.i(TAG, "onClick: AddMarkerDemo");
             Intent i = new Intent(this, MarkerDemoActivity.class);
             startActivity(i);
-        }  else if (R.id.MarkerClusteringDemo == view.getId()) {
+        }  else if (R.id.button_marker_clustering == view.getId()) {
             Log.i(TAG, "onClick: MarkerClusteringDemo");
             Intent i = new Intent(this, MarkerClusteringDemoActivity.class);
             startActivity(i);
-        } else if (R.id.EventsDemo == view.getId()) {
+        } else if (R.id.button_events == view.getId()) {
             Log.i(TAG, "onClick: EventsDemo");
             Intent i = new Intent(this, EventsDemoActivity.class);
             startActivity(i);
-        } else if (R.id.LocationSourceDemo == view.getId()) {
-            Log.i(TAG, "onClick: LocationSourceDemo");
-            Intent i = new Intent(this, LocationSourceDemoActivity.class);
-            startActivity(i);
-        } else if (R.id.MapStyle == view.getId()) {
+        } else if (R.id.button_map_style == view.getId()) {
             Log.i(TAG, "onClick: StyleMapDemo");
             Intent i = new Intent(this, StyleMapDemoActivity.class);
             startActivity(i);
-
-        }  else if (R.id.HeatMapDemo == view.getId()) {
+        } else if (R.id.button_location_source == view.getId()) {
+            Log.i(TAG, "onClick: LocationSourceDemo");
+            Intent i = new Intent(this, LocationSourceDemoActivity.class);
+            startActivity(i);
+        } else if (R.id.button_heat_map == view.getId()) {
             Log.i(TAG, "onClick: HeatMapDemo");
             Intent i = new Intent(this, HeatMapDemoActivity.class);
             startActivity(i);
-
-        } else if (R.id.RoutePlanningDemo == view.getId()) {
+        } else if (R.id.button_route_planning == view.getId()) {
             Log.i(TAG, "onClick: RoutePlanningDemo");
             Intent i = new Intent(this, RoutePlanningDemoActivity.class);
             startActivity(i);
-
         } else {
             Log.i(TAG, "onClick:  " + view.getId());
         }

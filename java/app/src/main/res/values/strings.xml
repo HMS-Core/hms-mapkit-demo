@@ -4,7 +4,28 @@
     <string name="styled_map">StyledMap</string>
     <string name="tap_instructions">Tap or long press on the map</string>
     <string name="toLatlng">screen Point to latLng</string>
-    <string name="toPoint">latLngscreen to Point</string>
+    <string name="toPoint">latLng screen to Point</string>
     <string name="move_the_camera">Move the camera</string>
     <string name="file_path">/data/data/com.huawei.hms.maps.sample/avocado.jpg</string>
+
+    <!-- Button Titles -->
+    <string name="title_camera">Camera</string>
+    <string name="title_basic_map">Basic Map</string>
+    <string name="title_map_functions">Map Functions</string>
+    <string name="title_gesture_controls">Gesture Controls</string>
+    <string name="title_gesture">Gesture</string>
+    <string name="title_lite_mode">Lite Mode</string>
+    <string name="title_more_language">More Language</string>
+    <string name="title_circle">Circle</string>
+    <string name="title_polyline">Polyline</string>
+    <string name="title_polygon">Polygon</string>
+    <string name="title_ground_overlay">Ground Overlay</string>
+    <string name="title_marker">Add Marker</string>
+    <string name="title_marker_clustering">Marker Clustering</string>
+    <string name="title_events">Events</string>
+    <string name="title_map_style">Map Style</string>
+    <string name="title_location_source">Location Source</string>
+    <string name="title_heat_map">Heat Map</string>
+    <string name="title_route_planning">Route Planning</string>
+
 </resources>

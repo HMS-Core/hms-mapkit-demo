@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:ignore="HardcodedText">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,147 +10,147 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/Camera"
+            android:id="@+id/button_camera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="CameraDemo"
+            android:text="@string/title_camera"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/BasicMap"
+            android:id="@+id/button_basic_map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="BasicMapDemo"
+            android:text="@string/title_basic_map"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/MapFunctions"
+            android:id="@+id/button_map_functions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="MapFunctionsDemo"
+            android:text="@string/title_map_functions"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/ControlsDemo"
+            android:id="@+id/button_gesture_controls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="GestureControlsDemo"
+            android:text="@string/title_gesture_controls"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/GestureDemo"
+            android:id="@+id/button_gesture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="GestureDemo"
+            android:text="@string/title_gesture"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/LiteModeDemo"
+            android:id="@+id/button_lite_mode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="LiteModeDemo"
+            android:text="@string/title_lite_mode"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/MoreLanguageDemo"
+            android:id="@+id/button_more_language"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="MoreLanguageDemo"
+            android:text="@string/title_more_language"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/CircleDemo"
+            android:id="@+id/button_circle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="CircleDemo"
+            android:text="@string/title_circle"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/PolylineDemo"
+            android:id="@+id/button_polyline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="PolylineDemo"
+            android:text="@string/title_polyline"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/PolygonDemo"
+            android:id="@+id/button_polygon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="PolygonDemo"
+            android:text="@string/title_polygon"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/GroudOverlayDemo"
+            android:id="@+id/button_ground_overlay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="GroudOverlayDemo"
+            android:text="@string/title_ground_overlay"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/AddMarkerDemo"
+            android:id="@+id/button_marker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="MarkerDemo"
+            android:text="@string/title_marker"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/MarkerClusteringDemo"
+            android:id="@+id/button_marker_clustering"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="MarkerClusteringDemo"
+            android:text="@string/title_marker_clustering"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/EventsDemo"
+            android:id="@+id/button_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="EventsDemo"
+            android:text="@string/title_events"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/MapStyle"
+            android:id="@+id/button_map_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="MapStyleDemo"
+            android:text="@string/title_map_style"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/LocationSourceDemo"
+            android:id="@+id/button_location_source"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="LocationSourceDemo"
+            android:text="@string/title_location_source"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/HeatMapDemo"
+            android:id="@+id/button_heat_map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="HeatMapDemo"
+            android:text="@string/title_heat_map"
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/RoutePlanningDemo"
+            android:id="@+id/button_route_planning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="RoutePlanningDemo"
+            android:text="@string/title_route_planning"
             android:textAllCaps="false" />
 
     </LinearLayout>

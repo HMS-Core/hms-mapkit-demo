@@ -60,97 +60,97 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // agconnect-services.json if the field is null.
         MapsInitializer.setApiKey(MapUtils.API_KEY)
 		
-        findViewById<Button>(R.id.Camera).setOnClickListener(this)
-        findViewById<Button>(R.id.BasicMap).setOnClickListener(this)
-        findViewById<Button>(R.id.GestureDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.ControlsDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.CircleDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.PolygonDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.PolylineDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.GroudOverlayDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.LiteModeDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.MoreLanguageDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.MapFunctions).setOnClickListener(this)
-        findViewById<Button>(R.id.AddMarkerDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.MarkerClusteringDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.EventsDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.MapStyle).setOnClickListener(this)
-        findViewById<Button>(R.id.LocationSourceDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.HeatMapDemo).setOnClickListener(this)
-        findViewById<Button>(R.id.RoutePlanningDemo).setOnClickListener(this)
+        findViewById<Button>(R.id.button_camera).setOnClickListener(this)
+        findViewById<Button>(R.id.button_basic_map).setOnClickListener(this)
+        findViewById<Button>(R.id.button_gesture).setOnClickListener(this)
+        findViewById<Button>(R.id.button_gesture_controls).setOnClickListener(this)
+        findViewById<Button>(R.id.button_circle).setOnClickListener(this)
+        findViewById<Button>(R.id.button_polygon).setOnClickListener(this)
+        findViewById<Button>(R.id.button_polyline).setOnClickListener(this)
+        findViewById<Button>(R.id.button_ground_overlay).setOnClickListener(this)
+        findViewById<Button>(R.id.button_lite_mode).setOnClickListener(this)
+        findViewById<Button>(R.id.button_more_language).setOnClickListener(this)
+        findViewById<Button>(R.id.button_map_functions).setOnClickListener(this)
+        findViewById<Button>(R.id.button_marker).setOnClickListener(this)
+        findViewById<Button>(R.id.button_marker_clustering).setOnClickListener(this)
+        findViewById<Button>(R.id.button_events).setOnClickListener(this)
+        findViewById<Button>(R.id.button_map_style).setOnClickListener(this)
+        findViewById<Button>(R.id.button_location_source).setOnClickListener(this)
+        findViewById<Button>(R.id.button_heat_map).setOnClickListener(this)
+        findViewById<Button>(R.id.button_route_planning).setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.Camera -> {
+            R.id.button_camera -> {
                 Log.i(TAG, "onClick: cameraDemo")
                 startActivity(Intent(this, CameraDemoActivity::class.java))
             }
-            R.id.GestureDemo -> {
+            R.id.button_gesture -> {
                 Log.i(TAG, "onClick: GestureDemoActivity")
                 startActivity(Intent(this, GestureDemoActivity::class.java))
             }
-            R.id.ControlsDemo -> {
+            R.id.button_gesture_controls -> {
                 Log.i(TAG, "onClick: ControlsDemoActivity")
                 startActivity(Intent(this, ControlsDemoActivity::class.java))
             }
-            R.id.CircleDemo -> {
+            R.id.button_circle -> {
                 Log.i(TAG, "onClick: CircleDemoActivity")
                 startActivity(Intent(this, CircleDemoActivity::class.java))
             }
-            R.id.PolygonDemo -> {
+            R.id.button_polygon -> {
                 Log.i(TAG, "onClick: PolygonDemoActivity")
                 startActivity(Intent(this, PolygonDemoActivity::class.java))
             }
-            R.id.PolylineDemo -> {
+            R.id.button_polyline -> {
                 Log.i(TAG, "onClick: GestureDemoActivity")
                 startActivity(Intent(this, PolylineDemoActivity::class.java))
             }
-            R.id.GroudOverlayDemo -> {
+            R.id.button_ground_overlay -> {
                 Log.i(TAG, "onClick: GroundOverlayDemoActivity")
                 startActivity(Intent(this, GroundOverlayDemoActivity::class.java))
             }
-            R.id.LiteModeDemo -> {
+            R.id.button_lite_mode -> {
                 Log.i(TAG, "onClick: LiteModeDemoActivity")
                 startActivity(Intent(this, LiteModeDemoActivity::class.java))
             }
-            R.id.MoreLanguageDemo -> {
+            R.id.button_more_language -> {
                 Log.i(TAG, "onClick: MoreLanguageDemoActivity")
                 startActivity(Intent(this, MoreLanguageDemoActivity::class.java))
             }
-            R.id.MapFunctions -> {
+            R.id.button_map_functions -> {
                 Log.i(TAG, "onClick: MapFunctionsDemoActivity")
                 startActivity(Intent(this, MapFunctionsDemoActivity::class.java))
             }
-            R.id.BasicMap -> {
+            R.id.button_basic_map -> {
                 Log.i(TAG, "onClick: BasicMap")
                 startActivity(Intent(this, BasicMapDemoActivity::class.java))
             }
-            R.id.AddMarkerDemo -> {
+            R.id.button_marker -> {
                 Log.i(TAG, "onClick: AddMarkerDemo")
                 startActivity(Intent(this, MarkerDemoActivity::class.java))
             }
-            R.id.MarkerClusteringDemo -> {
+            R.id.button_marker_clustering -> {
                 Log.i(TAG, "onClick: MarkerClusteringDemo")
                 startActivity(Intent(this, MarkerClusteringDemoActivity::class.java))
             }
-            R.id.EventsDemo -> {
+            R.id.button_events -> {
                 Log.i(TAG, "onClick: EventsDemo")
                 startActivity(Intent(this, EventsDemoActivity::class.java))
             }
-            R.id.LocationSourceDemo -> {
+            R.id.button_location_source -> {
                 Log.i(TAG, "onClick: LocationSourceDemo")
                 startActivity(Intent(this, LocationSourceDemoActivity::class.java))
             }
-            R.id.MapStyle -> {
+            R.id.button_map_style -> {
                 Log.i(TAG, "onClick: StyleMapDemo")
                 startActivity(Intent(this, StyleMapDemoActivity::class.java))
             }
-            R.id.HeatMapDemo -> {
+            R.id.button_heat_map -> {
                 Log.i(TAG, "onClick: HeatMapDemo")
                 startActivity(Intent(this, HeatMapDemoActivity::class.java))
             }
-            R.id.RoutePlanningDemo -> {
+            R.id.button_route_planning -> {
                 Log.i(TAG, "onClick: RoutePlanningDemo")
                 startActivity(Intent(this, RoutePlanningDemoActivity::class.java))
             }
