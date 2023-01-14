@@ -22,6 +22,15 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
 
+    dependenciesInfo {
+        includeInApk true
+        includeInBundle true
+    }
+
+    buildFeatures {
+        dataBinding false
+    }
+
     signingConfigs {
         debug {
             storeFile new File("${System.properties['user.home']}${File.separator}.android${File.separator}debug.keystore")
