@@ -29,10 +29,6 @@
             android:name="com.huawei.hms.client.channel.androidMarket"
             android:value="false" />
 
-        <meta-data
-            android:name="com.huawei.hms.client.appid"
-            android:value="appid=appid" />
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -116,5 +112,11 @@
             android:label="RoutePlanningDemo" />
 
     </application>
+
+    <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
 
 </manifest>

@@ -29,10 +29,6 @@
             android:name="com.huawei.hms.client.channel.androidMarket"
             android:value="false" />
 
-        <meta-data
-            android:name="com.huawei.hms.client.appid"
-            android:value="appid=appid" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -114,7 +110,12 @@
         <activity
             android:name=".HeatMapDemoActivity"
             android:label="HeatMapDemo" />
-
     </application>
+
+    <queries>
+        <intent>
+            <action android:name="com.huawei.hms.core.aidlservice" />
+        </intent>
+    </queries>
 
 </manifest>
