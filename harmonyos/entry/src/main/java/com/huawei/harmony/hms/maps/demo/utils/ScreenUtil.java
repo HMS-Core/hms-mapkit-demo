@@ -8,11 +8,13 @@ import ohos.agp.window.service.DisplayManager;
 import ohos.app.Context;
 
 public class ScreenUtil {
+
     /**
      * Obtains the screen width.
      *
      * @param context Context
      * @return device width
+     * @noinspection unused
      */
     public static int getScreenWidth(Context context) {
         return DisplayManager.getInstance().getDefaultDisplay(context).get().getAttributes().width;

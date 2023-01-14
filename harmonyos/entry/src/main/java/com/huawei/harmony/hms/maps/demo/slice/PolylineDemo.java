@@ -6,7 +6,6 @@ package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.MapView;
-import com.huawei.hms.maps.harmony.OnMapReadyCallback;
 import com.huawei.hms.maps.harmony.CameraUpdateFactory;
 import com.huawei.hms.maps.harmony.CommonContext;
 import com.huawei.hms.maps.harmony.model.LatLng;
@@ -74,35 +73,32 @@ public class PolylineDemo extends AbilitySlice {
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
-        mMapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(HuaweiMap huaweiMap) {
-                mHuaweiMap = huaweiMap;
+        mMapView.getMapAsync(huaweiMap -> {
+            mHuaweiMap = huaweiMap;
 
-                // If mHuaweiMap is null, the program stops running.
-                if (null == mHuaweiMap) {
-                    return;
-                }
-
-                // If mPolyline is not null, remove it from the map and then set it to null.
-                if (null != mPolyline) {
-                    mPolyline.remove();
-                    mPolyline = null;
-                }
-
-                // Add a polyline to a map.
-                mPolyline = mHuaweiMap.addPolyline(new PolylineOptions()
-                        // polyline coordinate
-                        .add(new LatLng(47.893478, 2.334595), new LatLng(48.993478, 3.434595),
-                                new LatLng(48.693478, 2.134595), new LatLng(48.793478, 2.334595))
-                        // Polyline Color
-                        .color(Color.BLUE.getValue())
-                        // Polyline Width
-                        .width(3));
-
-                // move camera
-                mHuaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 6));
+            // If mHuaweiMap is null, the program stops running.
+            if (null == mHuaweiMap) {
+                return;
             }
+
+            // If mPolyline is not null, remove it from the map and then set it to null.
+            if (null != mPolyline) {
+                mPolyline.remove();
+                mPolyline = null;
+            }
+
+            // Add a polyline to a map.
+            mPolyline = mHuaweiMap.addPolyline(new PolylineOptions()
+                    // polyline coordinate
+                    .add(new LatLng(47.893478, 2.334595), new LatLng(48.993478, 3.434595),
+                            new LatLng(48.693478, 2.134595), new LatLng(48.793478, 2.334595))
+                    // Polyline Color
+                    .color(Color.BLUE.getValue())
+                    // Polyline Width
+                    .width(3));
+
+            // move camera
+            mHuaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 6));
         });
 
         this.rootLayout.addComponent(mMapView);
@@ -116,23 +112,20 @@ public class PolylineDemo extends AbilitySlice {
         buttonStrokeColor.setContentPosition(50, (float) height / 2);
         this.rootLayout.addComponent(buttonStrokeColor);
 
-        buttonStrokeColor.setClickedListener(new Component.ClickedListener() {
-            @Override
-            public void onClick(Component component) {
-                if (null == mPolyline) {
-                    return;
-                }
-                if (strokeColorStatus) {
-                    // Set the color of the polyline (mPolyline) to red.
-                    mPolyline.setColor(Color.RED.getValue());
-                } else {
-                    // Set the color of the polyline (mPolyline) to green.
-                    mPolyline.setColor(Color.GREEN.getValue());
-                }
-                // Set the width of the polyline (mPolyline) to 10 pixels.
-                mPolyline.setWidth(10);
-                strokeColorStatus = !strokeColorStatus;
+        buttonStrokeColor.setClickedListener(component -> {
+            if (null == mPolyline) {
+                return;
             }
+            if (strokeColorStatus) {
+                // Set the color of the polyline (mPolyline) to red.
+                mPolyline.setColor(Color.RED.getValue());
+            } else {
+                // Set the color of the polyline (mPolyline) to green.
+                mPolyline.setColor(Color.GREEN.getValue());
+            }
+            // Set the width of the polyline (mPolyline) to 10 pixels.
+            mPolyline.setWidth(10);
+            strokeColorStatus = !strokeColorStatus;
         });
     }
 

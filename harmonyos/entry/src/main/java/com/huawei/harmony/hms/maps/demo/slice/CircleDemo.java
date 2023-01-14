@@ -5,7 +5,6 @@
 package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
-import com.huawei.hms.maps.harmony.OnMapReadyCallback;
 import com.huawei.hms.maps.harmony.CameraUpdateFactory;
 import com.huawei.hms.maps.harmony.MapView;
 import com.huawei.hms.maps.harmony.CommonContext;
@@ -76,38 +75,35 @@ public class CircleDemo extends AbilitySlice{
         mMapView.onCreate();
 
         // Obtain a HuaweiMap object.
-        mMapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(HuaweiMap huaweiMap) {
-                mHuaweiMap = huaweiMap;
+        mMapView.getMapAsync(huaweiMap -> {
+            mHuaweiMap = huaweiMap;
 
-                // If mHuaweiMap is null, the program stops running.
-                if (null == mHuaweiMap) {
-                    return;
-                }
-
-                if (null != mCircle) {
-                    mCircle.remove();
-                    mCircle = null;
-                }
-
-                mCircle = mHuaweiMap.addCircle(new CircleOptions()
-                        .center(new LatLng(48.893478, 2.334595))
-                        .radius(500)
-                        .fillColor(Color.GREEN.getValue()));
-
-                int strokeColor = Color.RED.getValue();
-                float strokeWidth = 15.0f;
-
-                // Set the edge color of a circle
-                mCircle.setStrokeColor(strokeColor);
-
-                // Sets the edge width of a circle
-                mCircle.setStrokeWidth(strokeWidth);
-
-                // move camera
-                mHuaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 12));
+            // If mHuaweiMap is null, the program stops running.
+            if (null == mHuaweiMap) {
+                return;
             }
+
+            if (null != mCircle) {
+                mCircle.remove();
+                mCircle = null;
+            }
+
+            mCircle = mHuaweiMap.addCircle(new CircleOptions()
+                    .center(new LatLng(48.893478, 2.334595))
+                    .radius(500)
+                    .fillColor(Color.GREEN.getValue()));
+
+            int strokeColor = Color.RED.getValue();
+            float strokeWidth = 15.0f;
+
+            // Set the edge color of a circle
+            mCircle.setStrokeColor(strokeColor);
+
+            // Sets the edge width of a circle
+            mCircle.setStrokeWidth(strokeWidth);
+
+            // move camera
+            mHuaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 12));
         });
 
         this.rootLayout.addComponent(mMapView);
@@ -131,53 +127,44 @@ public class CircleDemo extends AbilitySlice{
         buttonFillColor.setContentPosition(50, (float) height / 2 + 100);
         this.rootLayout.addComponent(buttonFillColor);
 
-        buttonHollowCircle.setClickedListener(new Component.ClickedListener() {
-            @Override
-            public void onClick(Component component) {
-                // Set a hollow circle.
-                if (null != mCircle) {
-                    // Set the fill color of the circle to transparent.
-                    mCircle.setFillColor(Color.TRANSPARENT.getValue());
-                    // Set the stroke color of the circle.
-                    mCircle.setStrokeColor(Color.RED.getValue());
-                    // Set the stroke width of the circle.
-                    mCircle.setStrokeWidth(15.0f);
-                }
+        buttonHollowCircle.setClickedListener(component -> {
+            // Set a hollow circle.
+            if (null != mCircle) {
+                // Set the fill color of the circle to transparent.
+                mCircle.setFillColor(Color.TRANSPARENT.getValue());
+                // Set the stroke color of the circle.
+                mCircle.setStrokeColor(Color.RED.getValue());
+                // Set the stroke width of the circle.
+                mCircle.setStrokeWidth(15.0f);
             }
         });
 
-        buttonStrokeColor.setClickedListener(new Component.ClickedListener() {
-            @Override
-            public void onClick(Component component) {
-                if (null == mCircle) {
-                    return;
-                }
-                if (strokeColorStatus) {
-                    // Set the stroke color of the circle (mCircle) to red.
-                    mCircle.setStrokeColor(Color.RED.getValue());
-                } else {
-                    // Set the stroke color of the circle (mCircle) to green.
-                    mCircle.setStrokeColor(Color.GREEN.getValue());
-                }
-                strokeColorStatus = !strokeColorStatus;
+        buttonStrokeColor.setClickedListener(component -> {
+            if (null == mCircle) {
+                return;
             }
+            if (strokeColorStatus) {
+                // Set the stroke color of the circle (mCircle) to red.
+                mCircle.setStrokeColor(Color.RED.getValue());
+            } else {
+                // Set the stroke color of the circle (mCircle) to green.
+                mCircle.setStrokeColor(Color.GREEN.getValue());
+            }
+            strokeColorStatus = !strokeColorStatus;
         });
 
-        buttonFillColor.setClickedListener(new Component.ClickedListener() {
-            @Override
-            public void onClick(Component component) {
-                if (null == mCircle) {
-                    return;
-                }
-                if (fillColorStatus) {
-                    // Set the fill color of the circle (mCircle) to red.
-                    mCircle.setFillColor(Color.RED.getValue());
-                } else {
-                    // Set the fill color of the circle (mCircle) to green.
-                    mCircle.setFillColor(Color.GREEN.getValue());
-                }
-                fillColorStatus = !fillColorStatus;
+        buttonFillColor.setClickedListener(component -> {
+            if (null == mCircle) {
+                return;
             }
+            if (fillColorStatus) {
+                // Set the fill color of the circle (mCircle) to red.
+                mCircle.setFillColor(Color.RED.getValue());
+            } else {
+                // Set the fill color of the circle (mCircle) to green.
+                mCircle.setFillColor(Color.GREEN.getValue());
+            }
+            fillColorStatus = !fillColorStatus;
         });
     }
 

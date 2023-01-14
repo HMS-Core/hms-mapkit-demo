@@ -8,13 +8,10 @@ import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.MapView;
 import com.huawei.hms.maps.harmony.CameraUpdate;
 import com.huawei.hms.maps.harmony.CameraUpdateFactory;
-import com.huawei.hms.maps.harmony.OnMapReadyCallback;
-import com.huawei.hms.maps.harmony.OnMapClickListener;
 import com.huawei.hms.maps.harmony.model.LatLng;
 import com.huawei.hms.maps.harmony.model.CameraPosition;
 import com.huawei.hms.maps.harmony.model.LatLngBounds;
 import com.huawei.hms.maps.harmony.model.Point;
-import com.huawei.hms.maps.harmony.OnMapLongClickListener;
 import com.huawei.hms.maps.harmony.CommonContext;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
@@ -44,41 +41,28 @@ public class MapViewCameraDemo extends AbilitySlice {
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
-        mMapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(HuaweiMap huaweiMap) {
-                mHuaweiMap = huaweiMap;
+        mMapView.getMapAsync(huaweiMap -> {
+            mHuaweiMap = huaweiMap;
 
-                // If mHuaweiMap is null, the program stops running.
-                if (null == mHuaweiMap) {
-                    return;
-                }
-
-                mHuaweiMap.setOnMapClickListener(new OnMapClickListener() {
-                    @Override
-                    public void onMapClick(LatLng latLng) {
-                        new ToastDialog(CommonContext.getContext()).setText("onMapClick：").show();
-                    }
-                });
-
-                mHuaweiMap.setOnMapLongClickListener(new OnMapLongClickListener() {
-                    @Override
-                    public void onMapLongClick(LatLng latLng) {
-                        new ToastDialog(CommonContext.getContext()).setText("onMapLongClick：").show();
-                    }
-                });
-
-                // move camera
-                CameraUpdate cameraUpdate = buildCameraUpdate();
-                mHuaweiMap.moveCamera(cameraUpdate);
-
-                // Sets the minimum preferred zoom level. The value ranges from 3 to 20.
-                mHuaweiMap.setMinZoomPreference(3);
-                // Sets the maximum preferred zoom level. The value ranges from 3 to 20.
-                mHuaweiMap.setMaxZoomPreference(14);
-                // Reset maximum and minimum zoom levels
-                mHuaweiMap.resetMinMaxZoomPreference();
+            // If mHuaweiMap is null, the program stops running.
+            if (null == mHuaweiMap) {
+                return;
             }
+
+            mHuaweiMap.setOnMapClickListener(latLng -> new ToastDialog(CommonContext.getContext()).setText("onMapClick：").show());
+
+            mHuaweiMap.setOnMapLongClickListener(latLng -> new ToastDialog(CommonContext.getContext()).setText("onMapLongClick：").show());
+
+            // move camera
+            CameraUpdate cameraUpdate = buildCameraUpdate();
+            mHuaweiMap.moveCamera(cameraUpdate);
+
+            // Sets the minimum preferred zoom level. The value ranges from 3 to 20.
+            mHuaweiMap.setMinZoomPreference(3);
+            // Sets the maximum preferred zoom level. The value ranges from 3 to 20.
+            mHuaweiMap.setMaxZoomPreference(14);
+            // Reset maximum and minimum zoom levels
+            mHuaweiMap.resetMinMaxZoomPreference();
         });
 
         // Create a layout.
@@ -98,8 +82,10 @@ public class MapViewCameraDemo extends AbilitySlice {
      * new CameraUpdate
      *
      * @return CameraUpdate
+     * @noinspection unused, UnnecessaryLocalVariable
      */
     private CameraUpdate buildCameraUpdate() {
+
         // Method 1: Increase the camera zoom level by 1 and retain other attribute settings.
         CameraUpdate cameraUpdate = CameraUpdateFactory.zoomIn();
 

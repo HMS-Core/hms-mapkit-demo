@@ -8,10 +8,6 @@ import com.huawei.harmony.hms.maps.demo.ResourceTable;
 import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.MapView;
 import com.huawei.hms.maps.harmony.HuaweiMapOptions;
-import com.huawei.hms.maps.harmony.OnMapReadyCallback;
-import com.huawei.hms.maps.harmony.OnMapClickListener;
-import com.huawei.hms.maps.harmony.OnInfoWindowClickListener;
-import com.huawei.hms.maps.harmony.OnMarkerClickListener;
 import com.huawei.hms.maps.harmony.model.CameraPosition;
 import com.huawei.hms.maps.harmony.model.LatLng;
 import com.huawei.hms.maps.harmony.model.Marker;
@@ -81,69 +77,53 @@ public class MarkerDemo extends AbilitySlice {
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
-        mMapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(HuaweiMap huaweiMap) {
-                mHuaweiMap = huaweiMap;
+        mMapView.getMapAsync(huaweiMap -> {
+            mHuaweiMap = huaweiMap;
 
-                // If mHuaweiMap is null, the program stops running.
-                if (null == mHuaweiMap) {
-                    return;
-                }
-
-                mHuaweiMap.setOnMapClickListener(new  OnMapClickListener() {
-                    @Override
-                    public void onMapClick(LatLng latLng) {
-                        new ToastDialog(CommonContext.getContext()).setText("onMapClick ").show();
-                    }
-                });
-
-                // If mMarker is not null, remove it from the map and then set it to null.
-                if (null != mMarker) {
-                    mMarker.remove();
-                    mMarker = null;
-                }
-
-                // Add a marker to the map.
-                MarkerOptions options = new MarkerOptions()
-                        .position(new LatLng(48.893478, 2.334595))
-                        .title("Hello Huawei Map")
-                        .snippet("This is a snippet!");
-                mMarker = mHuaweiMap.addMarker(options);
-
-                // Set the marker title.
-                if (mMarker != null) {
-                    mMarker.setTitle("Marker title");
-                }
-
-                // Set whether the marker can be dragged.
-                if (mMarker != null) {
-                    mMarker.setDraggable(true);
-                }
-
-                // Set the marker anchor point.
-                if (mMarker != null) {
-                    mMarker.setMarkerAnchor(0.9F, 0.9F);
-                }
-
-                // Customizing the Marker Icon
-                addCustomMarker();
-
-                mHuaweiMap.setOnMarkerClickListener(new OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(Marker marker) {
-                        new ToastDialog(CommonContext.getContext()).setText("onMarkerClick: " + marker.getTitle()).show();
-                        return false;
-                    }
-                });
-
-                mHuaweiMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
-                    @Override
-                    public void onInfoWindowClick(Marker marker) {
-                        new ToastDialog(CommonContext.getContext()).setText("onInfoWindowClick：").show();
-                    }
-                });
+            // If mHuaweiMap is null, the program stops running.
+            if (null == mHuaweiMap) {
+                return;
             }
+
+            mHuaweiMap.setOnMapClickListener(latLng -> new ToastDialog(CommonContext.getContext()).setText("onMapClick ").show());
+
+            // If mMarker is not null, remove it from the map and then set it to null.
+            if (null != mMarker) {
+                mMarker.remove();
+                mMarker = null;
+            }
+
+            // Add a marker to the map.
+            MarkerOptions options = new MarkerOptions()
+                    .position(new LatLng(48.893478, 2.334595))
+                    .title("Hello Huawei Map")
+                    .snippet("This is a snippet!");
+            mMarker = mHuaweiMap.addMarker(options);
+
+            // Set the marker title.
+            if (mMarker != null) {
+                mMarker.setTitle("Marker title");
+            }
+
+            // Set whether the marker can be dragged.
+            if (mMarker != null) {
+                mMarker.setDraggable(true);
+            }
+
+            // Set the marker anchor point.
+            if (mMarker != null) {
+                mMarker.setMarkerAnchor(0.9F, 0.9F);
+            }
+
+            // Customizing the Marker Icon
+            addCustomMarker();
+
+            mHuaweiMap.setOnMarkerClickListener(marker -> {
+                new ToastDialog(CommonContext.getContext()).setText("onMarkerClick: " + marker.getTitle()).show();
+                return false;
+            });
+
+            mHuaweiMap.setOnInfoWindowClickListener(marker -> new ToastDialog(CommonContext.getContext()).setText("onInfoWindowClick：").show());
         });
 
         // Create a layout.
@@ -166,9 +146,7 @@ public class MarkerDemo extends AbilitySlice {
         Resource resource = null;
         try {
             resource = getResourceManager().getResource(ResourceTable.Media_icon);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NotExistException e) {
+        } catch (IOException | NotExistException e) {
             e.printStackTrace();
         }
 

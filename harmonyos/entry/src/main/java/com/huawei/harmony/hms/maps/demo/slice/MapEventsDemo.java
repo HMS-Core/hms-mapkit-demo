@@ -7,13 +7,6 @@ package com.huawei.harmony.hms.maps.demo.slice;
 import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.MapView;
 import com.huawei.hms.maps.harmony.OnMapReadyCallback;
-import com.huawei.hms.maps.harmony.OnMapClickListener;
-import com.huawei.hms.maps.harmony.OnCameraMoveStartedListener;
-import com.huawei.hms.maps.harmony.OnCameraMoveListener;
-import com.huawei.hms.maps.harmony.OnCameraIdleListener;
-import com.huawei.hms.maps.harmony.OnMapLoadedCallback;
-import com.huawei.hms.maps.harmony.OnMapLongClickListener;
-import com.huawei.hms.maps.harmony.model.LatLng;
 import com.huawei.hms.maps.harmony.CommonContext;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
@@ -28,6 +21,7 @@ import ohos.hiviewdfx.HiLogLabel;
 public class MapEventsDemo extends AbilitySlice implements OnMapReadyCallback {
     private static final HiLogLabel LABEL = new HiLogLabel(HiLog.DEBUG, 0x011, "MapEventsDemo");
 
+    /** @noinspection FieldCanBeLocal*/
     private HuaweiMap mHuaweiMap;
 
     /**
@@ -69,47 +63,17 @@ public class MapEventsDemo extends AbilitySlice implements OnMapReadyCallback {
             return;
         }
 
-        mHuaweiMap.setOnCameraMoveStartedListener(new OnCameraMoveStartedListener() {
-            @Override
-            public void onCameraMoveStarted(int i) {
-                HiLog.debug(LABEL, "onCameraMoveStarted.");
-            }
-        });
+        mHuaweiMap.setOnCameraMoveStartedListener(i -> HiLog.debug(LABEL, "onCameraMoveStarted."));
 
-        mHuaweiMap.setOnCameraMoveListener(new OnCameraMoveListener() {
-            @Override
-            public void onCameraMove() {
-                HiLog.debug(LABEL, "onCameraMove.");
-            }
-        });
+        mHuaweiMap.setOnCameraMoveListener(() -> HiLog.debug(LABEL, "onCameraMove."));
 
-        mHuaweiMap.setOnCameraIdleListener(new OnCameraIdleListener() {
-            @Override
-            public void onCameraIdle() {
-                HiLog.debug(LABEL, "onCameraIdle.");
-            }
-        });
+        mHuaweiMap.setOnCameraIdleListener(() -> HiLog.debug(LABEL, "onCameraIdle."));
 
-        mHuaweiMap.setOnMapLoadedCallback(new OnMapLoadedCallback() {
-            @Override
-            public void onMapLoaded() {
-                new ToastDialog(CommonContext.getContext()).setText("onMapLoaded：").show();
-            }
-        });
+        mHuaweiMap.setOnMapLoadedCallback(() -> new ToastDialog(CommonContext.getContext()).setText("onMapLoaded：").show());
 
-        mHuaweiMap.setOnMapClickListener(new OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
-                new ToastDialog(CommonContext.getContext()).setText("onMapClick：").show();
-            }
-        });
+        mHuaweiMap.setOnMapClickListener(latLng -> new ToastDialog(CommonContext.getContext()).setText("onMapClick：").show());
 
-        mHuaweiMap.setOnMapLongClickListener(new OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                new ToastDialog(CommonContext.getContext()).setText("onMapLongClick：").show();
-            }
-        });
+        mHuaweiMap.setOnMapLongClickListener(latLng -> new ToastDialog(CommonContext.getContext()).setText("onMapLongClick：").show());
 
         // 设置最小偏好缩放级别，范围为[3,20]
         mHuaweiMap.setMinZoomPreference(3);

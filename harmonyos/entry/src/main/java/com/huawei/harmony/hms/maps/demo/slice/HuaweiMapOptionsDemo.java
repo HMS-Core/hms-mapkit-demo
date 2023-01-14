@@ -6,8 +6,6 @@ package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.MapView;
-import com.huawei.hms.maps.harmony.OnMapReadyCallback;
-import com.huawei.hms.maps.harmony.OnMapClickListener;
 import com.huawei.hms.maps.harmony.CommonContext;
 import com.huawei.hms.maps.harmony.HuaweiMapOptions;
 import com.huawei.hms.maps.harmony.model.LatLngBounds;
@@ -74,23 +72,15 @@ public class HuaweiMapOptionsDemo extends AbilitySlice {
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
-        mMapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(HuaweiMap huaweiMap) {
-                mHuaweiMap = huaweiMap;
+        mMapView.getMapAsync(huaweiMap -> {
+            mHuaweiMap = huaweiMap;
 
-                // If mHuaweiMap is null, the program stops running.
-                if (null == mHuaweiMap) {
-                    return;
-                }
-
-                mHuaweiMap.setOnMapClickListener(new  OnMapClickListener() {
-                    @Override
-                    public void onMapClick(LatLng latLng) {
-                        new ToastDialog(CommonContext.getContext()).setText("onMapClick ").show();
-                    }
-                });
+            // If mHuaweiMap is null, the program stops running.
+            if (null == mHuaweiMap) {
+                return;
             }
+
+            mHuaweiMap.setOnMapClickListener(latLng -> new ToastDialog(CommonContext.getContext()).setText("onMapClick ").show());
         });
 
         // Create a layout.

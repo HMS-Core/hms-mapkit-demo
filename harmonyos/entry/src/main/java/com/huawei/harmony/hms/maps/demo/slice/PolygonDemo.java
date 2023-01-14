@@ -6,7 +6,6 @@ package com.huawei.harmony.hms.maps.demo.slice;
 
 import com.huawei.hms.maps.harmony.HuaweiMap;
 import com.huawei.hms.maps.harmony.MapView;
-import com.huawei.hms.maps.harmony.OnMapReadyCallback;
 import com.huawei.hms.maps.harmony.CameraUpdateFactory;
 import com.huawei.hms.maps.harmony.CommonContext;
 import com.huawei.hms.maps.harmony.model.LatLng;
@@ -76,38 +75,35 @@ public class PolygonDemo extends AbilitySlice {
         mMapView.onCreate();
 
         // Obtains the HuaweiMap object.
-        mMapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(HuaweiMap huaweiMap) {
-                mHuaweiMap = huaweiMap;
+        mMapView.getMapAsync(huaweiMap -> {
+            mHuaweiMap = huaweiMap;
 
-                // If mHuaweiMap is null, the program stops running.
-                if (null == mHuaweiMap) {
-                    return;
-                }
-
-                // If mPolygon is not null, remove it from the map and then set it to null.
-                if (null != mPolygon) {
-                    mPolygon.remove();
-                    mPolygon = null;
-                }
-
-                LatLng center = new LatLng(48.893478, 2.334595);
-                double halfHeight = 0.1;
-                double halfWidth = 0.1;
-
-                mPolygon = mHuaweiMap
-                        .addPolygon(new PolygonOptions().add(
-                                new LatLng(center.mLatitude - halfHeight, center.mLongitude - halfWidth),
-                                new LatLng(center.mLatitude - halfHeight, center.mLongitude + halfWidth),
-                                new LatLng(center.mLatitude + halfHeight, center.mLongitude + halfWidth),
-                                new LatLng(center.mLatitude + halfHeight, center.mLongitude - halfWidth))
-                                .fillColor(Color.GREEN.getValue())
-                                .strokeColor(Color.BLACK.getValue()));
-
-                // move camera
-                mHuaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 8));
+            // If mHuaweiMap is null, the program stops running.
+            if (null == mHuaweiMap) {
+                return;
             }
+
+            // If mPolygon is not null, remove it from the map and then set it to null.
+            if (null != mPolygon) {
+                mPolygon.remove();
+                mPolygon = null;
+            }
+
+            LatLng center = new LatLng(48.893478, 2.334595);
+            double halfHeight = 0.1;
+            double halfWidth = 0.1;
+
+            mPolygon = mHuaweiMap
+                    .addPolygon(new PolygonOptions().add(
+                            new LatLng(center.mLatitude - halfHeight, center.mLongitude - halfWidth),
+                            new LatLng(center.mLatitude - halfHeight, center.mLongitude + halfWidth),
+                            new LatLng(center.mLatitude + halfHeight, center.mLongitude + halfWidth),
+                            new LatLng(center.mLatitude + halfHeight, center.mLongitude - halfWidth))
+                            .fillColor(Color.GREEN.getValue())
+                            .strokeColor(Color.BLACK.getValue()));
+
+            // move camera
+            mHuaweiMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 8));
         });
 
         this.rootLayout.addComponent(mMapView);
@@ -127,38 +123,32 @@ public class PolygonDemo extends AbilitySlice {
         this.rootLayout.addComponent(buttonFillColor);
 
 
-        buttonStrokeColor.setClickedListener(new Component.ClickedListener() {
-            @Override
-            public void onClick(Component component) {
-                if (null == mPolygon) {
-                    return;
-                }
-                if (strokeColorStatus) {
-                    // Set the stroke color of the polygon (mPolygon) to red.
-                    mPolygon.setStrokeColor(Color.RED.getValue());
-                } else {
-                    // Set the stroke color of the polygon (mPolygon) to green.
-                    mPolygon.setStrokeColor(Color.GREEN.getValue());
-                }
-                strokeColorStatus = !strokeColorStatus;
+        buttonStrokeColor.setClickedListener(component -> {
+            if (null == mPolygon) {
+                return;
             }
+            if (strokeColorStatus) {
+                // Set the stroke color of the polygon (mPolygon) to red.
+                mPolygon.setStrokeColor(Color.RED.getValue());
+            } else {
+                // Set the stroke color of the polygon (mPolygon) to green.
+                mPolygon.setStrokeColor(Color.GREEN.getValue());
+            }
+            strokeColorStatus = !strokeColorStatus;
         });
 
-        buttonFillColor.setClickedListener(new Component.ClickedListener() {
-            @Override
-            public void onClick(Component component) {
-                if (null == mPolygon) {
-                    return;
-                }
-                if (fillColorStatus) {
-                    // Set the fill color of the polygon (mCircle) to red.
-                    mPolygon.setFillColor(Color.RED.getValue());
-                } else {
-                    // Set the fill color of the polygon (mPolygon) to green.
-                    mPolygon.setFillColor(Color.GREEN.getValue());
-                }
-                fillColorStatus = !fillColorStatus;
+        buttonFillColor.setClickedListener(component -> {
+            if (null == mPolygon) {
+                return;
             }
+            if (fillColorStatus) {
+                // Set the fill color of the polygon (mCircle) to red.
+                mPolygon.setFillColor(Color.RED.getValue());
+            } else {
+                // Set the fill color of the polygon (mPolygon) to green.
+                mPolygon.setFillColor(Color.GREEN.getValue());
+            }
+            fillColorStatus = !fillColorStatus;
         });
     }
 
