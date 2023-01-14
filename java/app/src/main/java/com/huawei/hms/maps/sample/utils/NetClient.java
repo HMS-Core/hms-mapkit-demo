@@ -117,7 +117,7 @@ public class NetClient {
             json.put("origin", origin);
             json.put("destination", destination);
 
-            RequestBody requestBody = RequestBody.create(JSON, String.valueOf(json));
+            RequestBody requestBody = RequestBody.Companion.create(String.valueOf(json), JSON);
             Request request = new Request.Builder().url(url).post(requestBody).build();
             response = getNetClient().initOkHttpClient().newCall(request).execute();
         } catch (JSONException | IOException e) {
@@ -159,7 +159,7 @@ public class NetClient {
             json.put("origin", origin);
             json.put("destination", destination);
 
-            RequestBody requestBody = RequestBody.create(JSON, String.valueOf(json));
+            RequestBody requestBody = RequestBody.Companion.create(String.valueOf(json), JSON);
             Request request = new Request.Builder().url(url).post(requestBody).build();
             response = getNetClient().initOkHttpClient().newCall(request).execute();
         } catch (JSONException | IOException e) {
@@ -201,9 +201,10 @@ public class NetClient {
             json.put("origin", origin);
             json.put("destination", destination);
 
-            RequestBody requestBody = RequestBody.create(JSON, String.valueOf(json));
+            RequestBody requestBody = RequestBody.Companion.create(String.valueOf(json), JSON);
             Request request = new Request.Builder().url(url).post(requestBody).build();
             response = getNetClient().initOkHttpClient().newCall(request).execute();
+
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
