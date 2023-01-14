@@ -18,7 +18,6 @@ allprojects {
         mavenCentral()
         maven { url 'https://developer.huawei.com/repo/' }
     }
-    // when projects were evaluated
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile) {
             options.compilerArgs << "-Xmaxerrs" << "2000" << "-Xmaxwarns" << "2000"
