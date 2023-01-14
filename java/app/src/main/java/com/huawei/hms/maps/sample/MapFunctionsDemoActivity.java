@@ -102,9 +102,9 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
     }
 
     @Override
-    public void onMapReady(HuaweiMap paramHuaweiMap) {
+    public void onMapReady(HuaweiMap huaweiMap) {
         Log.i(TAG, "onMapReady: ");
-        hMap = paramHuaweiMap;
+        hMap = huaweiMap;
         hMap.setMyLocationEnabled(true);
         hMap.resetMinMaxZoomPreference();
     }

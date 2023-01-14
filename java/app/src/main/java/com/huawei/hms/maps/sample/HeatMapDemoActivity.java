@@ -112,13 +112,13 @@ public class HeatMapDemoActivity extends AppCompatActivity implements OnMapReady
             heatMap.remove();
             heatMap = null;
         }
-        Map<Float, Float> heatMapAttribute = new HashMap<Float, Float>() {
+        Map<Float, Float> heatMapAttribute = new HashMap<>() {
             {
                 put(9.0f, 0.0f);
                 put(13.0f, 1.0f);
             }
         };
-        Map<Float, Float> heatMapAttribute2 = new HashMap<Float, Float>() {
+        Map<Float, Float> heatMapAttribute2 = new HashMap<>() {
             {
                 put(3.0f, 3.0f);
                 put(13.0f, 20.0f);
@@ -222,7 +222,7 @@ public class HeatMapDemoActivity extends AppCompatActivity implements OnMapReady
             return;
         }
         if (colorClickCount == 0) {
-            Map<Float, Integer> color = new HashMap<Float, Integer>() {
+            Map<Float, Integer> color = new HashMap<>() {
                 {
                     put(0f, Color.argb(0, 33, 102, 172));
                     put(0.2f, Color.argb(255, 103, 169, 207));
@@ -235,7 +235,7 @@ public class HeatMapDemoActivity extends AppCompatActivity implements OnMapReady
             heatMap.setColor(color);
         }
         if (colorClickCount == 1) {
-            Map<Float, Integer> color2 = new HashMap<Float, Integer>() {
+            Map<Float, Integer> color2 = new HashMap<>() {
                 {
                     put(0.0f, Color.argb(0, 2, 108, 57));
                     put(0.15f, Color.argb(255 / 3 * 2, 254, 233, 229));

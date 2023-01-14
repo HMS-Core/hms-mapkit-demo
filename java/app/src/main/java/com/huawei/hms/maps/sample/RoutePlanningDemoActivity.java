@@ -83,13 +83,14 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
 
     private LatLng latLng2 = new LatLng(54.209673, -4.64002);
 
-    private List<Polyline> mPolylines = new ArrayList<>();
+    private final List<Polyline> mPolylines = new ArrayList<>();
 
-    private List<List<LatLng>> mPaths = new ArrayList<>();
+    private final List<List<LatLng>> mPaths = new ArrayList<>();
 
     private LatLngBounds mLatLngBounds;
 
-    private Handler mHandler = new Handler() {
+    /** TODO: to be replaced. */
+    private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
@@ -209,39 +210,47 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
             if (null != bounds && bounds.has("southwest") && bounds.has("northeast")) {
                 JSONObject southwest = bounds.optJSONObject("southwest");
                 JSONObject northeast = bounds.optJSONObject("northeast");
+                assert southwest != null;
                 LatLng sw = new LatLng(southwest.optDouble("lat"), southwest.optDouble("lng"));
+                assert northeast != null;
                 LatLng ne = new LatLng(northeast.optDouble("lat"), northeast.optDouble("lng"));
                 mLatLngBounds = new LatLngBounds(sw, ne);
             }
 
             // get paths
             JSONArray paths = route.optJSONArray("paths");
-            for (int i = 0; i < paths.length(); i++) {
-                JSONObject path = paths.optJSONObject(i);
-                List<LatLng> mPath = new ArrayList<>();
+            if (paths != null) {
+                for (int i = 0; i < paths.length(); i++) {
+                    JSONObject path = paths.optJSONObject(i);
+                    List<LatLng> mPath = new ArrayList<>();
 
-                JSONArray steps = path.optJSONArray("steps");
-                for (int j = 0; j < steps.length(); j++) {
-                    JSONObject step = steps.optJSONObject(j);
+                    JSONArray steps = path.optJSONArray("steps");
+                    if (steps != null) {
+                        for (int j = 0; j < steps.length(); j++) {
+                            JSONObject step = steps.optJSONObject(j);
 
-                    JSONArray polyline = step.optJSONArray("polyline");
-                    for (int k = 0; k < polyline.length(); k++) {
-                        if (j > 0 && k == 0) {
-                            continue;
+                            JSONArray polyline = step.optJSONArray("polyline");
+                            if (polyline != null) {
+                                for (int k = 0; k < polyline.length(); k++) {
+                                    if (j > 0 && k == 0) {
+                                        continue;
+                                    }
+                                    JSONObject line = polyline.getJSONObject(k);
+                                    double lat = line.optDouble("lat");
+                                    double lng = line.optDouble("lng");
+                                    LatLng latLng = new LatLng(lat, lng);
+                                    mPath.add(latLng);
+                                }
+                            }
                         }
-                        JSONObject line = polyline.getJSONObject(k);
-                        double lat = line.optDouble("lat");
-                        double lng = line.optDouble("lng");
-                        LatLng latLng = new LatLng(lat, lng);
-                        mPath.add(latLng);
                     }
+                    mPaths.add(i, mPath);
                 }
-                mPaths.add(i, mPath);
             }
             mHandler.sendEmptyMessage(0);
 
         } catch (JSONException e) {
-            Log.e(TAG, "JSONException" + e.toString());
+            Log.e(TAG, "JSONException" + e);
         }
     }
 

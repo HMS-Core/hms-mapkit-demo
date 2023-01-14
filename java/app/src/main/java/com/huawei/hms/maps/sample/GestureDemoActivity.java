@@ -77,6 +77,7 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
         mUiSettings = hMap.getUiSettings();
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private boolean checkReady() {
         if (hMap == null) {
             Toast.makeText(this, "Map is not ready yet", Toast.LENGTH_SHORT).show();
