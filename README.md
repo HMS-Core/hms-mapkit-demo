@@ -48,7 +48,7 @@ To learn more, refer to the following documents:
 Environment Requirements
 -------
 
-It is recommended that the Android SDK version be 19 or later, and the JDK version be 1.8 or later.
+It is recommended that the Android SDK version be 19 or later, and the JDK version be 11.
 
 ## Result
 
