@@ -24,6 +24,7 @@ import com.huawei.hms.maps.HuaweiMap;
 import com.huawei.hms.maps.OnMapReadyCallback;
 import com.huawei.hms.maps.SupportMapFragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -39,6 +40,7 @@ public class MoreLanguageDemoActivity extends AppCompatActivity implements OnMap
 
     private SupportMapFragment mSupportMapFragment;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private HuaweiMap hMap;
 
     @Override
@@ -52,6 +54,7 @@ public class MoreLanguageDemoActivity extends AppCompatActivity implements OnMap
         mSupportMapFragment.getMapAsync(this);
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public void onMapReady(HuaweiMap paramHuaweiMap) {
         Log.i(TAG, "onMapReady: ");

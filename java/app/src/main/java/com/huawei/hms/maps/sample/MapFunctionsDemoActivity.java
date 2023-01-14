@@ -53,6 +53,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "MapFunctionsDemoActivity";
 
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;
@@ -84,6 +85,7 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_map_founctions_demo);
         mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapInFunctions);
+        assert mSupportMapFragment != null;
         mSupportMapFragment.getMapAsync(this);
 
         left = findViewById(R.id.paddingleft);
@@ -175,11 +177,7 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
      */
     public void set3DMode(View view) {
         if (null != hMap) {
-            if (hMap.isBuildingsEnabled()) {
-                hMap.setBuildingsEnabled(false);
-            } else {
-                hMap.setBuildingsEnabled(true);
-            }
+            hMap.setBuildingsEnabled(!hMap.isBuildingsEnabled());
         }
     }
 
@@ -197,8 +195,8 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
                 Toast.makeText(this, "Please make sure the maxZoom is right", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (Float.parseFloat(text.trim()) > MapUtils.MAX_ZOOM_LEVEL
-                || Float.parseFloat(text.trim()) < MapUtils.MIN_ZOOM_LEVEL) {
+            if (Float.parseFloat(text.trim()) > MapUtils.MAX_ZOOM_LEVEL ||
+                    Float.parseFloat(text.trim()) < MapUtils.MIN_ZOOM_LEVEL) {
                 Toast
                     .makeText(this, String.format(Locale.ENGLISH, "The zoom level ranges from %s to %s.",
                         MapUtils.MIN_ZOOM_LEVEL, MapUtils.MAX_ZOOM_LEVEL), Toast.LENGTH_SHORT)

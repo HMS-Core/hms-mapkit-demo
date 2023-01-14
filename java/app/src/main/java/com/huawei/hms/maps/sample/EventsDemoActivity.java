@@ -28,6 +28,7 @@ import com.huawei.hms.maps.SupportMapFragment;
 import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.VisibleRegion;
 
+import android.annotation.SuppressLint;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,15 +50,17 @@ public class EventsDemoActivity extends AppCompatActivity implements HuaweiMap.O
 
     private TextView mToPointView;
 
-    private HuaweiMap hMap;
-
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
+
+    private HuaweiMap hMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_demo);
         mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        assert mSupportMapFragment != null;
         mSupportMapFragment.getMapAsync(this);
         mTapView = (TextView) findViewById(R.id.tap_text);
         mToPointView = findViewById(R.id.toPoint);
@@ -79,6 +82,7 @@ public class EventsDemoActivity extends AppCompatActivity implements HuaweiMap.O
      *
      * @param latLng latLng
      */
+    @SuppressLint("SetTextI18n")
     @Override
     public void onMapClick(LatLng latLng) {
         mTapView.setText("point=" + latLng + "is tapped");
@@ -95,6 +99,7 @@ public class EventsDemoActivity extends AppCompatActivity implements HuaweiMap.O
      *
      * @param point latLng
      */
+    @SuppressLint("SetTextI18n")
     @Override
     public void onMapLongClick(LatLng point) {
         mTapView.setText("long pressed, point=" + point);

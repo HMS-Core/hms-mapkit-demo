@@ -51,6 +51,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -61,6 +62,7 @@ import androidx.fragment.app.Fragment;
 public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "RoutePlanningDemoActivity";
 
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;
@@ -89,7 +91,7 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
 
     private Handler mHandler = new Handler() {
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
                 case 0:
                     renderRoute(mPaths, mLatLngBounds);

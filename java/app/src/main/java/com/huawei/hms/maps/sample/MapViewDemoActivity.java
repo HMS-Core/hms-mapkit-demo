@@ -36,6 +36,7 @@ public class MapViewDemoActivity extends AppCompatActivity implements OnMapReady
 
     private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
 
+    @SuppressWarnings("FieldCanBeLocal")
     private HuaweiMap hMap;
 
     private MapView mMapView;

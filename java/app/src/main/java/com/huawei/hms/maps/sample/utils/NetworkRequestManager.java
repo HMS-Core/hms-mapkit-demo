@@ -65,49 +65,44 @@ public class NetworkRequestManager {
         final OnNetworkListener listener, int count, final boolean needEncode) {
         final int curCount = ++count;
         Log.e(TAG, "current count: " + curCount);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Response response =
-                    NetClient.getNetClient().getWalkingRoutePlanningResult(latLng1, latLng2, needEncode);
-                String result = "";
-                String returnCode = "";
-                String returnDesc = "";
-                boolean need = needEncode;
+        new Thread(() -> {
+            Response response =
+                NetClient.getNetClient().getWalkingRoutePlanningResult(latLng1, latLng2, needEncode);
+            String result = "";
+            String returnCode = "";
+            String returnDesc = "";
+            boolean need = needEncode;
 
-                try {
-                    result = response.body().string();
-                    JSONObject jsonObject = new JSONObject(result);
-                    returnCode = jsonObject.optString("returnCode");
-                    returnDesc = jsonObject.optString("returnDesc");
+            try {
+                result = response.body().string();
+                JSONObject jsonObject = new JSONObject(result);
+                returnCode = jsonObject.optString("returnCode");
+                returnDesc = jsonObject.optString("returnDesc");
 
-                } catch (NullPointerException e) {
-                    returnDesc = "Request Fail!";
-                } catch (IOException e) {
-                    returnDesc = "Request Fail!";
-                } catch (JSONException e) {
-                    Log.e(TAG, e.getMessage());
-                }
-
-                if (returnCode.equals("0")) {
-                    if (null != listener) {
-                        listener.requestSuccess(result);
-                    }
-                    return;
-                }
-
-                if (curCount >= MAX_TIMES) {
-                    if (null != listener) {
-                        listener.requestFail(returnDesc);
-                    }
-                    return;
-                }
-
-                if (returnCode.equals("6")) {
-                    need = true;
-                }
-                getWalkingRoutePlanningResult(latLng1, latLng2, listener, curCount, need);
+            } catch (NullPointerException | IOException e) {
+                returnDesc = "Request Fail!";
+            } catch (JSONException e) {
+                Log.e(TAG, e.getMessage());
             }
+
+            if (returnCode.equals("0")) {
+                if (null != listener) {
+                    listener.requestSuccess(result);
+                }
+                return;
+            }
+
+            if (curCount >= MAX_TIMES) {
+                if (null != listener) {
+                    listener.requestFail(returnDesc);
+                }
+                return;
+            }
+
+            if (returnCode.equals("6")) {
+                need = true;
+            }
+            getWalkingRoutePlanningResult(latLng1, latLng2, listener, curCount, need);
         }).start();
     }
 
@@ -209,58 +204,52 @@ public class NetworkRequestManager {
         final OnNetworkListener listener, int count, final boolean needEncode) {
         final int curCount = ++count;
         Log.e(TAG, "current count: " + curCount);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Response response =
-                    NetClient.getNetClient().getDrivingRoutePlanningResult(latLng1, latLng2, needEncode);
-                if (null != response && null != response.body() && response.isSuccessful()) {
-                    try {
-                        String result = response.body().string();
-                        if (null != listener) {
-                            listener.requestSuccess(result);
-                        }
-                        return;
-                    } catch (IOException e) {
-                        Log.e(TAG, e.getMessage());
-                    }
-                }
-
-                String returnCode = "";
-                String returnDesc = "";
-                boolean need = needEncode;
-
+        new Thread(() -> {
+            Response response =
+                NetClient.getNetClient().getDrivingRoutePlanningResult(latLng1, latLng2, needEncode);
+            if (null != response && null != response.body() && response.isSuccessful()) {
                 try {
                     String result = response.body().string();
-                    JSONObject jsonObject = new JSONObject(result);
-                    returnCode = jsonObject.optString("returnCode");
-                    returnDesc = jsonObject.optString("returnDesc");
-                } catch (NullPointerException e) {
-                    returnDesc = "Request Fail!";
-                } catch (IOException e) {
-                    returnDesc = "Request Fail!";
-                } catch (JSONException e) {
-                    Log.e(TAG, e.getMessage());
-                }
-
-                if (curCount >= MAX_TIMES) {
                     if (null != listener) {
-                        listener.requestFail(returnDesc);
+                        listener.requestSuccess(result);
                     }
                     return;
+                } catch (IOException e) {
+                    Log.e(TAG, e.getMessage());
                 }
-
-                if (returnCode.equals("6")) {
-                    need = true;
-                }
-                getDrivingRoutePlanningResult(latLng1, latLng2, listener, curCount, need);
             }
+
+            String returnCode = "";
+            String returnDesc = "";
+            boolean need = needEncode;
+
+            try {
+                String result = response.body().string();
+                JSONObject jsonObject = new JSONObject(result);
+                returnCode = jsonObject.optString("returnCode");
+                returnDesc = jsonObject.optString("returnDesc");
+            } catch (NullPointerException | IOException e) {
+                returnDesc = "Request Fail!";
+            } catch (JSONException e) {
+                Log.e(TAG, e.getMessage());
+            }
+
+            if (curCount >= MAX_TIMES) {
+                if (null != listener) {
+                    listener.requestFail(returnDesc);
+                }
+                return;
+            }
+
+            if (returnCode.equals("6")) {
+                need = true;
+            }
+            getDrivingRoutePlanningResult(latLng1, latLng2, listener, curCount, need);
         }).start();
     }
 
     public interface OnNetworkListener {
         void requestSuccess(String result);
-
         void requestFail(String errorMsg);
     }
 }

@@ -36,6 +36,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
@@ -64,6 +65,7 @@ public class SupportMapDemoActivity extends AppCompatActivity implements OnMapRe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supportmapfragment_demo);
         mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.supportMap);
+        assert mSupportMapFragment != null;
         mSupportMapFragment.getMapAsync(this);
     }
 
@@ -97,7 +99,7 @@ public class SupportMapDemoActivity extends AppCompatActivity implements OnMapRe
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         mSupportMapFragment.onSaveInstanceState(outState);
     }

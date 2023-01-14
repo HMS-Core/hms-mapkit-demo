@@ -28,7 +28,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.huawei.hms.maps.MapsInitializer;
 import com.huawei.hms.maps.sample.utils.MapUtils;

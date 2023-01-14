@@ -51,7 +51,7 @@ public class MyItemReader {
      * @throws JSONException JSONException
      */
     public List<MarkerOptions> read(InputStream inputStream) throws JSONException {
-        List<MarkerOptions> items = new ArrayList<MarkerOptions>();
+        List<MarkerOptions> items = new ArrayList<>();
         String json = new Scanner(inputStream).useDelimiter(REGEX_INPUT_BOUNDARY_BEGINNING).next();
         JSONArray array = new JSONArray(json);
         for (int i = 0; i < array.length(); i++) {

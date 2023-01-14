@@ -46,9 +46,10 @@ public class HeatMapDemoActivity extends AppCompatActivity implements OnMapReady
 
     private static final int BAR_MAX = 100;
 
-    private HuaweiMap hMap;
-
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
+
+    private HuaweiMap hMap;
 
     private HeatMap heatMap = null;
 

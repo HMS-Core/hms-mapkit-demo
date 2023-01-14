@@ -38,7 +38,6 @@ class MapFragmentCodeDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         Log.d(TAG, "onCreate: ")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mapfragmentcode_demo)
-
         mMapFragment = fragmentManager.findFragmentByTag("map_fragment") as MapFragment?
 
         if (mMapFragment === null) {
@@ -50,6 +49,7 @@ class MapFragmentCodeDemoActivity : AppCompatActivity(), OnMapReadyCallback {
             fragmentTransaction.add(R.id.frame_mapfragmentcode, mMapFragment!!, "map_fragment")
             fragmentTransaction.commit()
         }
+        //noinspection deprecation
         mMapFragment?.onAttach(this)
         mMapFragment?.getMapAsync(this)
     }

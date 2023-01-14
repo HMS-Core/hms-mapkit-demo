@@ -30,11 +30,13 @@ import com.huawei.hms.maps.model.LatLng;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MapViewCodeDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "MapViewCodeDemoActivity";
 
+    @SuppressWarnings("FieldCanBeLocal")
     private HuaweiMap hMap;
 
     private MapView mMapView;
@@ -104,7 +106,7 @@ public class MapViewCodeDemoActivity extends AppCompatActivity implements OnMapR
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         mMapView.onSaveInstanceState(outState);
     }

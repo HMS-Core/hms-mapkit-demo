@@ -65,6 +65,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     private static final float ZOOM_DELTA = 2.0f;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;
@@ -214,7 +215,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
             LatLngBounds latLngBounds = new LatLngBounds(southwest, northeast);
             Toast
                 .makeText(this,
-                    "southwest =" + southwest.toString() + " northeast=" + northeast.toString() + " padding=2",
+                    "southwest =" + southwest + " northeast=" + northeast + " padding=2",
                     Toast.LENGTH_LONG)
                 .show();
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, 2);
@@ -331,10 +332,10 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
             CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
             hMap.moveCamera(cameraUpdate);
         } catch (IllegalArgumentException e) {
-            Log.e(TAG, "IllegalArgumentException " + e.toString());
+            Log.e(TAG, "IllegalArgumentException " + e);
             Toast.makeText(this, "IllegalArgumentException", Toast.LENGTH_SHORT).show();
         } catch (NullPointerException e) {
-            Log.e(TAG, "NullPointerException " + e.toString());
+            Log.e(TAG, "NullPointerException " + e);
             Toast.makeText(this, "NullPointerException", Toast.LENGTH_SHORT).show();
         }
     }

@@ -50,7 +50,7 @@ import androidx.fragment.app.Fragment;
 @SuppressLint("LongLogTag")
 public class MarkerClusteringDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "MarkerClusteringDemoActivity";
-
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;

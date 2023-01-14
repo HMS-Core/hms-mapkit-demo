@@ -43,6 +43,7 @@ import androidx.core.content.ContextCompat;
 public class GestureDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "GestureDemoActivity";
 
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;
@@ -58,10 +59,11 @@ public class GestureDemoActivity extends AppCompatActivity implements OnMapReady
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestures_demo);
         mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapInGestures);
+        assert mSupportMapFragment != null;
         mSupportMapFragment.getMapAsync(this);
 
-        mMyLocationButtonCheckbox = (CheckBox) findViewById(R.id.isShowMylocationButton);
-        mMyLocationLayerCheckbox = (CheckBox) findViewById(R.id.isMyLocationLayerEnabled);
+        mMyLocationButtonCheckbox = findViewById(R.id.isShowMylocationButton);
+        mMyLocationLayerCheckbox = findViewById(R.id.isMyLocationLayerEnabled);
     }
 
     @Override

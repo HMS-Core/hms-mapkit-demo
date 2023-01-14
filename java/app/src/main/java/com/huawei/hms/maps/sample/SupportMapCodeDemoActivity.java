@@ -41,9 +41,11 @@ import com.huawei.hms.maps.model.LatLng;
 public class SupportMapCodeDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "SupportMapCodeActivity";
 
-    private HuaweiMap hMap;
-
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
+
+    @SuppressWarnings("FieldCanBeLocal")
+    private HuaweiMap hMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

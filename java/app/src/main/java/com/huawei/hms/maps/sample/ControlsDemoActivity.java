@@ -36,8 +36,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ControlsDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "ControlsDemoActivity";
 
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private HuaweiMap hMap;
 
     @Override
@@ -45,6 +47,7 @@ public class ControlsDemoActivity extends AppCompatActivity implements OnMapRead
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controls_demo);
         mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapInControls);
+        assert mSupportMapFragment != null;
         mSupportMapFragment.getMapAsync(this);
     }
 

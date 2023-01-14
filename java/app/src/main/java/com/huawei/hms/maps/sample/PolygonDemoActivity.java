@@ -49,7 +49,7 @@ import androidx.fragment.app.Fragment;
  */
 public class PolygonDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "PolygonDemoActivity";
-
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;

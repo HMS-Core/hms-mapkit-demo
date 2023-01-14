@@ -91,11 +91,11 @@ public class LocationSourceDemoActivity extends AppCompatActivity implements OnM
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locationsource_demo);
-
         pressLocationSource = new PressLocationSource();
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapForLocationDemo);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
     }
 

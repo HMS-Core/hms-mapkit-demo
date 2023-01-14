@@ -63,7 +63,7 @@ import androidx.core.content.res.ResourcesCompat;
 @SuppressLint("LongLogTag")
 public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "GroundOverlayDemoActivity";
-
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;
@@ -96,6 +96,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         setContentView(R.layout.activity_groudoverlay_demo);
         mSupportMapFragment =
             (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapInGroundOverlay);
+        assert mSupportMapFragment != null;
         mSupportMapFragment.getMapAsync(this);
 
         toprightLatitude = findViewById(R.id.toprightLatitude);
@@ -177,6 +178,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         }
         Log.d(TAG, "addFromBitmap: ");
         Drawable vectorDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.avocado, null);
+        assert vectorDrawable != null;
         Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(),
             Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -209,12 +211,12 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         String localFile = getFilesDir() + File.separator + fileName;
         try {
             Bitmap bitmap = BitmapFactory.decodeStream(getAssets().open("images/avocado.jpg"));
-            out = new FileOutputStream(new File(localFile));
+            out = new FileOutputStream(localFile);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         } catch (FileNotFoundException e) {
-            Log.d(TAG, "addFromFile FileNotFoundException: " + e.toString());
+            Log.d(TAG, "addFromFile FileNotFoundException: " + e);
         } catch (IOException e) {
-            Log.d(TAG, "addFromFile IOException: " + e.toString());
+            Log.d(TAG, "addFromFile IOException: " + e);
         } finally {
             try {
                 if (null != out) {
@@ -222,7 +224,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
                     out.close();
                 }
             } catch (IOException e) {
-                Log.d(TAG, "addFromFile close fileOutputStream IOException: " + e.toString());
+                Log.d(TAG, "addFromFile close fileOutputStream IOException: " + e);
             }
         }
         GroundOverlayOptions options = new GroundOverlayOptions().position(MapUtils.FRANCE2, 30, 60)
@@ -251,12 +253,12 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         FileOutputStream out = null;
         try {
             Bitmap bitmap = BitmapFactory.decodeStream(getAssets().open("images/avocado.jpg"));
-            out = new FileOutputStream(new File(path));
+            out = new FileOutputStream(path);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         } catch (FileNotFoundException e) {
-            Log.d(TAG, "addFromFile FileNotFoundException: " + e.toString());
+            Log.d(TAG, "addFromFile FileNotFoundException: " + e);
         } catch (IOException e) {
-            Log.d(TAG, "addFromFile IOException: " + e.toString());
+            Log.d(TAG, "addFromFile IOException: " + e);
         } finally {
             try {
                 if (null != out) {
@@ -264,7 +266,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
                     out.close();
                 }
             } catch (IOException e) {
-                Log.d(TAG, "addFromFile close fileOutputStream IOException: " + e.toString());
+                Log.d(TAG, "addFromFile close fileOutputStream IOException: " + e);
             }
         }
 
@@ -300,8 +302,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
      */
     public void getAttributes(View view) {
         if (null != overlay) {
-            String bounds = null;
-            String position = null;
+            String bounds;
+            String position;
             if (overlay.getBounds() == null) {
                 bounds = "null";
             } else {
@@ -343,8 +345,8 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
                 } else {
                     try {
                         overlay.setPositionFromBounds(new LatLngBounds(
-                            new LatLng(Double.valueOf(southwestLatitude), Double.valueOf(southwestLontitude)),
-                            new LatLng(Double.valueOf(northeastLatitude), Double.valueOf(northeastLongtitude))));
+                            new LatLng(Double.parseDouble(southwestLatitude), Double.parseDouble(southwestLontitude)),
+                            new LatLng(Double.parseDouble(northeastLatitude), Double.parseDouble(northeastLongtitude))));
                         CameraPosition cameraPosition = CameraPosition.builder()
                             .target(overlay.getPosition())
                             .zoom(18)
@@ -397,7 +399,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
                         .show();
                 } else {
                     try {
-                        if (Float.valueOf(width) < 0.0F || Float.valueOf(height) < 0.0F) {
+                        if (Float.parseFloat(width) < 0.0F || Float.parseFloat(height) < 0.0F) {
                             Toast
                                 .makeText(this,
                                     "Please make sure the width & height is right, this value must be non-negative",
@@ -405,9 +407,9 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
                                 .show();
                             return;
                         }
-                        LatLng position = new LatLng(Double.valueOf(latitude), Double.valueOf(longtitude));
+                        LatLng position = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longtitude));
                         overlay.setPosition(position);
-                        overlay.setDimensions(Float.valueOf(width), Float.valueOf(height));
+                        overlay.setDimensions(Float.parseFloat(width), Float.parseFloat(height));
                         CameraPosition cameraPosition =
                             CameraPosition.builder().target(position).zoom(18).bearing(0f).tilt(0f).build();
                         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
@@ -456,6 +458,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
      *
      * @param view view
      */
+    @SuppressLint("SetTextI18n")
     public void getTag(View view) {
         if (null != overlay) {
             groundOverlayShown.setText("Overlay tag is " + overlay.getTag());

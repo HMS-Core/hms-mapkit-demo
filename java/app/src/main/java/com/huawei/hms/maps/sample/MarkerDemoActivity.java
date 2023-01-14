@@ -65,6 +65,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     private static final LatLng ORSAY = new LatLng(48.85, 2.78);
 
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;
@@ -83,6 +84,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     private EditText edtTag;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private TextView txtvResultShown;
 
     private EditText edtCameraLat;
@@ -133,6 +135,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
 
         private final View mContentsView;
 
+        @SuppressLint("InflateParams")
         CustomInfoWindowAdapter() {
             mWindowView = getLayoutInflater().inflate(R.layout.custom_info_window, null);
             mContentsView = getLayoutInflater().inflate(R.layout.custom_info_contents, null);
@@ -209,7 +212,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
             if (marker.getTag() != null) {
                 markerSnippet = (String) marker.getTag();
             }
-            TextView snippetView = ((TextView) view.findViewById(R.id.txtv_snippett));
+            TextView snippetView = view.findViewById(R.id.txtv_snippett);
             if (markerSnippet != null && !markerSnippet.isEmpty()) {
                 SpannableString snippetText = new SpannableString(markerSnippet);
                 snippetText.setSpan(new ForegroundColorSpan(Color.RED), 0, markerSnippet.length(), 0);
@@ -244,26 +247,20 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
                 .title("Serris")
                 .snippet("Can be dragged after DragMarker.")
                 .clusterable(true));
-            hMap.setOnMarkerClickListener(new HuaweiMap.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(Marker marker) {
-                    boolean clusterable = marker.isClusterable();
-                    Toast.makeText(getApplicationContext(), "marker clusterable: " + clusterable, Toast.LENGTH_SHORT)
-                            .show();
-                    return false;
-                }
+            hMap.setOnMarkerClickListener(marker -> {
+                boolean clusterable = marker.isClusterable();
+                Toast.makeText(getApplicationContext(), "marker clusterable: " + clusterable, Toast.LENGTH_SHORT)
+                        .show();
+                return false;
             });
         }
 
         // Add a marker when the point is long clicked.
-        hMap.setOnMapLongClickListener(new HuaweiMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                Log.d(TAG, "Map is long clicked.");
-                Marker mMarker = hMap.addMarker(new MarkerOptions().position(latLng).title("I am Marker!"));
-                markerList.add(mMarker);
-                Log.d(TAG, "markerList size is." + markerList.size());
-            }
+        hMap.setOnMapLongClickListener(latLng -> {
+            Log.d(TAG, "Map is long clicked.");
+            Marker mMarker = hMap.addMarker(new MarkerOptions().position(latLng).title("I am Marker!"));
+            markerList.add(mMarker);
+            Log.d(TAG, "markerList size is." + markerList.size());
         });
 
         addMarkerListener();
@@ -290,36 +287,19 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
             }
         });
 
-        hMap.setOnInfoWindowClickListener(new HuaweiMap.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                if (marker.equals(mSerris)) {
-                    Toast.makeText(getApplicationContext(), "mMelbourne infowindow is clicked", Toast.LENGTH_SHORT)
-                        .show();
-                }
-
-                if (marker.equals(mOrsay)) {
-                    Toast.makeText(getApplicationContext(), "mSydney infowindow is clicked", Toast.LENGTH_SHORT).show();
-                }
-
-                if (marker.equals(mParis)) {
-                    Toast.makeText(getApplicationContext(), "mBrisbane infowindow is clicked", Toast.LENGTH_SHORT)
-                        .show();
-                }
+        hMap.setOnInfoWindowClickListener(marker -> {
+            if (marker.equals(mSerris)) {
+                Toast.makeText(getApplicationContext(), "mMelbourne infowindow is clicked", Toast.LENGTH_SHORT).show();
+            }
+            if (marker.equals(mOrsay)) {
+                Toast.makeText(getApplicationContext(), "mSydney infowindow is clicked", Toast.LENGTH_SHORT).show();
+            }
+            if (marker.equals(mParis)) {
+                Toast.makeText(getApplicationContext(), "mBrisbane infowindow is clicked", Toast.LENGTH_SHORT).show();
             }
         });
-        hMap.setOnInfoWindowCloseListener(new HuaweiMap.OnInfoWindowCloseListener() {
-            @Override
-            public void onInfoWindowClose(Marker marker) {
-                Toast.makeText(getApplicationContext(), "infowindowclose", Toast.LENGTH_SHORT).show();
-            }
-        });
-        hMap.setOnInfoWindowLongClickListener(new HuaweiMap.OnInfoWindowLongClickListener() {
-            @Override
-            public void onInfoWindowLongClick(Marker marker) {
-                Toast.makeText(getApplicationContext(), "onInfoWindowLongClick", Toast.LENGTH_SHORT).show();
-            }
-        });
+        hMap.setOnInfoWindowCloseListener(marker -> Toast.makeText(getApplicationContext(), "infowindowclose", Toast.LENGTH_SHORT).show());
+        hMap.setOnInfoWindowLongClickListener(marker -> Toast.makeText(getApplicationContext(), "onInfoWindowLongClick", Toast.LENGTH_SHORT).show());
     }
 
     /**
@@ -347,7 +327,6 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
         if (null != markerList && markerList.size() > 0) {
             for (Marker iMarker : markerList) {
                 iMarker.remove();
-                iMarker = null;
             }
             markerList.clear();
         }
@@ -429,20 +408,6 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
     }
 
     /**
-     * Get the latitude and longitude of the marker
-     *
-     * @param view view
-     */
-    public void getPosition(View view) {
-        if (mParis != null) {
-            LatLng latLng = mParis.getPosition();
-            Double latitude = latLng.latitude;
-            Double longitude = latLng.longitude;
-            txtvResultShown.setText("mBrisbane " + latitude.toString() + " " + longitude.toString());
-        }
-    }
-
-    /**
      * Hide the information window of the marker
      *
      * @param view view
@@ -476,27 +441,27 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
             float bearing = 0f;
             float tilt = 0f;
             if (!TextUtils.isEmpty(edtCameraLng.getText()) && !TextUtils.isEmpty(edtCameraLat.getText())) {
-                latLng = new LatLng(Float.valueOf(edtCameraLat.getText().toString().trim()),
-                    Float.valueOf(edtCameraLng.getText().toString().trim()));
+                latLng = new LatLng(Float.parseFloat(edtCameraLat.getText().toString().trim()),
+                    Float.parseFloat(edtCameraLng.getText().toString().trim()));
             }
             if (!TextUtils.isEmpty(edtCameraZoom.getText())) {
-                zoom = Float.valueOf(edtCameraZoom.getText().toString().trim());
+                zoom = Float.parseFloat(edtCameraZoom.getText().toString().trim());
             }
             if (!TextUtils.isEmpty(edtCameraBearing.getText())) {
-                bearing = Float.valueOf(edtCameraBearing.getText().toString().trim());
+                bearing = Float.parseFloat(edtCameraBearing.getText().toString().trim());
             }
             if (!TextUtils.isEmpty(edtCameraTilt.getText())) {
-                tilt = Float.valueOf(edtCameraTilt.getText().toString().trim());
+                tilt = Float.parseFloat(edtCameraTilt.getText().toString().trim());
             }
             CameraPosition cameraPosition =
                 CameraPosition.builder().target(latLng).zoom(zoom).bearing(bearing).tilt(tilt).build();
             CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
             hMap.moveCamera(cameraUpdate);
         } catch (IllegalArgumentException e) {
-            Log.e(TAG, "IllegalArgumentException " + e.toString());
+            Log.e(TAG, "IllegalArgumentException " + e);
             Toast.makeText(this, "IllegalArgumentException", Toast.LENGTH_SHORT).show();
         } catch (NullPointerException e) {
-            Log.e(TAG, "NullPointerException " + e.toString());
+            Log.e(TAG, "NullPointerException " + e);
             Toast.makeText(this, "NullPointerException", Toast.LENGTH_SHORT).show();
         }
     }

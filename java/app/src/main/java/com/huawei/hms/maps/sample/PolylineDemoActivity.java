@@ -51,7 +51,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class PolylineDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "PolylineDemoActivity";
-
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
 
     private HuaweiMap hMap;

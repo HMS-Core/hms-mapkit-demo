@@ -25,7 +25,6 @@ import com.huawei.hms.maps.HuaweiMap;
 import com.huawei.hms.maps.HuaweiMapOptions;
 import com.huawei.hms.maps.OnMapReadyCallback;
 import com.huawei.hms.maps.SupportMapFragment;
-import com.huawei.hms.maps.model.CameraPosition;
 import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.MapStyleOptions;
 
@@ -46,9 +45,10 @@ import androidx.fragment.app.FragmentTransaction;
 public class StyleMapDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "StyleMapDemoActivity";
 
-    private HuaweiMap hMap;
-
+    @SuppressWarnings("FieldCanBeLocal")
     private SupportMapFragment mSupportMapFragment;
+
+    private HuaweiMap hMap;
 
     private EditText edtStyleId;
 
