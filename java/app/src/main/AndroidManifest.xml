@@ -44,99 +44,75 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".CircleDemoActivity"
             android:label="CircleDemo" />
-
         <activity
             android:name=".ControlsDemoActivity"
             android:label="ControlsDemo" />
-
         <activity
             android:name=".GestureDemoActivity"
             android:label="GestureDemo" />
-
         <activity
             android:name=".GroundOverlayDemoActivity"
             android:label="GroundOverlayDemo" />
-
         <activity
             android:name=".LiteModeDemoActivity"
             android:label="LiteModeDemo" />
-
         <activity
             android:name=".MapFunctionsDemoActivity"
             android:label="MapFunctions" />
-
         <activity
             android:name=".MoreLanguageDemoActivity"
             android:label="MoreLanguageDemo" />
-
         <activity
             android:name=".PolygonDemoActivity"
             android:label="PolygonDemo" />
-
         <activity
             android:name=".PolylineDemoActivity"
             android:label="PolylineDemo" />
-
         <activity
             android:name=".LocationSourceDemoActivity"
             android:label="LocationSourceDemo" />
-
         <activity
             android:name=".MarkerDemoActivity"
             android:label="MarkerDemo" />
-
         <activity
             android:name=".MarkerClusteringDemoActivity"
             android:label="MarkerClusteringDemo" />
-
         <activity
             android:name=".CameraDemoActivity"
             android:label="CameraDemo" />
-
         <activity
             android:name=".BasicMapDemoActivity"
             android:label="BasicMapDemo" />
-
         <activity
             android:name=".MapFragmentDemoActivity"
             android:label="MapFragmentDemo" />
-
         <activity
             android:name=".MapViewDemoActivity"
             android:label="MapViewDemo" />
-
         <activity
             android:name=".SupportMapDemoActivity"
             android:label="SupportMapDemo" />
-
         <activity
             android:name=".SupportMapCodeDemoActivity"
             android:label="SupportMapCodeDemo" />
-
         <activity
             android:name=".MapViewCodeDemoActivity"
             android:label="MapViewCodeDemo" />
-
         <activity
             android:name=".MapFragmentCodeDemoActivity"
             android:label="MapFragmentCodeDemo" />
-
         <activity
             android:name=".StyleMapDemoActivity"
             android:label="StyleMapDemo" />
-
         <activity
             android:name=".EventsDemoActivity"
             android:label="EventsDemo" />
-
         <activity
             android:name=".RoutePlanningDemoActivity"
             android:label="RoutePlanningDemo" />
-
         <activity
             android:name=".HeatMapDemoActivity"
             android:label="HeatMapDemo" />
