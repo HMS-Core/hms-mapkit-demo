@@ -20,6 +20,8 @@
 
 package com.huawei.hms.maps.sample.utils;
 
+import androidx.annotation.NonNull;
+
 import com.huawei.hms.maps.model.LatLng;
 
 import java.util.Arrays;
@@ -41,7 +43,8 @@ public class MapUtils {
 
     public static final LatLng FRANCE3 = new LatLng(48.793478, 2.334595);
 
-    public static List<LatLng> createRectangle(LatLng center, double halfWidth, double halfHeight) {
+    @NonNull
+    public static List<LatLng> createRectangle(@NonNull LatLng center, double halfWidth, double halfHeight) {
         return Arrays.asList(new LatLng(center.latitude - halfHeight, center.longitude - halfWidth),
                 new LatLng(center.latitude - halfHeight, center.longitude + halfWidth),
                 new LatLng(center.latitude + halfHeight, center.longitude + halfWidth),

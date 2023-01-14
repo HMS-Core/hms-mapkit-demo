@@ -35,6 +35,7 @@ import com.huawei.hms.maps.model.Polyline;
 import com.huawei.hms.maps.model.PolylineOptions;
 import com.huawei.hms.maps.sample.utils.MapUtils;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -62,24 +63,25 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
 
     private EditText oneLatitude;
 
-    private EditText oneLongtitude;
+    private EditText oneLongitude;
 
     private EditText polylineStokeWidth;
 
     private EditText polylineTag;
 
-    private List<LatLng> points = new ArrayList<>();
+    private final List<LatLng> points = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_polyline_demo);
         mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapInPolyline);
+        assert mSupportMapFragment != null;
         mSupportMapFragment.getMapAsync(this);
 
         polylineShown = findViewById(R.id.polylineShown);
         oneLatitude = findViewById(R.id.oneLatitude);
-        oneLongtitude = findViewById(R.id.oneLongtitude);
+        oneLongitude = findViewById(R.id.oneLongitude);
         polylineStokeWidth = findViewById(R.id.polylineStokeWidth);
         polylineTag = findViewById(R.id.polylineTag);
 
@@ -112,12 +114,9 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
             new PolylineOptions().add(MapUtils.FRANCE, MapUtils.FRANCE1, MapUtils.FRANCE2, MapUtils.FRANCE3)
                 .color(Color.BLUE)
                 .width(3));
-        hMap.setOnPolylineClickListener(new HuaweiMap.OnPolylineClickListener() {
-            @Override
-            public void onPolylineClick(Polyline polyline) {
-                Log.i(TAG, "onMapReady:onPolylineClick ");
-            }
-        });
+        hMap.setOnPolylineClickListener(polyline ->
+                Log.i(TAG, "onMapReady:onPolylineClick ")
+        );
     }
 
     /**
@@ -143,15 +142,15 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
     public void setOnePoint(View view) {
         if (null != mPolyline) {
             String latitude = oneLatitude.getText().toString().trim();
-            String longtitude = oneLongtitude.getText().toString().trim();
-            if (checkIsEdit(latitude) || checkIsEdit(longtitude)) {
-                Toast.makeText(this, "Please make sure the latitude & longtitude is Edited", Toast.LENGTH_SHORT).show();
+            String longitude = oneLongitude.getText().toString().trim();
+            if (checkIsEdit(latitude) || checkIsEdit(longitude)) {
+                Toast.makeText(this, "Please make sure the latitude & longitude is Edited", Toast.LENGTH_SHORT).show();
             } else {
-                if (!checkIsRight(latitude) || !checkIsRight(longtitude)) {
-                    Toast.makeText(this, "Please make sure the latitude & longtitude is right", Toast.LENGTH_SHORT)
+                if (!checkIsRight(latitude) || !checkIsRight(longitude)) {
+                    Toast.makeText(this, "Please make sure the latitude & longitude is right", Toast.LENGTH_SHORT)
                         .show();
                 } else {
-                    points.add(new LatLng(Double.valueOf(latitude), Double.valueOf(longtitude)));
+                    points.add(new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude)));
                     mPolyline.setPoints(points);
                 }
             }
@@ -189,6 +188,7 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
      *
      * @param view view
      */
+    @SuppressLint("SetTextI18n")
     public void getStokeColor(View view) {
         if (null != mPolyline) {
             polylineShown.setText("Polyline color is " + Integer.toHexString(mPolyline.getColor()));
@@ -228,6 +228,7 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
      *
      * @param view view
      */
+    @SuppressLint("SetTextI18n")
     public void getWidth(View view) {
         if (null != mPolyline) {
             polylineShown.setText("Polyline width is " + mPolyline.getWidth());
@@ -268,12 +269,9 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
      */
     public void addClickEvent(View view) {
         if (null != mPolyline) {
-            hMap.setOnPolylineClickListener(new HuaweiMap.OnPolylineClickListener() {
-                @Override
-                public void onPolylineClick(Polyline circle) {
-                    Toast.makeText(getApplicationContext(), "Polyline is clicked.", Toast.LENGTH_LONG).show();
-                }
-            });
+            hMap.setOnPolylineClickListener(circle ->
+                    Toast.makeText(getApplicationContext(), "Polyline is clicked.", Toast.LENGTH_LONG).show()
+            );
         }
     }
 

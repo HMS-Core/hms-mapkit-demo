@@ -64,7 +64,6 @@
                     android:text="FromBitmap"
                     android:textAllCaps="false" />
 
-
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,10 +101,10 @@
                     android:textSize="11sp" />
 
                 <EditText
-                    android:id="@+id/toprightLongtitude"
+                    android:id="@+id/toprightLongitude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="toprightLongtitude"
+                    android:hint="toprightLongitude"
                     android:singleLine="true"
                     android:textSize="11sp" />
 
@@ -118,10 +117,10 @@
                     android:textSize="11sp" />
 
                 <EditText
-                    android:id="@+id/bottomleftLongtitude"
+                    android:id="@+id/bottomleftLongitude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="bottomleftLongtitude"
+                    android:hint="bottomleftLongitude"
                     android:singleLine="true"
                     android:textSize="11sp" />
 
@@ -161,10 +160,10 @@
                     android:textSize="11sp" />
 
                 <EditText
-                    android:id="@+id/positionLongtitude"
+                    android:id="@+id/positionLongitude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="positionLongtitude"
+                    android:hint="positionLongitude"
                     android:singleLine="true"
                     android:textSize="11sp" />
 
@@ -264,6 +263,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

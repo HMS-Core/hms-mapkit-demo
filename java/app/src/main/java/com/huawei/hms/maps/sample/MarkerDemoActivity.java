@@ -50,6 +50,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -84,7 +85,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     private EditText edtTag;
 
-    @SuppressWarnings("FieldCanBeLocal")
+    @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private TextView txtvResultShown;
 
     private EditText edtCameraLat;
@@ -154,24 +155,19 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
 
         @Override
         public View getInfoContents(Marker marker) {
-            View view = null;
             Log.d(TAG, "getInfoContents");
-            if (mWindowType != 2) {
-                return view;
-            }
+            if (mWindowType != 2) {return null;}
             render(marker, mContentsView);
             return mContentsView;
         }
 
         private void render(Marker marker, View view) {
             setMarkerBadge(marker, view);
-
             setMarkerTextView(marker, view);
-
             setMarkerSnippet(marker, view);
         }
 
-        private void setMarkerBadge(Marker marker, View view) {
+        private void setMarkerBadge(@NonNull Marker marker, View view) {
             int markerBadge;
             // Use the equals method to determine if the marker is the same ,do not use"=="
             if (marker.equals(mParis)) {
@@ -186,12 +182,12 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
             ((ImageView) view.findViewById(R.id.imgv_badge)).setImageResource(markerBadge);
         }
 
-        private void setMarkerTextView(Marker marker, View view) {
+        private void setMarkerTextView(@NonNull Marker marker, @NonNull View view) {
             String markerTitle = marker.getTitle();
 
             TextView titleView = null;
 
-            Object object = view.findViewById(R.id.txtv_titlee);
+            Object object = view.findViewById(R.id.txtv_title);
             if (object instanceof TextView) {
                 titleView = (TextView) object;
             }
@@ -207,12 +203,12 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
             }
         }
 
-        private void setMarkerSnippet(Marker marker, View view) {
+        private void setMarkerSnippet(@NonNull Marker marker, View view) {
             String markerSnippet = marker.getSnippet();
             if (marker.getTag() != null) {
                 markerSnippet = (String) marker.getTag();
             }
-            TextView snippetView = view.findViewById(R.id.txtv_snippett);
+            TextView snippetView = view.findViewById(R.id.txtv_snippet);
             if (markerSnippet != null && !markerSnippet.isEmpty()) {
                 SpannableString snippetText = new SpannableString(markerSnippet);
                 snippetText.setSpan(new ForegroundColorSpan(Color.RED), 0, markerSnippet.length(), 0);

@@ -72,15 +72,15 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
 
     private EditText toprightLatitude;
 
-    private EditText toprightLongtitude;
+    private EditText toprightLongitude;
 
     private EditText bottomleftLatitude;
 
-    private EditText bottomleftLongtitude;
+    private EditText bottomleftLongitude;
 
     private EditText positionLatitude;
 
-    private EditText positionLongtitude;
+    private EditText positionLongitude;
 
     private EditText imageWidth;
 
@@ -100,11 +100,11 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
         mSupportMapFragment.getMapAsync(this);
 
         toprightLatitude = findViewById(R.id.toprightLatitude);
-        toprightLongtitude = findViewById(R.id.toprightLongtitude);
+        toprightLongitude = findViewById(R.id.toprightLongitude);
         bottomleftLatitude = findViewById(R.id.bottomleftLatitude);
-        bottomleftLongtitude = findViewById(R.id.bottomleftLongtitude);
+        bottomleftLongitude = findViewById(R.id.bottomleftLongitude);
         positionLatitude = findViewById(R.id.positionLatitude);
-        positionLongtitude = findViewById(R.id.positionLongtitude);
+        positionLongitude = findViewById(R.id.positionLongitude);
         imageWidth = findViewById(R.id.imageWidth);
         imageHeight = findViewById(R.id.imageHeight);
         groundOverlayTag = findViewById(R.id.groundOverlayTag);
@@ -332,21 +332,21 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
     public void setPointsBy2Points(View view) {
         if (null != overlay) {
             String northeastLatitude = toprightLatitude.getText().toString().trim();
-            String northeastLongtitude = toprightLongtitude.getText().toString().trim();
+            String northeastLongitude = toprightLongitude.getText().toString().trim();
             String southwestLatitude = bottomleftLatitude.getText().toString().trim();
-            String southwestLontitude = bottomleftLongtitude.getText().toString().trim();
-            if (checkIsEdit(northeastLatitude) || checkIsEdit(northeastLongtitude) || checkIsEdit(southwestLatitude)
+            String southwestLontitude = bottomleftLongitude.getText().toString().trim();
+            if (checkIsEdit(northeastLatitude) || checkIsEdit(northeastLongitude) || checkIsEdit(southwestLatitude)
                 || checkIsEdit(southwestLontitude)) {
                 Toast.makeText(this, "Please make sure these latlng are Edited", Toast.LENGTH_SHORT).show();
             } else {
-                if (!checkIsRight(northeastLatitude) || !checkIsRight(northeastLongtitude)
+                if (!checkIsRight(northeastLatitude) || !checkIsRight(northeastLongitude)
                     || !checkIsRight(southwestLatitude) || !checkIsRight(southwestLontitude)) {
                     Toast.makeText(this, "Please make sure these latlng are right", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
                         overlay.setPositionFromBounds(new LatLngBounds(
                             new LatLng(Double.parseDouble(southwestLatitude), Double.parseDouble(southwestLontitude)),
-                            new LatLng(Double.parseDouble(northeastLatitude), Double.parseDouble(northeastLongtitude))));
+                            new LatLng(Double.parseDouble(northeastLatitude), Double.parseDouble(northeastLongitude))));
                         CameraPosition cameraPosition = CameraPosition.builder()
                             .target(overlay.getPosition())
                             .zoom(18)
@@ -388,13 +388,13 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
             String width = imageWidth.getText().toString().trim();
             String height = imageHeight.getText().toString().trim();
             String latitude = positionLatitude.getText().toString().trim();
-            String longtitude = positionLongtitude.getText().toString().trim();
-            if (checkIsEdit(width) || checkIsEdit(height) || checkIsEdit(latitude) || checkIsEdit(longtitude)) {
+            String longitude = positionLongitude.getText().toString().trim();
+            if (checkIsEdit(width) || checkIsEdit(height) || checkIsEdit(latitude) || checkIsEdit(longitude)) {
                 Toast.makeText(this, "Please make sure the width & height & position is Edited", Toast.LENGTH_SHORT)
                     .show();
             } else {
                 if (!checkIsRight(width) || !checkIsRight(height) || !checkIsRight(latitude)
-                    || !checkIsRight(longtitude)) {
+                    || !checkIsRight(longitude)) {
                     Toast.makeText(this, "Please make sure the width & height & position is right", Toast.LENGTH_SHORT)
                         .show();
                 } else {
@@ -407,7 +407,7 @@ public class GroundOverlayDemoActivity extends AppCompatActivity implements OnMa
                                 .show();
                             return;
                         }
-                        LatLng position = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longtitude));
+                        LatLng position = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
                         overlay.setPosition(position);
                         overlay.setDimensions(Float.parseFloat(width), Float.parseFloat(height));
                         CameraPosition cameraPosition =

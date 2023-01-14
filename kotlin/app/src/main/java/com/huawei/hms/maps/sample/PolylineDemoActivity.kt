@@ -55,7 +55,7 @@ class PolylineDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     private var mPolyline: Polyline? = null
     private lateinit var polylineShown: TextView
     private lateinit var oneLatitude: EditText
-    private lateinit var oneLongtitude: EditText
+    private lateinit var oneLongitude: EditText
     private lateinit var polylineStokeWidth: EditText
     private lateinit var polylineTag: EditText
     private val points: MutableList<LatLng> = ArrayList()
@@ -67,7 +67,7 @@ class PolylineDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         mSupportMapFragment?.getMapAsync(this)
         polylineShown = findViewById(R.id.polylineShown)
         oneLatitude = findViewById(R.id.oneLatitude)
-        oneLongtitude = findViewById(R.id.oneLongtitude)
+        oneLongitude = findViewById(R.id.oneLongitude)
         polylineStokeWidth = findViewById(R.id.polylineStokeWidth)
         polylineTag = findViewById(R.id.polylineTag)
         points.add(MapUtils.HUAWEI_CENTER)
@@ -115,15 +115,15 @@ class PolylineDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     fun setOnePoint(v: View?) {
         if (null != mPolyline) {
             val latitude = oneLatitude.text.toString().trim()
-            val longtitude = oneLongtitude.text.toString().trim()
-            if (checkIsEdit(latitude) || checkIsEdit(longtitude)) {
-                Toast.makeText(this, "Please make sure the latitude & longtitude is Edited", Toast.LENGTH_SHORT).show()
+            val longitude = oneLongitude.text.toString().trim()
+            if (checkIsEdit(latitude) || checkIsEdit(longitude)) {
+                Toast.makeText(this, "Please make sure the latitude & longitude is Edited", Toast.LENGTH_SHORT).show()
             } else {
-                if (!checkIsRight(latitude) || !checkIsRight(longtitude)) {
-                    Toast.makeText(this, "Please make sure the latitude & longtitude is right", Toast.LENGTH_SHORT)
+                if (!checkIsRight(latitude) || !checkIsRight(longitude)) {
+                    Toast.makeText(this, "Please make sure the latitude & longitude is right", Toast.LENGTH_SHORT)
                             .show()
                 } else {
-                    points.add(LatLng(latitude.toDouble(), longtitude.toDouble()))
+                    points.add(LatLng(latitude.toDouble(), longitude.toDouble()))
                     mPolyline?.points = points
                 }
             }

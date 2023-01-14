@@ -32,6 +32,7 @@ import com.huawei.hms.maps.model.Polygon;
 import com.huawei.hms.maps.model.PolygonOptions;
 import com.huawei.hms.maps.sample.utils.MapUtils;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -60,7 +61,7 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
 
     private EditText oneLatitude;
 
-    private EditText oneLongtitude;
+    private EditText oneLongitude;
 
     private EditText polygonTag;
 
@@ -75,7 +76,7 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
         }
         polygonShown = findViewById(R.id.polygonShown);
         oneLatitude = findViewById(R.id.oneLatitude);
-        oneLongtitude = findViewById(R.id.oneLongtitude);
+        oneLongitude = findViewById(R.id.oneLongitude);
         polygonTag = findViewById(R.id.polygonTag);
     }
 
@@ -103,12 +104,9 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
             .addPolygon(new PolygonOptions().addAll(MapUtils.createRectangle(new LatLng(48.893478, 2.334595), 0.1, 0.1))
                 .fillColor(Color.GREEN)
                 .strokeColor(Color.BLACK));
-        hMap.setOnPolygonClickListener(new HuaweiMap.OnPolygonClickListener() {
-            @Override
-            public void onPolygonClick(Polygon polygon) {
-                Log.i(TAG, "addPolygon and onPolygonClick start ");
-            }
-        });
+        hMap.setOnPolygonClickListener(polygon ->
+                Log.i(TAG, "addPolygon and onPolygonClick start ")
+        );
     }
 
     /**
@@ -130,16 +128,16 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
     public void setPoints(View view) {
         if (null != mPolygon) {
             String latitude = oneLatitude.getText().toString().trim();
-            String longtitude = oneLongtitude.getText().toString().trim();
-            if (checkIsEdit(latitude) || checkIsEdit(longtitude)) {
-                Toast.makeText(this, "Please make sure the latitude & longtitude is Edited", Toast.LENGTH_SHORT).show();
+            String longitude = oneLongitude.getText().toString().trim();
+            if (checkIsEdit(latitude) || checkIsEdit(longitude)) {
+                Toast.makeText(this, "Please make sure the latitude & longitude is Edited", Toast.LENGTH_SHORT).show();
             } else {
-                if (!checkIsRight(latitude) || !checkIsRight(longtitude)) {
-                    Toast.makeText(this, "Please make sure the latitude & longtitude is right", Toast.LENGTH_SHORT)
+                if (!checkIsRight(latitude) || !checkIsRight(longitude)) {
+                    Toast.makeText(this, "Please make sure the latitude & longitude is right", Toast.LENGTH_SHORT)
                         .show();
                 } else {
                     mPolygon.setPoints(MapUtils
-                        .createRectangle(new LatLng(Double.valueOf(latitude), Double.valueOf(longtitude)), 0.5, 0.5));
+                        .createRectangle(new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude)), 0.5, 0.5));
                 }
             }
         }
@@ -176,6 +174,7 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
      *
      * @param view view
      */
+    @SuppressLint("SetTextI18n")
     public void getStokeColor(View view) {
         if (null != mPolygon) {
             polygonShown.setText("Polygon color is " + Integer.toHexString(mPolygon.getStrokeColor()));
@@ -198,6 +197,7 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
      *
      * @param view view
      */
+    @SuppressLint("SetTextI18n")
     public void getFillColor(View view) {
         if (null != mPolygon) {
             polygonShown.setText("Polygon color is " + Integer.toHexString(mPolygon.getFillColor()));
@@ -238,12 +238,9 @@ public class PolygonDemoActivity extends AppCompatActivity implements OnMapReady
      */
     public void addClickEvent(View view) {
         if (null != mPolygon) {
-            hMap.setOnPolygonClickListener(new HuaweiMap.OnPolygonClickListener() {
-                @Override
-                public void onPolygonClick(Polygon circle) {
-                    Toast.makeText(getApplicationContext(), "Polygon is clicked.", Toast.LENGTH_LONG).show();
-                }
-            });
+            hMap.setOnPolygonClickListener(circle ->
+                    Toast.makeText(getApplicationContext(), "Polygon is clicked.", Toast.LENGTH_LONG).show()
+            );
         }
     }
 

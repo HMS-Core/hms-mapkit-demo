@@ -99,6 +99,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         hMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(48.893478, 2.334595), 14f))
     }
 
+    @SuppressLint("InflateParams")
     internal inner class CustomInfoWindowAdapter : InfoWindowAdapter {
         private val mWindowView: View
         private val mContentsView: View
@@ -146,7 +147,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         private fun setMarkerTextView(marker: Marker, view: View) {
             val markerTitle = marker.title
             var titleView: TextView? = null
-            val viewObj: Any = view.findViewById(R.id.txtv_titlee)
+            val viewObj: Any = view.findViewById(R.id.txtv_title)
             if (viewObj is TextView) {
                 titleView = viewObj
             }
@@ -164,7 +165,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
             if (marker.tag != null) {
                 markerSnippet = marker.tag as String
             }
-            val snippetView = view.findViewById<View>(R.id.txtv_snippett) as TextView
+            val snippetView = view.findViewById<View>(R.id.txtv_snippet) as TextView
             if (markerSnippet != null && !markerSnippet.isEmpty()) {
                 val snippetText = SpannableString(markerSnippet)
                 snippetText.setSpan(ForegroundColorSpan(Color.RED), 0, markerSnippet.length, 0)
@@ -349,6 +350,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
      * @param view
      */
     fun setMarkerAnchor(view: View?) {
+        @Suppress("unused")
         if (mParis != null) {
             mParis?.setMarkerAnchor(0.9f, 0.9f)
         }
@@ -359,6 +361,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
      *
      * @param view
      */
+    @SuppressLint("SetTextI18n")
     fun getPosition(view: View?) {
         if (mParis != null) {
             val latLng = mParis?.position

@@ -109,8 +109,8 @@ class CircleDemoActivity : AppCompatActivity(), OnMapReadyCallback {
             var center: LatLng? = null
             if (!TextUtils.isEmpty(centerLatitude.text) && !TextUtils.isEmpty(centerLongtitude.text)) {
                 val latitude = centerLatitude.text.toString().trim()
-                val longtitude = centerLongtitude.text.toString().trim()
-                center = LatLng(latitude.toDouble(), longtitude.toDouble())
+                val longitude = centerLongtitude.text.toString().trim()
+                center = LatLng(latitude.toDouble(), longitude.toDouble())
             }
             try {
                 mCircle?.center = center

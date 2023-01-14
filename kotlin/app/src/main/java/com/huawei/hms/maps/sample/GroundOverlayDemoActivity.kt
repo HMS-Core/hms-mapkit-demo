@@ -58,11 +58,11 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     private var hMap: HuaweiMap? = null
     private var overlay: GroundOverlay? = null
     private lateinit var toprightLatitude: EditText
-    private lateinit var toprightLongtitude: EditText
+    private lateinit var toprightLongitude: EditText
     private lateinit var bottomleftLatitude: EditText
-    private lateinit var bottomleftLongtitude: EditText
+    private lateinit var bottomleftLongitude: EditText
     private lateinit var positionLatitude: EditText
-    private lateinit var positionLongtitude: EditText
+    private lateinit var positionLongitude: EditText
     private lateinit var imageWidth: EditText
     private lateinit var imageHeight: EditText
     private lateinit var groundOverlayTag: EditText
@@ -74,11 +74,11 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         mSupportMapFragment = supportFragmentManager.findFragmentById(R.id.mapInGroundOverlay) as SupportMapFragment?
         mSupportMapFragment?.getMapAsync(this)
         toprightLatitude = findViewById(R.id.toprightLatitude)
-        toprightLongtitude = findViewById(R.id.toprightLongtitude)
+        toprightLongitude = findViewById(R.id.toprightLongitude)
         bottomleftLatitude = findViewById(R.id.bottomleftLatitude)
-        bottomleftLongtitude = findViewById(R.id.bottomleftLongtitude)
+        bottomleftLongitude = findViewById(R.id.bottomleftLongitude)
         positionLatitude = findViewById(R.id.positionLatitude)
-        positionLongtitude = findViewById(R.id.positionLongtitude)
+        positionLongitude = findViewById(R.id.positionLongitude)
         imageWidth = findViewById(R.id.imageWidth)
         imageHeight = findViewById(R.id.imageHeight)
         groundOverlayTag = findViewById(R.id.groundOverlayTag)
@@ -236,12 +236,12 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     fun getAttributes(view: View?) {
         if (null != overlay) {
-            val bounds: String? = if (overlay?.bounds == null) {
+            val bounds: String = if (overlay?.bounds == null) {
                 "null"
             } else {
                 overlay?.bounds.toString()
             }
-            val position: String? = if (overlay?.position == null) {
+            val position: String = if (overlay?.position == null) {
                 "null"
             } else {
                 overlay?.position.toString()
@@ -260,9 +260,9 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     fun setPointsBy2Points(view: View?) {
         if (null != overlay) {
             val northeastLatitude = toprightLatitude.text.toString().trim { it <= ' ' }
-            val northeastLongtitude = toprightLongtitude.text.toString().trim { it <= ' ' }
+            val northeastLongtitude = toprightLongitude.text.toString().trim { it <= ' ' }
             val southwestLatitude = bottomleftLatitude.text.toString().trim { it <= ' ' }
-            val southwestLontitude = bottomleftLongtitude.text.toString().trim { it <= ' ' }
+            val southwestLontitude = bottomleftLongitude.text.toString().trim { it <= ' ' }
             if (CheckUtils.checkIsEdit(northeastLatitude) || CheckUtils.checkIsEdit(northeastLongtitude) || CheckUtils.checkIsEdit(southwestLatitude)
                     || CheckUtils.checkIsEdit(southwestLontitude)) {
                 Toast.makeText(this, "Please make sure these latlng are Edited", Toast.LENGTH_SHORT).show()
@@ -312,13 +312,13 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
             val width = imageWidth.text.toString().trim { it <= ' ' }
             val height = imageHeight.text.toString().trim { it <= ' ' }
             val latitude = positionLatitude.text.toString().trim { it <= ' ' }
-            val longtitude = positionLongtitude.text.toString().trim { it <= ' ' }
-            if (CheckUtils.checkIsEdit(width) || CheckUtils.checkIsEdit(height) || CheckUtils.checkIsEdit(latitude) || CheckUtils.checkIsEdit(longtitude)) {
+            val longitude = positionLongitude.text.toString().trim { it <= ' ' }
+            if (CheckUtils.checkIsEdit(width) || CheckUtils.checkIsEdit(height) || CheckUtils.checkIsEdit(latitude) || CheckUtils.checkIsEdit(longitude)) {
                 Toast.makeText(this, "Please make sure the width & height & position is Edited", Toast.LENGTH_SHORT)
                         .show()
             } else {
                 if (!CheckUtils.checkIsRight(width) || !CheckUtils.checkIsRight(height) || !CheckUtils.checkIsRight(latitude)
-                        || !CheckUtils.checkIsRight(longtitude)) {
+                        || !CheckUtils.checkIsRight(longitude)) {
                     Toast.makeText(this, "Please make sure the width & height & position is right", Toast.LENGTH_SHORT)
                             .show()
                 } else {
@@ -331,7 +331,7 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                                     .show()
                             return
                         }
-                        val position = LatLng(latitude.toDouble(), longtitude.toDouble())
+                        val position = LatLng(latitude.toDouble(), longitude.toDouble())
                         overlay?.position = position
                         overlay?.setDimensions(width.toFloat(), height.toFloat())
                         val cameraPosition = CameraPosition.builder().target(position).zoom(18f).bearing(0f).tilt(0f).build()
@@ -375,6 +375,7 @@ class GroundOverlayDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the tag of GroundOverlay
      */
+    @SuppressLint("SetTextI18n")
     fun getTag(v: View?) {
         if (null != overlay) {
             groundOverlayShown.text = "Overlay tag is " + overlay?.tag

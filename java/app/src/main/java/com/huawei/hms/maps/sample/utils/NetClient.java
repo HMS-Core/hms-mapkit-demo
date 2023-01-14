@@ -41,12 +41,13 @@ import okhttp3.Response;
  */
 public class NetClient {
 
+    @SuppressWarnings("unused")
     private static final String TAG = "NetClient";
 
     private static OkHttpClient client;
 
-    // Please place your API KEY here. If the API KEY contains special characters, you need to encode it using
-    // encodeURI.
+    // Please place your API KEY here.
+    // If the API KEY contains special characters, you need to encode it using encodeURI.
     private static final String DEFAULT_KEY = MapUtils.API_KEY;
 
     private static final String WALKING_ROUTE_PLANNING_URL = "https://mapapi.cloud.huawei.com/mapApi/v1/routeService/walking";
@@ -96,6 +97,7 @@ public class NetClient {
         String key = DEFAULT_KEY;
         if (needEncode) {
             try {
+                //noinspection CharsetObjectCanBeUsed
                 key = URLEncoder.encode(DEFAULT_KEY, "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -138,6 +140,7 @@ public class NetClient {
         String key = DEFAULT_KEY;
         if (needEncode) {
             try {
+                //noinspection CharsetObjectCanBeUsed
                 key = URLEncoder.encode(DEFAULT_KEY, "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -180,6 +183,7 @@ public class NetClient {
         String key = DEFAULT_KEY;
         if (needEncode) {
             try {
+                //noinspection CharsetObjectCanBeUsed
                 key = URLEncoder.encode(DEFAULT_KEY, "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();

@@ -20,7 +20,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtv_titlee"
+            android:id="@+id/txtv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -31,7 +31,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtv_snippett"
+            android:id="@+id/txtv_snippet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"

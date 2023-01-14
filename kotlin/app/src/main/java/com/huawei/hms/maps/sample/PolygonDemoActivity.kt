@@ -54,7 +54,7 @@ class PolygonDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     private var mPolygon: Polygon? = null
     private lateinit var polygonShown: TextView
     private lateinit var oneLatitude: EditText
-    private lateinit var oneLongtitude: EditText
+    private lateinit var oneLongitude: EditText
     private lateinit var polygonTag: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +67,7 @@ class PolygonDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         polygonShown = findViewById(R.id.polygonShown)
         oneLatitude = findViewById(R.id.oneLatitude)
-        oneLongtitude = findViewById(R.id.oneLongtitude)
+        oneLongitude = findViewById(R.id.oneLongitude)
         polygonTag = findViewById(R.id.polygonTag)
     }
 
@@ -106,16 +106,16 @@ class PolygonDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     fun setPoints(v: View?) {
         if (null != mPolygon) {
             val latitude = oneLatitude.text.toString().trim()
-            val longtitude = oneLongtitude.text.toString().trim()
-            if (checkIsEdit(latitude) || checkIsEdit(longtitude)) {
-                Toast.makeText(this, "Please make sure the latitude & longtitude is Edited", Toast.LENGTH_SHORT).show()
+            val longitude = oneLongitude.text.toString().trim()
+            if (checkIsEdit(latitude) || checkIsEdit(longitude)) {
+                Toast.makeText(this, "Please make sure the latitude & longitude is Edited", Toast.LENGTH_SHORT).show()
             } else {
-                if (!checkIsRight(latitude) || !checkIsRight(longtitude)) {
-                    Toast.makeText(this, "Please make sure the latitude & longtitude is right", Toast.LENGTH_SHORT)
+                if (!checkIsRight(latitude) || !checkIsRight(longitude)) {
+                    Toast.makeText(this, "Please make sure the latitude & longitude is right", Toast.LENGTH_SHORT)
                             .show()
                 } else {
                     mPolygon?.points = MapUtils
-                            .createRectangle(LatLng(latitude.toDouble(), longtitude.toDouble()), 0.5, 0.5)
+                            .createRectangle(LatLng(latitude.toDouble(), longitude.toDouble()), 0.5, 0.5)
                 }
             }
         }
