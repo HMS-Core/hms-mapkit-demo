@@ -109,7 +109,6 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                     override fun requestSuccess(result: String?) {
                         generateRoute(result)
                     }
-
                     override fun requestFail(errorMsg: String?) {
                         val msg = Message.obtain()
                         val bundle = Bundle()
@@ -128,7 +127,6 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                     override fun requestSuccess(result: String?) {
                         generateRoute(result)
                     }
-
                     override fun requestFail(errorMsg: String?) {
                         val msg = Message.obtain()
                         val bundle = Bundle()
@@ -148,7 +146,6 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                     override fun requestSuccess(result: String?) {
                         generateRoute(result)
                     }
-
                     override fun requestFail(errorMsg: String?) {
                         val msg = Message.obtain()
                         val bundle = Bundle()
@@ -288,22 +285,30 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    /** @see <a href="https://developer.huawei.com/consumer/en/doc/development/HMSCore-References/markeroptions-0000001050150930#section95121330125810">anchorMarker</a> */
     private fun addOriginMarker(latLng: LatLng) {
         if (null != mMarkerOrigin) {
             mMarkerOrigin?.remove()
         }
-        mMarkerOrigin = hMap?.addMarker(MarkerOptions().position(latLng)
-                .anchor(0.5f, 0.9f) // .anchorMarker(0.5f, 0.9f)
+        mMarkerOrigin = hMap?.addMarker(MarkerOptions()
+                .position(latLng)
+                .anchorMarker(0.5f, 0.9f)
                 .title("Origin")
-                .snippet(latLng.toString()))
+                .snippet(latLng.toString())
+        )
     }
 
+    /** @see <a href="https://developer.huawei.com/consumer/en/doc/development/HMSCore-References/markeroptions-0000001050150930#section95121330125810">anchorMarker</a> */
     private fun addDestinationMarker(latLng: LatLng) {
         if (null != mMarkerDestination) {
             mMarkerDestination?.remove()
         }
-        mMarkerDestination = hMap?.addMarker(
-                MarkerOptions().position(latLng).anchor(0.5f, 0.9f).title("Destination").snippet(latLng.toString()))
+        mMarkerDestination = hMap?.addMarker(MarkerOptions()
+                .position(latLng)
+                .anchorMarker(0.5f, 0.9f)
+                .title("Destination")
+                .snippet(latLng.toString())
+        )
     }
 
     private fun removePolylines() {

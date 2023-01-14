@@ -40,6 +40,7 @@ import com.huawei.hms.maps.model.Polyline;
 import com.huawei.hms.maps.model.PolylineOptions;
 import com.huawei.hms.maps.sample.utils.NetworkRequestManager;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -191,6 +192,7 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
             });
     }
 
+    @SuppressLint("LongLogTag")
     private void generateRoute(String json) {
         try {
             JSONObject jsonObject = new JSONObject(json);
@@ -275,13 +277,13 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
 
     }
 
+    @SuppressLint("LongLogTag")
     public void setOrigin(View view) {
         String mOriginLat = edtOriginLat.getText().toString().trim();
         String mOriginLng = edtOriginLng.getText().toString().trim();
         if (!TextUtils.isEmpty(mOriginLat) && !TextUtils.isEmpty(mOriginLng)) {
             try {
-                latLng1 = new LatLng(Double.valueOf(mOriginLat), Double.valueOf(mOriginLng));
-
+                latLng1 = new LatLng(Double.parseDouble(mOriginLat), Double.parseDouble(mOriginLng));
                 removePolylines();
                 addOriginMarker(latLng1);
                 hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng1, 13));
@@ -296,12 +298,13 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
         }
     }
 
+    @SuppressLint("LongLogTag")
     public void setDestination(View view) {
         String mDestinationLat = edtDestinationLat.getText().toString().trim();
         String mDestinationLng = edtDestinationLng.getText().toString().trim();
         if (!TextUtils.isEmpty(mDestinationLat) && !TextUtils.isEmpty(mDestinationLng)) {
             try {
-                latLng2 = new LatLng(Double.valueOf(mDestinationLat), Double.valueOf(mDestinationLng));
+                latLng2 = new LatLng(Double.parseDouble(mDestinationLat), Double.parseDouble(mDestinationLng));
 
                 removePolylines();
                 addDestinationMarker(latLng2);
@@ -322,8 +325,7 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
             mMarkerOrigin.remove();
         }
         mMarkerOrigin = hMap.addMarker(new MarkerOptions().position(latLng)
-            .anchor(0.5f, 0.9f)
-            // .anchorMarker(0.5f, 0.9f)
+            .anchorMarker(0.5f, 0.9f)
             .title("Origin")
             .snippet(latLng.toString()));
     }
@@ -333,17 +335,15 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
             mMarkerDestination.remove();
         }
         mMarkerDestination = hMap.addMarker(
-            new MarkerOptions().position(latLng).anchor(0.5f, 0.9f).title("Destination").snippet(latLng.toString()));
+            new MarkerOptions().position(latLng).anchorMarker(0.5f, 0.9f).title("Destination").snippet(latLng.toString()));
     }
 
     private void removePolylines() {
         for (Polyline polyline : mPolylines) {
             polyline.remove();
         }
-
         mPolylines.clear();
         mPaths.clear();
         mLatLngBounds = null;
     }
-
 }
