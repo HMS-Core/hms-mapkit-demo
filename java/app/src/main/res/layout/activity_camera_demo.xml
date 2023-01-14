@@ -106,6 +106,7 @@
                     android:layout_height="wrap_content"
                     android:text="NewLatLngBounds"
                     android:textAllCaps="false" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -117,35 +118,35 @@
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:hint="lat"
-                    android:textSize="10dp" />
+                    android:textSize="10sp" />
 
                 <EditText
                     android:id="@+id/cameraLng"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:hint="lng"
-                    android:textSize="10dp" />
+                    android:textSize="10sp" />
 
                 <EditText
                     android:id="@+id/cameraZoom"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:hint="zoom"
-                    android:textSize="10dp" />
+                    android:textSize="10sp" />
 
                 <EditText
                     android:id="@+id/cameraTilt"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:hint="tilt"
-                    android:textSize="10dp" />
+                    android:textSize="10sp" />
 
                 <EditText
                     android:id="@+id/cameraBearing"
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:hint="bearing"
-                    android:textSize="10dp" />
+                    android:textSize="10sp" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -156,6 +157,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

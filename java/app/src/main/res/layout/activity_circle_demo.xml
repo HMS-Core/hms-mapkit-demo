@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="get is shown here ."
-                    android:paddingLeft="10dp" />
+                    android:paddingStart="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Center-latitude"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/centerLongitude"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Center-longtitude"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Circle-radius"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -161,7 +161,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Edit the stokeWidth"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Edit the tag"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <Button
                     android:layout_width="wrap_content"

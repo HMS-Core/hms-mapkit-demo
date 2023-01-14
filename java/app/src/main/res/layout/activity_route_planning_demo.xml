@@ -62,7 +62,7 @@
                     android:hint="lat"
                     android:inputType="numberSigned|numberDecimal"
                     android:text="54.216608"
-                    android:textSize="10dp" />
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/edt_origin_lng"
@@ -71,7 +71,7 @@
                     android:hint="lng"
                     android:inputType="numberSigned|numberDecimal"
                     android:text="-4.66529"
-                    android:textSize="10dp" />
+                    android:textSize="11sp" />
 
                 <Button
                     android:id="@+id/btn_set_origin"
@@ -94,7 +94,7 @@
                     android:hint="lat"
                     android:inputType="numberSigned|numberDecimal"
                     android:text="54.209673"
-                    android:textSize="10dp" />
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/edt_destination_lng"
@@ -103,7 +103,7 @@
                     android:hint="lng"
                     android:inputType="numberSigned|numberDecimal"
                     android:text="-4.64002"
-                    android:textSize="10dp" />
+                    android:textSize="11sp" />
 
                 <Button
                     android:id="@+id/btn_set_destination"

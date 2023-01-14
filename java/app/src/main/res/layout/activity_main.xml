@@ -123,7 +123,6 @@
             android:text="EventsDemo"
             android:textAllCaps="false" />
 
-
         <Button
             android:id="@+id/MapStyle"
             android:layout_width="match_parent"

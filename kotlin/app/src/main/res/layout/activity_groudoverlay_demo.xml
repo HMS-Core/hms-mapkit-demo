@@ -47,8 +47,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="get shown is here"
-                    android:paddingLeft="10dp"
-                    android:textSize="10sp" />
+                    android:paddingStart="10dp"
+                    android:textSize="11sp" />
 
             </LinearLayout>
 
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:hint="toprightLatitude"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/toprightLongtitude"
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:hint="toprightLongtitude"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/bottomleftLatitude"
@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:hint="bottomleftLatitude"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/bottomleftLongtitude"
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:hint="bottomleftLongtitude"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
             </LinearLayout>
 
@@ -158,7 +158,7 @@
                     android:layout_height="wrap_content"
                     android:hint="positionLatitude"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/positionLongtitude"
@@ -166,7 +166,7 @@
                     android:layout_height="wrap_content"
                     android:hint="positionLongtitude"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/imageWidth"
@@ -174,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:hint="imageWidth"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <EditText
                     android:id="@+id/imageHeight"
@@ -182,8 +182,7 @@
                     android:layout_height="wrap_content"
                     android:hint="imageHeight"
                     android:singleLine="true"
-                    android:textSize="10sp" />
-
+                    android:textSize="11sp" />
 
             </LinearLayout>
 
@@ -247,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:hint="groundOverlayTag"
                     android:singleLine="true"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
 
                 <Button
                     android:layout_width="wrap_content"
