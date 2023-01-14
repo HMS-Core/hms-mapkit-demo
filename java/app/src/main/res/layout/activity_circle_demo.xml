@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
 
     <fragment
         android:id="@+id/mapInCircle"
         android:name="com.huawei.hms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="500dp" />
+        android:layout_height="500dp"
+        tools:ignore="FragmentTagUsage" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,8 +20,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="HardcodedText">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,7 +65,7 @@
                     android:textSize="10sp" />
 
                 <EditText
-                    android:id="@+id/centerLongtitude"
+                    android:id="@+id/centerLongitude"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Center-longtitude"
@@ -228,6 +233,9 @@
                     android:text="SetClickableFalse"
                     android:textAllCaps="false" />
             </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
+
 </LinearLayout>

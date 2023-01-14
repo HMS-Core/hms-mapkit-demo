@@ -47,7 +47,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * Basical functions
+ * Basic Functions
  */
 @SuppressLint("LongLogTag")
 public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -83,7 +83,7 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acitivity_map_founctions_demo);
+        setContentView(R.layout.acitivity_map_functions_demo);
         mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapInFunctions);
         assert mSupportMapFragment != null;
         mSupportMapFragment.getMapAsync(this);
