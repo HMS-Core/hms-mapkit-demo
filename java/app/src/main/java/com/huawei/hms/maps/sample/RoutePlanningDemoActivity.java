@@ -44,6 +44,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
@@ -89,8 +90,7 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
 
     private LatLngBounds mLatLngBounds;
 
-    /** TODO: to be replaced. */
-    private final Handler mHandler = new Handler() {
+    private final Handler mHandler = new Handler(Looper.myLooper()) {
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
