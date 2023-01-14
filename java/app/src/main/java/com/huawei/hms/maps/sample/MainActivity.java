@@ -88,80 +88,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(@NonNull View view) {
         if (R.id.button_camera == view.getId()) {
-            Log.i(TAG, "onClick: cameraDemo");
-            Intent i = new Intent(this, CameraDemoActivity.class);
-            startActivity(i);
+            startActivityByClass(CameraDemoActivity.class);
         } else if (R.id.button_gesture == view.getId()) {
-            Log.i(TAG, "onClick: GestureDemoActivity");
-            Intent intent = new Intent(this, GestureDemoActivity.class);
-            startActivity(intent);
+            startActivityByClass(GestureDemoActivity.class);
         } else if (R.id.button_gesture_controls == view.getId()) {
-            Log.i(TAG, "onClick: ControlsDemoActivity");
-            Intent intent = new Intent(this, ControlsDemoActivity.class);
-            startActivity(intent);
+            startActivityByClass(ControlsDemoActivity.class);
         } else if (R.id.button_circle == view.getId()) {
-            Log.i(TAG, "onClick: CircleDemoActivity");
-            Intent intent = new Intent(this, CircleDemoActivity.class);
-            startActivity(intent);
+            startActivityByClass(CircleDemoActivity.class);
         } else if (R.id.button_polygon == view.getId()) {
-            Log.i(TAG, "onClick: PolygonDemoActivity");
-            Intent intent = new Intent(this, PolygonDemoActivity.class);
-            startActivity(intent);
+            startActivityByClass(PolygonDemoActivity.class);
         } else if (R.id.button_polyline == view.getId()) {
-            Log.i(TAG, "onClick: GestureDemoActivity");
-            Intent intent = new Intent(this, PolylineDemoActivity.class);
-            startActivity(intent);
+            startActivityByClass(PolylineDemoActivity.class);
         } else if (R.id.button_ground_overlay == view.getId()) {
-            Log.i(TAG, "onClick: GroundOverlayDemoActivity");
-            Intent intent = new Intent(this, GroundOverlayDemoActivity.class);
-            startActivity(intent);
+            startActivityByClass(GroundOverlayDemoActivity.class);
         } else if (R.id.button_lite_mode == view.getId()) {
-            Log.i(TAG, "onClick: LiteModeDemoActivity");
-            Intent intent = new Intent(this, LiteModeDemoActivity.class);
-            startActivity(intent);
+            startActivityByClass(LiteModeDemoActivity.class);
         } else if (R.id.button_more_language == view.getId()) {
-            Log.i(TAG, "onClick: MoreLanguageDemoActivity");
-            Intent intent = new Intent(this, MoreLanguageDemoActivity.class);
-            startActivity(intent);
+            startActivityByClass(MoreLanguageDemoActivity.class);
         } else if (R.id.button_map_functions == view.getId()) {
-            Log.i(TAG, "onClick: MapFunctionsDemoActivity");
-            Intent intent = new Intent(this, MapFunctionsDemoActivity.class);
-            startActivity(intent);
+            startActivityByClass(MapFunctionsDemoActivity.class);
         } else if (R.id.button_basic_map == view.getId()) {
-            Log.i(TAG, "onClick: BasicMap");
-            Intent i = new Intent(this, BasicMapDemoActivity.class);
-            startActivity(i);
+            startActivityByClass(BasicMapDemoActivity.class);
         } else if (R.id.button_marker == view.getId()) {
-            Log.i(TAG, "onClick: AddMarkerDemo");
-            Intent i = new Intent(this, MarkerDemoActivity.class);
-            startActivity(i);
+            startActivityByClass(MarkerDemoActivity.class);
         }  else if (R.id.button_marker_clustering == view.getId()) {
-            Log.i(TAG, "onClick: MarkerClusteringDemo");
-            Intent i = new Intent(this, MarkerClusteringDemoActivity.class);
-            startActivity(i);
+            startActivityByClass(MarkerClusteringDemoActivity.class);
         } else if (R.id.button_events == view.getId()) {
-            Log.i(TAG, "onClick: EventsDemo");
-            Intent i = new Intent(this, EventsDemoActivity.class);
-            startActivity(i);
+            startActivityByClass(EventsDemoActivity.class);
         } else if (R.id.button_map_style == view.getId()) {
-            Log.i(TAG, "onClick: StyleMapDemo");
-            Intent i = new Intent(this, StyleMapDemoActivity.class);
-            startActivity(i);
+            startActivityByClass(StyleMapDemoActivity.class);
         } else if (R.id.button_location_source == view.getId()) {
-            Log.i(TAG, "onClick: LocationSourceDemo");
-            Intent i = new Intent(this, LocationSourceDemoActivity.class);
-            startActivity(i);
+            startActivityByClass(LocationSourceDemoActivity.class);
         } else if (R.id.button_heat_map == view.getId()) {
-            Log.i(TAG, "onClick: HeatMapDemo");
-            Intent i = new Intent(this, HeatMapDemoActivity.class);
-            startActivity(i);
+            startActivityByClass(HeatMapDemoActivity.class);
         } else if (R.id.button_route_planning == view.getId()) {
-            Log.i(TAG, "onClick: RoutePlanningDemo");
-            Intent i = new Intent(this, RoutePlanningDemoActivity.class);
-            startActivity(i);
-        } else {
-            Log.i(TAG, "onClick:  " + view.getId());
+            startActivityByClass(RoutePlanningDemoActivity.class);
         }
+    }
+
+    private void startActivityByClass(@NonNull Class<?> cls) {
+        Log.i(TAG, "onClick: " + cls.getSimpleName());
+        Intent intent = new Intent(this, cls);
+        startActivity(intent);
     }
 
     private static boolean hasPermissions(Context context, String... permissions) {
