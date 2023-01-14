@@ -41,7 +41,7 @@ class MapFragmentCodeDemoActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMapFragment = fragmentManager.findFragmentByTag("map_fragment") as MapFragment?
 
-        if (mMapFragment == null) {
+        if (mMapFragment === null) {
             val huaweiMapOptions = HuaweiMapOptions()
             huaweiMapOptions.compassEnabled(true)
             huaweiMapOptions.zoomGesturesEnabled(true)

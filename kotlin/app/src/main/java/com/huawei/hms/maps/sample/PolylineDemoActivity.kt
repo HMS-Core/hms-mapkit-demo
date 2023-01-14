@@ -20,6 +20,7 @@
 
 package com.huawei.hms.maps.sample
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -35,7 +36,6 @@ import com.huawei.hms.maps.SupportMapFragment
 import com.huawei.hms.maps.model.LatLng
 import com.huawei.hms.maps.model.Polyline
 import com.huawei.hms.maps.model.PolylineOptions
-import com.huawei.hms.maps.sample.utils.CheckUtils
 import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit
 import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight
 import com.huawei.hms.maps.sample.utils.MapUtils
@@ -155,6 +155,7 @@ class PolylineDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the outline color of the polyline
      */
+    @SuppressLint("SetTextI18n")
     fun getStokeColor(v: View?) {
         if (null != mPolyline) {
             polylineShown.text = "Polyline color is ${Integer.toHexString(mPolyline!!.color)}"
@@ -190,6 +191,7 @@ class PolylineDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the width of the polyline
      */
+    @SuppressLint("SetTextI18n")
     fun getWidth(v: View?) {
         if (null != mPolyline) {
             polylineShown.text = "Polyline width is ${mPolyline?.width}"
@@ -202,7 +204,7 @@ class PolylineDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     fun setTag(v: View?) {
         if (null != mPolyline) {
             val tag = polylineTag.text.toString().trim()
-            if (CheckUtils.checkIsEdit(tag)) {
+            if (checkIsEdit(tag)) {
                 Toast.makeText(this, "Please make sure the tag is Edited", Toast.LENGTH_SHORT).show()
             } else {
                 mPolyline?.tag = tag

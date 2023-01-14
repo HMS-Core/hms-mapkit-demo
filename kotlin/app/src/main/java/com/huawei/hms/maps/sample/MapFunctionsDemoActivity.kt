@@ -211,14 +211,17 @@ class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         val topString = top.text.toString().trim()
         val rightString = right.text.toString().trim()
         val bottomString = bottom.text.toString().trim()
-        if (leftString.isEmpty() || topString.isEmpty() || rightString.isEmpty() || bottomString.isEmpty()) {
-        } else {
-            if (!isInteger(leftString) || !isInteger(topString) || !isInteger(rightString) || !isInteger(bottomString)) {
-                Toast.makeText(this, "Please make sure the padding value is right", Toast.LENGTH_SHORT).show()
-            } else {
-                hMap?.setPadding(Integer.valueOf(left.text.toString()),
+        when {
+            leftString.isEmpty() || topString.isEmpty() || rightString.isEmpty() || bottomString.isEmpty() -> {
+            }
+            else -> {
+                if (!isInteger(leftString) || !isInteger(topString) || !isInteger(rightString) || !isInteger(bottomString)) {
+                    Toast.makeText(this, "Please make sure the padding value is right", Toast.LENGTH_SHORT).show()
+                } else {
+                    hMap?.setPadding(Integer.valueOf(left.text.toString()),
                         Integer.valueOf(top.text.toString()), Integer.valueOf(right.text.toString()),
                         Integer.valueOf(bottom.text.toString()))
+                }
             }
         }
     }

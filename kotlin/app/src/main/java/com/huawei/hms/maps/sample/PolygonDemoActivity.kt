@@ -20,6 +20,7 @@
 
 package com.huawei.hms.maps.sample
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -35,7 +36,6 @@ import com.huawei.hms.maps.SupportMapFragment
 import com.huawei.hms.maps.model.LatLng
 import com.huawei.hms.maps.model.Polygon
 import com.huawei.hms.maps.model.PolygonOptions
-import com.huawei.hms.maps.sample.utils.CheckUtils
 import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit
 import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight
 import com.huawei.hms.maps.sample.utils.MapUtils
@@ -146,6 +146,7 @@ class PolygonDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the outline color of the polygon
      */
+    @SuppressLint("SetTextI18n")
     fun getStokeColor(v: View?) {
         if (null != mPolygon) {
             polygonShown.text = "Polygon color is ${Integer.toHexString(mPolygon!!.strokeColor)}"
@@ -164,6 +165,7 @@ class PolygonDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the fill color of the polygon
      */
+    @SuppressLint("SetTextI18n")
     fun getFillColor(v: View?) {
         if (null != mPolygon) {
             polygonShown.text = "Polygon color is ${Integer.toHexString(mPolygon!!.fillColor)}"
@@ -176,7 +178,7 @@ class PolygonDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     fun setTag(v: View?) {
         if (null != mPolygon) {
             val tag = polygonTag.text.toString().trim()
-            if (CheckUtils.checkIsEdit(tag)) {
+            if (checkIsEdit(tag)) {
                 Toast.makeText(this, "Please make sure the tag is Edited", Toast.LENGTH_SHORT).show()
             } else {
                 mPolygon?.tag = tag
