@@ -147,6 +147,7 @@ class HeatMapDemoActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mRadiusBar.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                @Suppress("NAME_SHADOWING")
                 var progress = progress
                 if (heatMap != null) {
                     if (heatMap?.radiusUnit == RadiusUnit.PIXEL) {

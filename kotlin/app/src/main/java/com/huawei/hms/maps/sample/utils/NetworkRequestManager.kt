@@ -52,12 +52,13 @@ object NetworkRequestManager {
      */
     private fun getWalkingRoutePlanningResult(latLng1: LatLng, latLng2: LatLng,
                                               listener: OnNetworkListener?, count: Int, needEncode: Boolean) {
+        @Suppress("NAME_SHADOWING")
         var count = count
         val curCount = ++count
         Log.e(TAG, "current count: $curCount")
         Thread(Runnable {
             val response = netClient?.getWalkingRoutePlanningResult(latLng1, latLng2, needEncode)
-            var result: String? = ""
+            val result = ""
             var returnCode = ""
             var returnDesc = ""
             var need = needEncode
@@ -112,6 +113,7 @@ object NetworkRequestManager {
         count: Int,
         needEncode: Boolean
     ) {
+        @Suppress("NAME_SHADOWING")
         var count = count
         val curCount = ++count
         Log.e(TAG, "current count: $curCount")
@@ -170,6 +172,7 @@ object NetworkRequestManager {
      */
     private fun getDrivingRoutePlanningResult(latLng1: LatLng, latLng2: LatLng,
                                               listener: OnNetworkListener?, count: Int, needEncode: Boolean) {
+        @Suppress("NAME_SHADOWING")
         var count = count
         val curCount = ++count
         Log.e(TAG, "current count: $curCount")
