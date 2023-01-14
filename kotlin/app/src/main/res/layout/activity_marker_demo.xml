@@ -198,35 +198,35 @@
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
                         android:hint="lat"
-                        android:textSize="10dp" />
+                        android:textSize="11sp" />
 
                     <EditText
                         android:id="@+id/edt_camera_lng"
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
                         android:hint="lng"
-                        android:textSize="10dp" />
+                        android:textSize="11sp" />
 
                     <EditText
                         android:id="@+id/edt_camera_zoom"
                         android:layout_width="35dp"
                         android:layout_height="wrap_content"
                         android:hint="zoom"
-                        android:textSize="10dp" />
+                        android:textSize="11sp" />
 
                     <EditText
                         android:id="@+id/edt_camera_tilt"
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
                         android:hint="tilt"
-                        android:textSize="10dp" />
+                        android:textSize="11sp" />
 
                     <EditText
                         android:id="@+id/edt_camera_bearing"
                         android:layout_width="45dp"
                         android:layout_height="wrap_content"
                         android:hint="bearing"
-                        android:textSize="10dp" />
+                        android:textSize="11sp" />
 
                     <Button
                         android:id="@+id/btn_set_camera"

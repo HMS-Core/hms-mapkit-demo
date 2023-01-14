@@ -48,8 +48,8 @@
                     android:id="@+id/polygonShown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="get is shown here ."
-                    android:paddingStart="10dp"
+                    android:hint="get is shown here"
+                    android:paddingStart="11sp"
                     android:textAllCaps="false" />
 
             </LinearLayout>
