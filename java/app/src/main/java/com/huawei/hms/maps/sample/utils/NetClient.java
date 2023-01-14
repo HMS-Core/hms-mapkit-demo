@@ -40,6 +40,7 @@ import okhttp3.Response;
  * NetClient
  */
 public class NetClient {
+
     private static final String TAG = "NetClient";
 
     private static OkHttpClient client;
@@ -119,9 +120,7 @@ public class NetClient {
             RequestBody requestBody = RequestBody.create(JSON, String.valueOf(json));
             Request request = new Request.Builder().url(url).post(requestBody).build();
             response = getNetClient().initOkHttpClient().newCall(request).execute();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
         return response;
@@ -163,9 +162,7 @@ public class NetClient {
             RequestBody requestBody = RequestBody.create(JSON, String.valueOf(json));
             Request request = new Request.Builder().url(url).post(requestBody).build();
             response = getNetClient().initOkHttpClient().newCall(request).execute();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
         return response;
@@ -207,12 +204,9 @@ public class NetClient {
             RequestBody requestBody = RequestBody.create(JSON, String.valueOf(json));
             Request request = new Request.Builder().url(url).post(requestBody).build();
             response = getNetClient().initOkHttpClient().newCall(request).execute();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
         return response;
     }
-
 }
