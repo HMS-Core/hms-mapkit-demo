@@ -34,6 +34,7 @@ class MapFragmentCodeDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     private var hMap: HuaweiMap? = null
     private var mMapFragment: MapFragment? = null
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate: ")
         super.onCreate(savedInstanceState)

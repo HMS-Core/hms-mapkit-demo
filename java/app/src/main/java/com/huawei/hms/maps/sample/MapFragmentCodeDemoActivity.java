@@ -31,7 +31,6 @@ import com.huawei.hms.maps.HuaweiMap;
 import com.huawei.hms.maps.HuaweiMapOptions;
 import com.huawei.hms.maps.MapFragment;
 import com.huawei.hms.maps.OnMapReadyCallback;
-import com.huawei.hms.maps.SupportMapFragment;
 import com.huawei.hms.maps.model.LatLng;
 
 public class MapFragmentCodeDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
