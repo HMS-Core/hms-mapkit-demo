@@ -14,9 +14,16 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
+
     signingConfigs {
-        debug {}
+        debug {
+            storeFile new File("${System.properties['user.home']}${File.separator}.android${File.separator}debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
         release {
             storeFile file("xxx.xxx")
             storePassword "xxxxxx"
@@ -25,15 +32,24 @@ android {
             v2SigningEnabled true
         }
     }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+        }
         release {
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             // signingConfig signingConfigs.release
             minifyEnabled true
-        }
-        debug {
-            // signingConfig signingConfigs.debug
-            minifyEnabled false
+            shrinkResources true
+            testCoverageEnabled false
+            zipAlignEnabled true
+            pseudoLocalesEnabled false
+            renderscriptDebuggable false
+            minifyEnabled true
+            jniDebuggable false
+            debuggable false
+            proguardFile "${project.rootDir}/huawei.pro"
         }
     }
 
@@ -56,6 +72,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.huawei.hms:maps:6.8.1.301'
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
 
