@@ -23,9 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        tools:ignore="DataExtractionRules"
-        tools:targetApi="s">
+        tools:ignore="DataExtractionRules">
 
         <meta-data
             android:name="com.huawei.hms.client.channel.androidMarket"
