@@ -17,6 +17,11 @@ android {
         multiDexEnabled true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
     signingConfigs {
         debug {
             storeFile new File("${System.properties['user.home']}${File.separator}.android${File.separator}debug.keystore")
@@ -49,7 +54,7 @@ android {
             minifyEnabled true
             jniDebuggable false
             debuggable false
-            proguardFile "${project.rootDir}/proguard-rules.pro"
+            proguardFile "${project.projectDir}/proguard-rules.pro"
         }
     }
 
@@ -60,7 +65,6 @@ android {
             variant.outputs.all {
                 outputFileName = fileName
             }
-
     }
 
     lint {
@@ -68,11 +72,6 @@ android {
         warningsAsErrors true
         abortOnError false
         showAll false
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

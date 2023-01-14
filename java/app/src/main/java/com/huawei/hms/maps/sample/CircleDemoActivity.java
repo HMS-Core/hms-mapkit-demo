@@ -62,7 +62,7 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
     private EditText centerLatitude;
 
-    private EditText centerLongtitude;
+    private EditText centerLongitude;
 
     private EditText circleRadius;
 
@@ -80,7 +80,7 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
 
         circleShown = findViewById(R.id.circleShown);
         centerLatitude = findViewById(R.id.centerLatitude);
-        centerLongtitude = findViewById(R.id.centerLongtitude);
+        centerLongitude = findViewById(R.id.centerLongitude);
         circleRadius = findViewById(R.id.circleRadius);
         circleStokeWidth = findViewById(R.id.circleStokeWidth);
         circleTag = findViewById(R.id.circleTag);
@@ -132,10 +132,10 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
     public void setCenter(View view) {
         if (null != mCircle) {
             LatLng center = null;
-            if (!TextUtils.isEmpty(centerLatitude.getText()) && !TextUtils.isEmpty(centerLongtitude.getText())) {
+            if (!TextUtils.isEmpty(centerLatitude.getText()) && !TextUtils.isEmpty(centerLongitude.getText())) {
                 String latitude = centerLatitude.getText().toString().trim();
-                String longtitude = centerLongtitude.getText().toString().trim();
-                center = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longtitude));
+                String longitude = centerLongitude.getText().toString().trim();
+                center = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
             }
             try {
                 mCircle.setCenter(center);

@@ -65,7 +65,7 @@ class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.acitivity_map_founctions_demo)
+        setContentView(R.layout.acitivity_map_functions_demo)
         mSupportMapFragment = supportFragmentManager.findFragmentById(R.id.mapInFunctions) as SupportMapFragment?
         mSupportMapFragment?.getMapAsync(this)
         left = findViewById(R.id.paddingleft)

@@ -20,6 +20,7 @@
 
 package com.huawei.hms.maps.sample
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
@@ -64,7 +65,7 @@ class CircleDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         mSupportMapFragment?.getMapAsync(this)
         circleShown = findViewById(R.id.circleShown)
         centerLatitude = findViewById(R.id.centerLatitude)
-        centerLongtitude = findViewById(R.id.centerLongtitude)
+        centerLongtitude = findViewById(R.id.centerLongitude)
         circleRadius = findViewById(R.id.circleRadius)
         circleStokeWidth = findViewById(R.id.circleStokeWidth)
         circleTag = findViewById(R.id.circleTag)
@@ -123,6 +124,7 @@ class CircleDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the center coordinates
      */
+    @SuppressLint("SetTextI18n")
     fun getCenter(v: View?) {
         if (null != mCircle) {
             circleShown.text = "Circle center is ${mCircle?.center.toString()}"
@@ -154,6 +156,7 @@ class CircleDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the radius of the circle
      */
+    @SuppressLint("SetTextI18n")
     fun getRadius(v: View?) {
         if (null != mCircle) {
             circleShown.text = "Circle radius is ${mCircle?.radius}"
@@ -172,6 +175,7 @@ class CircleDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Set the fill color of the circle
      */
+    @SuppressLint("SetTextI18n")
     fun getFillColor(v: View?) {
         if (null != mCircle) {
             circleShown.text = "Circle fill color is ${Integer.toHexString(mCircle!!.fillColor)}"
@@ -194,6 +198,7 @@ class CircleDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the outline color of the circle
      */
+    @SuppressLint("SetTextI18n")
     fun getStokeColor(v: View?) {
         if (null != mCircle) {
             circleShown.text = "Circle stroke color is ${Integer.toHexString(mCircle!!.strokeColor)}"
@@ -226,6 +231,7 @@ class CircleDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the outline width of the circle
      */
+    @SuppressLint("SetTextI18n")
     fun getWidth(v: View?) {
         if (null != mCircle) {
             circleShown.text = "Circle stroke width is ${mCircle?.strokeWidth}"

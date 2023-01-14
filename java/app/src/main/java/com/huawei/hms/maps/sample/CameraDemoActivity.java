@@ -54,13 +54,13 @@ import androidx.fragment.app.Fragment;
 /**
  * Show how to move a map camera
  */
-public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener,
-    OnCameraMoveStartedListener, OnCameraMoveListener, OnCameraIdleListener {
+public class CameraDemoActivity extends AppCompatActivity implements View.OnClickListener,
+        OnMapReadyCallback, OnCameraMoveStartedListener, OnCameraMoveListener, OnCameraIdleListener {
     private static final String TAG = "CameraDemoActivity";
 
     public static final int REQUEST_CODE = 0X01;
 
-    private static final String[] PERMISION =
+    private static final String[] PERMISSIONS =
         {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
 
     private static final float ZOOM_DELTA = 2.0f;
@@ -91,7 +91,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_demo);
         if (!hasLocationPermission()) {
-            ActivityCompat.requestPermissions(this, PERMISION, REQUEST_CODE);
+            ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_CODE);
         }
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.mapInCamera);
         if (fragment instanceof SupportMapFragment) {
@@ -141,7 +141,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
      * @return hasLocationPermission
      */
     private boolean hasLocationPermission() {
-        for (String permission : PERMISION) {
+        for (String permission : PERMISSIONS) {
             if (ActivityCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
                 return false;
             }
@@ -155,7 +155,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
      * @param context context
      * @return isGPSOpen
      */
-    private boolean isGPSOpen(final Context context) {
+    private boolean isGPSOpen(@NonNull Context context) {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         boolean gps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         boolean network = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
@@ -185,11 +185,13 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
             Log.w(TAG, "map is null");
             return;
         }
+
         if (view.getId() == R.id.animateCamera) {
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(new LatLng(20, 120));
             Toast.makeText(this, hMap.getCameraPosition().target.toString(), Toast.LENGTH_LONG).show();
             hMap.animateCamera(cameraUpdate);
         }
+
         if (view.getId() == R.id.getCameraPosition) {
             CameraPosition position = hMap.getCameraPosition();
             Toast.makeText(getApplicationContext(), position.toString(), Toast.LENGTH_LONG).show();
@@ -198,17 +200,20 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
             Log.i(TAG, position.toString());
             Log.i(TAG, "MaxZoomLevel:" + hMap.getMaxZoomLevel() + " MinZoomLevel:" + hMap.getMinZoomLevel());
         }
+
         if (R.id.moveCamera == view.getId()) {
             CameraPosition build = new CameraPosition.Builder().target(new LatLng(60, 60)).build();
             CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(build);
             Toast.makeText(this, hMap.getCameraPosition().toString(), Toast.LENGTH_LONG).show();
             hMap.moveCamera(cameraUpdate);
         }
+
         if (R.id.ZoomBy == view.getId()) {
             CameraUpdate cameraUpdate = CameraUpdateFactory.zoomBy(2);
             Toast.makeText(this, "amount = 2", Toast.LENGTH_LONG).show();
             hMap.moveCamera(cameraUpdate);
         }
+
         if (R.id.newLatLngBounds == view.getId()) {
             LatLng southwest = new LatLng(30, 60);
             LatLng northeast = new LatLng(60, 120);
@@ -221,6 +226,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, 2);
             hMap.moveCamera(cameraUpdate);
         }
+
         if (R.id.setCameraPosition == view.getId()) {
             LatLng southwest = new LatLng(30, 60);
             CameraPosition cameraPosition =
@@ -250,7 +256,7 @@ public class CameraDemoActivity extends AppCompatActivity implements OnMapReadyC
     @Override
     public void onCameraIdle() {
         cameraChange.setText(hMap.getCameraPosition().toString());
-        Log.i(TAG, "onCameraIdle: sucessful");
+        Log.i(TAG, "onCameraIdle: successful");
     }
 
     /**
