@@ -50,7 +50,7 @@ android {
             minifyEnabled true
             jniDebuggable false
             debuggable false
-            proguardFile "${project.rootDir}/huawei.pro"
+            proguardFile "${project.rootDir}/proguard-rules.pro"
         }
     }
 
