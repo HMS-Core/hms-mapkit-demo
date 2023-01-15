@@ -6,14 +6,14 @@ plugins {
 
 android {
     compileSdkVersion 33
-
+    namespace "com.huawei.hms.maps.sample"
     defaultConfig {
         applicationId "com.huawei.hms.maps.sample"
-        namespace "com.huawei.hms.maps.sample"
         minSdkVersion 19
         targetSdkVersion 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
+        setProperty('archivesBaseName', 'mapkit_kotlin_' + versionName)
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -72,15 +72,6 @@ android {
         }
     }
 
-    android.applicationVariants.all {
-        variant ->
-            def versionName = project.findProperty('app_versionName')
-            def fileName = "MapKitSampleCode-" + versionName + ".apk"
-            variant.outputs.all {
-                outputFileName = fileName
-            }
-    }
-
     lint {
         checkAllWarnings true
         warningsAsErrors true
@@ -92,9 +83,9 @@ android {
 dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.huawei.hms:maps:6.8.1.301'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation "com.huawei.hms:maps:$maps_version"
     //noinspection GradleDependency
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

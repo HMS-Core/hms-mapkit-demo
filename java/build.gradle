@@ -1,6 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext {
+        agp_version = '7.3.1'
+        agcp_version = '1.7.3.302'
+        maps_version = '6.8.1.301'
+    }
     repositories {
         google()
         mavenCentral()
@@ -8,8 +13,8 @@ buildscript {
     }
     dependencies {
         // https://developer.android.com/studio/releases#android_gradle_plugin_and_android_studio_compatibility
-        classpath 'com.android.tools.build:gradle:7.3.1'
-        classpath 'com.huawei.agconnect:agcp:1.7.3.302'
+        classpath "com.android.tools.build:gradle:$agp_version"
+        classpath "com.huawei.agconnect:agcp:$agcp_version"
     }
 }
 
