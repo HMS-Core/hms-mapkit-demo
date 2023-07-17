@@ -81,9 +81,7 @@ public class NetworkRequestManager {
                     returnCode = jsonObject.optString("returnCode");
                     returnDesc = jsonObject.optString("returnDesc");
 
-                } catch (NullPointerException e) {
-                    returnDesc = "Request Fail!";
-                } catch (IOException e) {
+                } catch (NullPointerException | IOException e) {
                     returnDesc = "Request Fail!";
                 } catch (JSONException e) {
                     Log.e(TAG, e.getMessage());
@@ -162,9 +160,7 @@ public class NetworkRequestManager {
                     JSONObject jsonObject = new JSONObject(result);
                     returnCode = jsonObject.optString("returnCode");
                     returnDesc = jsonObject.optString("returnDesc");
-                } catch (NullPointerException e) {
-                    returnDesc = "Request Fail!";
-                } catch (IOException e) {
+                } catch (NullPointerException | IOException e) {
                     returnDesc = "Request Fail!";
                 } catch (JSONException e) {
                     Log.e(TAG, e.getMessage());
@@ -235,9 +231,7 @@ public class NetworkRequestManager {
                     JSONObject jsonObject = new JSONObject(result);
                     returnCode = jsonObject.optString("returnCode");
                     returnDesc = jsonObject.optString("returnDesc");
-                } catch (NullPointerException e) {
-                    returnDesc = "Request Fail!";
-                } catch (IOException e) {
+                } catch (NullPointerException | IOException e) {
                     returnDesc = "Request Fail!";
                 } catch (JSONException e) {
                     Log.e(TAG, e.getMessage());

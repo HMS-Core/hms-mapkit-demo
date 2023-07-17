@@ -35,7 +35,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.huawei.hms.maps.CameraUpdateFactory
 import com.huawei.hms.maps.HuaweiMap
-import com.huawei.hms.maps.HuaweiMap.*
+import com.huawei.hms.maps.HuaweiMap.OnCameraMoveStartedListener
+import com.huawei.hms.maps.HuaweiMap.OnCameraMoveListener
+import com.huawei.hms.maps.HuaweiMap.OnCameraIdleListener
 import com.huawei.hms.maps.OnMapReadyCallback
 import com.huawei.hms.maps.SupportMapFragment
 import com.huawei.hms.maps.model.CameraPosition

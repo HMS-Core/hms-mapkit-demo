@@ -33,15 +33,14 @@ import com.huawei.hms.maps.CameraUpdateFactory
 import com.huawei.hms.maps.HuaweiMap
 import com.huawei.hms.maps.OnMapReadyCallback
 import com.huawei.hms.maps.SupportMapFragment
-import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight
 import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit
+import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight
 import com.huawei.hms.maps.sample.utils.CheckUtils.isInteger
 import com.huawei.hms.maps.sample.utils.MapUtils
 
 /**
  * Basical functions
  */
-
 @SuppressLint("LongLogTag")
 class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
@@ -64,7 +63,7 @@ class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.acitivity_map_founctions_demo)
+        setContentView(R.layout.activity_map_founctions_demo)
         mSupportMapFragment = supportFragmentManager.findFragmentById(R.id.mapInFunctions) as SupportMapFragment?
         mSupportMapFragment?.getMapAsync(this)
         left = findViewById(R.id.paddingleft)
@@ -273,5 +272,17 @@ class MapFunctionsDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         val paddingEnd = paddingEndString.toInt()
         val paddingBottom = paddingBottomString.toInt()
         hMap?.uiSettings?.setLogoPadding(paddingStart, paddingTop, paddingEnd, paddingBottom)
+    }
+
+    /**
+     * getScalePerPixel
+     *
+     * @param view view
+     */
+    fun getScalePerPixel(view: View?) {
+        if (null != hMap) {
+            val scalePerPixel = hMap!!.scalePerPixel
+            text.setText(scalePerPixel.toString())
+        }
     }
 }

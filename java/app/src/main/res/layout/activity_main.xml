@@ -158,6 +158,30 @@
                 android:text="RoutePlanningDemo"
                 android:textAllCaps="false" />
 
+            <Button
+                android:id="@+id/TrafficDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="TrafficDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/DarkModeDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="DarkModeDemo"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/MyLocationStyleDemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="MyLocationStyleDemo"
+                android:textAllCaps="false" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

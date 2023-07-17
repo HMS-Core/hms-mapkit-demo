@@ -82,7 +82,7 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acitivity_map_founctions_demo);
+        setContentView(R.layout.activity_map_founctions_demo);
         mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapInFunctions);
         mSupportMapFragment.getMapAsync(this);
 
@@ -105,6 +105,17 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
         hMap = paramHuaweiMap;
         hMap.setMyLocationEnabled(true);
         hMap.resetMinMaxZoomPreference();
+    }
+
+    /**
+     * Obtains whether the location button is available.
+     *
+     * @param view view
+     */
+    public void isMyLocationEnabled(View view) {
+        if (null != hMap) {
+            textView.setText(String.valueOf(hMap.isMyLocationEnabled()));
+        }
     }
 
     /**
@@ -364,6 +375,18 @@ public class MapFunctionsDemoActivity extends AppCompatActivity implements OnMap
             int paddingBottom = Integer.parseInt(paddingBottomString);
 
             hMap.getUiSettings().setLogoPadding(paddingStart, paddingTop, paddingEnd, paddingBottom);
+        }
+    }
+
+    /**
+     * getScalePerPixel
+     *
+     * @param view view
+     */
+    public void getScalePerPixel(View view) {
+        if (null != hMap) {
+            float scalePerPixel = hMap.getScalePerPixel();
+            textView.setText(String.valueOf(scalePerPixel));
         }
     }
 }

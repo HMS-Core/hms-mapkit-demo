@@ -40,10 +40,9 @@ import com.huawei.hms.maps.model.Polyline;
 import com.huawei.hms.maps.model.PolylineOptions;
 import com.huawei.hms.maps.sample.utils.NetworkRequestManager;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -57,6 +56,7 @@ import androidx.fragment.app.Fragment;
 /**
  * Route Planning
  */
+@SuppressLint("LongLogTag")
 public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final String TAG = "RoutePlanningDemoActivity";
 
@@ -80,29 +80,11 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
 
     private LatLng latLng2 = new LatLng(54.209673, -4.64002);
 
-    private List<Polyline> mPolylines = new ArrayList<>();
+    private final List<Polyline> mPolylines = new ArrayList<>();
 
-    private List<List<LatLng>> mPaths = new ArrayList<>();
+    private final List<List<LatLng>> mPaths = new ArrayList<>();
 
     private LatLngBounds mLatLngBounds;
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case 0:
-                    renderRoute(mPaths, mLatLngBounds);
-                    break;
-                case 1:
-                    Bundle bundle = msg.getData();
-                    String errorMsg = bundle.getString("errorMsg");
-                    Toast.makeText(RoutePlanningDemoActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -138,12 +120,12 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
 
                 @Override
                 public void requestFail(String errorMsg) {
-                    Message msg = Message.obtain();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("errorMsg", errorMsg);
-                    msg.what = 1;
-                    msg.setData(bundle);
-                    mHandler.sendMessage(msg);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(RoutePlanningDemoActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             });
     }
@@ -159,13 +141,12 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
 
                 @Override
                 public void requestFail(String errorMsg) {
-                    Message msg = Message.obtain();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("errorMsg", errorMsg);
-                    Log.d("sfj", errorMsg);
-                    msg.what = 1;
-                    msg.setData(bundle);
-                    mHandler.sendMessage(msg);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(RoutePlanningDemoActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             });
     }
@@ -181,12 +162,12 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
 
                 @Override
                 public void requestFail(String errorMsg) {
-                    Message msg = Message.obtain();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("errorMsg", errorMsg);
-                    msg.what = 1;
-                    msg.setData(bundle);
-                    mHandler.sendMessage(msg);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(RoutePlanningDemoActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             });
     }
@@ -234,8 +215,13 @@ public class RoutePlanningDemoActivity extends AppCompatActivity implements OnMa
                 }
                 mPaths.add(i, mPath);
             }
-            mHandler.sendEmptyMessage(0);
 
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    renderRoute(mPaths, mLatLngBounds);
+                }
+            });
         } catch (JSONException e) {
             Log.e(TAG, "JSONException" + e.toString());
         }

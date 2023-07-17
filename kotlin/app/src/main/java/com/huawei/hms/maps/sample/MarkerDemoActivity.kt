@@ -17,30 +17,36 @@
  *                  Huawei Technologies Co., Ltd.
  *
  */
-
 package com.huawei.hms.maps.sample
 
-import android.annotation.SuppressLint
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.os.Bundle
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
-import android.util.Log
-import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.huawei.hms.maps.CameraUpdateFactory
-import com.huawei.hms.maps.HuaweiMap
-import com.huawei.hms.maps.HuaweiMap.InfoWindowAdapter
-import com.huawei.hms.maps.HuaweiMap.OnMarkerDragListener
 import com.huawei.hms.maps.OnMapReadyCallback
 import com.huawei.hms.maps.SupportMapFragment
-import com.huawei.hms.maps.model.*
-import java.util.*
+import com.huawei.hms.maps.HuaweiMap
+import android.widget.EditText
+import android.widget.TextView
+import android.os.Bundle
+import android.annotation.SuppressLint
+import com.huawei.hms.maps.CameraUpdateFactory
+import com.huawei.hms.maps.HuaweiMap.InfoWindowAdapter
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.widget.Toast
+import com.huawei.hms.maps.HuaweiMap.OnMarkerDragListener
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.text.TextUtils
+import android.util.Log
+import android.view.View
+import android.widget.ImageView
+import com.huawei.hms.maps.model.BitmapDescriptorFactory
+import com.huawei.hms.maps.model.CameraPosition
+import com.huawei.hms.maps.model.LatLng
+import com.huawei.hms.maps.model.Marker
+import com.huawei.hms.maps.model.MarkerOptions
+import java.lang.IllegalArgumentException
+import java.lang.NullPointerException
+import java.util.ArrayList
 
 /**
  * Marker related
@@ -59,6 +65,8 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     private var mParis: Marker? = null
     private var mSerris: Marker? = null
     private var mWindowType = 0
+    private var markerList: MutableList<Marker>? = ArrayList()
+
     private lateinit var edtTitle: EditText
     private lateinit var edtSnippet: EditText
     private lateinit var edtTag: EditText
@@ -68,7 +76,6 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var edtCameraZoom: EditText
     private lateinit var edtCameraTilt: EditText
     private lateinit var edtCameraBearing: EditText
-    private var markerList: MutableList<Marker> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,24 +105,30 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         hMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(48.893478, 2.334595), 14f))
     }
 
-    internal inner class CustomInfoWindowAdapter : InfoWindowAdapter {
+    private inner class CustomInfoWindowAdapter internal constructor() : InfoWindowAdapter {
         private val mWindowView: View
         private val mContentsView: View
-        override fun getInfoWindow(marker: Marker): View? {
+
+        init {
+            mWindowView = layoutInflater.inflate(R.layout.custom_info_window, null)
+            mContentsView = layoutInflater.inflate(R.layout.custom_info_contents, null)
+        }
+
+        override fun getInfoWindow(marker: Marker): View {
             val view: View? = null
             Log.d(TAG, "getInfoWindow")
             if (mWindowType != 3) {
-                return view
+                return view!!
             }
             render(marker, mWindowView)
             return mWindowView
         }
 
-        override fun getInfoContents(marker: Marker): View? {
+        override fun getInfoContents(marker: Marker): View {
             val view: View? = null
             Log.d(TAG, "getInfoContents")
             if (mWindowType != 2) {
-                return view
+                return view!!
             }
             render(marker, mContentsView)
             return mContentsView
@@ -145,16 +158,19 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         private fun setMarkerTextView(marker: Marker, view: View) {
             val markerTitle = marker.title
             var titleView: TextView? = null
-            val viewObj: Any = view.findViewById(R.id.txtv_titlee)
-            if (viewObj is TextView) {
-                titleView = viewObj
+            val `object`: Any = view.findViewById(R.id.txtv_titlee)
+            if (`object` is TextView) {
+                titleView = `object`
+            }
+            if (titleView == null) {
+                return
             }
             if (markerTitle == null) {
-                titleView?.text = ""
+                titleView.text = ""
             } else {
                 val titleText = SpannableString(markerTitle)
                 titleText.setSpan(ForegroundColorSpan(Color.BLUE), 0, titleText.length, 0)
-                titleView?.text = titleText
+                titleView.text = titleText
             }
         }
 
@@ -172,22 +188,20 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                 snippetView.text = ""
             }
         }
-
-        init {
-            mWindowView = layoutInflater.inflate(R.layout.custom_info_window, null)
-            mContentsView = layoutInflater.inflate(R.layout.custom_info_contents, null)
-        }
     }
 
     /**
      * Add a marker to the map
      *
-     * @param view
+     * @param view view
      */
     fun addMarker(view: View?) {
+        if (null == hMap) {
+            return
+        }
         if (mParis == null && mOrsay == null && mSerris == null) {
             // Uses a colored icon.
-            mParis = hMap?.addMarker(MarkerOptions().position(PARIS).title("paris").snippet("hello").clusterable(true))
+            mParis = hMap?.addMarker(MarkerOptions().position(PARIS).title("paris").snippet("hello").clusterable(true).clickable(true))
             mOrsay = hMap?.addMarker(MarkerOptions().position(ORSAY)
                     .alpha(0.5f)
                     .title("Orsay")
@@ -200,7 +214,8 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                     .clusterable(true))
             hMap?.setOnMarkerClickListener { marker ->
                 val clusterable = marker.isClusterable
-                Toast.makeText(applicationContext, "marker clusterable: $clusterable", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "marker clusterable: $clusterable", Toast.LENGTH_SHORT)
+                        .show()
                 false
             }
         }
@@ -209,10 +224,8 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         hMap?.setOnMapLongClickListener { latLng ->
             Log.d(TAG, "Map is long clicked.")
             val mMarker = hMap?.addMarker(MarkerOptions().position(latLng).title("I am Marker!"))
-            if (mMarker != null) {
-                markerList.add(mMarker)
-            }
-            Log.d(TAG, "markerList size is." + markerList.size)
+            markerList?.add(mMarker!!)
+            Log.d(TAG, "markerList size is." + markerList?.size)
         }
         addMarkerListener()
     }
@@ -254,7 +267,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Remove the marker from the map
      *
-     * @param view
+     * @param view view
      */
     fun deleteMarker(view: View?) {
         if (null != mSerris) {
@@ -271,21 +284,21 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         // remove the markers added by long click.
-        if (null != markerList && markerList.size > 0) {
-            for (iMarker in markerList) {
+        if (null != markerList && markerList!!.size > 0) {
+            for (iMarker in markerList!!) {
                 iMarker.remove()
             }
-            markerList.clear()
+            markerList?.clear()
         }
     }
 
     /**
      * Set the tag attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     fun setTag(view: View?) {
-        val tagStr = edtTag.text.toString().trim()
+        val tagStr = edtTag.text.toString()
         if (mParis != null) {
             mParis?.tag = tagStr
             Toast.makeText(this, "Paris tag is " + mParis?.tag, Toast.LENGTH_SHORT).show()
@@ -295,13 +308,37 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Set the snippet attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     fun setSnippet(view: View?) {
         val snippetStr = edtSnippet.text.toString()
         if (mParis != null) {
             mParis?.snippet = snippetStr
             Toast.makeText(this, "Paris snippet is " + mParis?.snippet, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    /**
+     * Set the clickable of the marker
+     *
+     * @param view view
+     */
+    fun setClickable(view: View?) {
+        if (mParis != null) {
+            val isClickable = mParis?.isClickable
+            mParis?.isClickable = !isClickable!!
+        }
+    }
+
+    /**
+     * Set the clickable of the marker
+     *
+     * @param view view
+     */
+    fun isClickable(view: View?) {
+        if (mParis != null) {
+            val isClickable = mParis?.isClickable
+            txtvResultShown.text = isClickable.toString()
         }
     }
 
@@ -320,7 +357,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Set the marker to drag
      *
-     * @param view
+     * @param view view
      */
     fun dragMarker(view: View?) {
         if (null == mSerris) {
@@ -332,7 +369,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Set the icon attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     fun setMarkerIcon(view: View?) {
         if (null != mOrsay) {
@@ -345,7 +382,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Set the anchor attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     fun setMarkerAnchor(view: View?) {
         if (mParis != null) {
@@ -356,7 +393,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Get the latitude and longitude of the marker
      *
-     * @param view
+     * @param view view
      */
     fun getPosition(view: View?) {
         if (mParis != null) {
@@ -370,7 +407,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Hide the information window of the marker
      *
-     * @param view
+     * @param view view
      */
     fun hideInfoWindow(view: View?) {
         if (null != mParis) {
@@ -381,7 +418,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Show the information window of the marker
      *
-     * @param view
+     * @param view view
      */
     fun showInfoWindow(view: View?) {
         if (null != mParis) {
@@ -392,7 +429,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Repositions the camera according to the instructions defined in the update
      *
-     * @param view
+     * @param view view
      */
     fun setCamera(view: View?) {
         try {
@@ -400,17 +437,18 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
             var zoom = 0f
             var bearing = 0f
             var tilt = 0f
-            if (!edtCameraLng.text.isNullOrEmpty() && !edtCameraLat.text.isNullOrEmpty()) {
-                latLng = LatLng(edtCameraLat.text.toString().trim().toDouble(), edtCameraLng.text.toString().trim().toDouble())
+            if (!TextUtils.isEmpty(edtCameraLng.text) && !TextUtils.isEmpty(edtCameraLat.text)) {
+                latLng = LatLng(java.lang.Float.valueOf(edtCameraLat.text.toString().trim { it <= ' ' }).toDouble(),
+                        java.lang.Float.valueOf(edtCameraLng.text.toString().trim { it <= ' ' }).toDouble())
             }
-            if (!edtCameraZoom.text.isNullOrEmpty()) {
-                zoom = edtCameraZoom.text.toString().trim().toFloat()
+            if (!TextUtils.isEmpty(edtCameraZoom.text)) {
+                zoom = java.lang.Float.valueOf(edtCameraZoom.text.toString().trim { it <= ' ' })
             }
-            if (!edtCameraBearing.text.isNullOrEmpty()) {
-                bearing = edtCameraBearing.text.toString().trim().toFloat()
+            if (!TextUtils.isEmpty(edtCameraBearing.text)) {
+                bearing = java.lang.Float.valueOf(edtCameraBearing.text.toString().trim { it <= ' ' })
             }
-            if (!edtCameraTilt.text.isNullOrEmpty()) {
-                tilt = edtCameraTilt.text.toString().trim().toFloat()
+            if (!TextUtils.isEmpty(edtCameraTilt.text)) {
+                tilt = java.lang.Float.valueOf(edtCameraTilt.text.toString().trim { it <= ' ' })
             }
             val cameraPosition = CameraPosition.builder().target(latLng).zoom(zoom).bearing(bearing).tilt(tilt).build()
             val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
@@ -427,7 +465,7 @@ class MarkerDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Set the title attribute of the marker
      *
-     * @param view
+     * @param view view
      */
     fun setTitle(view: View?) {
         val titleStr = edtTitle.text.toString()

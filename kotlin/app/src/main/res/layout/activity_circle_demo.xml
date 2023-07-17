@@ -228,6 +228,26 @@
                     android:text="SetClickableFalse"
                     android:textAllCaps="false" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setAnimation"
+                    android:text="setAnimation"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="clearAnimation"
+                    android:text="clearAnimation"
+                    android:textAllCaps="false" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

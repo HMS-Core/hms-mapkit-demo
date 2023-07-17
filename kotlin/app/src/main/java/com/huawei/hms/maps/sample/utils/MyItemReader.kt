@@ -27,7 +27,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import java.io.IOException
 import java.io.InputStream
-import java.util.*
+import java.util.Scanner
 
 /**
  * MyItemReader

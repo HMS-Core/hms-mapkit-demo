@@ -39,7 +39,6 @@ import com.huawei.hms.maps.sample.utils.CheckUtils
 import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsEdit
 import com.huawei.hms.maps.sample.utils.CheckUtils.checkIsRight
 import com.huawei.hms.maps.sample.utils.MapUtils
-import java.util.*
 
 /**
  * about polyline
@@ -242,6 +241,43 @@ class PolylineDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     fun setClickableFalse(v: View?) {
         if (null != mPolyline) {
             mPolyline?.isClickable = false
+        }
+    }
+
+    /**
+     * Set the colors of the polyline
+     *
+     * @param view view
+     */
+    fun setColorValues(view: View?) {
+        if (null != mPolyline) {
+            val colorValueList: MutableList<Int> = ArrayList()
+            colorValueList.add(Color.RED)
+            colorValueList.add(Color.GREEN)
+            colorValueList.add(Color.BLUE)
+            mPolyline!!.colorValues = colorValueList
+        }
+    }
+
+    /**
+     * Set the gradient of the polyline
+     *
+     * @param view view
+     */
+    fun setGradientTrue(view: View?) {
+        if (null != mPolyline) {
+            mPolyline!!.isGradient = true
+        }
+    }
+
+    /**
+     * Set the gradient of the polyline
+     *
+     * @param view view
+     */
+    fun setGradientFalse(view: View?) {
+        if (null != mPolyline) {
+            mPolyline!!.isGradient = false
         }
     }
 }

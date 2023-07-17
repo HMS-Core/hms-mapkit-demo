@@ -36,7 +36,12 @@ import com.huawei.hms.maps.CameraUpdateFactory
 import com.huawei.hms.maps.HuaweiMap
 import com.huawei.hms.maps.OnMapReadyCallback
 import com.huawei.hms.maps.SupportMapFragment
-import com.huawei.hms.maps.model.*
+import com.huawei.hms.maps.model.LatLng
+import com.huawei.hms.maps.model.GroundOverlay
+import com.huawei.hms.maps.model.GroundOverlayOptions
+import com.huawei.hms.maps.model.BitmapDescriptorFactory
+import com.huawei.hms.maps.model.CameraPosition
+import com.huawei.hms.maps.model.LatLngBounds
 import com.huawei.hms.maps.sample.utils.CheckUtils
 import com.huawei.hms.maps.sample.utils.MapUtils
 import java.io.File

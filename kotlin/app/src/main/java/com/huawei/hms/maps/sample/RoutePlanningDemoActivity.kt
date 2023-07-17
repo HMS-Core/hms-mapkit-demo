@@ -23,8 +23,6 @@ package com.huawei.hms.maps.sample
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.util.Log
 import android.view.View
 import android.widget.EditText
@@ -34,12 +32,16 @@ import com.huawei.hms.maps.CameraUpdateFactory
 import com.huawei.hms.maps.HuaweiMap
 import com.huawei.hms.maps.OnMapReadyCallback
 import com.huawei.hms.maps.SupportMapFragment
-import com.huawei.hms.maps.model.*
+import com.huawei.hms.maps.model.LatLng
+import com.huawei.hms.maps.model.LatLngBounds
+import com.huawei.hms.maps.model.Marker
+import com.huawei.hms.maps.model.MarkerOptions
+import com.huawei.hms.maps.model.Polyline
+import com.huawei.hms.maps.model.PolylineOptions
 import com.huawei.hms.maps.sample.utils.NetworkRequestManager
 import com.huawei.hms.maps.sample.utils.NetworkRequestManager.OnNetworkListener
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.*
 
 /**
  * Route Planning
@@ -63,22 +65,6 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
     private val mPolylines: MutableList<Polyline> = ArrayList()
     private val mPaths: MutableList<List<LatLng>> = ArrayList()
     private var mLatLngBounds: LatLngBounds? = null
-
-    private val mHandler: Handler = object : Handler() {
-        @SuppressLint("HandlerLeak")
-        override fun handleMessage(msg: Message) {
-            when (msg.what) {
-                0 -> renderRoute(mPaths, mLatLngBounds)
-                1 -> {
-                    val bundle = msg.data
-                    val errorMsg = bundle.getString("errorMsg")
-                    Toast.makeText(this@RoutePlanningDemoActivity, errorMsg, Toast.LENGTH_SHORT).show()
-                }
-                else -> {
-                }
-            }
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,12 +96,7 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
 
                     override fun requestFail(errorMsg: String?) {
-                        val msg = Message.obtain()
-                        val bundle = Bundle()
-                        bundle.putString("errorMsg", errorMsg)
-                        msg.what = 1
-                        msg.data = bundle
-                        mHandler.sendMessage(msg)
+                        runOnUiThread { Toast.makeText(this@RoutePlanningDemoActivity, errorMsg, Toast.LENGTH_SHORT).show() }
                     }
                 })
     }
@@ -129,13 +110,7 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
 
                     override fun requestFail(errorMsg: String?) {
-                        val msg = Message.obtain()
-                        val bundle = Bundle()
-                        bundle.putString("errorMsg", errorMsg)
-                        Log.d(TAG, errorMsg!!)
-                        msg.what = 1
-                        msg.data = bundle
-                        mHandler.sendMessage(msg)
+                        runOnUiThread { Toast.makeText(this@RoutePlanningDemoActivity, errorMsg, Toast.LENGTH_SHORT).show() }
                     }
                 })
     }
@@ -149,12 +124,7 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
 
                     override fun requestFail(errorMsg: String?) {
-                        val msg = Message.obtain()
-                        val bundle = Bundle()
-                        bundle.putString("errorMsg", errorMsg)
-                        msg.what = 1
-                        msg.data = bundle
-                        mHandler.sendMessage(msg)
+                        runOnUiThread { Toast.makeText(this@RoutePlanningDemoActivity, errorMsg, Toast.LENGTH_SHORT).show() }
                     }
                 })
     }
@@ -200,7 +170,7 @@ class RoutePlanningDemoActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 mPaths.add(i, mPath)
             }
-            mHandler.sendEmptyMessage(0)
+            runOnUiThread { renderRoute(mPaths, mLatLngBounds) }
         } catch (e: JSONException) {
             Log.e(TAG, "JSONException$e")
         }

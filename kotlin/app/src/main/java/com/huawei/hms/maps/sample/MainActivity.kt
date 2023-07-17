@@ -53,13 +53,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             ActivityCompat.requestPermissions(this, RUNTIME_PERMISSIONS, REQUEST_CODE)
         }
 
-		// this line is needed before using huawei map kit, since version 'com.huawei.hms:maps:6.5.0.301'
+        // this line is needed before using huawei map kit, since version 'com.huawei.hms:maps:6.5.0.301'
         MapsInitializer.initialize(this)
-		
+
         // please replace "Your API key" with api_key field value in
         // agconnect-services.json if the field is null.
         MapsInitializer.setApiKey(MapUtils.API_KEY)
-		
+
         findViewById<Button>(R.id.Camera).setOnClickListener(this)
         findViewById<Button>(R.id.BasicMap).setOnClickListener(this)
         findViewById<Button>(R.id.GestureDemo).setOnClickListener(this)
@@ -78,6 +78,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.LocationSourceDemo).setOnClickListener(this)
         findViewById<Button>(R.id.HeatMapDemo).setOnClickListener(this)
         findViewById<Button>(R.id.RoutePlanningDemo).setOnClickListener(this)
+        findViewById<Button>(R.id.TrafficDemo).setOnClickListener(this)
+        findViewById<Button>(R.id.DarkModeDemo).setOnClickListener(this)
+        findViewById<Button>(R.id.MyLocationStyleDemo).setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -153,6 +156,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.RoutePlanningDemo -> {
                 Log.i(TAG, "onClick: RoutePlanningDemo")
                 startActivity(Intent(this, RoutePlanningDemoActivity::class.java))
+            }
+            R.id.TrafficDemo -> {
+                Log.i(TAG, "onClick: TrafficDemo")
+                startActivity(Intent(this, TrafficDemoActivity::class.java))
+            }
+            R.id.DarkModeDemo -> {
+                Log.i(TAG, "onClick: DarkModeDemo")
+                startActivity(Intent(this, DarkModeDemoActivity::class.java))
+            }
+            R.id.MyLocationStyleDemo -> {
+                Log.i(TAG, "onClick: MyLocationStyleDemo")
+                startActivity(Intent(this, MyLocationStyleDemoActivity::class.java))
             }
             else -> {
             }

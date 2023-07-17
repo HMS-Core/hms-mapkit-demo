@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ActivityCompat.requestPermissions(this, RUNTIME_PERMISSIONS, REQUEST_CODE);
         }
 
-		// this line is needed before using huawei map kit, since version 'com.huawei.hms:maps:6.5.0.301'
+        // this line is needed before using huawei map kit, since version 'com.huawei.hms:maps:6.5.0.301'
         MapsInitializer.initialize(this);
-		
+
         // please replace "Your API key" with api_key field value in
         // agconnect-services.json if the field is null.
         MapsInitializer.setApiKey(MapUtils.API_KEY);
@@ -82,6 +82,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.LocationSourceDemo).setOnClickListener(this);
         findViewById(R.id.HeatMapDemo).setOnClickListener(this);
         findViewById(R.id.RoutePlanningDemo).setOnClickListener(this);
+        findViewById(R.id.TrafficDemo).setOnClickListener(this);
+        findViewById(R.id.DarkModeDemo).setOnClickListener(this);
+        findViewById(R.id.MyLocationStyleDemo).setOnClickListener(this);
     }
 
     @Override
@@ -157,17 +160,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.i(TAG, "onClick: StyleMapDemo");
             Intent i = new Intent(this, StyleMapDemoActivity.class);
             startActivity(i);
-
         }  else if (R.id.HeatMapDemo == view.getId()) {
             Log.i(TAG, "onClick: HeatMapDemo");
             Intent i = new Intent(this, HeatMapDemoActivity.class);
             startActivity(i);
-
         } else if (R.id.RoutePlanningDemo == view.getId()) {
             Log.i(TAG, "onClick: RoutePlanningDemo");
             Intent i = new Intent(this, RoutePlanningDemoActivity.class);
             startActivity(i);
-
+        } else if (R.id.TrafficDemo == view.getId()) {
+            Log.i(TAG, "onClick: TrafficDemo");
+            Intent i = new Intent(this, TrafficDemoActivity.class);
+            startActivity(i);
+        } else if (R.id.DarkModeDemo == view.getId()) {
+            Log.i(TAG, "onClick: DarkModeDemo");
+            Intent i = new Intent(this, DarkModeDemoActivity.class);
+            startActivity(i);
+        } else if (R.id.MyLocationStyleDemo == view.getId()) {
+            Log.i(TAG, "onClick: MyLocationStyleDemo");
+            Intent i = new Intent(this, MyLocationStyleDemoActivity.class);
+            startActivity(i);
         } else {
             Log.i(TAG, "onClick:  " + view.getId());
         }

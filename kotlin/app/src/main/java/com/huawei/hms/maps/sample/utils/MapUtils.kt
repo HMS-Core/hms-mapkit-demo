@@ -17,7 +17,6 @@
 package com.huawei.hms.maps.sample.utils
 
 import com.huawei.hms.maps.model.LatLng
-import java.util.*
 
 object MapUtils {
     val HUAWEI_CENTER = LatLng(31.98559, 118.76613)

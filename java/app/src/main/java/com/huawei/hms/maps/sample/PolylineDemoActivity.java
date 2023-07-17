@@ -298,4 +298,41 @@ public class PolylineDemoActivity extends AppCompatActivity implements OnMapRead
             mPolyline.setClickable(false);
         }
     }
+
+    /**
+     * Set the colors of the polyline
+     *
+     * @param view view
+     */
+    public void setColorValues(View view) {
+        if (null != mPolyline) {
+            List<Integer> colorValueList = new ArrayList<>();
+            colorValueList.add(Color.RED);
+            colorValueList.add(Color.GREEN);
+            colorValueList.add(Color.BLUE);
+            mPolyline.setColorValues(colorValueList);
+        }
+    }
+
+    /**
+     * Set the gradient of the polyline
+     *
+     * @param view view
+     */
+    public void setGradientTrue(View view) {
+        if (null != mPolyline) {
+            mPolyline.setGradient(true);
+        }
+    }
+
+    /**
+     * Set the gradient of the polyline
+     *
+     * @param view view
+     */
+    public void setGradientFalse(View view) {
+        if (null != mPolyline) {
+            mPolyline.setGradient(false);
+        }
+    }
 }

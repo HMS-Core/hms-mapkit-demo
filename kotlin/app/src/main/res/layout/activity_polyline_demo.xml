@@ -192,6 +192,33 @@
                     android:text="SetClickableFalse"
                     android:textAllCaps="false" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setColorValues"
+                    android:text="SetColorValues"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setGradientTrue"
+                    android:text="SetGradientTrue"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setGradientFalse"
+                    android:text="SetGradientFalse"
+                    android:textAllCaps="false" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

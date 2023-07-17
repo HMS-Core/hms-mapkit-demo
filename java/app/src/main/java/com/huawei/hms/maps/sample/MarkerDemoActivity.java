@@ -128,7 +128,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
         hMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(48.893478, 2.334595), 14));
     }
 
-    class CustomInfoWindowAdapter implements HuaweiMap.InfoWindowAdapter {
+    private class CustomInfoWindowAdapter implements HuaweiMap.InfoWindowAdapter {
         private final View mWindowView;
 
         private final View mContentsView;
@@ -233,7 +233,7 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
         if (mParis == null && mOrsay == null && mSerris == null) {
             // Uses a colored icon.
             mParis =
-                hMap.addMarker(new MarkerOptions().position(PARIS).title("paris").snippet("hello").clusterable(true));
+                hMap.addMarker(new MarkerOptions().position(PARIS).title("paris").snippet("hello").clusterable(true).clickable(true));
             mOrsay = hMap.addMarker(new MarkerOptions().position(ORSAY)
                 .alpha(0.5f)
                 .title("Orsay")
@@ -376,6 +376,30 @@ public class MarkerDemoActivity extends AppCompatActivity implements OnMapReadyC
         if (mParis != null) {
             mParis.setSnippet(snippetStr);
             Toast.makeText(this, "Paris snippet is " + mParis.getSnippet(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Set the clickable of the marker
+     *
+     * @param view view
+     */
+    public void setClickable(View view) {
+        if (mParis != null) {
+            boolean isClickable = mParis.isClickable();
+            mParis.setClickable(!isClickable);
+        }
+    }
+
+    /**
+     * Set the clickable of the marker
+     *
+     * @param view view
+     */
+    public void isClickable(View view) {
+        if (mParis != null) {
+            boolean isClickable = mParis.isClickable();
+            txtvResultShown.setText(String.valueOf(isClickable));
         }
     }
 

@@ -30,12 +30,15 @@ import com.huawei.hms.maps.SupportMapFragment;
 import com.huawei.hms.maps.model.Circle;
 import com.huawei.hms.maps.model.CircleOptions;
 import com.huawei.hms.maps.model.LatLng;
+import com.huawei.hms.maps.model.animation.Animation;
+import com.huawei.hms.maps.model.animation.TranslateAnimation;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -337,5 +340,50 @@ public class CircleDemoActivity extends AppCompatActivity implements OnMapReadyC
         if (null != mCircle) {
             mCircle.setClickable(false);
         }
+    }
+
+    /**
+     * setAnimation
+     *
+     * @param view view
+     */
+    public void setAnimation(View view) {
+        if (null != mCircle) {
+            Animation animation = new TranslateAnimation(new LatLng(48.793478, 2.334595));
+            animation.setFillMode(Animation.FILL_MODE_FORWARDS);
+            animation.setRepeatMode(Animation.REVERSE);
+            animation.setRepeatCount(3);
+            animation.setDuration(3000L);
+            animation.setInterpolator(new LinearInterpolator());
+
+            animation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart() {
+                    Toast.makeText(CircleDemoActivity.this, "onAnimationStart", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onAnimationEnd() {
+                    Toast.makeText(CircleDemoActivity.this, "onAnimationEnd", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            mCircle.setAnimation(animation);
+            mCircle.startAnimation();
+        }
+    }
+
+    /**
+     * clearAnimation.
+     *
+     * @param view v
+     */
+    public void clearAnimation(View view) {
+        if (mCircle == null) {
+            Toast.makeText(this, "Please add circle first.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        boolean clearAnimation = mCircle.clearAnimation();
+        circleShown.setText(String.valueOf(clearAnimation));
     }
 }

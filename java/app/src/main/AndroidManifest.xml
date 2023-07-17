@@ -36,76 +36,138 @@
 
         <activity
             android:name=".CircleDemoActivity"
-            android:label="CircleDemo" />
+            android:label="CircleDemo"
+            android:exported="false" />
+
         <activity
             android:name=".ControlsDemoActivity"
-            android:label="ControlsDemo" />
+            android:label="ControlsDemo"
+            android:exported="false" />
+
         <activity
             android:name=".GestureDemoActivity"
-            android:label="GestureDemo" />
+            android:label="GestureDemo"
+            android:exported="false" />
+
         <activity
             android:name=".GroundOverlayDemoActivity"
-            android:label="GroundOverlayDemo" />
+            android:label="GroundOverlayDemo"
+            android:exported="false" />
+
         <activity
             android:name=".LiteModeDemoActivity"
-            android:label="LiteModeDemo" />
+            android:label="LiteModeDemo"
+            android:exported="false" />
+
         <activity
             android:name=".MapFunctionsDemoActivity"
-            android:label="MapFunctions" />
+            android:label="MapFunctions"
+            android:exported="false" />
+
         <activity
             android:name=".MoreLanguageDemoActivity"
-            android:label="MoreLanguageDemo" />
+            android:label="MoreLanguageDemo"
+            android:exported="false" />
+
         <activity
             android:name=".PolygonDemoActivity"
-            android:label="PolygonDemo" />
+            android:label="PolygonDemo"
+            android:exported="false" />
+
         <activity
             android:name=".PolylineDemoActivity"
-            android:label="PolylineDemo" />
+            android:label="PolylineDemo"
+            android:exported="false" />
+
         <activity
             android:name=".LocationSourceDemoActivity"
-            android:label="LocationSourceDemo" />
+            android:label="LocationSourceDemo"
+            android:exported="false" />
+
         <activity
             android:name=".MarkerDemoActivity"
-            android:label="MarkerDemo" />
+            android:label="MarkerDemo"
+            android:exported="false" />
+
         <activity
             android:name=".MarkerClusteringDemoActivity"
-            android:label="MarkerClusteringDemo" />
+            android:label="MarkerClusteringDemo"
+            android:exported="false" />
+
         <activity
             android:name=".CameraDemoActivity"
-            android:label="CameraDemo" />
+            android:label="CameraDemo"
+            android:exported="false" />
+
         <activity
             android:name=".BasicMapDemoActivity"
-            android:label="BasicMapDemo" />
+            android:label="BasicMapDemo"
+            android:exported="false" />
+
         <activity
             android:name=".MapFragmentDemoActivity"
-            android:label="MapFragmentDemo" />
+            android:label="MapFragmentDemo"
+            android:exported="false" />
+
         <activity
             android:name=".MapViewDemoActivity"
-            android:label="MapViewDemo" />
+            android:label="MapViewDemo"
+            android:exported="false" />
+
         <activity
             android:name=".SupportMapDemoActivity"
-            android:label="SupportMapDemo" />
+            android:label="SupportMapDemo"
+            android:exported="false" />
+
         <activity
             android:name=".SupportMapCodeDemoActivity"
-            android:label="SupportMapCodeDemo" />
+            android:label="SupportMapCodeDemo"
+            android:exported="false" />
+
         <activity
             android:name=".MapViewCodeDemoActivity"
-            android:label="MapViewCodeDemo" />
+            android:label="MapViewCodeDemo"
+            android:exported="false" />
+
         <activity
             android:name=".MapFragmentCodeDemoActivity"
-            android:label="MapFragmentCodeDemo" />
+            android:label="MapFragmentCodeDemo"
+            android:exported="false" />
+
         <activity
             android:name=".StyleMapDemoActivity"
-            android:label="StyleMapDemo" />
+            android:label="StyleMapDemo"
+            android:exported="false" />
+
         <activity
             android:name=".EventsDemoActivity"
-            android:label="EventsDemo" />
+            android:label="EventsDemo"
+            android:exported="false" />
+
         <activity
             android:name=".RoutePlanningDemoActivity"
-            android:label="RoutePlanningDemo" />
+            android:label="RoutePlanningDemo"
+            android:exported="false" />
+
         <activity
             android:name=".HeatMapDemoActivity"
-            android:label="HeatMapDemo" />
+            android:label="HeatMapDemo"
+            android:exported="false" />
+
+        <activity
+            android:name=".TrafficDemoActivity"
+            android:label="TrafficDemo"
+            android:exported="false" />
+
+        <activity
+            android:name=".DarkModeDemoActivity"
+            android:label="DarkModeDemo"
+            android:exported="false" />
+
+        <activity
+            android:name=".MyLocationStyleDemoActivity"
+            android:label="MyLocationStyleDemo"
+            android:exported="false" />
 
         <meta-data
             android:name="com.huawei.hms.client.channel.androidMarket"

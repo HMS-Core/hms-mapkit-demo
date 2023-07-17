@@ -26,7 +26,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.huawei.hms.maps.HuaweiMap
-import com.huawei.hms.maps.HuaweiMap.*
+import com.huawei.hms.maps.HuaweiMap.OnMapClickListener
+import com.huawei.hms.maps.HuaweiMap.OnMapLongClickListener
+import com.huawei.hms.maps.HuaweiMap.OnCameraIdleListener
+import com.huawei.hms.maps.HuaweiMap.OnMyLocationButtonClickListener
 import com.huawei.hms.maps.OnMapReadyCallback
 import com.huawei.hms.maps.SupportMapFragment
 import com.huawei.hms.maps.model.LatLng

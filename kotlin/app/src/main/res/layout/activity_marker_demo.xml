@@ -127,6 +127,26 @@
                     android:textAllCaps="false" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="setClickable"
+                    android:text="SetClickable"
+                    android:textAllCaps="false" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="isClickable"
+                    android:text="isClickable"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"

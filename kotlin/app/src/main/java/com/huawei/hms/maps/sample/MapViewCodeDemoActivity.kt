@@ -23,7 +23,11 @@ package com.huawei.hms.maps.sample
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.huawei.hms.maps.*
+import com.huawei.hms.maps.CameraUpdateFactory
+import com.huawei.hms.maps.HuaweiMap
+import com.huawei.hms.maps.HuaweiMapOptions
+import com.huawei.hms.maps.MapView
+import com.huawei.hms.maps.OnMapReadyCallback
 import com.huawei.hms.maps.model.LatLng
 
 class MapViewCodeDemoActivity : AppCompatActivity(), OnMapReadyCallback {

@@ -25,6 +25,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.view.animation.LinearInterpolator
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -36,6 +37,8 @@ import com.huawei.hms.maps.SupportMapFragment
 import com.huawei.hms.maps.model.Circle
 import com.huawei.hms.maps.model.CircleOptions
 import com.huawei.hms.maps.model.LatLng
+import com.huawei.hms.maps.model.animation.Animation
+import com.huawei.hms.maps.model.animation.TranslateAnimation
 import com.huawei.hms.maps.sample.utils.CheckUtils
 
 /**
@@ -283,5 +286,46 @@ class CircleDemoActivity : AppCompatActivity(), OnMapReadyCallback {
         if (null != mCircle) {
             mCircle?.isClickable = false
         }
+    }
+
+    /**
+     * setAnimation
+     *
+     * @param view view
+     */
+    fun setAnimation(view: View?) {
+        if (null != mCircle) {
+            val animation: Animation = TranslateAnimation(LatLng(48.793478, 2.334595))
+            animation.setFillMode(Animation.FILL_MODE_FORWARDS)
+            animation.setRepeatMode(Animation.REVERSE)
+            animation.setRepeatCount(3)
+            animation.setDuration(3000L)
+            animation.setInterpolator(LinearInterpolator())
+            animation.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart() {
+                    Toast.makeText(this@CircleDemoActivity, "onAnimationStart", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onAnimationEnd() {
+                    Toast.makeText(this@CircleDemoActivity, "onAnimationEnd", Toast.LENGTH_SHORT).show()
+                }
+            })
+            mCircle!!.setAnimation(animation)
+            mCircle!!.startAnimation()
+        }
+    }
+
+    /**
+     * clearAnimation.
+     *
+     * @param view v
+     */
+    fun clearAnimation(view: View?) {
+        if (mCircle == null) {
+            Toast.makeText(this, "Please add circle first.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val clearAnimation = mCircle!!.clearAnimation()
+        circleShown.text = clearAnimation.toString()
     }
 }

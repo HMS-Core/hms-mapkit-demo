@@ -33,7 +33,6 @@ import com.huawei.hms.maps.SupportMapFragment
 import com.huawei.hms.maps.model.HeatMap
 import com.huawei.hms.maps.model.HeatMapOptions
 import com.huawei.hms.maps.model.HeatMapOptions.RadiusUnit
-import java.util.*
 
 /**
  * about HeatMap
